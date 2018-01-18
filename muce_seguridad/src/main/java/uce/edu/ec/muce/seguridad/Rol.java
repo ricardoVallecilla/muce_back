@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uce.edu.ec.muce.modelos;
+package uce.edu.ec.muce.seguridad;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -13,8 +13,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -45,10 +43,7 @@ public class Rol implements Serializable {
     @Size(max = 256)
     @Column(name = "DESCRIPCION", length = 256)
     private String descripcion;
-    @JoinTable(name = "ROL_PERMISOS", joinColumns = {@JoinColumn(name = "ROLID", referencedColumnName = "ROLID", nullable = false)
-            }, 
-    		inverseJoinColumns = {@JoinColumn(name = "PERMISOID", referencedColumnName = "PERMISOID", nullable = false)})
-        @ManyToMany
+    @ManyToMany(mappedBy = "rolSet")
     private Set<Permiso> permisoSet;
    
 

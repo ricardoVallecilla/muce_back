@@ -9,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -36,11 +39,17 @@ public class Usuario implements UserDetails {
 	@Column(name = "enabled", nullable = false)
 	private boolean enabled;
 	
-	@Column(name = "personaId", nullable = false)
-	private Long personaId;
+	@Column(name = "nombres", nullable = false)
+	private String  nombres;
 	
-	@Column(name = "roles", nullable = false)
-	private String roles;
+	
+	@JoinColumn(name = "ROLID", referencedColumnName = "ROLID")
+    @OneToOne
+    private Rol rolId;
+	
+	@JoinColumn(name = "MUSEOID", referencedColumnName = "MUSEOID")
+    @OneToOne
+    private Museo museoId;
 	
 
 	@Override
@@ -82,12 +91,22 @@ public class Usuario implements UserDetails {
 		return username;
 	}
 
-	public Long getPersonaId() {
-		return personaId;
+	
+
+	public String getNombres() {
+		return nombres;
 	}
 
-	public String getRoles() {
-		return roles;
+	public void setNombres(String nombres) {
+		this.nombres = nombres;
+	}
+
+	public Rol getRolId() {
+		return rolId;
+	}
+
+	public void setRolId(Rol rolId) {
+		this.rolId = rolId;
 	}
 	
 	

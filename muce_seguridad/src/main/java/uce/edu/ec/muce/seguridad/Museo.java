@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uce.edu.ec.muce.modelos;
+package uce.edu.ec.muce.seguridad;
 
 import java.io.Serializable;
 import java.util.Date;

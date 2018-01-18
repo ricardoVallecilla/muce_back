@@ -9,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -25,7 +28,7 @@ public class Usuario implements UserDetails {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USUARIO_SEQ")
     @SequenceGenerator(sequenceName = "usuario_seq", allocationSize = 1, name = "USUARIO_SEQ")
 	@Column(name = "user_id", nullable = false, updatable = false)
-	private Integer id;
+	private Long id;
 	
 	@Column(name = "username", nullable = false, unique = true)
 	private String username;
@@ -34,14 +37,19 @@ public class Usuario implements UserDetails {
 	private String password;
 	
 	@Column(name = "enabled", nullable = false)
-	//@Type(type = "org.hibernate.type.NumericBooleanType")
 	private boolean enabled;
 	
-	@Column(name = "personaId", nullable = false)
-	private Integer personaId;
+	@Column(name = "nombres", nullable = false)
+	private String  nombres;
 	
-	@Column(name = "roles", nullable = false)
-	private String roles;
+	
+	@JoinColumn(name = "ROLID", referencedColumnName = "ROLID")
+    @OneToOne
+    private Rol rolId;
+	
+	@JoinColumn(name = "MUSEOID", referencedColumnName = "MUSEOID")
+    @OneToOne
+    private Museo museoId;
 	
 
 	@Override
@@ -83,12 +91,22 @@ public class Usuario implements UserDetails {
 		return username;
 	}
 
-	public Integer getPersonaId() {
-		return personaId;
+	
+
+	public String getNombres() {
+		return nombres;
 	}
 
-	public String getRoles() {
-		return roles;
+	public void setNombres(String nombres) {
+		this.nombres = nombres;
+	}
+
+	public Rol getRolId() {
+		return rolId;
+	}
+
+	public void setRolId(Rol rolId) {
+		this.rolId = rolId;
 	}
 	
 	

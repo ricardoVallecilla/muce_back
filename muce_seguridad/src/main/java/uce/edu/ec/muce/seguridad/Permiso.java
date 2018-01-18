@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uce.edu.ec.muce.modelos;
+package uce.edu.ec.muce.seguridad;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -21,6 +21,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlTransient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  *
@@ -54,7 +56,13 @@ public class Permiso implements Serializable {
     @Size(min = 1, max = 256)
     @Column(name = "URL", nullable = false, length = 256)
     private String url;
-   
+    @JoinTable(name = "ROL_PERMISOS", joinColumns = {
+        @JoinColumn(name = "PERMISOID", referencedColumnName = "PERMISOID", nullable = false)}, inverseJoinColumns = {
+        @JoinColumn(name = "ROLID", referencedColumnName = "ROLID", nullable = false)})
+    @ManyToMany
+    @JsonIgnore
+    private Set<Rol> rolSet;
+
     public Permiso() {
     }
 
@@ -101,7 +109,14 @@ public class Permiso implements Serializable {
         this.url = url;
     }
 
-  
+    @XmlTransient
+    public Set<Rol> getRolSet() {
+        return rolSet;
+    }
+
+    public void setRolSet(Set<Rol> rolSet) {
+        this.rolSet = rolSet;
+    }
 
     @Override
     public int hashCode() {
