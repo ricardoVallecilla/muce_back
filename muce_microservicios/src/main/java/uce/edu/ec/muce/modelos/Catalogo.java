@@ -36,7 +36,6 @@ public class Catalogo implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CATALOGO_SEQ")
     @SequenceGenerator(sequenceName = "catalogo_seq", allocationSize = 1, name = "CATALOGO_SEQ")
     @Basic(optional = false)
-    @NotNull
     @Column(name = "CATALOGOID", nullable = false, precision = 0, scale = -127)
     private Long catalogoid;
     @Basic(optional = false)
@@ -52,7 +51,7 @@ public class Catalogo implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "ACTIVO", nullable = false)
-    private Long activo;
+    private Boolean activo;
     @Size(max = 256)
     @Column(name = "USUARIOREGISTROID", length = 256)
     private String usuarioregistroid;
@@ -70,7 +69,7 @@ public class Catalogo implements Serializable {
         this.catalogoid = catalogoid;
     }
 
-    public Catalogo(Long catalogoid, String nombre, String descripcion, Long activo) {
+    public Catalogo(Long catalogoid, String nombre, String descripcion, Boolean activo) {
         this.catalogoid = catalogoid;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -101,11 +100,11 @@ public class Catalogo implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Long getActivo() {
+    public Boolean getActivo() {
         return activo;
     }
 
-    public void setActivo(Long activo) {
+    public void setActivo(Boolean activo) {
         this.activo = activo;
     }
 

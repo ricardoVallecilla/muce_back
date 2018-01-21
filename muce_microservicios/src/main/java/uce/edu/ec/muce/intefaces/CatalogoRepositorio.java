@@ -11,7 +11,11 @@ import uce.edu.ec.muce.modelos.Catalogo;
 public interface CatalogoRepositorio extends JpaRepository<Catalogo, Long> {
 	
 	
-	@Query(value ="SELECT periodo_id,descripcion,estado FROM periodo ", nativeQuery = true)
-    List<Object[]> catalogoPeriodos();
+	@Query(value ="SELECT * FROM catalogo where CATALOGOPADREID is null ", nativeQuery = true)
+    List<Catalogo> catalogosPadres();
+	
+	
+	@Query("SELECT t FROM Catalogo t where t.catalogopadreid.catalogoid = ?1 ") 
+	List<Catalogo> findByPadreId(Long personaId);
 
 }

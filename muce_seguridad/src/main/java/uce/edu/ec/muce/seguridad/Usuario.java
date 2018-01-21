@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -19,7 +18,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "usuario", catalog = "", schema = "MUCE")
 public class Usuario implements UserDetails {
 	
 	static final long serialVersionUID = 1L;
@@ -107,6 +106,22 @@ public class Usuario implements UserDetails {
 
 	public void setRolId(Rol rolId) {
 		this.rolId = rolId;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Museo getMuseoId() {
+		return museoId;
+	}
+
+	public void setMuseoId(Museo museoId) {
+		this.museoId = museoId;
 	}
 	
 	
