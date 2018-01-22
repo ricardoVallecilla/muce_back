@@ -12,7 +12,6 @@ import uce.edu.ec.muce.modelos.Piezamuseable;
 public interface PiezamuseableRepositorio extends JpaRepository<Piezamuseable, Long> {
 	
 	
-	@Query(value ="SELECT periodo_id,descripcion,estado FROM periodo ", nativeQuery = true)
-    List<Object[]> catalogoPeriodos();
-
+	@Query("SELECT t FROM Piezamuseable t where t.itemid.itemid = ?1 ") 
+	List<Piezamuseable> findByItemId(Long itemid);
 }

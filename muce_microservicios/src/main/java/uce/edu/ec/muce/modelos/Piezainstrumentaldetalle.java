@@ -37,11 +37,8 @@ public class Piezainstrumentaldetalle implements Serializable {
     @Column(name = "DETALLEID", nullable = false, precision = 0, scale = -127)
     private Long detalleid;
     @Size(max = 256)
-    @Column(name = "ESPECIE", length = 256)
-    private String especie;
-    @Size(max = 256)
-    @Column(name = "NOMBRE", length = 256)
-    private String nombre;
+    @Column(name = "TIPOBIEN", length = 256)
+    private String tipobien;
     @Size(max = 256)
     @Column(name = "OTRADENOMINACION", length = 256)
     private String otradenominacion;
@@ -78,15 +75,16 @@ public class Piezainstrumentaldetalle implements Serializable {
     @Size(max = 256)
     @Column(name = "DESCRIPCION", length = 256)
     private String descripcion;
-    @JoinColumn(name = "ENUSOID", referencedColumnName = "CATALOGOID")
-    @ManyToOne
-    private Catalogo enusoid;
+
+    @Column(name = "ENUSO", nullable = false)    
+    private Boolean enuso;
     @JoinColumn(name = "MATERIALID", referencedColumnName = "CATALOGOID")
     @ManyToOne
     private Catalogo materialid;
-    @JoinColumn(name = "FUNCIONAID", referencedColumnName = "CATALOGOID")
-    @ManyToOne
-    private Catalogo funcionaid;
+  
+
+    @Column(name = "FUNCIONA", nullable = false)    
+    private Boolean funciona;
     @JoinColumn(name = "PIEZAMUSEABLEID", referencedColumnName = "PIEZAMUSEABLEID")
     @ManyToOne
     private Piezamuseable piezamuseableid;
@@ -106,21 +104,7 @@ public class Piezainstrumentaldetalle implements Serializable {
         this.detalleid = detalleid;
     }
 
-    public String getEspecie() {
-        return especie;
-    }
 
-    public void setEspecie(String especie) {
-        this.especie = especie;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
     public String getOtradenominacion() {
         return otradenominacion;
@@ -218,31 +202,33 @@ public class Piezainstrumentaldetalle implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Catalogo getEnusoid() {
-        return enusoid;
-    }
+   
 
-    public void setEnusoid(Catalogo enusoid) {
-        this.enusoid = enusoid;
-    }
+    public Boolean getEnuso() {
+		return enuso;
+	}
 
-    public Catalogo getMaterialid() {
-        return materialid;
-    }
+	public void setEnuso(Boolean enuso) {
+		this.enuso = enuso;
+	}
 
-    public void setMaterialid(Catalogo materialid) {
-        this.materialid = materialid;
-    }
+	public Catalogo getMaterialid() {
+		return materialid;
+	}
 
-    public Catalogo getFuncionaid() {
-        return funcionaid;
-    }
+	public void setMaterialid(Catalogo materialid) {
+		this.materialid = materialid;
+	}
 
-    public void setFuncionaid(Catalogo funcionaid) {
-        this.funcionaid = funcionaid;
-    }
+	public Boolean getFunciona() {
+		return funciona;
+	}
 
-    public Piezamuseable getPiezamuseableid() {
+	public void setFunciona(Boolean funciona) {
+		this.funciona = funciona;
+	}
+
+	public Piezamuseable getPiezamuseableid() {
         return piezamuseableid;
     }
 
@@ -250,7 +236,15 @@ public class Piezainstrumentaldetalle implements Serializable {
         this.piezamuseableid = piezamuseableid;
     }
 
-    @Override
+    public String getTipobien() {
+		return tipobien;
+	}
+
+	public void setTipobien(String tipobien) {
+		this.tipobien = tipobien;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (detalleid != null ? detalleid.hashCode() : 0);

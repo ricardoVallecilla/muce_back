@@ -12,7 +12,6 @@ import uce.edu.ec.muce.modelos.Piezainstrumentaldetalle;
 public interface PiezainstrumentaldetalleRepositorio extends JpaRepository<Piezainstrumentaldetalle, Long> {
 	
 	
-	@Query(value ="SELECT periodo_id,descripcion,estado FROM periodo ", nativeQuery = true)
-    List<Object[]> catalogoPeriodos();
-
+	@Query("SELECT t FROM Piezainstrumentaldetalle t where t.piezamuseableid.piezamuseableid = ?1 ") 
+	List<Piezainstrumentaldetalle> findBypiezaMuseableId(Long piezamuseableid);
 }

@@ -7,8 +7,6 @@ package uce.edu.ec.muce.modelos;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,14 +15,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -39,112 +35,112 @@ public class Piezamuseable implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PIEZAMUSEABLE_SEQ")
     @SequenceGenerator(sequenceName = "museo_seq", allocationSize = 1, name = "PIEZAMUSEABLE_SEQ")
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "PIEZAMUSEABLEID", nullable = false, precision = 0, scale = -127)
+    
+    
+    @Column(name = "PIEZAMUSEABLEID", precision = 0, scale = -127)
     private Long piezamuseableid;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 100)
-    @Column(name = "CODIGOMUSEO", nullable = false, length = 100)
+    @Column(name = "CODIGOMUSEO", length = 100)
     private String codigomuseo;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "CONTENEDOR", nullable = false, length = 256)
+    @Column(name = "CONTENEDOR", length = 256)
     private String contenedor;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "DIRECCION", nullable = false, length = 256)
+    @Column(name = "DIRECCION", length = 256)
     private String direccion;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "DIRECCIONELECTRONICA", nullable = false, length = 256)
+    @Column(name = "DIRECCIONELECTRONICA", length = 256)
     private String direccionelectronica;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "NUMERO", nullable = false, length = 256)
+    @Column(name = "NUMERO", length = 256)
     private String numero;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "TELEFONO", nullable = false, length = 256)
+    @Column(name = "TELEFONO", length = 256)
     private String telefono;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "DISPOSICIONCONTENEDOR", nullable = false, length = 256)
+    @Column(name = "DISPOSICIONCONTENEDOR", length = 256)
     private String disposicioncontenedor;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "RESPONSABLE", nullable = false, length = 256)
+    @Column(name = "RESPONSABLE", length = 256)
     private String responsable;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 15)
-    @Column(name = "RESPONSABLECI", nullable = false, length = 15)
+    @Column(name = "RESPONSABLECI", length = 15)
     private String responsableci;
     @Size(max = 256)
     @Column(name = "ELEMENTOSEXTRANOS", length = 256)
     private String elementosextranos;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "OBSERVACIONES", nullable = false, length = 256)
+    @Column(name = "OBSERVACIONES", length = 256)
     private String observaciones;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Lob
-    @Column(name = "FOTOGRAFIA", nullable = false)
+    @Column(name = "FOTOGRAFIA")
     private Serializable fotografia;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 350)
-    @Column(name = "HISTORIAITINERANCIA", nullable = false, length = 350)
+    @Column(name = "HISTORIAITINERANCIA", length = 350)
     private String historiaitinerancia;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "ENTIDADINVESTIGADORA", nullable = false, length = 256)
+    @Column(name = "ENTIDADINVESTIGADORA", length = 256)
     private String entidadinvestigadora;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "INVENTARIADOPOR", nullable = false, length = 256)
+    @Column(name = "INVENTARIADOPOR", length = 256)
     private String inventariadopor;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "REVISADOPOR", nullable = false, length = 256)
+    @Column(name = "REVISADOPOR", length = 256)
     private String revisadopor;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "APROBADOPOR", nullable = false, length = 256)
+    @Column(name = "APROBADOPOR", length = 256)
     private String aprobadopor;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "FECHAINVENTARIO", nullable = false)
+    
+    
+    @Column(name = "FECHAINVENTARIO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechainventario;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "FECHAREVISION", nullable = false)
+    
+    
+    @Column(name = "FECHAREVISION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharevision;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "FECHAAPROBACION", nullable = false)
+    
+    
+    @Column(name = "FECHAAPROBACION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaaprobacion;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "REGISTROFOTOGRAFICOPOR", nullable = false, length = 256)
+    @Column(name = "REGISTROFOTOGRAFICOPOR", length = 256)
     private String registrofotograficopor;
     @Size(max = 256)
     @Column(name = "USUARIOREGISTROID", length = 256)
@@ -153,60 +149,81 @@ public class Piezamuseable implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharegistro;
    
-    @JoinColumn(name = "PROCESOJURIDICOID", referencedColumnName = "CATALOGOID", nullable = false)
-    @ManyToOne(optional = false)
-    private Catalogo procesojuridicoid;
-    @JoinColumn(name = "ESTADOINTEGRIDAD", referencedColumnName = "CATALOGOID", nullable = false)
+    
+    @Column(name = "PROCESOJURIDICO")    
+    private Boolean procesojuridico;
+    
+    @JoinColumn(name = "ESTADOINTEGRIDAD", referencedColumnName = "CATALOGOID")
     @ManyToOne(optional = false)
     private Catalogo estadointegridad;
-    @JoinColumn(name = "HUMEDAD", referencedColumnName = "CATALOGOID", nullable = false)
-    @ManyToOne(optional = false)
-    private Catalogo humedad;
-    @JoinColumn(name = "CAMARAS", referencedColumnName = "CATALOGOID", nullable = false)
-    @ManyToOne(optional = false)
-    private Catalogo camaras;
-    @JoinColumn(name = "ESTADOCONSERVACIONID", referencedColumnName = "CATALOGOID", nullable = false)
+    
+    
+    
+    @Column(name = "HUMEDAD")    
+    private Boolean humedad;
+    
+  
+    
+    @Column(name = "CAMARAS")    
+    private Boolean camaras;
+    
+    @JoinColumn(name = "ESTADOCONSERVACIONID", referencedColumnName = "CATALOGOID")
     @ManyToOne(optional = false)
     private Catalogo estadoconservacionid;
-    @JoinColumn(name = "CIUDADID", referencedColumnName = "CATALOGOID", nullable = false)
+    @JoinColumn(name = "CIUDADID", referencedColumnName = "CATALOGOID")
     @ManyToOne(optional = false)
     private Catalogo ciudadid;
-    @JoinColumn(name = "CANTONID", referencedColumnName = "CATALOGOID", nullable = false)
+    @JoinColumn(name = "CANTONID", referencedColumnName = "CATALOGOID")
     @ManyToOne(optional = false)
     private Catalogo cantonid;
-    @JoinColumn(name = "PROVINCIAID", referencedColumnName = "CATALOGOID", nullable = false)
+    @JoinColumn(name = "PROVINCIAID", referencedColumnName = "CATALOGOID")
     @ManyToOne(optional = false)
     private Catalogo provinciaid;
-    @JoinColumn(name = "INTERVENCIONESINADECUADAS", referencedColumnName = "CATALOGOID", nullable = false)
-    @ManyToOne(optional = false)
-    private Catalogo intervencionesinadecuadas;
-    @JoinColumn(name = "TEMPERATURA", referencedColumnName = "CATALOGOID", nullable = false)
-    @ManyToOne(optional = false)
-    private Catalogo temperatura;
-    @JoinColumn(name = "GUARDIAS", referencedColumnName = "CATALOGOID", nullable = false)
-    @ManyToOne(optional = false)
-    private Catalogo guardias;
-    @JoinColumn(name = "LUZ", referencedColumnName = "CATALOGOID", nullable = false)
-    @ManyToOne(optional = false)
-    private Catalogo luz;
-    @JoinColumn(name = "SENSORES", referencedColumnName = "CATALOGOID", nullable = false)
-    @ManyToOne(optional = false)
-    private Catalogo sensores;
-    @JoinColumn(name = "ALARMAS", referencedColumnName = "CATALOGOID", nullable = false)
-    @ManyToOne(optional = false)
-    private Catalogo alarmas;
-    @JoinColumn(name = "SISTEMAELECTRICODEFECTUOSO", referencedColumnName = "CATALOGOID", nullable = false)
-    @ManyToOne(optional = false)
-    private Catalogo sistemaelectricodefectuoso;
-    @JoinColumn(name = "EXTINTORES", referencedColumnName = "CATALOGOID", nullable = false)
-    @ManyToOne(optional = false)
-    private Catalogo extintores;
-    @JoinColumn(name = "MONTAJE", referencedColumnName = "CATALOGOID", nullable = false)
-    @ManyToOne(optional = false)
-    private Catalogo montaje;
     
-    @OneToMany(mappedBy = "piezamuseableid")
-    private Set<Movimiento> movimientoSet;
+    @JoinColumn(name = "ITEMID", referencedColumnName = "ITEMID")
+    @OneToOne
+    private Item itemid;
+    
+    
+    @Column(name = "INTERVENCIONESINADECUADAS")    
+    private Boolean intervencionesinadecuadas;
+    
+    
+    
+    @Column(name = "TEMPERATURA")    
+    private Boolean temperatura;
+    
+    
+    
+    @Column(name = "GUARDIAS")    
+    private Boolean guardias;
+
+    
+    @Column(name = "LUZ")    
+    private Boolean luz;
+    
+   
+    
+    @Column(name = "SENSORES")    
+    private Boolean sensores;
+    
+   
+    
+    @Column(name = "ALARMAS")    
+    private Boolean alarmas;
+    
+      
+    @Column(name = "SISTEMAELECTRICODEFECTUOSO")    
+    private Boolean sistemaelectricodefectuoso;
+
+    @Column(name = "EXTINTORES")    
+    private Boolean extintores;
+    
+
+    @Column(name = "MONTAJE")    
+    private Boolean montaje;
+    
+  
 
     public Piezamuseable() {
     }
@@ -433,39 +450,113 @@ public class Piezamuseable implements Serializable {
 
    
 
-    public Catalogo getProcesojuridicoid() {
-        return procesojuridicoid;
-    }
+    
 
-    public void setProcesojuridicoid(Catalogo procesojuridicoid) {
-        this.procesojuridicoid = procesojuridicoid;
-    }
+    public Boolean getProcesojuridico() {
+		return procesojuridico;
+	}
 
-    public Catalogo getEstadointegridad() {
-        return estadointegridad;
-    }
+	public void setProcesojuridico(Boolean procesojuridico) {
+		this.procesojuridico = procesojuridico;
+	}
 
-    public void setEstadointegridad(Catalogo estadointegridad) {
-        this.estadointegridad = estadointegridad;
-    }
+	public Catalogo getEstadointegridad() {
+		return estadointegridad;
+	}
 
-    public Catalogo getHumedad() {
-        return humedad;
-    }
+	public void setEstadointegridad(Catalogo estadointegridad) {
+		this.estadointegridad = estadointegridad;
+	}
 
-    public void setHumedad(Catalogo humedad) {
-        this.humedad = humedad;
-    }
+	public Boolean getHumedad() {
+		return humedad;
+	}
 
-    public Catalogo getCamaras() {
-        return camaras;
-    }
+	public void setHumedad(Boolean humedad) {
+		this.humedad = humedad;
+	}
 
-    public void setCamaras(Catalogo camaras) {
-        this.camaras = camaras;
-    }
+	public Boolean getCamaras() {
+		return camaras;
+	}
 
-    public Catalogo getEstadoconservacionid() {
+	public void setCamaras(Boolean camaras) {
+		this.camaras = camaras;
+	}
+
+	public Boolean getIntervencionesinadecuadas() {
+		return intervencionesinadecuadas;
+	}
+
+	public void setIntervencionesinadecuadas(Boolean intervencionesinadecuadas) {
+		this.intervencionesinadecuadas = intervencionesinadecuadas;
+	}
+
+	public Boolean getTemperatura() {
+		return temperatura;
+	}
+
+	public void setTemperatura(Boolean temperatura) {
+		this.temperatura = temperatura;
+	}
+
+	public Boolean getGuardias() {
+		return guardias;
+	}
+
+	public void setGuardias(Boolean guardias) {
+		this.guardias = guardias;
+	}
+
+	public Boolean getLuz() {
+		return luz;
+	}
+
+	public void setLuz(Boolean luz) {
+		this.luz = luz;
+	}
+
+	public Boolean getSensores() {
+		return sensores;
+	}
+
+	public void setSensores(Boolean sensores) {
+		this.sensores = sensores;
+	}
+
+	public Boolean getAlarmas() {
+		return alarmas;
+	}
+
+	public void setAlarmas(Boolean alarmas) {
+		this.alarmas = alarmas;
+	}
+
+	public Boolean getSistemaelectricodefectuoso() {
+		return sistemaelectricodefectuoso;
+	}
+
+	public void setSistemaelectricodefectuoso(Boolean sistemaelectricodefectuoso) {
+		this.sistemaelectricodefectuoso = sistemaelectricodefectuoso;
+	}
+
+	public Boolean getExtintores() {
+		return extintores;
+	}
+
+	public void setExtintores(Boolean extintores) {
+		this.extintores = extintores;
+	}
+
+	public Boolean getMontaje() {
+		return montaje;
+	}
+
+	public void setMontaje(Boolean montaje) {
+		this.montaje = montaje;
+	}
+
+	public Catalogo getEstadoconservacionid() {
         return estadoconservacionid;
     }
 
@@ -497,89 +588,20 @@ public class Piezamuseable implements Serializable {
         this.provinciaid = provinciaid;
     }
 
-    public Catalogo getIntervencionesinadecuadas() {
-        return intervencionesinadecuadas;
-    }
-
-    public void setIntervencionesinadecuadas(Catalogo intervencionesinadecuadas) {
-        this.intervencionesinadecuadas = intervencionesinadecuadas;
-    }
-
-    public Catalogo getTemperatura() {
-        return temperatura;
-    }
-
-    public void setTemperatura(Catalogo temperatura) {
-        this.temperatura = temperatura;
-    }
-
-    public Catalogo getGuardias() {
-        return guardias;
-    }
-
-    public void setGuardias(Catalogo guardias) {
-        this.guardias = guardias;
-    }
-
-    public Catalogo getLuz() {
-        return luz;
-    }
-
-    public void setLuz(Catalogo luz) {
-        this.luz = luz;
-    }
-
-    public Catalogo getSensores() {
-        return sensores;
-    }
-
-    public void setSensores(Catalogo sensores) {
-        this.sensores = sensores;
-    }
-
-    public Catalogo getAlarmas() {
-        return alarmas;
-    }
-
-    public void setAlarmas(Catalogo alarmas) {
-        this.alarmas = alarmas;
-    }
-
-    public Catalogo getSistemaelectricodefectuoso() {
-        return sistemaelectricodefectuoso;
-    }
-
-    public void setSistemaelectricodefectuoso(Catalogo sistemaelectricodefectuoso) {
-        this.sistemaelectricodefectuoso = sistemaelectricodefectuoso;
-    }
-
-    public Catalogo getExtintores() {
-        return extintores;
-    }
-
-    public void setExtintores(Catalogo extintores) {
-        this.extintores = extintores;
-    }
-
-    public Catalogo getMontaje() {
-        return montaje;
-    }
-
-    public void setMontaje(Catalogo montaje) {
-        this.montaje = montaje;
-    }
+  
    
 
-    @XmlTransient
-    public Set<Movimiento> getMovimientoSet() {
-        return movimientoSet;
-    }
+   
 
-    public void setMovimientoSet(Set<Movimiento> movimientoSet) {
-        this.movimientoSet = movimientoSet;
-    }
+    public Item getItemid() {
+		return itemid;
+	}
 
-    @Override
+	public void setItemid(Item itemid) {
+		this.itemid = itemid;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (piezamuseableid != null ? piezamuseableid.hashCode() : 0);

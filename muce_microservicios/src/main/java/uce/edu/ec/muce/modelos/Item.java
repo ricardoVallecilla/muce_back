@@ -36,7 +36,7 @@ public class Item implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ITEM_SEQ")
     @SequenceGenerator(sequenceName = "item_seq", allocationSize = 1, name = "ITEM_SEQ")
     @Basic(optional = false)
-    @NotNull
+    
     @Column(name = "ITEMID", nullable = false, precision = 0, scale = -127)
     private Long itemid;
     @Size(max = 100)
@@ -65,6 +65,9 @@ public class Item implements Serializable {
     @NotNull
     @Column(name = "VALOR", nullable = false, precision = 10, scale = 2)
     private Long valor;
+    @Size(max = 50)
+    @Column(name = "OTROINGRESO", length = 50)
+    private String otroingreso;
    
     @Size(max = 256)
     @Column(name = "CUSTODIODOS", length = 256)
@@ -77,11 +80,9 @@ public class Item implements Serializable {
     @Size(min = 1, max = 150)
     @Column(name = "PROCEDENCIA", nullable = false, length = 150)
     private String procedencia;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 150)
-    @Column(name = "TIPOINGRESO", nullable = false, length = 150)
-    private String tipoingreso;
+    @JoinColumn(name = "TIPOINGRESOID", referencedColumnName = "CATALOGOID")
+    @ManyToOne
+    private Catalogo tipoingreso;
     @Column(name = "FECHAINGRESO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaingreso;
@@ -91,7 +92,7 @@ public class Item implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "RESTAURADO", nullable = false)
-    private Long restaurado;
+    private Boolean restaurado;
     @Column(name = "FECHARESTAURADO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharestaurado;
@@ -127,18 +128,25 @@ public class Item implements Serializable {
         this.itemid = itemid;
     }
 
-    public Item(Long itemid, String descripcion, String nombre, Long valor, String procedencia, String tipoingreso, Long restaurado, String detalles) {
+    public Item(Long itemid, String descripcion, String nombre, Long valor, String procedencia, Boolean restaurado, String detalles) {
         this.itemid = itemid;
         this.descripcion = descripcion;
         this.nombre = nombre;
         this.valor = valor;
         this.procedencia = procedencia;
-        this.tipoingreso = tipoingreso;
         this.restaurado = restaurado;
         this.detalles = detalles;
     }
 
-    public Long getItemid() {
+    public String getOtroingreso() {
+		return otroingreso;
+	}
+
+	public void setOtroingreso(String otroingreso) {
+		this.otroingreso = otroingreso;
+	}
+
+	public Long getItemid() {
         return itemid;
     }
 
@@ -226,15 +234,17 @@ public class Item implements Serializable {
         this.procedencia = procedencia;
     }
 
-    public String getTipoingreso() {
-        return tipoingreso;
-    }
+    
 
-    public void setTipoingreso(String tipoingreso) {
-        this.tipoingreso = tipoingreso;
-    }
+    public Catalogo getTipoingreso() {
+		return tipoingreso;
+	}
 
-    public Date getFechaingreso() {
+	public void setTipoingreso(Catalogo tipoingreso) {
+		this.tipoingreso = tipoingreso;
+	}
+
+	public Date getFechaingreso() {
         return fechaingreso;
     }
 
@@ -250,11 +260,11 @@ public class Item implements Serializable {
         this.tipodocumento = tipodocumento;
     }
 
-    public Long getRestaurado() {
+    public Boolean getRestaurado() {
         return restaurado;
     }
 
-    public void setRestaurado(Long restaurado) {
+    public void setRestaurado(Boolean restaurado) {
         this.restaurado = restaurado;
     }
 

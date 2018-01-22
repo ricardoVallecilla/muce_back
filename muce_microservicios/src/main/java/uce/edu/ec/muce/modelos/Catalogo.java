@@ -15,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OrderBy;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -40,6 +41,7 @@ public class Catalogo implements Serializable {
     private Long catalogoid;
     @Basic(optional = false)
     @NotNull
+    @OrderBy
     @Size(min = 1, max = 150)
     @Column(name = "NOMBRE", nullable = false, length = 150)
     private String nombre;
