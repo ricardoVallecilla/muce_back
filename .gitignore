@@ -1,5 +1,7 @@
 #ignore
 .metadata/
 .recommenders/
+.muse_seguridad/target/
+.muse_microservicios/target/
 RemoteSystemsTempFiles/
 Servers/
