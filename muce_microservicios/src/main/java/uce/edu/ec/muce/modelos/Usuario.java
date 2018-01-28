@@ -17,8 +17,11 @@ import javax.persistence.Table;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "usuario", catalog = "", schema = "MUCE")
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Usuario implements UserDetails {
 	
 	static final long serialVersionUID = 1L;

@@ -6,33 +6,46 @@
 package uce.edu.ec.muce.modelos;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-
 import javax.persistence.Table;
 
 /**
  *
  * @author Usuario
  */
-@Entity
-@Table(name = "ESTADOGENERALBIEN", catalog = "", schema = "MUCE")
-public class Estadogeneralbien implements Serializable {
+@Entity 
+@Table(name = "PIEZAMUSEABLECATALOGO", catalog = "", schema = "MUCE")
+public class Piezamuseablecatalogo implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+  
     @EmbeddedId
     protected PiezaCatalogoPk piezaCatalogoPk;
     
-    public Estadogeneralbien() {
+    @Column(name = "IDENTIFICADORCAMPO")
+    private String indetificadorCampo;
+    
+    
+    public Piezamuseablecatalogo() {
     	
     }
 
-	public Estadogeneralbien(PiezaCatalogoPk piezaCatalogoPk) {
-		
+	public Piezamuseablecatalogo(PiezaCatalogoPk piezaCatalogoPk, String indetificadorCampo) {
+		super();
 		this.piezaCatalogoPk = piezaCatalogoPk;
+		this.indetificadorCampo = indetificadorCampo;
 	}
 
+	public String getIndetificadorCampo() {
+		return indetificadorCampo;
+	}
+
+	public void setIndetificadorCampo(String indetificadorCampo) {
+		this.indetificadorCampo = indetificadorCampo;
+	}
 
 	public PiezaCatalogoPk getPiezaCatalogoPk() {
 		return piezaCatalogoPk;
@@ -58,7 +71,7 @@ public class Estadogeneralbien implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Estadogeneralbien other = (Estadogeneralbien) obj;
+		Piezamuseablecatalogo other = (Piezamuseablecatalogo) obj;
 		if (piezaCatalogoPk == null) {
 			if (other.piezaCatalogoPk != null)
 				return false;
@@ -66,8 +79,6 @@ public class Estadogeneralbien implements Serializable {
 			return false;
 		return true;
 	}
-    
-    
 
 
     

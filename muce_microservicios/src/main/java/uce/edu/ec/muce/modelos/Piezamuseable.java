@@ -22,12 +22,16 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  *
  * @author Usuario
  */
 @Entity
 @Table(name = "PIEZAMUSEABLE", catalog = "", schema = "MUCE")
+@JsonIgnoreProperties({"fotografia"})
 public class Piezamuseable implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -95,8 +99,9 @@ public class Piezamuseable implements Serializable {
     
     
     @Lob
+    @JsonIgnore
     @Column(name = "FOTOGRAFIA")
-    private Serializable fotografia;
+    private byte[] fotografia;
     
     
     @Size(min = 1, max = 350)
@@ -180,6 +185,7 @@ public class Piezamuseable implements Serializable {
     @ManyToOne(optional = false)
     private Catalogo provinciaid;
     
+    
     @JoinColumn(name = "ITEMID", referencedColumnName = "ITEMID")
     @OneToOne
     private Item itemid;
@@ -232,7 +238,7 @@ public class Piezamuseable implements Serializable {
         this.piezamuseableid = piezamuseableid;
     }
 
-    public Piezamuseable(Long piezamuseableid, String codigomuseo, String contenedor, String direccion, String direccionelectronica, String numero, String telefono, String disposicioncontenedor, String responsable, String responsableci, String observaciones, Serializable fotografia, String historiaitinerancia, String entidadinvestigadora, String inventariadopor, String revisadopor, String aprobadopor, Date fechainventario, Date fecharevision, Date fechaaprobacion, String registrofotograficopor) {
+    public Piezamuseable(Long piezamuseableid, String codigomuseo, String contenedor, String direccion, String direccionelectronica, String numero, String telefono, String disposicioncontenedor, String responsable, String responsableci, String observaciones, String historiaitinerancia, String entidadinvestigadora, String inventariadopor, String revisadopor, String aprobadopor, Date fechainventario, Date fecharevision, Date fechaaprobacion, String registrofotograficopor) {
         this.piezamuseableid = piezamuseableid;
         this.codigomuseo = codigomuseo;
         this.contenedor = contenedor;
@@ -244,7 +250,6 @@ public class Piezamuseable implements Serializable {
         this.responsable = responsable;
         this.responsableci = responsableci;
         this.observaciones = observaciones;
-        this.fotografia = fotografia;
         this.historiaitinerancia = historiaitinerancia;
         this.entidadinvestigadora = entidadinvestigadora;
         this.inventariadopor = inventariadopor;
@@ -351,16 +356,18 @@ public class Piezamuseable implements Serializable {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
+    
 
-    public Serializable getFotografia() {
-        return fotografia;
-    }
 
-    public void setFotografia(Serializable fotografia) {
-        this.fotografia = fotografia;
-    }
+    public byte[] getFotografia() {
+		return fotografia;
+	}
 
-    public String getHistoriaitinerancia() {
+	public void setFotografia(byte[] fotografia) {
+		this.fotografia = fotografia;
+	}
+
+	public String getHistoriaitinerancia() {
         return historiaitinerancia;
     }
 
