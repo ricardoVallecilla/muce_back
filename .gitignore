@@ -3,5 +3,7 @@
 .recommenders/
 .muse_seguridad/target/
 .muse_microservicios/target/
+muce_microservicios/target/
+muse_seguridad/target/
 RemoteSystemsTempFiles/
 Servers/

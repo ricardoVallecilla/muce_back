@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  */
 @Entity
 @Table(name = "PIEZAMUSEABLE", catalog = "", schema = "MUCE")
-@JsonIgnoreProperties({"fotografia"})
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Piezamuseable implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -24,12 +24,15 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  *
  * @author Usuario
  */
 @Entity
 @Table(name = "PIEZAINSTRUMENTALDETALLE", catalog = "", schema = "MUCE")
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Piezainstrumentaldetalle implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -74,6 +77,9 @@ public class Piezainstrumentaldetalle implements Serializable {
     @Size(max = 10)
     @Column(name = "PESO", length = 10)
     private String peso;
+    @Size(max = 10)
+    @Column(name = "PROFUNDIDAD", length = 10)
+    private String profundidad;
     @Size(max = 256)
     @Column(name = "INSCRIPCIONES", length = 256)
     private String inscripciones;
@@ -260,6 +266,15 @@ public class Piezainstrumentaldetalle implements Serializable {
 
 	public void setFechafabricacion(Date fechafabricacion) {
 		this.fechafabricacion = fechafabricacion;
+	}
+
+	
+	public String getProfundidad() {
+		return profundidad;
+	}
+
+	public void setProfundidad(String profundidad) {
+		this.profundidad = profundidad;
 	}
 
 	@Override

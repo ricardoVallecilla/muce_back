@@ -1,5 +1,8 @@
-F:\BDProjects\Back-End\SindicatoChoferes\org.uprojects.com.sc\sv-seguridad\src\main\java\org\uprojects\com\seguridad\sc\AutorizacionserverApplication.java
-F:\BDProjects\Back-End\SindicatoChoferes\org.uprojects.com.sc\sv-seguridad\src\main\java\org\uprojects\com\seguridad\sc\OAuth2Config.java
-F:\BDProjects\Back-End\SindicatoChoferes\org.uprojects.com.sc\sv-seguridad\src\main\java\org\uprojects\com\seguridad\sc\Usuario.java
-F:\BDProjects\Back-End\SindicatoChoferes\org.uprojects.com.sc\sv-seguridad\src\main\java\org\uprojects\com\seguridad\sc\UsuarioService.java
-F:\BDProjects\Back-End\SindicatoChoferes\org.uprojects.com.sc\sv-seguridad\src\main\java\org\uprojects\com\seguridad\sc\UsuarioRepositorio.java
+F:\RespaldosRicardoVallecilla\TESIS_MUSEO\back-end\muce_seguridad\src\main\java\uce\edu\ec\muce\seguridad\Usuario.java
+F:\RespaldosRicardoVallecilla\TESIS_MUSEO\back-end\muce_seguridad\src\main\java\uce\edu\ec\muce\seguridad\UsuarioRepositorio.java
+F:\RespaldosRicardoVallecilla\TESIS_MUSEO\back-end\muce_seguridad\src\main\java\uce\edu\ec\muce\seguridad\Rol.java
+F:\RespaldosRicardoVallecilla\TESIS_MUSEO\back-end\muce_seguridad\src\main\java\uce\edu\ec\muce\seguridad\AutorizacionserverApplication.java
+F:\RespaldosRicardoVallecilla\TESIS_MUSEO\back-end\muce_seguridad\src\main\java\uce\edu\ec\muce\seguridad\UsuarioService.java
+F:\RespaldosRicardoVallecilla\TESIS_MUSEO\back-end\muce_seguridad\src\main\java\uce\edu\ec\muce\seguridad\OAuth2Config.java
+F:\RespaldosRicardoVallecilla\TESIS_MUSEO\back-end\muce_seguridad\src\main\java\uce\edu\ec\muce\seguridad\Museo.java
+F:\RespaldosRicardoVallecilla\TESIS_MUSEO\back-end\muce_seguridad\src\main\java\uce\edu\ec\muce\seguridad\Permiso.java

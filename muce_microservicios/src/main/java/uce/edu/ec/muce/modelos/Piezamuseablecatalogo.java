@@ -23,43 +23,43 @@ public class Piezamuseablecatalogo implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
   
     @EmbeddedId
-    protected PiezaCatalogoPk piezaCatalogoPk;
+    protected PiezaCatalogoPk piezacatalogoPk;
     
     @Column(name = "IDENTIFICADORCAMPO")
-    private String indetificadorCampo;
+    private String indetificadorcampo;
     
     
     public Piezamuseablecatalogo() {
     	
     }
 
-	public Piezamuseablecatalogo(PiezaCatalogoPk piezaCatalogoPk, String indetificadorCampo) {
+	public Piezamuseablecatalogo(PiezaCatalogoPk piezacatalogoPk, String indetificadorcampo) {
 		super();
-		this.piezaCatalogoPk = piezaCatalogoPk;
-		this.indetificadorCampo = indetificadorCampo;
+		this.piezacatalogoPk = piezacatalogoPk;
+		this.indetificadorcampo = indetificadorcampo;
 	}
 
-	public String getIndetificadorCampo() {
-		return indetificadorCampo;
+	public String getIndetificadorcampo() {
+		return indetificadorcampo;
 	}
 
-	public void setIndetificadorCampo(String indetificadorCampo) {
-		this.indetificadorCampo = indetificadorCampo;
+	public void setIndetificadorcampo(String indetificadorcampo) {
+		this.indetificadorcampo = indetificadorcampo;
 	}
 
-	public PiezaCatalogoPk getPiezaCatalogoPk() {
-		return piezaCatalogoPk;
+	public PiezaCatalogoPk getPiezacatalogoPk() {
+		return piezacatalogoPk;
 	}
 
-	public void setPiezaCatalogoPk(PiezaCatalogoPk piezaCatalogoPk) {
-		this.piezaCatalogoPk = piezaCatalogoPk;
+	public void setPiezacatalogoPk(PiezaCatalogoPk piezacatalogoPk) {
+		this.piezacatalogoPk = piezacatalogoPk;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((piezaCatalogoPk == null) ? 0 : piezaCatalogoPk.hashCode());
+		result = prime * result + ((piezacatalogoPk == null) ? 0 : piezacatalogoPk.hashCode());
 		return result;
 	}
 
@@ -72,10 +72,10 @@ public class Piezamuseablecatalogo implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Piezamuseablecatalogo other = (Piezamuseablecatalogo) obj;
-		if (piezaCatalogoPk == null) {
-			if (other.piezaCatalogoPk != null)
+		if (piezacatalogoPk == null) {
+			if (other.piezacatalogoPk != null)
 				return false;
-		} else if (!piezaCatalogoPk.equals(other.piezaCatalogoPk))
+		} else if (!piezacatalogoPk.equals(other.piezacatalogoPk))
 			return false;
 		return true;
 	}

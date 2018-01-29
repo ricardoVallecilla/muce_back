@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -21,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import uce.edu.ec.muce.intefaces.EstadogeneralbienRepositorio;
 import uce.edu.ec.muce.intefaces.PiezaarqueologicadetalleRepositorio;
 import uce.edu.ec.muce.intefaces.PiezabotanicadetalleRepositorio;
 import uce.edu.ec.muce.intefaces.PiezaentomologicadetalleRepositorio;
@@ -28,85 +31,120 @@ import uce.edu.ec.muce.intefaces.PiezafotograficadetalleRepositorio;
 import uce.edu.ec.muce.intefaces.PiezageologicadetalleRepositorio;
 import uce.edu.ec.muce.intefaces.PiezainstrumentaldetalleRepositorio;
 import uce.edu.ec.muce.intefaces.PiezamuseableRepositorio;
+import uce.edu.ec.muce.intefaces.PiezamuseablecatalogoRepositorio;
 import uce.edu.ec.muce.intefaces.PiezapaleontologicadetalleRepositorio;
 import uce.edu.ec.muce.intefaces.PiezazoologicadetalleRepositorio;
+import uce.edu.ec.muce.modelos.Estadogeneralbien;
+import uce.edu.ec.muce.modelos.Piezainstrumentaldetalle;
 import uce.edu.ec.muce.modelos.Piezamuseable;
+import uce.edu.ec.muce.modelos.Piezamuseablecatalogo;
 import uce.edu.ec.muce.modelos.filtros.PiezaDetalle;
-
-
-
 
 @Controller
 @RequestMapping("/piezaMuseable")
-public class PiezamuseableService extends AbstracService<PiezamuseableRepositorio, Piezamuseable> {	
+public class PiezamuseableService extends AbstracService<PiezamuseableRepositorio, Piezamuseable> {
+	
+	
+	@Autowired
+	private EstadogeneralbienRepositorio estadogeneral;
+	
+	@Autowired
+	private PiezamuseablecatalogoRepositorio piezacatalogo;
 	
 	@Autowired
 	private PiezaarqueologicadetalleRepositorio arqueologica;
-	
+
 	@Autowired
 	private PiezabotanicadetalleRepositorio botanica;
-	
+
 	@Autowired
 	private PiezaentomologicadetalleRepositorio entomologica;
-	
+
 	@Autowired
 	private PiezafotograficadetalleRepositorio fotografica;
-	
+
 	@Autowired
 	private PiezageologicadetalleRepositorio geologica;
-	
+
 	@Autowired
 	private PiezainstrumentaldetalleRepositorio instrumental;
-	
+
 	@Autowired
 	private PiezapaleontologicadetalleRepositorio peleontologica;
-	
+
 	@Autowired
 	private PiezazoologicadetalleRepositorio zoologica;
-	
+
 	@GetMapping("/item/{id}")
 	@ResponseBody
 	public CompletableFuture<List<Piezamuseable>> findByPadreId(@PathVariable("id") Long id) {
-		
+
 		return CompletableFuture.completedFuture(repo.findByItemId(id));
 	}
-	
-	
+
 	@RequestMapping(value = "/detalle", method = RequestMethod.POST)
 	@ResponseBody
-    public  PiezaDetalle handleFileUpload(
-    		@RequestParam("tipo") int tipo,
-    		@RequestParam("file") MultipartFile file, 
-    		@RequestParam("detalle") String detalleStr,
-    		@RequestParam("estadoGeneral") String estadoGeneral
-    		) throws IOException {
-		
+	@Transactional
+	public PiezaDetalle handleFileUpload(@RequestParam("tipo") int tipo, @RequestParam(value="file", required=false) MultipartFile file,
+			@RequestParam("detalle") String detalleStr, @RequestParam(value="estadoGeneral", required=false) String estadoGeneral
+			, @RequestParam(value="catalogosDetalle", required=false) String catalogosDetalle)
+			throws IOException {
+
 		ObjectMapper mapper = new ObjectMapper();
 		PiezaDetalle detalle = mapper.readValue(detalleStr, PiezaDetalle.class);
-		PiezaDetalle detalleGuardado= new PiezaDetalle() ;
-		
+		PiezaDetalle detalleGuardado = new PiezaDetalle();
+		Piezamuseable pm = null;
 		switch (tipo) {
 		case 6:
-			detalle.getPiezainstrumentaldetalle().getPiezamuseableid().setFotografia(file.getBytes());
-			
-			instrumental.save(detalle.getPiezainstrumentaldetalle());
-			
+			if (file != null) {
+				
+				detalle.getPiezainstrumentaldetalle().getPiezamuseableid().setFotografia(file.getBytes());
+			}else {
+				detalle.getPiezainstrumentaldetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezainstrumentaldetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
+			}
+				
+
+			Piezainstrumentaldetalle pi= instrumental.save(detalle.getPiezainstrumentaldetalle());
+			pm=pi.getPiezamuseableid();
 			break;
 
 		default:
 			break;
 		}
-
+		
+		if (estadoGeneral!=null &&!estadoGeneral.isEmpty()) {
+			estadogeneral.borrarEstadosByPiezaMuseable(pm.getPiezamuseableid());
+			Estadogeneralbien[] estados = mapper.readValue(estadoGeneral, Estadogeneralbien[].class);
+			for (Estadogeneralbien estadogeneralbien : estados) {
+				estadogeneralbien.getPiezaCatalogoPk().setPiezamuseableid(pm.getPiezamuseableid());
+				estadogeneral.save(estadogeneralbien);
+			}
+			
+		}else {
+			estadogeneral.borrarEstadosByPiezaMuseable(pm.getPiezamuseableid());
+		}
+		
+		if (catalogosDetalle!=null &&!catalogosDetalle.isEmpty()) {
+			piezacatalogo.borrarCatalogosByPiezaMuseable(pm.getPiezamuseableid());
+			Piezamuseablecatalogo[] estados = mapper.readValue(catalogosDetalle, Piezamuseablecatalogo[].class);
+			for (Piezamuseablecatalogo piezamuseablecatalogo : estados) {
+				piezamuseablecatalogo.getPiezacatalogoPk().setPiezamuseableid(pm.getPiezamuseableid());
+				piezacatalogo.save(piezamuseablecatalogo);
+			}			
+			
+		}else {
+			piezacatalogo.borrarCatalogosByPiezaMuseable(pm.getPiezamuseableid());
+		}
 		
 		return detalleGuardado;
-    }
-	
+	}
+
 	@SuppressWarnings({ "unchecked", "rawtypes", "static-access" })
 	@RequestMapping(value = "/fotografia/{id}", method = RequestMethod.GET)
-    public HttpEntity getDocument(@PathVariable Long id) {
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setContentType(MediaType.IMAGE_JPEG);
-        Piezamuseable p=repo.getOne(id);
-        return new ResponseEntity(p.getFotografia(), httpHeaders, HttpStatus.OK).ok(p.getFotografia());
-    }
+	public HttpEntity getDocument(@PathVariable Long id) {
+		HttpHeaders httpHeaders = new HttpHeaders();
+		httpHeaders.setContentType(MediaType.IMAGE_JPEG);
+		Piezamuseable p = repo.getOne(id);
+		return new ResponseEntity(p.getFotografia(), httpHeaders, HttpStatus.OK).ok(p.getFotografia());
+	}
 }

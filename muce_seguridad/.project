@@ -37,4 +37,10 @@
 		<nature>org.eclipse.m2e.core.maven2Nature</nature>
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 	</natures>
+	<variableList>
+		<variable>
+			<name>oracle</name>
+			<value>file:/F:/RespaldosRicardoVallecilla/TESIS_MUSEO/back-end/muce_seguridad/lib/ojdbc6.jar</value>
+		</variable>
+	</variableList>
 </projectDescription>
