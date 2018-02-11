@@ -35,6 +35,7 @@ import uce.edu.ec.muce.intefaces.PiezamuseablecatalogoRepositorio;
 import uce.edu.ec.muce.intefaces.PiezapaleontologicadetalleRepositorio;
 import uce.edu.ec.muce.intefaces.PiezazoologicadetalleRepositorio;
 import uce.edu.ec.muce.modelos.Estadogeneralbien;
+import uce.edu.ec.muce.modelos.Piezaentomologicadetalle;
 import uce.edu.ec.muce.modelos.Piezainstrumentaldetalle;
 import uce.edu.ec.muce.modelos.Piezamuseable;
 import uce.edu.ec.muce.modelos.Piezamuseablecatalogo;
@@ -95,6 +96,18 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 		PiezaDetalle detalleGuardado = new PiezaDetalle();
 		Piezamuseable pm = null;
 		switch (tipo) {
+		case 3:
+			if (file != null) {
+				
+				detalle.getPiezaentomologicadetalle().getPiezamuseableid().setFotografia(file.getBytes());
+			}else {
+				detalle.getPiezaentomologicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezaentomologicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
+			}
+				
+
+			Piezaentomologicadetalle pe= entomologica.save(detalle.getPiezaentomologicadetalle());
+			pm=pe.getPiezamuseableid();
+			break;
 		case 6:
 			if (file != null) {
 				

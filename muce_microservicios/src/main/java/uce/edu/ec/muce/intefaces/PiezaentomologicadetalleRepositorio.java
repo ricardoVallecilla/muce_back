@@ -12,7 +12,7 @@ import uce.edu.ec.muce.modelos.Piezaentomologicadetalle;
 public interface PiezaentomologicadetalleRepositorio extends JpaRepository<Piezaentomologicadetalle, Long> {
 	
 	
-	@Query(value ="SELECT periodo_id,descripcion,estado FROM periodo ", nativeQuery = true)
-    List<Object[]> catalogoPeriodos();
+	@Query("SELECT t FROM Piezaentomologicadetalle t where t.piezamuseableid.piezamuseableid = ?1 ") 
+	List<Piezaentomologicadetalle> findBypiezaMuseableId(Long piezamuseableid);
 
 }
