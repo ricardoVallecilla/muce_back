@@ -12,7 +12,7 @@ import uce.edu.ec.muce.modelos.Movimiento;
 public interface MovimientoRepositorio extends JpaRepository<Movimiento, Long> {
 	
 	
-	@Query(value ="SELECT periodo_id,descripcion,estado FROM periodo ", nativeQuery = true)
-    List<Object[]> catalogoPeriodos();
+	@Query("SELECT t FROM Movimiento t where t.museoid = ?1 order by t.fechamovimiento desc ") 
+	List<Movimiento> movimientosMuseoId(Long museoid);
 
 }

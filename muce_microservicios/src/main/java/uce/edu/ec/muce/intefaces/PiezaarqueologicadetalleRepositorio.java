@@ -12,7 +12,7 @@ import uce.edu.ec.muce.modelos.Piezaarqueologicadetalle;
 public interface PiezaarqueologicadetalleRepositorio extends JpaRepository<Piezaarqueologicadetalle, Long> {
 	
 	
-	@Query(value ="SELECT periodo_id,descripcion,estado FROM periodo ", nativeQuery = true)
-    List<Object[]> catalogoPeriodos();
+	@Query("SELECT t FROM Piezaarqueologicadetalle t where t.piezamuseableid.piezamuseableid = ?1 ") 
+	List<Piezaarqueologicadetalle> findBypiezaMuseableId(Long piezamuseableid);
 
 }

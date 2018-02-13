@@ -35,6 +35,8 @@ import uce.edu.ec.muce.intefaces.PiezamuseablecatalogoRepositorio;
 import uce.edu.ec.muce.intefaces.PiezapaleontologicadetalleRepositorio;
 import uce.edu.ec.muce.intefaces.PiezazoologicadetalleRepositorio;
 import uce.edu.ec.muce.modelos.Estadogeneralbien;
+import uce.edu.ec.muce.modelos.Piezaarqueologicadetalle;
+import uce.edu.ec.muce.modelos.Piezabotanicadetalle;
 import uce.edu.ec.muce.modelos.Piezaentomologicadetalle;
 import uce.edu.ec.muce.modelos.Piezainstrumentaldetalle;
 import uce.edu.ec.muce.modelos.Piezamuseable;
@@ -96,6 +98,28 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 		PiezaDetalle detalleGuardado = new PiezaDetalle();
 		Piezamuseable pm = null;
 		switch (tipo) {
+		case 1:
+			if (file != null) {
+				
+				detalle.getPiezaarqueologicadetalle().getPiezamuseableid().setFotografia(file.getBytes());
+			}else {
+				detalle.getPiezaarqueologicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezaarqueologicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
+			}
+			Piezaarqueologicadetalle pa= arqueologica.save(detalle.getPiezaarqueologicadetalle());
+			pm=pa.getPiezamuseableid();
+			break;
+		case 2:
+			if (file != null) {
+				
+				detalle.getPiezabotanicadetalle().getPiezamuseableid().setFotografia(file.getBytes());
+			}else {
+				detalle.getPiezabotanicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezabotanicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
+			}
+				
+
+			Piezabotanicadetalle pb= botanica.save(detalle.getPiezabotanicadetalle());
+			pm=pb.getPiezamuseableid();
+			break;
 		case 3:
 			if (file != null) {
 				

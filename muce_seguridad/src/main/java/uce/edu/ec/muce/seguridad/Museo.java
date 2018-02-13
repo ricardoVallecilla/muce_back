@@ -23,6 +23,8 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 /**
  *
  * @author Usuario
@@ -74,6 +76,8 @@ public class Museo implements Serializable {
    
     @JoinColumn(name = "CUSTODIOID", referencedColumnName = "user_id", nullable = false)
     @OneToOne(optional = false)
+    @JsonBackReference
+
     private Usuario cutodioId;
     
     

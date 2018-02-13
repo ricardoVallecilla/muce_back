@@ -30,4 +30,12 @@ public class ItemService extends AbstracService<ItemRepositorio, Item> {
 		return CompletableFuture.completedFuture(repo.filtro(body.getMuseoId(), body.getGrupoId(), body.getCategoriaId()));
 
 	}
+	
+	@PostMapping("/filtro/movimiento")
+	@ResponseBody
+	public CompletableFuture<List<Item>> filtrarSinMovimientos(@Valid @RequestBody ItemsFiltro body) {
+		//
+		return CompletableFuture.completedFuture(repo.filtroMovimientos(body.getMuseoId(), body.getGrupoId(), body.getCategoriaId()));
+
+	}
 }

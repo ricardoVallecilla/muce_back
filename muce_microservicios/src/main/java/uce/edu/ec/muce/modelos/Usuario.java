@@ -17,6 +17,7 @@ import javax.persistence.Table;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -52,6 +53,7 @@ public class Usuario implements UserDetails {
 	
 	@JoinColumn(name = "MUSEOID", referencedColumnName = "MUSEOID")
     @OneToOne
+    @JsonBackReference
     private Museo museoId;
 	
 

@@ -7,7 +7,6 @@ package uce.edu.ec.muce.modelos;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,12 +21,15 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  *
  * @author Usuario
  */
 @Entity
 @Table(name = "PIEZAENTOMOLOGICADETALLE", catalog = "", schema = "MUCE")
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Piezaentomologicadetalle implements Serializable {
 
     private static final long serialVersionUID = 1L;
