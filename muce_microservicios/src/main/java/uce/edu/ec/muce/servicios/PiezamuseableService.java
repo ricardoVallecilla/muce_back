@@ -38,9 +38,13 @@ import uce.edu.ec.muce.modelos.Estadogeneralbien;
 import uce.edu.ec.muce.modelos.Piezaarqueologicadetalle;
 import uce.edu.ec.muce.modelos.Piezabotanicadetalle;
 import uce.edu.ec.muce.modelos.Piezaentomologicadetalle;
+import uce.edu.ec.muce.modelos.Piezafotograficadetalle;
+import uce.edu.ec.muce.modelos.Piezageologicadetalle;
 import uce.edu.ec.muce.modelos.Piezainstrumentaldetalle;
 import uce.edu.ec.muce.modelos.Piezamuseable;
 import uce.edu.ec.muce.modelos.Piezamuseablecatalogo;
+import uce.edu.ec.muce.modelos.Piezapaleontologicadetalle;
+import uce.edu.ec.muce.modelos.Piezazoologicadetalle;
 import uce.edu.ec.muce.modelos.filtros.PiezaDetalle;
 
 @Controller
@@ -98,6 +102,7 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 		PiezaDetalle detalleGuardado = new PiezaDetalle();
 		Piezamuseable pm = null;
 		switch (tipo) {
+
 		case 1:
 			if (file != null) {
 				
@@ -120,7 +125,9 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 			Piezabotanicadetalle pb= botanica.save(detalle.getPiezabotanicadetalle());
 			pm=pb.getPiezamuseableid();
 			break;
-		case 3:
+	       	
+        case 3:
+
 			if (file != null) {
 				
 				detalle.getPiezaentomologicadetalle().getPiezamuseableid().setFotografia(file.getBytes());
@@ -131,7 +138,17 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 
 			Piezaentomologicadetalle pe= entomologica.save(detalle.getPiezaentomologicadetalle());
 			pm=pe.getPiezamuseableid();
-			break;
+			break;	
+        	        
+		case 5:
+			if (file != null) {
+				detalle.getPiezafotograficadetalle().getPiezamuseableid().setFotografia(file.getBytes());
+			} else {
+				detalle.getPiezafotograficadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezafotograficadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
+			}
+			Piezafotograficadetalle pf = fotografica.save(detalle.getPiezafotograficadetalle());
+			pm = pf.getPiezamuseableid();
+			
 		case 6:
 			if (file != null) {
 				
@@ -139,12 +156,43 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 			}else {
 				detalle.getPiezainstrumentaldetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezainstrumentaldetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
 			}
-				
-
+			
 			Piezainstrumentaldetalle pi= instrumental.save(detalle.getPiezainstrumentaldetalle());
 			pm=pi.getPiezamuseableid();
 			break;
 
+        case 7:
+        	//geologia
+        	if (file != null) {
+				detalle.getPiezageologicadetalle().getPiezamuseableid().setFotografia(file.getBytes());
+			} else {
+				detalle.getPiezageologicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezageologicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
+			}
+        	Piezageologicadetalle pg = geologica.save(detalle.getPiezageologicadetalle());
+			pm = pg.getPiezamuseableid();
+        	break;	
+
+        case 8:
+        	//paleontologia
+        	if (file != null) {
+				detalle.getPiezapaleontologicadetalle().getPiezamuseableid().setFotografia(file.getBytes());
+			} else {
+				detalle.getPiezapaleontologicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezapaleontologicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
+			}
+        	Piezapaleontologicadetalle pp = peleontologica.save(detalle.getPiezapaleontologicadetalle());
+			pm = pp.getPiezamuseableid();
+        	break;
+        case 9:
+        	//zoologia
+        	if (file != null) {
+				detalle.getPiezazoologicadetalle().getPiezamuseableid().setFotografia(file.getBytes());
+			} else {
+				detalle.getPiezazoologicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezazoologicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
+			}
+        	Piezazoologicadetalle pz = zoologica.save(detalle.getPiezazoologicadetalle());
+			pm = pz.getPiezamuseableid();
+        	break;	
+        	
 		default:
 			break;
 		}
