@@ -23,6 +23,8 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  *
  * @author Usuario
@@ -82,8 +84,8 @@ public class Museo implements Serializable {
     private String color;
     
     @Lob
-    @Column(name = "LOGO", nullable = true)
-    private Serializable fotografia;
+    @Column(name = "LOGO")
+    private byte[] logo;
 
     public Museo() {
     }
@@ -183,17 +185,15 @@ public class Museo implements Serializable {
 		this.color = color;
 	}
 
-	public Serializable getFotografia() {
-		return fotografia;
+    public byte[] getLogo() {
+		return logo;
 	}
 
-	public void setFotografia(Serializable fotografia) {
-		this.fotografia = fotografia;
+	public void setLogo(byte[] logo) {
+		this.logo = logo;
 	}
 
-	
-
-    @Override
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (museoid != null ? museoid.hashCode() : 0);
