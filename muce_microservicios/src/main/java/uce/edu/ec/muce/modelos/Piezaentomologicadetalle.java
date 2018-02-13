@@ -8,6 +8,7 @@ package uce.edu.ec.muce.modelos;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +20,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -35,19 +35,19 @@ public class Piezaentomologicadetalle implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PIEZAENTOMOLOGICADETALLE_SEQ")
     @SequenceGenerator(sequenceName = "Piezaentomologicadetalle_seq", allocationSize = 1, name = "PIEZAENTOMOLOGICADETALLE_SEQ")
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "DETALLEID", nullable = false, precision = 0, scale = -127)
+    
+    
+    @Column(name = "DETALLEID", precision = 0, scale = -127)
     private Long detalleid;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "NOMBRECIENTIFICO", nullable = false, length = 256)
+    @Column(name = "NOMBRECIENTIFICO", length = 256)
     private String nombrecientifico;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "NOMBRECOMUN", nullable = false, length = 256)
+    @Column(name = "NOMBRECOMUN", length = 256)
     private String nombrecomun;
     @Size(max = 256)
     @Column(name = "AUTOR", length = 256)
@@ -55,65 +55,61 @@ public class Piezaentomologicadetalle implements Serializable {
     @Size(max = 256)
     @Column(name = "PUBLICADO", length = 256)
     private String publicado;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "CLASE", nullable = false, length = 256)
+    @Column(name = "CLASE", length = 256)
     private String clase;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "ORDEN", nullable = false, length = 256)
+    @Column(name = "ORDEN", length = 256)
     private String orden;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "FAMILIA", nullable = false, length = 256)
+    @Column(name = "FAMILIA", length = 256)
     private String familia;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "SEXO", nullable = false, length = 256)
+    @Column(name = "SEXO", length = 256)
     private String sexo;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "ETAPAVIDA", nullable = false, length = 256)
+    @Column(name = "ETAPAVIDA", length = 256)
     private String etapavida;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "DESCRIPCION", nullable = false, length = 256)
+    @Column(name = "DESCRIPCION", length = 256)
     private String descripcion;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 10)
-    @Column(name = "LATITUD", nullable = false, length = 10)
+    @Column(name = "LATITUD", length = 10)
     private String latitud;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 10)
-    @Column(name = "LONGITUD", nullable = false, length = 10)
+    @Column(name = "LONGITUD", length = 10)
     private String longitud;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "LOCALIZACIONPRECISA", nullable = false, length = 256)
+    @Column(name = "LOCALIZACIONPRECISA", length = 256)
     private String localizacionprecisa;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 10)
-    @Column(name = "ELEVACION", nullable = false, length = 10)
+    @Column(name = "ELEVACION", length = 10)
     private String elevacion;
-    @Basic(optional = false)
-    @NotNull
+    @Column(name = "CIUDAD")
+    private String ciudad;    
+        
     @Size(min = 1, max = 256)
-    @Column(name = "CIUDADID", nullable = false, length = 256)
-    private String ciudadid;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "PERSONARECOLECTORA", nullable = false, length = 256)
+    @Column(name = "PERSONARECOLECTORA", length = 256)
     private String personarecolectora;
     @Size(max = 256)
     @Column(name = "USUARIOREGISTROID", length = 256)
@@ -121,20 +117,15 @@ public class Piezaentomologicadetalle implements Serializable {
     @Column(name = "FECHAREGISTRO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharegistro;
-    @JoinColumn(name = "PROVINCIAID", referencedColumnName = "CATALOGOID", nullable = false)
-    @ManyToOne(optional = false)
-    private Catalogo provinciaid;
-    @JoinColumn(name = "CANTONID", referencedColumnName = "CATALOGOID", nullable = false)
-    @ManyToOne(optional = false)
-    private Catalogo cantonid;
-    @JoinColumn(name = "TECNICACONSERVACIONID", referencedColumnName = "CATALOGOID", nullable = false)
-    @ManyToOne(optional = false)
-    private Catalogo tecnicaconservacionid;
-    @JoinColumn(name = "PAISID", referencedColumnName = "CATALOGOID", nullable = false)
+    @Column(name = "PROVINCIA")
+    private String provincia;
+    @Column(name = "CANTON")
+    private String canton;  
+    @JoinColumn(name = "PAISID", referencedColumnName = "CATALOGOID")
     @ManyToOne(optional = false)
     private Catalogo paisid;
-    @JoinColumn(name = "PIEZAMUSEABLEID", referencedColumnName = "PIEZAMUSEABLEID", nullable = false)
-    @ManyToOne(optional = false)
+    @JoinColumn(name = "PIEZAMUSEABLEID", referencedColumnName = "PIEZAMUSEABLEID")
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Piezamuseable piezamuseableid;
 
     public Piezaentomologicadetalle() {
@@ -144,7 +135,7 @@ public class Piezaentomologicadetalle implements Serializable {
         this.detalleid = detalleid;
     }
 
-    public Piezaentomologicadetalle(Long detalleid, String nombrecientifico, String nombrecomun, String clase, String orden, String familia, String sexo, String etapavida, String descripcion, String latitud, String longitud, String localizacionprecisa, String elevacion, String ciudadid, String personarecolectora) {
+    public Piezaentomologicadetalle(Long detalleid, String nombrecientifico, String nombrecomun, String clase, String orden, String familia, String sexo, String etapavida, String descripcion, String latitud, String longitud, String localizacionprecisa, String elevacion, String personarecolectora) {
         this.detalleid = detalleid;
         this.nombrecientifico = nombrecientifico;
         this.nombrecomun = nombrecomun;
@@ -158,7 +149,7 @@ public class Piezaentomologicadetalle implements Serializable {
         this.longitud = longitud;
         this.localizacionprecisa = localizacionprecisa;
         this.elevacion = elevacion;
-        this.ciudadid = ciudadid;
+        
         this.personarecolectora = personarecolectora;
     }
 
@@ -282,15 +273,11 @@ public class Piezaentomologicadetalle implements Serializable {
         this.elevacion = elevacion;
     }
 
-    public String getCiudadid() {
-        return ciudadid;
-    }
+    
 
-    public void setCiudadid(String ciudadid) {
-        this.ciudadid = ciudadid;
-    }
+ 
 
-    public String getPersonarecolectora() {
+	public String getPersonarecolectora() {
         return personarecolectora;
     }
 
@@ -314,31 +301,33 @@ public class Piezaentomologicadetalle implements Serializable {
         this.fecharegistro = fecharegistro;
     }
 
-    public Catalogo getProvinciaid() {
-        return provinciaid;
-    }
+   
+   
+    public String getCiudad() {
+		return ciudad;
+	}
 
-    public void setProvinciaid(Catalogo provinciaid) {
-        this.provinciaid = provinciaid;
-    }
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
+	}
 
-    public Catalogo getCantonid() {
-        return cantonid;
-    }
+	public String getProvincia() {
+		return provincia;
+	}
 
-    public void setCantonid(Catalogo cantonid) {
-        this.cantonid = cantonid;
-    }
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
+	}
 
-    public Catalogo getTecnicaconservacionid() {
-        return tecnicaconservacionid;
-    }
+	public String getCanton() {
+		return canton;
+	}
 
-    public void setTecnicaconservacionid(Catalogo tecnicaconservacionid) {
-        this.tecnicaconservacionid = tecnicaconservacionid;
-    }
+	public void setCanton(String canton) {
+		this.canton = canton;
+	}
 
-    public Catalogo getPaisid() {
+	public Catalogo getPaisid() {
         return paisid;
     }
 

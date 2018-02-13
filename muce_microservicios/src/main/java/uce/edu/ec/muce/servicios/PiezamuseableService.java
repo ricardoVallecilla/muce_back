@@ -102,42 +102,24 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 		PiezaDetalle detalleGuardado = new PiezaDetalle();
 		Piezamuseable pm = null;
 		switch (tipo) {
-        case 1:
-        	//arqueologia
-        	if (file != null) {
-				detalle.getPiezaarqueologicadetalle().getPiezamuseableid().setFotografia(file.getBytes());
-			} else {
-				detalle.getPiezaarqueologicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezaarqueologicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
-			}
-        	Piezaarqueologicadetalle pa = arqueologica.save(detalle.getPiezaarqueologicadetalle());
-			pm = pa.getPiezamuseableid();
-        	break;
         	
         case 2:
         	//artes
         	break;
         	
         case 3:
-        	//botanica
-        	if (file != null) {
-				detalle.getPiezabotanicadetalle().getPiezamuseableid().setFotografia(file.getBytes());
-			} else {
-				detalle.getPiezabotanicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezabotanicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
-			}
-        	Piezabotanicadetalle pb = botanica.save(detalle.getPiezabotanicadetalle());
-			pm = pb.getPiezamuseableid();
-        	break;
-        case 4:
-        	//entomologia
-        	if (file != null) {
+			if (file != null) {
+				
 				detalle.getPiezaentomologicadetalle().getPiezamuseableid().setFotografia(file.getBytes());
-			} else {
+			}else {
 				detalle.getPiezaentomologicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezaentomologicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
 			}
-        	Piezaentomologicadetalle pe = entomologica.save(detalle.getPiezaentomologicadetalle());
-			pm = pe.getPiezamuseableid();
-        	break;
-		
+				
+
+			Piezaentomologicadetalle pe= entomologica.save(detalle.getPiezaentomologicadetalle());
+			pm=pe.getPiezamuseableid();
+			break;	
+        	        
 		case 5:
 			if (file != null) {
 				detalle.getPiezafotograficadetalle().getPiezamuseableid().setFotografia(file.getBytes());
@@ -146,7 +128,7 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 			}
 			Piezafotograficadetalle pf = fotografica.save(detalle.getPiezafotograficadetalle());
 			pm = pf.getPiezamuseableid();
-			break;
+			
 		case 6:
 			if (file != null) {
 				
