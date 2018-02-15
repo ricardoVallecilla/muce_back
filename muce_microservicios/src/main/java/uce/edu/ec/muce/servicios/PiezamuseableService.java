@@ -197,7 +197,7 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 			break;
 		}
 		
-		if (estadoGeneral!=null &&!estadoGeneral.isEmpty()) {
+		if (estadoGeneral!=null &&!estadoGeneral.isEmpty() && !estadoGeneral.equals("null")) {
 			estadogeneral.borrarEstadosByPiezaMuseable(pm.getPiezamuseableid());
 			Estadogeneralbien[] estados = mapper.readValue(estadoGeneral, Estadogeneralbien[].class);
 			for (Estadogeneralbien estadogeneralbien : estados) {
@@ -209,7 +209,7 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 			estadogeneral.borrarEstadosByPiezaMuseable(pm.getPiezamuseableid());
 		}
 		
-		if (catalogosDetalle!=null &&!catalogosDetalle.isEmpty()) {
+		if (catalogosDetalle!=null &&!catalogosDetalle.isEmpty() &&  !estadoGeneral.equals("null")) {
 			piezacatalogo.borrarCatalogosByPiezaMuseable(pm.getPiezamuseableid());
 			Piezamuseablecatalogo[] estados = mapper.readValue(catalogosDetalle, Piezamuseablecatalogo[].class);
 			for (Piezamuseablecatalogo piezamuseablecatalogo : estados) {

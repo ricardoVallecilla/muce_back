@@ -110,12 +110,6 @@ public class Movimiento implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharegistro;
    
-    @JoinColumn(name = "MUSEODESTINOID", referencedColumnName = "MUSEOID")
-    @ManyToOne
-    private Museo museodestinoid;
-    @JoinColumn(name = "MUSEOEMISORID", referencedColumnName = "MUSEOID")
-    @ManyToOne
-    private Museo museoemisorid;
     @Size(max = 256)
     @Column(name = "ENTREGANOMBRE", length = 256)
     private String entreganombre;
@@ -166,6 +160,9 @@ public class Movimiento implements Serializable {
     @Column(name = "MUSEORECEPTORID")
     private Long 	museoreceptorid;
     
+    @Column(name = "MOVIMIENTORELACIONADOID")
+    private Long 	movimientorelacionadoid;
+    
 
     public Movimiento() {
     }
@@ -180,8 +177,7 @@ public class Movimiento implements Serializable {
 			String pais, String provincia, String ciudad, String telefono, String email, String contacto,
 			Date fechainicioprestamo, Date fechafinprestamo, Date fechatraspaso, String observaciones,
 			String numeroacta, String numerosuguro, Long seguro, String quiendono, String aquiendono,
-			String numerodocbaja, String usuarioregistroid, Date fecharegistro, Catalogo estadoid, Museo museodestinoid,
-			Museo museoemisorid, String entreganombre, String entregacargo, String entregareserva, String entregaci,
+			String numerodocbaja, String usuarioregistroid, Date fecharegistro, Catalogo estadoid, String entreganombre, String entregacargo, String entregareserva, String entregaci,
 			String receptornombre, String receptorcargo, String receptorreserva, String receptorci) {
 		super();
 		this.movimientoid = movimientoid;
@@ -207,8 +203,7 @@ public class Movimiento implements Serializable {
 		this.numerodocbaja = numerodocbaja;
 		this.usuarioregistroid = usuarioregistroid;
 		this.fecharegistro = fecharegistro;
-		this.museodestinoid = museodestinoid;
-		this.museoemisorid = museoemisorid;
+		
 		this.entreganombre = entreganombre;
 		this.entregacargo = entregacargo;
 		this.entregareserva = entregareserva;
@@ -348,22 +343,6 @@ public class Movimiento implements Serializable {
 	public void setDocumentorespaldo(String documentorespaldo) {
 		this.documentorespaldo = documentorespaldo;
 	}
-
-	public Museo getMuseodestinoid() {
-        return museodestinoid;
-    }
-
-    public void setMuseodestinoid(Museo museodestinoid) {
-        this.museodestinoid = museodestinoid;
-    }
-
-    public Museo getMuseoemisorid() {
-        return museoemisorid;
-    }
-
-    public void setMuseoemisorid(Museo museoemisorid) {
-        this.museoemisorid = museoemisorid;
-    }
 
     
 
@@ -569,6 +548,16 @@ public class Movimiento implements Serializable {
 
 	public void setMuseoreceptorid(Long museoreceptorid) {
 		this.museoreceptorid = museoreceptorid;
+	}
+	
+	
+
+	public Long getMovimientorelacionadoid() {
+		return movimientorelacionadoid;
+	}
+
+	public void setMovimientorelacionadoid(Long movimientorelacionadoid) {
+		this.movimientorelacionadoid = movimientorelacionadoid;
 	}
 
 	@Override
