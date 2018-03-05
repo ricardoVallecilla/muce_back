@@ -27,7 +27,13 @@ public class ItemService extends AbstracService<ItemRepositorio, Item> {
 	@ResponseBody
 	public CompletableFuture<List<Item>> createSimple(@Valid @RequestBody ItemsFiltro body) {
 		//
-		return CompletableFuture.completedFuture(repo.filtro(body.getMuseoId(), body.getGrupoId(), body.getCategoriaId()));
+		if (body.getGrupoId()!=null && body.getCategoriaId()!=null ) {
+			return CompletableFuture.completedFuture(repo.filtro(body.getMuseoId(), body.getGrupoId(), body.getCategoriaId()));
+		}else {
+			return CompletableFuture.completedFuture(repo.filtroSoloMuseo(body.getMuseoId()));
+		}
+		
+		
 
 	}
 	
