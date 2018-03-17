@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -21,7 +22,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  *
@@ -30,6 +33,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "PIEZAARQUEOLOGICADETALLE", catalog = "", schema = "MUCE")
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL )
 public class Piezaarqueologicadetalle implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -113,6 +117,66 @@ public class Piezaarqueologicadetalle implements Serializable {
 	@JoinColumn(name = "PIEZAMUSEABLEID", referencedColumnName = "PIEZAMUSEABLEID")
 	@ManyToOne(cascade = { CascadeType.ALL })
 	private Piezamuseable piezamuseableid;
+	
+	private String elaboracion;
+	private String herramientas;
+	private String decoracion;
+	private String alteracion;
+	private String simbolos;
+	private String semiotico;
+	private String coloresusados;
+	private String coloresprocedencia;
+	private String semioticocolores;
+	private Boolean empirica;
+	private Boolean arqueologia;
+	private String extraccionobservacion;
+	private String extraccionresponsable;
+	private String extraccionarqueologo;
+	private String biografiaarqueologo;
+	private String publicacionarqueologo;
+	private String arqueologouniversidad;
+	private String usosocial;
+	private String usoprimario;
+	private String usoalternativo;
+	private String usorestricciones;
+	private String creencias;
+	private String peculiaridades;
+	private String pertenencia;
+	private String usocuando;
+	private String usodonde;
+	private String usocolocacion;
+	private String vida;
+	@JoinColumn(name = "YACIMIENTOPROVINCIAID", referencedColumnName = "CATALOGOID")
+    @ManyToOne(optional = true)
+	private Catalogo yacimientoprovinciaid;
+	@JoinColumn(name = "YACIMIENTOCANTONID", referencedColumnName = "CATALOGOID")
+    @ManyToOne(optional = true)
+	private Catalogo yacimientocantonid;
+	@JoinColumn(name = "YACIMIENTOCIUDADID", referencedColumnName = "CATALOGOID")
+    @ManyToOne(optional = true)
+	private Catalogo yacimientociudadid;
+	private String yacimientodireccion;
+	private String yacimientolatitud;
+	private String yacimientolongitud;
+	private String yacimientoaltura;
+	private String yacimientocontenedor;
+	private String yacimientomorfologia;
+	private String yacimientoubicacion;
+	@Lob
+    @JsonIgnore
+    @Column(name = "FOTOGRAFIAYACIMIENTO")
+    private byte[]  fotografiayacimiento;
+	private String yacimientofotografo;
+	private String yacimientolugar;
+	@Lob
+	@JsonIgnore
+    @Column(name = "FOTOGRAFIAYACIMIENTOPLANO")
+    private byte[] fotoyacimientoplano;
+	private String yacimientoarquitecto;
+	private String yacimientoplanoslugar;
+	
+	
+	
 
 	public Piezaarqueologicadetalle() {
 	}
@@ -311,6 +375,359 @@ public class Piezaarqueologicadetalle implements Serializable {
 
 	public void setPiezamuseableid(Piezamuseable piezamuseableid) {
 		this.piezamuseableid = piezamuseableid;
+	}
+
+	
+	public String getElaboracion() {
+		return elaboracion;
+	}
+
+	public void setElaboracion(String elaboracion) {
+		this.elaboracion = elaboracion;
+	}
+
+	public String getHerramientas() {
+		return herramientas;
+	}
+
+	public void setHerramientas(String herramientas) {
+		this.herramientas = herramientas;
+	}
+
+	public String getDecoracion() {
+		return decoracion;
+	}
+
+	public void setDecoracion(String decoracion) {
+		this.decoracion = decoracion;
+	}
+
+	public String getAlteracion() {
+		return alteracion;
+	}
+
+	public void setAlteracion(String alteracion) {
+		this.alteracion = alteracion;
+	}
+
+	public String getSimbolos() {
+		return simbolos;
+	}
+
+	public void setSimbolos(String simbolos) {
+		this.simbolos = simbolos;
+	}
+
+	public String getSemiotico() {
+		return semiotico;
+	}
+
+	public void setSemiotico(String semiotico) {
+		this.semiotico = semiotico;
+	}
+
+	public String getColoresusados() {
+		return coloresusados;
+	}
+
+	public void setColoresusados(String coloresusados) {
+		this.coloresusados = coloresusados;
+	}
+
+	public String getColoresprocedencia() {
+		return coloresprocedencia;
+	}
+
+	public void setColoresprocedencia(String coloresprocedencia) {
+		this.coloresprocedencia = coloresprocedencia;
+	}
+
+	public String getSemioticocolores() {
+		return semioticocolores;
+	}
+
+	public void setSemioticocolores(String semioticocolores) {
+		this.semioticocolores = semioticocolores;
+	}
+
+	public Boolean getEmpirica() {
+		return empirica;
+	}
+
+	public void setEmpirica(Boolean empirica) {
+		this.empirica = empirica;
+	}
+
+	public Boolean getArqueologia() {
+		return arqueologia;
+	}
+
+	public void setArqueologia(Boolean arqueologia) {
+		this.arqueologia = arqueologia;
+	}
+
+	public String getExtraccionobservacion() {
+		return extraccionobservacion;
+	}
+
+	public void setExtraccionobservacion(String extraccionobservacion) {
+		this.extraccionobservacion = extraccionobservacion;
+	}
+
+	public String getExtraccionresponsable() {
+		return extraccionresponsable;
+	}
+
+	public void setExtraccionresponsable(String extraccionresponsable) {
+		this.extraccionresponsable = extraccionresponsable;
+	}
+
+	public String getExtraccionarqueologo() {
+		return extraccionarqueologo;
+	}
+
+	public void setExtraccionarqueologo(String extraccionarqueologo) {
+		this.extraccionarqueologo = extraccionarqueologo;
+	}
+
+	public String getBiografiaarqueologo() {
+		return biografiaarqueologo;
+	}
+
+	public void setBiografiaarqueologo(String biografiaarqueologo) {
+		this.biografiaarqueologo = biografiaarqueologo;
+	}
+
+	public String getPublicacionarqueologo() {
+		return publicacionarqueologo;
+	}
+
+	public void setPublicacionarqueologo(String publicacionarqueologo) {
+		this.publicacionarqueologo = publicacionarqueologo;
+	}
+
+	public String getArqueologouniversidad() {
+		return arqueologouniversidad;
+	}
+
+	public void setArqueologouniversidad(String arqueologouniversidad) {
+		this.arqueologouniversidad = arqueologouniversidad;
+	}
+
+	public String getUsosocial() {
+		return usosocial;
+	}
+
+	public void setUsosocial(String usosocial) {
+		this.usosocial = usosocial;
+	}
+
+	public String getUsoprimario() {
+		return usoprimario;
+	}
+
+	public void setUsoprimario(String usoprimario) {
+		this.usoprimario = usoprimario;
+	}
+
+	public String getUsoalternativo() {
+		return usoalternativo;
+	}
+
+	public void setUsoalternativo(String usoalternativo) {
+		this.usoalternativo = usoalternativo;
+	}
+
+	public String getUsorestricciones() {
+		return usorestricciones;
+	}
+
+	public void setUsorestricciones(String usorestricciones) {
+		this.usorestricciones = usorestricciones;
+	}
+
+	public String getCreencias() {
+		return creencias;
+	}
+
+	public void setCreencias(String creencias) {
+		this.creencias = creencias;
+	}
+
+	public String getPeculiaridades() {
+		return peculiaridades;
+	}
+
+	public void setPeculiaridades(String peculiaridades) {
+		this.peculiaridades = peculiaridades;
+	}
+
+	public String getPertenencia() {
+		return pertenencia;
+	}
+
+	public void setPertenencia(String pertenencia) {
+		this.pertenencia = pertenencia;
+	}
+
+	public String getUsocuando() {
+		return usocuando;
+	}
+
+	public void setUsocuando(String usocuando) {
+		this.usocuando = usocuando;
+	}
+
+	public String getUsodonde() {
+		return usodonde;
+	}
+
+	public void setUsodonde(String usodonde) {
+		this.usodonde = usodonde;
+	}
+
+	public String getUsocolocacion() {
+		return usocolocacion;
+	}
+
+	public void setUsocolocacion(String usocolocacion) {
+		this.usocolocacion = usocolocacion;
+	}
+
+	public String getVida() {
+		return vida;
+	}
+
+	public void setVida(String vida) {
+		this.vida = vida;
+	}
+
+	public Catalogo getYacimientoprovinciaid() {
+		return yacimientoprovinciaid;
+	}
+
+	public void setYacimientoprovinciaid(Catalogo yacimientoprovinciaid) {
+		this.yacimientoprovinciaid = yacimientoprovinciaid;
+	}
+
+	public Catalogo getYacimientocantonid() {
+		return yacimientocantonid;
+	}
+
+	public void setYacimientocantonid(Catalogo yacimientocantonid) {
+		this.yacimientocantonid = yacimientocantonid;
+	}
+
+	public Catalogo getYacimientociudadid() {
+		return yacimientociudadid;
+	}
+
+	public void setYacimientociudadid(Catalogo yacimientociudadid) {
+		this.yacimientociudadid = yacimientociudadid;
+	}
+
+	public String getYacimientodireccion() {
+		return yacimientodireccion;
+	}
+
+	public void setYacimientodireccion(String yacimientodireccion) {
+		this.yacimientodireccion = yacimientodireccion;
+	}
+
+	public String getYacimientolatitud() {
+		return yacimientolatitud;
+	}
+
+	public void setYacimientolatitud(String yacimientolatitud) {
+		this.yacimientolatitud = yacimientolatitud;
+	}
+
+	public String getYacimientolongitud() {
+		return yacimientolongitud;
+	}
+
+	public void setYacimientolongitud(String yacimientolongitud) {
+		this.yacimientolongitud = yacimientolongitud;
+	}
+
+	public String getYacimientoaltura() {
+		return yacimientoaltura;
+	}
+
+	public void setYacimientoaltura(String yacimientoaltura) {
+		this.yacimientoaltura = yacimientoaltura;
+	}
+
+	public String getYacimientocontenedor() {
+		return yacimientocontenedor;
+	}
+
+	public void setYacimientocontenedor(String yacimientocontenedor) {
+		this.yacimientocontenedor = yacimientocontenedor;
+	}
+
+	public String getYacimientomorfologia() {
+		return yacimientomorfologia;
+	}
+
+	public void setYacimientomorfologia(String yacimientomorfologia) {
+		this.yacimientomorfologia = yacimientomorfologia;
+	}
+
+	public String getYacimientoubicacion() {
+		return yacimientoubicacion;
+	}
+
+	public void setYacimientoubicacion(String yacimientoubicacion) {
+		this.yacimientoubicacion = yacimientoubicacion;
+	}
+
+	public byte[] getFotografiayacimiento() {
+		return fotografiayacimiento;
+	}
+
+	public void setFotografiayacimiento(byte[] fotografiayacimiento) {
+		this.fotografiayacimiento = fotografiayacimiento;
+	}
+
+	public String getYacimientofotografo() {
+		return yacimientofotografo;
+	}
+
+	public void setYacimientofotografo(String yacimientofotografo) {
+		this.yacimientofotografo = yacimientofotografo;
+	}
+
+	public String getYacimientolugar() {
+		return yacimientolugar;
+	}
+
+	public void setYacimientolugar(String yacimientolugar) {
+		this.yacimientolugar = yacimientolugar;
+	}
+
+	public byte[] getFotoyacimientoplano() {
+		return fotoyacimientoplano;
+	}
+
+	public void setFotoyacimientoplano(byte[] fotoyacimientoplano) {
+		this.fotoyacimientoplano = fotoyacimientoplano;
+	}
+
+	public String getYacimientoarquitecto() {
+		return yacimientoarquitecto;
+	}
+
+	public void setYacimientoarquitecto(String yacimientoarquitecto) {
+		this.yacimientoarquitecto = yacimientoarquitecto;
+	}
+
+	public String getYacimientoplanoslugar() {
+		return yacimientoplanoslugar;
+	}
+
+	public void setYacimientoplanoslugar(String yacimientoplanoslugar) {
+		this.yacimientoplanoslugar = yacimientoplanoslugar;
 	}
 
 	@Override

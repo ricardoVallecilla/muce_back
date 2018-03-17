@@ -209,7 +209,7 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 			estadogeneral.borrarEstadosByPiezaMuseable(pm.getPiezamuseableid());
 		}
 		
-		if (catalogosDetalle!=null &&!catalogosDetalle.isEmpty() &&  !estadoGeneral.equals("null")) {
+		if (catalogosDetalle!=null &&!catalogosDetalle.isEmpty() &&  !catalogosDetalle.equals("null")) {
 			piezacatalogo.borrarCatalogosByPiezaMuseable(pm.getPiezamuseableid());
 			Piezamuseablecatalogo[] estados = mapper.readValue(catalogosDetalle, Piezamuseablecatalogo[].class);
 			for (Piezamuseablecatalogo piezamuseablecatalogo : estados) {
@@ -223,6 +223,97 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 		
 		return detalleGuardado;
 	}
+	
+	
+	
+	
+	@RequestMapping(value = "/catalogacion", method = RequestMethod.POST)
+	@ResponseBody
+	@Transactional
+	public PiezaDetalle catalogacion(@RequestParam("tipo") int tipo,
+			@RequestParam("detalle") String detalleStr, @RequestParam(value="catalogosDetalle", required=false) String catalogosDetalle)
+			throws IOException {
+
+		ObjectMapper mapper = new ObjectMapper();
+		PiezaDetalle detalle = mapper.readValue(detalleStr, PiezaDetalle.class);
+		PiezaDetalle detalleGuardado = new PiezaDetalle();
+		Piezamuseable pm = null;
+		switch (tipo) {
+
+		case 1:
+			detalle.getPiezaarqueologicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezaarqueologicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
+			Piezaarqueologicadetalle pa= arqueologica.save(detalle.getPiezaarqueologicadetalle());
+			pm=pa.getPiezamuseableid();
+			break;
+		case 2:
+			detalle.getPiezabotanicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezabotanicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
+				
+
+			Piezabotanicadetalle pb= botanica.save(detalle.getPiezabotanicadetalle());
+			pm=pb.getPiezamuseableid();
+			break;
+	       	
+        case 3:
+
+        	detalle.getPiezaentomologicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezaentomologicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());	
+
+			Piezaentomologicadetalle pe= entomologica.save(detalle.getPiezaentomologicadetalle());
+			pm=pe.getPiezamuseableid();
+			break;	
+        	        
+		case 5:
+			detalle.getPiezafotograficadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezafotograficadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
+			Piezafotograficadetalle pf = fotografica.save(detalle.getPiezafotograficadetalle());
+			pm = pf.getPiezamuseableid();
+			
+		case 6:
+			detalle.getPiezainstrumentaldetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezainstrumentaldetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
+			
+			Piezainstrumentaldetalle pi= instrumental.save(detalle.getPiezainstrumentaldetalle());
+			pm=pi.getPiezamuseableid();
+			break;
+
+        case 7:
+        	//geologia
+        	detalle.getPiezageologicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezageologicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
+        	Piezageologicadetalle pg = geologica.save(detalle.getPiezageologicadetalle());
+			pm = pg.getPiezamuseableid();
+        	break;	
+
+        case 8:
+        	//paleontologia
+        	detalle.getPiezapaleontologicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezapaleontologicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
+        	Piezapaleontologicadetalle pp = peleontologica.save(detalle.getPiezapaleontologicadetalle());
+			pm = pp.getPiezamuseableid();
+        	break;
+        case 9:
+        	//zoologia
+        	detalle.getPiezazoologicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezazoologicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
+        	Piezazoologicadetalle pz = zoologica.save(detalle.getPiezazoologicadetalle());
+			pm = pz.getPiezamuseableid();
+        	break;	
+        	
+		default:
+			break;
+		}
+		
+		
+		
+		if (catalogosDetalle!=null &&!catalogosDetalle.isEmpty() &&  !catalogosDetalle.equals("null")) {
+			piezacatalogo.borrarCatalogosByPiezaMuseable(pm.getPiezamuseableid());
+			Piezamuseablecatalogo[] estados = mapper.readValue(catalogosDetalle, Piezamuseablecatalogo[].class);
+			for (Piezamuseablecatalogo piezamuseablecatalogo : estados) {
+				piezamuseablecatalogo.getPiezacatalogoPk().setPiezamuseableid(pm.getPiezamuseableid());
+				piezacatalogo.save(piezamuseablecatalogo);
+			}			
+			
+		}else {
+			piezacatalogo.borrarCatalogosByPiezaMuseable(pm.getPiezamuseableid());
+		}
+		
+		return detalleGuardado;
+	}
+
 
 	@SuppressWarnings({ "unchecked", "rawtypes", "static-access" })
 	@RequestMapping(value = "/fotografia/{id}", method = RequestMethod.GET)

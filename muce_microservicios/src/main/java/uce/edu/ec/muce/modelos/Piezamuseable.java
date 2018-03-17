@@ -24,6 +24,7 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  *
@@ -32,6 +33,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "PIEZAMUSEABLE", catalog = "", schema = "MUCE")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonInclude(JsonInclude.Include.NON_NULL )
 public class Piezamuseable implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -229,7 +231,21 @@ public class Piezamuseable implements Serializable {
     @Column(name = "MONTAJE")    
     private Boolean montaje;
     
-  
+    private String usocuando;
+    private String usodonde;
+    private String usocomo;
+    private String usofinalidad;
+    private String usoquien;
+    private String usomanejo;
+    private String materias;
+    private String laboratorios;
+    private String docentes;
+    private String aporte;
+    private String observacionesacademico;
+    private String bibliografias;
+    private String links;
+    private String fotografo;
+    private String fotografialugar;
 
     public Piezamuseable() {
     }
@@ -593,19 +609,136 @@ public class Piezamuseable implements Serializable {
 
     public void setProvinciaid(Catalogo provinciaid) {
         this.provinciaid = provinciaid;
-    }
+    }   
 
-  
-   
+    public String getUsocuando() {
+		return usocuando;
+	}
 
-   
+	public void setUsocuando(String usocuando) {
+		this.usocuando = usocuando;
+	}
 
-    public Item getItemid() {
+	public String getUsodonde() {
+		return usodonde;
+	}
+
+	public void setUsodonde(String usodonde) {
+		this.usodonde = usodonde;
+	}
+
+	public String getUsocomo() {
+		return usocomo;
+	}
+
+	public void setUsocomo(String usocomo) {
+		this.usocomo = usocomo;
+	}
+
+	public String getUsofinalidad() {
+		return usofinalidad;
+	}
+
+	public void setUsofinalidad(String usofinalidad) {
+		this.usofinalidad = usofinalidad;
+	}
+
+	public String getUsoquien() {
+		return usoquien;
+	}
+
+	public void setUsoquien(String usoquien) {
+		this.usoquien = usoquien;
+	}
+
+	public String getUsomanejo() {
+		return usomanejo;
+	}
+
+	public void setUsomanejo(String usomanejo) {
+		this.usomanejo = usomanejo;
+	}
+
+	public String getMaterias() {
+		return materias;
+	}
+
+	public void setMaterias(String materias) {
+		this.materias = materias;
+	}
+
+	public String getLaboratorios() {
+		return laboratorios;
+	}
+
+	public void setLaboratorios(String laboratorios) {
+		this.laboratorios = laboratorios;
+	}
+
+	public String getDocentes() {
+		return docentes;
+	}
+
+	public void setDocentes(String docentes) {
+		this.docentes = docentes;
+	}
+
+	public String getAporte() {
+		return aporte;
+	}
+
+	public void setAporte(String aporte) {
+		this.aporte = aporte;
+	}
+
+	public String getObservacionesacademico() {
+		return observacionesacademico;
+	}
+
+	public void setObservacionesacademico(String observacionesacademico) {
+		this.observacionesacademico = observacionesacademico;
+	}
+
+	public String getBibliografias() {
+		return bibliografias;
+	}
+
+	public void setBibliografias(String bibliografias) {
+		this.bibliografias = bibliografias;
+	}
+
+	public String getLinks() {
+		return links;
+	}
+
+	public void setLinks(String links) {
+		this.links = links;
+	}
+
+	public Item getItemid() {
 		return itemid;
 	}
 
 	public void setItemid(Item itemid) {
 		this.itemid = itemid;
+	}
+	
+	
+
+	public String getFotografo() {
+		return fotografo;
+	}
+
+	public void setFotografo(String fotografo) {
+		this.fotografo = fotografo;
+	}
+
+	public String getFotografialugar() {
+		return fotografialugar;
+	}
+
+	public void setFotografialugar(String fotografialugar) {
+		this.fotografialugar = fotografialugar;
 	}
 
 	@Override

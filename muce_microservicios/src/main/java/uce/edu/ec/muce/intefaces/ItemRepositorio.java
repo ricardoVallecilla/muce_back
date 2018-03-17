@@ -18,8 +18,8 @@ public interface ItemRepositorio extends JpaRepository<Item, Long> {
     @Query("SELECT t FROM Item t where t.museoid.museoid = ?1 and  t.grupoid.catalogoid = ?2 and  t.categoriaid.catalogoid = ?3") 
 	List<Item> filtro(Long museoId,Long grupoid,Long categoriaid);
     
-    @Query("SELECT t FROM Item t where t.museoid.museoid = ?1 order by t.categoriaid.nombre") 
-	List<Item> filtroSoloMuseo(Long museoId);
+    @Query("SELECT t FROM Item t where t.museoid.museoid = ?1 and  t.grupoid.catalogoid = ?2 order by t.categoriaid.nombre") 
+	List<Item> filtroSoloMuseo(Long museoId,Long grupoid);
     
     @Query("SELECT t FROM Item t where  t.itemid in (?1)") 
 	Set<Item> listaItem(Long[] itemsId);
