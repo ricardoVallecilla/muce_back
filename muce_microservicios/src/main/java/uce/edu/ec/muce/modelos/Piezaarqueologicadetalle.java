@@ -174,8 +174,12 @@ public class Piezaarqueologicadetalle implements Serializable {
     private byte[] fotoyacimientoplano;
 	private String yacimientoarquitecto;
 	private String yacimientoplanoslugar;
-	
-	
+	private String variacionnombre;
+	private String denominacionnativa;
+	private String procedenciamaterial;
+	private String terminonativomaterial;
+	private String terminonativodecoracion;
+	private String terminonativomanofactura;
 	
 
 	public Piezaarqueologicadetalle() {
@@ -728,6 +732,56 @@ public class Piezaarqueologicadetalle implements Serializable {
 
 	public void setYacimientoplanoslugar(String yacimientoplanoslugar) {
 		this.yacimientoplanoslugar = yacimientoplanoslugar;
+	}
+	
+	
+
+	public String getVariacionnombre() {
+		return variacionnombre;
+	}
+
+	public void setVariacionnombre(String variacionnombre) {
+		this.variacionnombre = variacionnombre;
+	}
+
+	public String getDenominacionnativa() {
+		return denominacionnativa;
+	}
+
+	public void setDenominacionnativa(String denominacionnativa) {
+		this.denominacionnativa = denominacionnativa;
+	}
+
+	public String getProcedenciamaterial() {
+		return procedenciamaterial;
+	}
+
+	public void setProcedenciamaterial(String procedenciamaterial) {
+		this.procedenciamaterial = procedenciamaterial;
+	}
+
+	public String getTerminonativomaterial() {
+		return terminonativomaterial;
+	}
+
+	public void setTerminonativomaterial(String terminonativomaterial) {
+		this.terminonativomaterial = terminonativomaterial;
+	}
+
+	public String getTerminonativodecoracion() {
+		return terminonativodecoracion;
+	}
+
+	public void setTerminonativodecoracion(String terminonativodecoracion) {
+		this.terminonativodecoracion = terminonativodecoracion;
+	}
+
+	public String getTerminonativomanofactura() {
+		return terminonativomanofactura;
+	}
+
+	public void setTerminonativomanofactura(String terminonativomanofactura) {
+		this.terminonativomanofactura = terminonativomanofactura;
 	}
 
 	@Override

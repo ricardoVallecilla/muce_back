@@ -54,10 +54,10 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 	
 	@Autowired
 	private EstadogeneralbienRepositorio estadogeneral;
-	
+
 	@Autowired
 	private PiezamuseablecatalogoRepositorio piezacatalogo;
-	
+
 	@Autowired
 	private PiezaarqueologicadetalleRepositorio arqueologica;
 
@@ -92,10 +92,11 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 	@RequestMapping(value = "/detalle", method = RequestMethod.POST)
 	@ResponseBody
 	@Transactional
-	public PiezaDetalle handleFileUpload(@RequestParam("tipo") int tipo, @RequestParam(value="file", required=false) MultipartFile file,
-			@RequestParam("detalle") String detalleStr, @RequestParam(value="estadoGeneral", required=false) String estadoGeneral
-			, @RequestParam(value="catalogosDetalle", required=false) String catalogosDetalle)
-			throws IOException {
+	public PiezaDetalle handleFileUpload(@RequestParam("tipo") int tipo,
+			@RequestParam(value = "file", required = false) MultipartFile file,
+			@RequestParam("detalle") String detalleStr,
+			@RequestParam(value = "estadoGeneral", required = false) String estadoGeneral,
+			@RequestParam(value = "catalogosDetalle", required = false) String catalogosDetalle) throws IOException {
 
 		ObjectMapper mapper = new ObjectMapper();
 		PiezaDetalle detalle = mapper.readValue(detalleStr, PiezaDetalle.class);
@@ -105,134 +106,148 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 
 		case 1:
 			if (file != null) {
-				
+
 				detalle.getPiezaarqueologicadetalle().getPiezamuseableid().setFotografia(file.getBytes());
-			}else {
-				detalle.getPiezaarqueologicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezaarqueologicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
+			} else {
+				detalle.getPiezaarqueologicadetalle().getPiezamuseableid().setFotografia(
+						repo.findOne(detalle.getPiezaarqueologicadetalle().getPiezamuseableid().getPiezamuseableid())
+								.getFotografia());
 			}
-			Piezaarqueologicadetalle pa= arqueologica.save(detalle.getPiezaarqueologicadetalle());
-			pm=pa.getPiezamuseableid();
+			Piezaarqueologicadetalle pa = arqueologica.save(detalle.getPiezaarqueologicadetalle());
+			pm = pa.getPiezamuseableid();
 			break;
 		case 2:
 			if (file != null) {
-				
-				detalle.getPiezabotanicadetalle().getPiezamuseableid().setFotografia(file.getBytes());
-			}else {
-				detalle.getPiezabotanicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezabotanicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
-			}
-				
 
-			Piezabotanicadetalle pb= botanica.save(detalle.getPiezabotanicadetalle());
-			pm=pb.getPiezamuseableid();
+				detalle.getPiezabotanicadetalle().getPiezamuseableid().setFotografia(file.getBytes());
+			} else {
+				detalle.getPiezabotanicadetalle().getPiezamuseableid()
+						.setFotografia(repo
+								.findOne(detalle.getPiezabotanicadetalle().getPiezamuseableid().getPiezamuseableid())
+								.getFotografia());
+			}
+
+			Piezabotanicadetalle pb = botanica.save(detalle.getPiezabotanicadetalle());
+			pm = pb.getPiezamuseableid();
 			break;
-	       	
-        case 3:
+		//entomologia
+		case 3:
 
 			if (file != null) {
-				
-				detalle.getPiezaentomologicadetalle().getPiezamuseableid().setFotografia(file.getBytes());
-			}else {
-				detalle.getPiezaentomologicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezaentomologicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
-			}
-				
 
-			Piezaentomologicadetalle pe= entomologica.save(detalle.getPiezaentomologicadetalle());
-			pm=pe.getPiezamuseableid();
-			break;	
-        	        
+				detalle.getPiezaentomologicadetalle().getPiezamuseableid().setFotografia(file.getBytes());
+			} else {
+				detalle.getPiezaentomologicadetalle().getPiezamuseableid().setFotografia(
+						repo.findOne(detalle.getPiezaentomologicadetalle().getPiezamuseableid().getPiezamuseableid())
+								.getFotografia());
+			}
+
+			Piezaentomologicadetalle pe = entomologica.save(detalle.getPiezaentomologicadetalle());
+			pm = pe.getPiezamuseableid();
+			break;
+
 		case 5:
 			if (file != null) {
 				detalle.getPiezafotograficadetalle().getPiezamuseableid().setFotografia(file.getBytes());
 			} else {
-				detalle.getPiezafotograficadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezafotograficadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
+				detalle.getPiezafotograficadetalle().getPiezamuseableid()
+						.setFotografia(repo
+								.findOne(detalle.getPiezafotograficadetalle().getPiezamuseableid().getPiezamuseableid())
+								.getFotografia());
 			}
 			Piezafotograficadetalle pf = fotografica.save(detalle.getPiezafotograficadetalle());
 			pm = pf.getPiezamuseableid();
-			
+
 		case 6:
 			if (file != null) {
-				
+
 				detalle.getPiezainstrumentaldetalle().getPiezamuseableid().setFotografia(file.getBytes());
-			}else {
-				detalle.getPiezainstrumentaldetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezainstrumentaldetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
+			} else {
+				detalle.getPiezainstrumentaldetalle().getPiezamuseableid().setFotografia(
+						repo.findOne(detalle.getPiezainstrumentaldetalle().getPiezamuseableid().getPiezamuseableid())
+								.getFotografia());
 			}
-			
-			Piezainstrumentaldetalle pi= instrumental.save(detalle.getPiezainstrumentaldetalle());
-			pm=pi.getPiezamuseableid();
+
+			Piezainstrumentaldetalle pi = instrumental.save(detalle.getPiezainstrumentaldetalle());
+			pm = pi.getPiezamuseableid();
 			break;
 
-        case 7:
-        	//geologia
-        	if (file != null) {
+		case 7:
+			// geologia
+			if (file != null) {
 				detalle.getPiezageologicadetalle().getPiezamuseableid().setFotografia(file.getBytes());
 			} else {
-				detalle.getPiezageologicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezageologicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
+				detalle.getPiezageologicadetalle().getPiezamuseableid()
+						.setFotografia(repo
+								.findOne(detalle.getPiezageologicadetalle().getPiezamuseableid().getPiezamuseableid())
+								.getFotografia());
 			}
-        	Piezageologicadetalle pg = geologica.save(detalle.getPiezageologicadetalle());
+			Piezageologicadetalle pg = geologica.save(detalle.getPiezageologicadetalle());
 			pm = pg.getPiezamuseableid();
-        	break;	
+			break;
 
-        case 8:
-        	//paleontologia
-        	if (file != null) {
+		case 8:
+			// paleontologia
+			if (file != null) {
 				detalle.getPiezapaleontologicadetalle().getPiezamuseableid().setFotografia(file.getBytes());
 			} else {
-				detalle.getPiezapaleontologicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezapaleontologicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
+				detalle.getPiezapaleontologicadetalle().getPiezamuseableid().setFotografia(
+						repo.findOne(detalle.getPiezapaleontologicadetalle().getPiezamuseableid().getPiezamuseableid())
+								.getFotografia());
 			}
-        	Piezapaleontologicadetalle pp = peleontologica.save(detalle.getPiezapaleontologicadetalle());
+			Piezapaleontologicadetalle pp = peleontologica.save(detalle.getPiezapaleontologicadetalle());
 			pm = pp.getPiezamuseableid();
-        	break;
-        case 9:
-        	//zoologia
-        	if (file != null) {
+			break;
+		case 9:
+			// zoologia
+			if (file != null) {
 				detalle.getPiezazoologicadetalle().getPiezamuseableid().setFotografia(file.getBytes());
 			} else {
-				detalle.getPiezazoologicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezazoologicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
+				detalle.getPiezazoologicadetalle().getPiezamuseableid()
+						.setFotografia(repo
+								.findOne(detalle.getPiezazoologicadetalle().getPiezamuseableid().getPiezamuseableid())
+								.getFotografia());
 			}
-        	Piezazoologicadetalle pz = zoologica.save(detalle.getPiezazoologicadetalle());
+			Piezazoologicadetalle pz = zoologica.save(detalle.getPiezazoologicadetalle());
 			pm = pz.getPiezamuseableid();
-        	break;	
-        	
+			break;
+
 		default:
 			break;
 		}
-		
-		if (estadoGeneral!=null &&!estadoGeneral.isEmpty() && !estadoGeneral.equals("null")) {
+
+		if (estadoGeneral != null && !estadoGeneral.isEmpty() && !estadoGeneral.equals("null")) {
 			estadogeneral.borrarEstadosByPiezaMuseable(pm.getPiezamuseableid());
 			Estadogeneralbien[] estados = mapper.readValue(estadoGeneral, Estadogeneralbien[].class);
 			for (Estadogeneralbien estadogeneralbien : estados) {
 				estadogeneralbien.getPiezaCatalogoPk().setPiezamuseableid(pm.getPiezamuseableid());
 				estadogeneral.save(estadogeneralbien);
 			}
-			
-		}else {
+
+		} else {
 			estadogeneral.borrarEstadosByPiezaMuseable(pm.getPiezamuseableid());
 		}
-		
-		if (catalogosDetalle!=null &&!catalogosDetalle.isEmpty() &&  !catalogosDetalle.equals("null")) {
+
+		if (catalogosDetalle != null && !catalogosDetalle.isEmpty() && !catalogosDetalle.equals("null")) {
 			piezacatalogo.borrarCatalogosByPiezaMuseable(pm.getPiezamuseableid());
 			Piezamuseablecatalogo[] estados = mapper.readValue(catalogosDetalle, Piezamuseablecatalogo[].class);
 			for (Piezamuseablecatalogo piezamuseablecatalogo : estados) {
 				piezamuseablecatalogo.getPiezacatalogoPk().setPiezamuseableid(pm.getPiezamuseableid());
 				piezacatalogo.save(piezamuseablecatalogo);
-			}			
-			
-		}else {
+			}
+
+		} else {
 			piezacatalogo.borrarCatalogosByPiezaMuseable(pm.getPiezamuseableid());
 		}
-		
+
 		return detalleGuardado;
 	}
-	
-	
-	
-	
+
 	@RequestMapping(value = "/catalogacion", method = RequestMethod.POST)
 	@ResponseBody
 	@Transactional
-	public PiezaDetalle catalogacion(@RequestParam("tipo") int tipo,
-			@RequestParam("detalle") String detalleStr, @RequestParam(value="catalogosDetalle", required=false) String catalogosDetalle)
-			throws IOException {
+	public PiezaDetalle catalogacion(@RequestParam("tipo") int tipo, @RequestParam("detalle") String detalleStr,
+			@RequestParam(value = "catalogosDetalle", required = false) String catalogosDetalle) throws IOException {
 
 		ObjectMapper mapper = new ObjectMapper();
 		PiezaDetalle detalle = mapper.readValue(detalleStr, PiezaDetalle.class);
@@ -241,79 +256,95 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 		switch (tipo) {
 
 		case 1:
-			detalle.getPiezaarqueologicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezaarqueologicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
-			Piezaarqueologicadetalle pa= arqueologica.save(detalle.getPiezaarqueologicadetalle());
-			pm=pa.getPiezamuseableid();
+			detalle.getPiezaarqueologicadetalle().getPiezamuseableid()
+					.setFotografia(repo
+							.findOne(detalle.getPiezaarqueologicadetalle().getPiezamuseableid().getPiezamuseableid())
+							.getFotografia());
+			Piezaarqueologicadetalle pa = arqueologica.save(detalle.getPiezaarqueologicadetalle());
+			pm = pa.getPiezamuseableid();
 			break;
 		case 2:
-			detalle.getPiezabotanicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezabotanicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
-				
+			detalle.getPiezabotanicadetalle().getPiezamuseableid().setFotografia(
+					repo.findOne(detalle.getPiezabotanicadetalle().getPiezamuseableid().getPiezamuseableid())
+							.getFotografia());
 
-			Piezabotanicadetalle pb= botanica.save(detalle.getPiezabotanicadetalle());
-			pm=pb.getPiezamuseableid();
+			Piezabotanicadetalle pb = botanica.save(detalle.getPiezabotanicadetalle());
+			pm = pb.getPiezamuseableid();
 			break;
-	       	
-        case 3:
 
-        	detalle.getPiezaentomologicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezaentomologicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());	
+		case 3:
 
-			Piezaentomologicadetalle pe= entomologica.save(detalle.getPiezaentomologicadetalle());
-			pm=pe.getPiezamuseableid();
-			break;	
-        	        
+			detalle.getPiezaentomologicadetalle().getPiezamuseableid()
+					.setFotografia(repo
+							.findOne(detalle.getPiezaentomologicadetalle().getPiezamuseableid().getPiezamuseableid())
+							.getFotografia());
+
+			Piezaentomologicadetalle pe = entomologica.save(detalle.getPiezaentomologicadetalle());
+			pm = pe.getPiezamuseableid();
+			break;
+
 		case 5:
-			detalle.getPiezafotograficadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezafotograficadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
+			detalle.getPiezafotograficadetalle().getPiezamuseableid().setFotografia(
+					repo.findOne(detalle.getPiezafotograficadetalle().getPiezamuseableid().getPiezamuseableid())
+							.getFotografia());
 			Piezafotograficadetalle pf = fotografica.save(detalle.getPiezafotograficadetalle());
 			pm = pf.getPiezamuseableid();
-			
+
 		case 6:
-			detalle.getPiezainstrumentaldetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezainstrumentaldetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
-			
-			Piezainstrumentaldetalle pi= instrumental.save(detalle.getPiezainstrumentaldetalle());
-			pm=pi.getPiezamuseableid();
+			detalle.getPiezainstrumentaldetalle().getPiezamuseableid()
+					.setFotografia(repo
+							.findOne(detalle.getPiezainstrumentaldetalle().getPiezamuseableid().getPiezamuseableid())
+							.getFotografia());
+
+			Piezainstrumentaldetalle pi = instrumental.save(detalle.getPiezainstrumentaldetalle());
+			pm = pi.getPiezamuseableid();
 			break;
 
-        case 7:
-        	//geologia
-        	detalle.getPiezageologicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezageologicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
-        	Piezageologicadetalle pg = geologica.save(detalle.getPiezageologicadetalle());
+		case 7:
+			// geologia
+			detalle.getPiezageologicadetalle().getPiezamuseableid().setFotografia(
+					repo.findOne(detalle.getPiezageologicadetalle().getPiezamuseableid().getPiezamuseableid())
+							.getFotografia());
+			Piezageologicadetalle pg = geologica.save(detalle.getPiezageologicadetalle());
 			pm = pg.getPiezamuseableid();
-        	break;	
+			break;
 
-        case 8:
-        	//paleontologia
-        	detalle.getPiezapaleontologicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezapaleontologicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
-        	Piezapaleontologicadetalle pp = peleontologica.save(detalle.getPiezapaleontologicadetalle());
+		case 8:
+			// paleontologia
+			detalle.getPiezapaleontologicadetalle().getPiezamuseableid()
+					.setFotografia(repo
+							.findOne(detalle.getPiezapaleontologicadetalle().getPiezamuseableid().getPiezamuseableid())
+							.getFotografia());
+			Piezapaleontologicadetalle pp = peleontologica.save(detalle.getPiezapaleontologicadetalle());
 			pm = pp.getPiezamuseableid();
-        	break;
-        case 9:
-        	//zoologia
-        	detalle.getPiezazoologicadetalle().getPiezamuseableid().setFotografia(repo.findOne(detalle.getPiezazoologicadetalle().getPiezamuseableid().getPiezamuseableid()).getFotografia());
-        	Piezazoologicadetalle pz = zoologica.save(detalle.getPiezazoologicadetalle());
+			break;
+		case 9:
+			// zoologia
+			detalle.getPiezazoologicadetalle().getPiezamuseableid().setFotografia(
+					repo.findOne(detalle.getPiezazoologicadetalle().getPiezamuseableid().getPiezamuseableid())
+							.getFotografia());
+			Piezazoologicadetalle pz = zoologica.save(detalle.getPiezazoologicadetalle());
 			pm = pz.getPiezamuseableid();
-        	break;	
-        	
+			break;
+
 		default:
 			break;
 		}
-		
-		
-		
-		if (catalogosDetalle!=null &&!catalogosDetalle.isEmpty() &&  !catalogosDetalle.equals("null")) {
+
+		if (catalogosDetalle != null && !catalogosDetalle.isEmpty() && !catalogosDetalle.equals("null")) {
 			piezacatalogo.borrarCatalogosByPiezaMuseable(pm.getPiezamuseableid());
 			Piezamuseablecatalogo[] estados = mapper.readValue(catalogosDetalle, Piezamuseablecatalogo[].class);
 			for (Piezamuseablecatalogo piezamuseablecatalogo : estados) {
 				piezamuseablecatalogo.getPiezacatalogoPk().setPiezamuseableid(pm.getPiezamuseableid());
 				piezacatalogo.save(piezamuseablecatalogo);
-			}			
-			
-		}else {
+			}
+
+		} else {
 			piezacatalogo.borrarCatalogosByPiezaMuseable(pm.getPiezamuseableid());
 		}
-		
+
 		return detalleGuardado;
 	}
-
 
 	@SuppressWarnings({ "unchecked", "rawtypes", "static-access" })
 	@RequestMapping(value = "/fotografia/{id}", method = RequestMethod.GET)
@@ -323,4 +354,80 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 		Piezamuseable p = repo.getOne(id);
 		return new ResponseEntity(p.getFotografia(), httpHeaders, HttpStatus.OK).ok(p.getFotografia());
 	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes", "static-access" })
+	@RequestMapping(value = "/detalle/fotografia/{id}/{tipo}", method = RequestMethod.GET)
+	public HttpEntity getDocumentDetalle(@PathVariable Long id,@PathVariable int tipo) {
+		HttpHeaders httpHeaders = new HttpHeaders();
+		httpHeaders.setContentType(MediaType.IMAGE_JPEG);
+		
+		byte[] foto = null;
+		
+		switch (tipo) {
+		// actualizar foto piezaMuseable
+		case 1:
+			
+			break;
+		//get foto arqueologia yacimiento
+		case 2:
+			Piezaarqueologicadetalle a=arqueologica.getOne(id);
+			foto=a.getFotografiayacimiento();
+			
+			break;
+		//get foto arqueologia plana yacimiento 
+		case 3:
+			Piezaarqueologicadetalle a2=arqueologica.getOne(id);
+			foto=a2.getFotoyacimientoplano();
+
+			break;
+
+		default:
+			break;
+		}
+		
+		if(foto==null)
+			return new ResponseEntity(HttpStatus.NOT_FOUND);
+		else
+			return new ResponseEntity(foto, httpHeaders, HttpStatus.OK).ok(foto);
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes", "static-access" })
+	@RequestMapping(value = "/foto/tipo", method = RequestMethod.POST)
+	@ResponseBody
+	public HttpEntity foto(@RequestParam("tipo") int tipo,
+			@RequestParam(value = "file", required = false) MultipartFile file, @RequestParam("id") Long id)
+			throws IOException {
+
+		HttpHeaders httpHeaders = new HttpHeaders();
+		httpHeaders.setContentType(MediaType.IMAGE_JPEG);
+
+		switch (tipo) {
+		// actualizar foto piezaMuseable
+		case 1:
+			Piezamuseable p = repo.getOne(id);
+			p.setFotografia(file.getBytes());
+			repo.save(p);
+			break;
+		//actualizar foto arqueologia yacimiento
+		case 2:
+			Piezaarqueologicadetalle a=arqueologica.getOne(id);
+			a.setFotografiayacimiento(file.getBytes());
+			arqueologica.save(a);
+			break;
+		//actualizar foto arqueologia plana yacimiento 
+		case 3:
+			Piezaarqueologicadetalle a2=arqueologica.getOne(id);
+			a2.setFotoyacimientoplano(file.getBytes());
+			arqueologica.save(a2);
+
+			break;
+
+		default:
+			break;
+		}
+
+		return new ResponseEntity(file.getBytes(), httpHeaders, HttpStatus.OK).ok(file.getBytes());
+
+	}
+
 }
