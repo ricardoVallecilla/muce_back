@@ -22,12 +22,17 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  *
  * @author Usuario
  */
 @Entity
 @Table(name = "PIEZAGEOLOGICADETALLE", catalog = "", schema = "MUCE")
+@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonInclude(JsonInclude.Include.NON_NULL )
 public class Piezageologicadetalle implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,17 +44,17 @@ public class Piezageologicadetalle implements Serializable {
     @NotNull
     @Column(name = "DETALLEID", nullable = false, precision = 0, scale = -127)
     private Long detalleid;
-    @Size(max = 256)
-    @Column(name = "MATERIAL", length = 256)
+    @Size(max = 600)
+    @Column(name = "MATERIAL", length = 600)
     private String material;
-    @Size(max = 256)
-    @Column(name = "CLASIFICACION", length = 256)
+    @Size(max = 600)
+    @Column(name = "CLASIFICACION", length = 600)
     private String clasificacion;
-    @Size(max = 256)
-    @Column(name = "CLASIFICACIONCAMPO", length = 256)
+    @Size(max = 600)
+    @Column(name = "CLASIFICACIONCAMPO", length = 600)
     private String clasificacioncampo;
-    @Size(max = 256)
-    @Column(name = "PERIODO", length = 256)
+    @Size(max = 600)
+    @Column(name = "PERIODO", length = 600)
     private String periodo;
     @Size(max = 50)
     @Column(name = "EPOCA", length = 50)
@@ -75,14 +80,14 @@ public class Piezageologicadetalle implements Serializable {
     @Size(max = 10)
     @Column(name = "PESO", length = 10)
     private String peso;
-    @Size(max = 256)
-    @Column(name = "INSCRIPCIONES", length = 256)
+    @Size(max = 600)
+    @Column(name = "INSCRIPCIONES", length = 600)
     private String inscripciones;
     @Size(max = 10)
     @Column(name = "GRUPO", length = 10)
     private String grupo;
-    @Size(max = 256)
-    @Column(name = "ELEMENTOSRELACIONADOS", length = 256)
+    @Size(max = 600)
+    @Column(name = "ELEMENTOSRELACIONADOS", length = 600)
     private String elementosrelacionados;
     @Column(name = "DESCRIPCION")
     @Temporal(TemporalType.TIMESTAMP)

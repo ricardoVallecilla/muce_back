@@ -50,8 +50,7 @@ import uce.edu.ec.muce.modelos.filtros.PiezaDetalle;
 @Controller
 @RequestMapping("/piezaMuseable")
 public class PiezamuseableService extends AbstracService<PiezamuseableRepositorio, Piezamuseable> {
-	
-	
+
 	@Autowired
 	private EstadogeneralbienRepositorio estadogeneral;
 
@@ -130,7 +129,7 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 			Piezabotanicadetalle pb = botanica.save(detalle.getPiezabotanicadetalle());
 			pm = pb.getPiezamuseableid();
 			break;
-		//entomologia
+		// entomologia
 		case 3:
 
 			if (file != null) {
@@ -260,6 +259,9 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 					.setFotografia(repo
 							.findOne(detalle.getPiezaarqueologicadetalle().getPiezamuseableid().getPiezamuseableid())
 							.getFotografia());
+			Piezaarqueologicadetalle paTmp = arqueologica.getOne(detalle.getPiezaarqueologicadetalle().getDetalleid());
+			detalle.getPiezaarqueologicadetalle().setFotografiayacimiento(paTmp.getFotografiayacimiento());
+			detalle.getPiezaarqueologicadetalle().setFotoyacimientoplano(paTmp.getFotoyacimientoplano());
 			Piezaarqueologicadetalle pa = arqueologica.save(detalle.getPiezaarqueologicadetalle());
 			pm = pa.getPiezamuseableid();
 			break;
@@ -278,7 +280,9 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 					.setFotografia(repo
 							.findOne(detalle.getPiezaentomologicadetalle().getPiezamuseableid().getPiezamuseableid())
 							.getFotografia());
-
+			Piezaentomologicadetalle peTmp = entomologica.getOne(detalle.getPiezaentomologicadetalle().getDetalleid());
+			detalle.getPiezaentomologicadetalle().setFotoecosistema(peTmp.getFotoecosistema());
+			detalle.getPiezaentomologicadetalle().setFotocartografia(peTmp.getFotocartografia());
 			Piezaentomologicadetalle pe = entomologica.save(detalle.getPiezaentomologicadetalle());
 			pm = pe.getPiezamuseableid();
 			break;
@@ -296,6 +300,10 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 							.findOne(detalle.getPiezainstrumentaldetalle().getPiezamuseableid().getPiezamuseableid())
 							.getFotografia());
 
+			Piezainstrumentaldetalle piTmp = instrumental.getOne(detalle.getPiezainstrumentaldetalle().getDetalleid());
+			detalle.getPiezainstrumentaldetalle().setFotografoplanos(piTmp.getFotografoplanos());
+			detalle.getPiezainstrumentaldetalle().setFotoregistros(piTmp.getFotoregistros());
+			detalle.getPiezainstrumentaldetalle().setFotoinstructivo(piTmp.getFotoinstructivo());
 			Piezainstrumentaldetalle pi = instrumental.save(detalle.getPiezainstrumentaldetalle());
 			pm = pi.getPiezamuseableid();
 			break;
@@ -354,38 +362,58 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 		Piezamuseable p = repo.getOne(id);
 		return new ResponseEntity(p.getFotografia(), httpHeaders, HttpStatus.OK).ok(p.getFotografia());
 	}
-	
+
 	@SuppressWarnings({ "unchecked", "rawtypes", "static-access" })
 	@RequestMapping(value = "/detalle/fotografia/{id}/{tipo}", method = RequestMethod.GET)
-	public HttpEntity getDocumentDetalle(@PathVariable Long id,@PathVariable int tipo) {
+	public HttpEntity getDocumentDetalle(@PathVariable Long id, @PathVariable int tipo) {
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.setContentType(MediaType.IMAGE_JPEG);
-		
+
 		byte[] foto = null;
-		
+
 		switch (tipo) {
 		// actualizar foto piezaMuseable
 		case 1:
-			
-			break;
-		//get foto arqueologia yacimiento
-		case 2:
-			Piezaarqueologicadetalle a=arqueologica.getOne(id);
-			foto=a.getFotografiayacimiento();
-			
-			break;
-		//get foto arqueologia plana yacimiento 
-		case 3:
-			Piezaarqueologicadetalle a2=arqueologica.getOne(id);
-			foto=a2.getFotoyacimientoplano();
 
+			break;
+		// get foto arqueologia yacimiento
+		case 2:
+
+			foto = arqueologica.getOne(id).getFotografiayacimiento();
+
+			break;
+		// get foto arqueologia plana yacimiento
+		case 3:
+
+			foto = arqueologica.getOne(id).getFotoyacimientoplano();
+
+			break;
+		// get foto entomologia ecosistema
+		case 4:
+			foto = entomologica.getOne(id).getFotoecosistema();
+			break;
+		// get foto entomologia cartografia
+		case 5:
+			foto = entomologica.getOne(id).getFotocartografia();
+			break;
+		// get foto instrumental registros
+		case 6:
+			foto = instrumental.getOne(id).getFotoregistros();
+			break;
+		// get foto instrumental planos
+		case 7:
+			foto = instrumental.getOne(id).getFotoplano();
+			break;
+		// get foto instrumental instructivos
+		case 8:
+			foto = instrumental.getOne(id).getFotoinstructivo();
 			break;
 
 		default:
 			break;
 		}
-		
-		if(foto==null)
+
+		if (foto == null)
 			return new ResponseEntity(HttpStatus.NOT_FOUND);
 		else
 			return new ResponseEntity(foto, httpHeaders, HttpStatus.OK).ok(foto);
@@ -408,18 +436,48 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 			p.setFotografia(file.getBytes());
 			repo.save(p);
 			break;
-		//actualizar foto arqueologia yacimiento
+		// actualizar foto arqueologia yacimiento
 		case 2:
-			Piezaarqueologicadetalle a=arqueologica.getOne(id);
+			Piezaarqueologicadetalle a = arqueologica.getOne(id);
 			a.setFotografiayacimiento(file.getBytes());
 			arqueologica.save(a);
 			break;
-		//actualizar foto arqueologia plana yacimiento 
+		// actualizar foto arqueologia plana yacimiento
 		case 3:
-			Piezaarqueologicadetalle a2=arqueologica.getOne(id);
+			Piezaarqueologicadetalle a2 = arqueologica.getOne(id);
 			a2.setFotoyacimientoplano(file.getBytes());
 			arqueologica.save(a2);
 
+			break;
+		// actualizar foto entomologia ecosistema
+		case 4:
+			Piezaentomologicadetalle en = entomologica.getOne(id);
+			en.setFotoecosistema(file.getBytes());
+			entomologica.save(en);
+			break;
+		// actualizar foto entomologia cartografia
+		case 5:
+			Piezaentomologicadetalle en2 = entomologica.getOne(id);
+			en2.setFotocartografia(file.getBytes());
+			entomologica.save(en2);
+			break;
+		// get foto instrumental registros
+		case 6:
+			Piezainstrumentaldetalle i = instrumental.getOne(id);
+			i.setFotoregistros(file.getBytes());
+			instrumental.save(i);
+			break;
+		// get foto instrumental planos
+		case 7:
+			Piezainstrumentaldetalle i2 = instrumental.getOne(id);
+			i2.setFotoplano(file.getBytes());
+			instrumental.save(i2);
+			break;
+		// get foto instrumental instructivos
+		case 8:
+			Piezainstrumentaldetalle i3 = instrumental.getOne(id);
+			i3.setFotoinstructivo(file.getBytes());
+			instrumental.save(i3);
 			break;
 
 		default:

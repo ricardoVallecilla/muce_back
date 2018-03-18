@@ -47,29 +47,29 @@ public class Movimiento implements Serializable {
     @Column(name = "FECHAINGRESO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaingreso;
-    @Size(max = 256)
-    @Column(name = "INSTITUCION", length = 256)
+    @Size(max = 600)
+    @Column(name = "INSTITUCION", length = 600)
     private String institucion;
-    @Size(max = 256)
-    @Column(name = "DIRECCION", length = 256)
+    @Size(max = 600)
+    @Column(name = "DIRECCION", length = 600)
     private String direccion;
-    @Size(max = 256)
-    @Column(name = "PAIS", length = 256)
+    @Size(max = 600)
+    @Column(name = "PAIS", length = 600)
     private String pais;
-    @Size(max = 256)
-    @Column(name = "PROVINCIA", length = 256)
+    @Size(max = 600)
+    @Column(name = "PROVINCIA", length = 600)
     private String provincia;
-    @Size(max = 256)
-    @Column(name = "CIUDAD", length = 256)
+    @Size(max = 600)
+    @Column(name = "CIUDAD", length = 600)
     private String ciudad;
-    @Size(max = 256)
-    @Column(name = "TELEFONO", length = 256)
+    @Size(max = 600)
+    @Column(name = "TELEFONO", length = 600)
     private String telefono;
-    @Size(max = 256)
-    @Column(name = "EMAIL", length = 256)
+    @Size(max = 600)
+    @Column(name = "EMAIL", length = 600)
     private String email;
-    @Size(max = 256)
-    @Column(name = "CONTACTO", length = 256)
+    @Size(max = 600)
+    @Column(name = "CONTACTO", length = 600)
     private String contacto;
     @Column(name = "FECHAINICIOPRESTAMO")
     @Temporal(TemporalType.TIMESTAMP)
@@ -83,8 +83,8 @@ public class Movimiento implements Serializable {
     @Column(name = "FECHATRASPASO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechatraspaso;
-    @Size(max = 256)
-    @Column(name = "OBSERVACIONES", length = 256)
+    @Size(max = 600)
+    @Column(name = "OBSERVACIONES", length = 600)
     private String observaciones;
     @Size(max = 50)
     @Column(name = "numeroacta", length = 50)
@@ -94,48 +94,48 @@ public class Movimiento implements Serializable {
     private String numeroseguro;
     @Column(name = "SEGURO")
     private Long seguro;
-    @Size(max = 256)
-    @Column(name = "QUIENDONO", length = 256)
+    @Size(max = 600)
+    @Column(name = "QUIENDONO", length = 600)
     private String quiendono;
-    @Size(max = 256)
-    @Column(name = "AQUIENDONO", length = 256)
+    @Size(max = 600)
+    @Column(name = "AQUIENDONO", length = 600)
     private String aquiendono;
     @Size(max = 50)
     @Column(name = "NUMERODOCBAJA", length = 50)
     private String numerodocbaja;
-    @Size(max = 256)
-    @Column(name = "USUARIOREGISTROID", length = 256)
+    @Size(max = 600)
+    @Column(name = "USUARIOREGISTROID", length = 600)
     private String usuarioregistroid;
     @Column(name = "FECHAREGISTRO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharegistro;
    
-    @Size(max = 256)
-    @Column(name = "ENTREGANOMBRE", length = 256)
+    @Size(max = 600)
+    @Column(name = "ENTREGANOMBRE", length = 600)
     private String entreganombre;
-    @Size(max = 256)
-    @Column(name = "ENTREGACARGO", length = 256)
+    @Size(max = 600)
+    @Column(name = "ENTREGACARGO", length = 600)
     private String entregacargo;
-    @Size(max = 256)
-    @Column(name = "ENTREGARESERVA", length = 256)
+    @Size(max = 600)
+    @Column(name = "ENTREGARESERVA", length = 600)
     private String entregareserva;
-    @Size(max = 256)
-    @Column(name = "ENTREGACI", length = 256)
+    @Size(max = 600)
+    @Column(name = "ENTREGACI", length = 600)
     private String entregaci;
-    @Size(max = 256)
-    @Column(name = "RECEPTORNOMBRE", length = 256)
+    @Size(max = 600)
+    @Column(name = "RECEPTORNOMBRE", length = 600)
     private String receptornombre;
-    @Size(max = 256)
-    @Column(name = "RECEPTORCARGO", length = 256)
+    @Size(max = 600)
+    @Column(name = "RECEPTORCARGO", length = 600)
     private String receptorcargo;
-    @Size(max = 256)
-    @Column(name = "RECEPTORRESERVA", length = 256)
+    @Size(max = 600)
+    @Column(name = "RECEPTORRESERVA", length = 600)
     private String receptorreserva;
-    @Size(max = 256)
-    @Column(name = "RECEPTORCI", length = 256)
+    @Size(max = 600)
+    @Column(name = "RECEPTORCI", length = 600)
     private String 	receptorci;
-    @Size(max = 256)
-    @Column(name = "ASEGURADORA", length = 256)
+    @Size(max = 600)
+    @Column(name = "ASEGURADORA", length = 600)
     private String 	aseguradora;
     @Size(max = 10)
     @Column(name = "VALORSEGURO", length = 10)
@@ -150,8 +150,8 @@ public class Movimiento implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaconfirmacion;
     
-    @Size(max = 256)
-    @Column(name = "DOCUMENTORESPALDO", length = 256)
+    @Size(max = 600)
+    @Column(name = "DOCUMENTORESPALDO", length = 600)
     private String 	documentorespaldo;
     
     @Column(name = "MUSEOID")

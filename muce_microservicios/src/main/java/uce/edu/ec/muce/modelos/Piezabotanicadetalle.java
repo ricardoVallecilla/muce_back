@@ -23,6 +23,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  *
@@ -31,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "PIEZABOTANICADETALLE", catalog = "", schema = "MUCE")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonInclude(JsonInclude.Include.NON_NULL )
 public class Piezabotanicadetalle implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,49 +46,49 @@ public class Piezabotanicadetalle implements Serializable {
     private Long detalleid;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "ESPECIE", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "ESPECIE", length = 600)
     private String especie;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "NOMBRECOMUN", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "NOMBRECOMUN", length = 600)
     private String nombrecomun;
-    @Size(max = 256)
-    @Column(name = "AUTOR", length = 256)
+    @Size(max = 600)
+    @Column(name = "AUTOR", length = 600)
     private String autor;
-    @Size(max = 256)
-    @Column(name = "PUBLICADO", length = 256)
+    @Size(max = 600)
+    @Column(name = "PUBLICADO", length = 600)
     private String publicado;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "CLASE", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "CLASE", length = 600)
     private String clase;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "SUBCLASE", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "SUBCLASE", length = 600)
     private String subclase;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "ORDEN", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "ORDEN", length = 600)
     private String orden;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "FAMILIA", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "FAMILIA", length = 600)
     private String familia;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "GENERO", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "GENERO", length = 600)
     private String genero;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "DESCRIPCION", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "DESCRIPCION", length = 600)
     private String descripcion;
     
     
@@ -100,18 +102,18 @@ public class Piezabotanicadetalle implements Serializable {
     private String longitud;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "LOCALIZACIONPRECISA", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "LOCALIZACIONPRECISA", length = 600)
     private String localizacionprecisa;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "ELEVACION", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "ELEVACION", length = 600)
     private String elevacion;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "CIUDAD", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "CIUDAD", length = 600)
     private String ciudad;
     @Column(name = "PROVINCIA")
     private String provincia;
@@ -122,11 +124,11 @@ public class Piezabotanicadetalle implements Serializable {
     private Catalogo paisid;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "PERSONARECOLECTORA", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "PERSONARECOLECTORA", length = 600)
     private String personarecolectora;
-    @Size(max = 256)
-    @Column(name = "USUARIOREGISTROID", length = 256)
+    @Size(max = 600)
+    @Column(name = "USUARIOREGISTROID", length = 600)
     private String usuarioregistroid;
     @Column(name = "FECHAREGISTRO")
     @Temporal(TemporalType.TIMESTAMP)

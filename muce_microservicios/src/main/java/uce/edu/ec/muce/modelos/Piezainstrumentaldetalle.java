@@ -16,6 +16,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -24,7 +25,9 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  *
@@ -33,6 +36,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "PIEZAINSTRUMENTALDETALLE", catalog = "", schema = "MUCE")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonInclude(JsonInclude.Include.NON_NULL )
 public class Piezainstrumentaldetalle implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,20 +48,20 @@ public class Piezainstrumentaldetalle implements Serializable {
     @NotNull
     @Column(name = "DETALLEID", nullable = false, precision = 0, scale = -127)
     private Long detalleid;
-    @Size(max = 256)
-    @Column(name = "TIPOBIEN", length = 256)
+    @Size(max = 600)
+    @Column(name = "TIPOBIEN", length = 600)
     private String tipobien;
-    @Size(max = 256)
-    @Column(name = "OTRADENOMINACION", length = 256)
+    @Size(max = 600)
+    @Column(name = "OTRADENOMINACION", length = 600)
     private String otradenominacion;
-    @Size(max = 256)
-    @Column(name = "TECNICA", length = 256)
+    @Size(max = 600)
+    @Column(name = "TECNICA", length = 600)
     private String tecnica;
-    @Size(max = 256)
-    @Column(name = "FABRICANTE", length = 256)
+    @Size(max = 600)
+    @Column(name = "FABRICANTE", length = 600)
     private String fabricante;
-    @Size(max = 256)
-    @Column(name = "LUGARFABRICACION", length = 256)
+    @Size(max = 600)
+    @Column(name = "LUGARFABRICACION", length = 600)
     private String lugarfabricacion;
     @Size(max = 10)
     @Column(name = "ALTO", length = 10)
@@ -80,11 +84,11 @@ public class Piezainstrumentaldetalle implements Serializable {
     @Size(max = 10)
     @Column(name = "PROFUNDIDAD", length = 10)
     private String profundidad;
-    @Size(max = 256)
-    @Column(name = "INSCRIPCIONES", length = 256)
+    @Size(max = 600)
+    @Column(name = "INSCRIPCIONES", length = 600)
     private String inscripciones;
-    @Size(max = 256)
-    @Column(name = "DESCRIPCION", length = 256)
+    @Size(max = 600)
+    @Column(name = "DESCRIPCION", length = 600)
     private String descripcion;
 
     @Column(name = "ENUSO", nullable = false)    
@@ -103,6 +107,38 @@ public class Piezainstrumentaldetalle implements Serializable {
     @Column(name = "FECHAFABRICACION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechafabricacion;
+    
+    @Column(length = 600)
+    private String datosregistros;
+    @Column(length = 600)
+    private String fotografoplanos;
+    @Column(length = 600)
+    private String lugarplano;
+    @Column(length = 600)
+    private String pdfplano;
+    @Column(length = 600)
+    private String fotografoinstructivo;
+    @Column(length = 600)
+    private String lugarinstructivo;
+    @Column(length = 600)
+    private String pdfinstructivo;
+    @Column(length = 600)
+    private String social;
+    @Column(length = 600)
+    private String inventor;
+    @Column(length = 600)
+    private String historiafabricante;
+    @Lob
+    @JsonIgnore
+    private byte[]  fotoregistros;
+    @Lob
+    @JsonIgnore
+    private byte[]  fotoplano;
+    @Lob
+    @JsonIgnore
+    private byte[]  fotoinstructivo;
+
+    
     
     public Piezainstrumentaldetalle() {
     }
@@ -275,6 +311,110 @@ public class Piezainstrumentaldetalle implements Serializable {
 
 	public void setProfundidad(String profundidad) {
 		this.profundidad = profundidad;
+	}
+
+	public String getDatosregistros() {
+		return datosregistros;
+	}
+
+	public void setDatosregistros(String datosregistros) {
+		this.datosregistros = datosregistros;
+	}
+
+	public String getFotografoplanos() {
+		return fotografoplanos;
+	}
+
+	public void setFotografoplanos(String fotografoplanos) {
+		this.fotografoplanos = fotografoplanos;
+	}
+
+	public String getLugarplano() {
+		return lugarplano;
+	}
+
+	public void setLugarplano(String lugarplano) {
+		this.lugarplano = lugarplano;
+	}
+
+	public String getPdfplano() {
+		return pdfplano;
+	}
+
+	public void setPdfplano(String pdfplano) {
+		this.pdfplano = pdfplano;
+	}
+
+	public String getFotografoinstructivo() {
+		return fotografoinstructivo;
+	}
+
+	public void setFotografoinstructivo(String fotografoinstructivo) {
+		this.fotografoinstructivo = fotografoinstructivo;
+	}
+
+	public String getLugarinstructivo() {
+		return lugarinstructivo;
+	}
+
+	public void setLugarinstructivo(String lugarinstructivo) {
+		this.lugarinstructivo = lugarinstructivo;
+	}
+
+	public String getPdfinstructivo() {
+		return pdfinstructivo;
+	}
+
+	public void setPdfinstructivo(String pdfinstructivo) {
+		this.pdfinstructivo = pdfinstructivo;
+	}
+
+	public String getSocial() {
+		return social;
+	}
+
+	public void setSocial(String social) {
+		this.social = social;
+	}
+
+	public String getInventor() {
+		return inventor;
+	}
+
+	public void setInventor(String inventor) {
+		this.inventor = inventor;
+	}
+
+	public String getHistoriafabricante() {
+		return historiafabricante;
+	}
+
+	public void setHistoriafabricante(String historiafabricante) {
+		this.historiafabricante = historiafabricante;
+	}
+
+	public byte[] getFotoregistros() {
+		return fotoregistros;
+	}
+
+	public void setFotoregistros(byte[] fotoregistros) {
+		this.fotoregistros = fotoregistros;
+	}
+
+	public byte[] getFotoplano() {
+		return fotoplano;
+	}
+
+	public void setFotoplano(byte[] fotoplano) {
+		this.fotoplano = fotoplano;
+	}
+
+	public byte[] getFotoinstructivo() {
+		return fotoinstructivo;
+	}
+
+	public void setFotoinstructivo(byte[] fotoinstructivo) {
+		this.fotoinstructivo = fotoinstructivo;
 	}
 
 	@Override

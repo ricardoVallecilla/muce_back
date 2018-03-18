@@ -101,15 +101,15 @@ public class Piezaarqueologicadetalle implements Serializable {
 	@Column(name = "INSCRIPCIONES", length = 150)
 	private String inscripciones;
 
-	@Size(min = 1, max = 256)
-	@Column(name = "DESCRIPCION", length = 256)
+	@Size(min = 1, max = 600)
+	@Column(name = "DESCRIPCION", length = 600)
 	private String descripcion;
 
-	@Size(min = 1, max = 256)
-	@Column(name = "ELEMENTOSRELACIONADO", length = 256)
+	@Size(min = 1, max = 600)
+	@Column(name = "ELEMENTOSRELACIONADO", length = 600)
 	private String elementosrelacionado;
-	@Size(max = 256)
-	@Column(name = "USUARIOREGISTROID", length = 256)
+	@Size(max = 600)
+	@Column(name = "USUARIOREGISTROID", length = 600)
 	private String usuarioregistroid;
 	@Column(name = "FECHAREGISTRO")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -117,35 +117,63 @@ public class Piezaarqueologicadetalle implements Serializable {
 	@JoinColumn(name = "PIEZAMUSEABLEID", referencedColumnName = "PIEZAMUSEABLEID")
 	@ManyToOne(cascade = { CascadeType.ALL })
 	private Piezamuseable piezamuseableid;
-	
+	@Column(length = 600)
 	private String elaboracion;
+	@Column(length = 600)
 	private String herramientas;
+	@Column(length = 600)
 	private String decoracion;
+	@Column(length = 600)
 	private String alteracion;
+	@Column(length = 600)
 	private String simbolos;
+	@Column(length = 600)
 	private String semiotico;
+	@Column(length = 600)
 	private String coloresusados;
+	@Column(length = 600)
 	private String coloresprocedencia;
+	@Column(length = 600)
 	private String semioticocolores;
+	@Column(length = 600)
 	private Boolean empirica;
+	@Column(length = 600)
 	private Boolean arqueologia;
+	@Column(length = 600)
 	private String extraccionobservacion;
+	@Column(length = 600)
 	private String extraccionresponsable;
+	@Column(length = 600)
 	private String extraccionarqueologo;
+	@Column(length = 600)
 	private String biografiaarqueologo;
+	@Column(length = 600)
 	private String publicacionarqueologo;
+	@Column(length = 600)
 	private String arqueologouniversidad;
+	@Column(length = 600)
 	private String usosocial;
+	@Column(length = 600)
 	private String usoprimario;
+	@Column(length = 600)
 	private String usoalternativo;
+	@Column(length = 600)
 	private String usorestricciones;
+	@Column(length = 600)
 	private String creencias;
+	@Column(length = 600)
 	private String peculiaridades;
+	@Column(length = 600)
 	private String pertenencia;
+	@Column(length = 600)
 	private String usocuando;
+	@Column(length = 600)
 	private String usodonde;
+	@Column(length = 600)
 	private String usocolocacion;
+	@Column(length = 600)
 	private String vida;
+	
 	@JoinColumn(name = "YACIMIENTOPROVINCIAID", referencedColumnName = "CATALOGOID")
     @ManyToOne(optional = true)
 	private Catalogo yacimientoprovinciaid;
@@ -155,30 +183,46 @@ public class Piezaarqueologicadetalle implements Serializable {
 	@JoinColumn(name = "YACIMIENTOCIUDADID", referencedColumnName = "CATALOGOID")
     @ManyToOne(optional = true)
 	private Catalogo yacimientociudadid;
+	@Column(length = 600)
 	private String yacimientodireccion;
+	@Column(length = 600)
 	private String yacimientolatitud;
+	@Column(length = 600)
 	private String yacimientolongitud;
+	@Column(length = 600)
 	private String yacimientoaltura;
+	@Column(length = 600)
 	private String yacimientocontenedor;
+	@Column(length = 600)
 	private String yacimientomorfologia;
+	@Column(length = 600)
 	private String yacimientoubicacion;
 	@Lob
     @JsonIgnore
     @Column(name = "FOTOGRAFIAYACIMIENTO")
     private byte[]  fotografiayacimiento;
+	@Column(length = 600)
 	private String yacimientofotografo;
+	@Column(length = 600)
 	private String yacimientolugar;
 	@Lob
 	@JsonIgnore
     @Column(name = "FOTOGRAFIAYACIMIENTOPLANO")
     private byte[] fotoyacimientoplano;
 	private String yacimientoarquitecto;
+	@Column(length = 600)
 	private String yacimientoplanoslugar;
+	@Column(length = 600)
 	private String variacionnombre;
+	@Column(length = 600)
 	private String denominacionnativa;
+	@Column(length = 600)
 	private String procedenciamaterial;
+	@Column(length = 600)
 	private String terminonativomaterial;
+	@Column(length = 600)
 	private String terminonativodecoracion;
+	@Column(length = 600)
 	private String terminonativomanofactura;
 	
 

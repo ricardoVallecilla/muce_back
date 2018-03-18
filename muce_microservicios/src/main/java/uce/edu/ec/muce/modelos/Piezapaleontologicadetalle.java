@@ -22,12 +22,17 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  *
  * @author Usuario
  */
 @Entity
 @Table(name = "PIEZAPALEONTOLOGICADETALLE", catalog = "", schema = "MUCE")
+@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonInclude(JsonInclude.Include.NON_NULL )
 public class Piezapaleontologicadetalle implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,95 +44,95 @@ public class Piezapaleontologicadetalle implements Serializable {
     @NotNull
     @Column(name = "DETALLEID", nullable = false, precision = 0, scale = -127)
     private Long detalleid;
-    @Size(max = 256)
-    @Column(name = "NOMBRECIENTIFICO", length = 256)
+    @Size(max = 600)
+    @Column(name = "NOMBRECIENTIFICO", length = 600)
     private String nombrecientifico;
-    @Size(max = 256)
-    @Column(name = "NOMBRECOMUN", length = 256)
+    @Size(max = 600)
+    @Column(name = "NOMBRECOMUN", length = 600)
     private String nombrecomun;
-    @Size(max = 256)
-    @Column(name = "REINO", length = 256)
+    @Size(max = 600)
+    @Column(name = "REINO", length = 600)
     private String reino;
-    @Size(max = 256)
-    @Column(name = "FILO", length = 256)
+    @Size(max = 600)
+    @Column(name = "FILO", length = 600)
     private String filo;
-    @Size(max = 256)
-    @Column(name = "CLASE", length = 256)
+    @Size(max = 600)
+    @Column(name = "CLASE", length = 600)
     private String clase;
-    @Size(max = 256)
-    @Column(name = "ORDEN", length = 256)
+    @Size(max = 600)
+    @Column(name = "ORDEN", length = 600)
     private String orden;
-    @Size(max = 256)
-    @Column(name = "FAMILIA", length = 256)
+    @Size(max = 600)
+    @Column(name = "FAMILIA", length = 600)
     private String familia;
-    @Size(max = 256)
-    @Column(name = "ERA", length = 256)
+    @Size(max = 600)
+    @Column(name = "ERA", length = 600)
     private String era;
-    @Size(max = 256)
-    @Column(name = "SISTEMA", length = 256)
+    @Size(max = 600)
+    @Column(name = "SISTEMA", length = 600)
     private String sistema;
-    @Size(max = 256)
-    @Column(name = "SERIE", length = 256)
+    @Size(max = 600)
+    @Column(name = "SERIE", length = 600)
     private String serie;
-    @Size(max = 256)
-    @Column(name = "PISO", length = 256)
+    @Size(max = 600)
+    @Column(name = "PISO", length = 600)
     private String piso;
-    @Size(max = 256)
-    @Column(name = "MIEMBRO", length = 256)
+    @Size(max = 600)
+    @Column(name = "MIEMBRO", length = 600)
     private String miembro;
-    @Size(max = 256)
-    @Column(name = "FORMACION", length = 256)
+    @Size(max = 600)
+    @Column(name = "FORMACION", length = 600)
     private String formacion;
-    @Size(max = 256)
-    @Column(name = "GRUPO", length = 256)
+    @Size(max = 600)
+    @Column(name = "GRUPO", length = 600)
     private String grupo;
-    @Size(max = 256)
-    @Column(name = "ALTO", length = 256)
+    @Size(max = 600)
+    @Column(name = "ALTO", length = 600)
     private String alto;
-    @Size(max = 256)
-    @Column(name = "LARGO", length = 256)
+    @Size(max = 600)
+    @Column(name = "LARGO", length = 600)
     private String largo;
-    @Size(max = 256)
-    @Column(name = "ANCHO", length = 256)
+    @Size(max = 600)
+    @Column(name = "ANCHO", length = 600)
     private String ancho;
-    @Size(max = 256)
-    @Column(name = "PESO", length = 256)
+    @Size(max = 600)
+    @Column(name = "PESO", length = 600)
     private String peso;
-    @Size(max = 256)
-    @Column(name = "INSCRIPCIONES", length = 256)
+    @Size(max = 600)
+    @Column(name = "INSCRIPCIONES", length = 600)
     private String inscripciones;
-    @Size(max = 256)
-    @Column(name = "ELEMENTOSRELACIONADOS", length = 256)
+    @Size(max = 600)
+    @Column(name = "ELEMENTOSRELACIONADOS", length = 600)
     private String elementosrelacionados;
-    @Size(max = 256)
-    @Column(name = "MORFOLOGIA", length = 256)
+    @Size(max = 600)
+    @Column(name = "MORFOLOGIA", length = 600)
     private String morfologia;
-    @Size(max = 256)
-    @Column(name = "RECOLECTORES", length = 256)
+    @Size(max = 600)
+    @Column(name = "RECOLECTORES", length = 600)
     private String recolectores;
-    @Size(max = 256)
-    @Column(name = "FECHARECOLECCION", length = 256)
+    @Size(max = 600)
+    @Column(name = "FECHARECOLECCION", length = 600)
     private String fecharecoleccion;
-    @Size(max = 256)
-    @Column(name = "DIAMETRO", length = 256)
+    @Size(max = 600)
+    @Column(name = "DIAMETRO", length = 600)
     private String diametro;
-    @Size(max = 256)
-    @Column(name = "LATITUD", length = 256)
+    @Size(max = 600)
+    @Column(name = "LATITUD", length = 600)
     private String latitud;
-    @Size(max = 256)
-    @Column(name = "LONGITUD", length = 256)
+    @Size(max = 600)
+    @Column(name = "LONGITUD", length = 600)
     private String longitud;
-    @Size(max = 256)
-    @Column(name = "LOCALIZACIONPRECISA", length = 256)
+    @Size(max = 600)
+    @Column(name = "LOCALIZACIONPRECISA", length = 600)
     private String localizacionprecisa;
-    @Size(max = 256)
-    @Column(name = "PERSONARECOLECTADORA", length = 256)
+    @Size(max = 600)
+    @Column(name = "PERSONARECOLECTADORA", length = 600)
     private String personarecolectadora;
-    @Size(max = 256)
-    @Column(name = "CIUDADID", length = 256)
+    @Size(max = 600)
+    @Column(name = "CIUDADID", length = 600)
     private String ciudadid;
-    @Size(max = 256)
-    @Column(name = "USUARIOREGISTROID", length = 256)
+    @Size(max = 600)
+    @Column(name = "USUARIOREGISTROID", length = 600)
     private String usuarioregistroid;
     @Column(name = "FECHAREGISTRO")
     @Temporal(TemporalType.TIMESTAMP)

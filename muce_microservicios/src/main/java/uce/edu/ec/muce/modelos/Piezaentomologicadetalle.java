@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -21,7 +22,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  *
@@ -30,6 +33,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "PIEZAENTOMOLOGICADETALLE", catalog = "", schema = "MUCE")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonInclude(JsonInclude.Include.NON_NULL )
 public class Piezaentomologicadetalle implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,49 +47,49 @@ public class Piezaentomologicadetalle implements Serializable {
     private Long detalleid;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "NOMBRECIENTIFICO", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "NOMBRECIENTIFICO", length = 600)
     private String nombrecientifico;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "NOMBRECOMUN", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "NOMBRECOMUN", length = 600)
     private String nombrecomun;
-    @Size(max = 256)
-    @Column(name = "AUTOR", length = 256)
+    @Size(max = 600)
+    @Column(name = "AUTOR", length = 600)
     private String autor;
-    @Size(max = 256)
-    @Column(name = "PUBLICADO", length = 256)
+    @Size(max = 600)
+    @Column(name = "PUBLICADO", length = 600)
     private String publicado;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "CLASE", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "CLASE", length = 600)
     private String clase;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "ORDEN", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "ORDEN", length = 600)
     private String orden;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "FAMILIA", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "FAMILIA", length = 600)
     private String familia;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "SEXO", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "SEXO", length = 600)
     private String sexo;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "ETAPAVIDA", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "ETAPAVIDA", length = 600)
     private String etapavida;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "DESCRIPCION", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "DESCRIPCION", length = 600)
     private String descripcion;
     
     
@@ -99,8 +103,8 @@ public class Piezaentomologicadetalle implements Serializable {
     private String longitud;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "LOCALIZACIONPRECISA", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "LOCALIZACIONPRECISA", length = 600)
     private String localizacionprecisa;
     
     
@@ -110,11 +114,11 @@ public class Piezaentomologicadetalle implements Serializable {
     @Column(name = "CIUDAD")
     private String ciudad;    
         
-    @Size(min = 1, max = 256)
-    @Column(name = "PERSONARECOLECTORA", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "PERSONARECOLECTORA", length = 600)
     private String personarecolectora;
-    @Size(max = 256)
-    @Column(name = "USUARIOREGISTROID", length = 256)
+    @Size(max = 600)
+    @Column(name = "USUARIOREGISTROID", length = 600)
     private String usuarioregistroid;
     @Column(name = "FECHAREGISTRO")
     @Temporal(TemporalType.TIMESTAMP)
@@ -129,6 +133,49 @@ public class Piezaentomologicadetalle implements Serializable {
     @JoinColumn(name = "PIEZAMUSEABLEID", referencedColumnName = "PIEZAMUSEABLEID")
     @ManyToOne(cascade = {CascadeType.ALL})
     private Piezamuseable piezamuseableid;
+    @Column(length = 600)
+    private String metodologiarecoleccion;
+    @Column(length = 600)
+    private String materialesutilizados;
+    @Column(length = 600)
+    private String permisos;
+    @Column(length = 600)
+    private String analisisgeografico;
+    @Column(length = 600)
+    private String tipoecosistema;
+    @Column(length = 600)
+    private String comportamiento;
+    @Column(length = 600)
+    private String relacionclima;
+    @Column(length = 600)
+    private String fotografoecosistema;
+    @Column(length = 600)
+    private String lugarecosistema;
+    @Column(length = 600)
+    private String fotografocartografia;
+    @Column(length = 600)
+    private String fuentecartografia;
+    @Column(length = 600)
+    private String escalacartografia;
+    @Column(length = 600)
+    private String lugarcartografia;
+    @Column(length = 600)
+    private String creencias;
+    @Column(length = 600)
+    private String rituales;
+    @Column(length = 600)
+    private String semiotica;
+    @Column(length = 600)
+    private String gastronomia;
+    
+    @Lob
+	@JsonIgnore
+    @Column(name = "FOTOECOSISTEMA")
+    private byte[] fotoecosistema;
+    @Lob
+	@JsonIgnore
+    @Column(name = "FOTOCARTOGRAFIA")
+    private byte[] fotocartografia;
 
     public Piezaentomologicadetalle() {
     }
@@ -344,8 +391,162 @@ public class Piezaentomologicadetalle implements Serializable {
     public void setPiezamuseableid(Piezamuseable piezamuseableid) {
         this.piezamuseableid = piezamuseableid;
     }
+    
+    
 
-    @Override
+    public String getMetodologiarecoleccion() {
+		return metodologiarecoleccion;
+	}
+
+	public void setMetodologiarecoleccion(String metodologiarecoleccion) {
+		this.metodologiarecoleccion = metodologiarecoleccion;
+	}
+
+	public String getMaterialesutilizados() {
+		return materialesutilizados;
+	}
+
+	public void setMaterialesutilizados(String materialesutilizados) {
+		this.materialesutilizados = materialesutilizados;
+	}
+
+	public String getPermisos() {
+		return permisos;
+	}
+
+	public void setPermisos(String permisos) {
+		this.permisos = permisos;
+	}
+
+	public String getAnalisisgeografico() {
+		return analisisgeografico;
+	}
+
+	public void setAnalisisgeografico(String analisisgeografico) {
+		this.analisisgeografico = analisisgeografico;
+	}
+
+	public String getTipoecosistema() {
+		return tipoecosistema;
+	}
+
+	public void setTipoecosistema(String tipoecosistema) {
+		this.tipoecosistema = tipoecosistema;
+	}
+
+	public String getComportamiento() {
+		return comportamiento;
+	}
+
+	public void setComportamiento(String comportamiento) {
+		this.comportamiento = comportamiento;
+	}
+
+	public String getRelacionclima() {
+		return relacionclima;
+	}
+
+	public void setRelacionclima(String relacionclima) {
+		this.relacionclima = relacionclima;
+	}
+
+	public String getFotografoecosistema() {
+		return fotografoecosistema;
+	}
+
+	public void setFotografoecosistema(String fotografoecosistema) {
+		this.fotografoecosistema = fotografoecosistema;
+	}
+
+	public String getLugarecosistema() {
+		return lugarecosistema;
+	}
+
+	public void setLugarecosistema(String lugarecosistema) {
+		this.lugarecosistema = lugarecosistema;
+	}
+
+	public String getFotografocartografia() {
+		return fotografocartografia;
+	}
+
+	public void setFotografocartografia(String fotografocartografia) {
+		this.fotografocartografia = fotografocartografia;
+	}
+
+	public String getFuentecartografia() {
+		return fuentecartografia;
+	}
+
+	public void setFuentecartografia(String fuentecartografia) {
+		this.fuentecartografia = fuentecartografia;
+	}
+
+	public String getEscalacartografia() {
+		return escalacartografia;
+	}
+
+	public void setEscalacartografia(String escalacartografia) {
+		this.escalacartografia = escalacartografia;
+	}
+
+	public String getLugarcartografia() {
+		return lugarcartografia;
+	}
+
+	public void setLugarcartografia(String lugarcartografia) {
+		this.lugarcartografia = lugarcartografia;
+	}
+
+	public String getCreencias() {
+		return creencias;
+	}
+
+	public void setCreencias(String creencias) {
+		this.creencias = creencias;
+	}
+
+	public String getRituales() {
+		return rituales;
+	}
+
+	public void setRituales(String rituales) {
+		this.rituales = rituales;
+	}
+
+	public String getSemiotica() {
+		return semiotica;
+	}
+
+	public void setSemiotica(String semiotica) {
+		this.semiotica = semiotica;
+	}
+
+	public String getGastronomia() {
+		return gastronomia;
+	}
+
+	public void setGastronomia(String gastronomia) {
+		this.gastronomia = gastronomia;
+	}
+
+	public byte[] getFotoecosistema() {
+		return fotoecosistema;
+	}
+
+	public void setFotoecosistema(byte[] fotoecosistema) {
+		this.fotoecosistema = fotoecosistema;
+	}
+
+	public byte[] getFotocartografia() {
+		return fotocartografia;
+	}
+
+	public void setFotocartografia(byte[] fotocartografia) {
+		this.fotocartografia = fotocartografia;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (detalleid != null ? detalleid.hashCode() : 0);
