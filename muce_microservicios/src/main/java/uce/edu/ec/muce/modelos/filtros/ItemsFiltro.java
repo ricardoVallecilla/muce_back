@@ -5,6 +5,8 @@ public class ItemsFiltro {
 	private Long museoId;
 	private Long grupoId;
 	private Long categoriaId;
+	private int pagina;
+	private int registros;
 	
 	public Long getMuseoId() {
 		return museoId;
@@ -23,6 +25,18 @@ public class ItemsFiltro {
 	}
 	public void setCategoriaId(Long categoriaId) {
 		this.categoriaId = categoriaId;
+	}
+	public int getPagina() {
+		return pagina;
+	}
+	public void setPagina(int pagina) {
+		this.pagina = pagina;
+	}
+	public int getRegistros() {
+		return registros;
+	}
+	public void setRegistros(int registros) {
+		this.registros = registros;
 	}
 	
 	
