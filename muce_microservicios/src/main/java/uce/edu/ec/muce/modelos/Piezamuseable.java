@@ -260,6 +260,21 @@ public class Piezamuseable implements Serializable {
     private String fotografo;
     @Column(length = 600)
     private String fotografialugar;
+    
+    @Lob
+    @JsonIgnore
+    @Column(name = "FOTOGRAFIADOS")
+    private byte[] fotografiados;
+    
+    @Lob
+    @JsonIgnore
+    @Column(name = "FOTOGRAFIATRES")
+    private byte[] fotografiatres;
+    
+    @Lob
+    @JsonIgnore
+    @Column(name = "FOTOGRAFIACUATRO")
+    private byte[] fotografiacuatro;
 
     public Piezamuseable() {
     }
@@ -753,6 +768,32 @@ public class Piezamuseable implements Serializable {
 
 	public void setFotografialugar(String fotografialugar) {
 		this.fotografialugar = fotografialugar;
+	}
+	
+	
+
+	public byte[] getFotografiados() {
+		return fotografiados;
+	}
+
+	public void setFotografiados(byte[] fotografiados) {
+		this.fotografiados = fotografiados;
+	}
+
+	public byte[] getFotografiatres() {
+		return fotografiatres;
+	}
+
+	public void setFotografiatres(byte[] fotografiatres) {
+		this.fotografiatres = fotografiatres;
+	}
+
+	public byte[] getFotografiacuatro() {
+		return fotografiacuatro;
+	}
+
+	public void setFotografiacuatro(byte[] fotografiacuatro) {
+		this.fotografiacuatro = fotografiacuatro;
 	}
 
 	@Override

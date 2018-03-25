@@ -110,10 +110,16 @@ public class MovimientoService extends AbstracService<MovimientoRepositorio, Mov
 
 	}
 
-	@GetMapping("/museo/{id}")
+	@GetMapping("/museo/{id}/{first}/{rows}")
 	@ResponseBody
-	public CompletableFuture<List<Movimiento>> movimientosMuseoId(@PathVariable("id") Long id) {
-		return CompletableFuture.completedFuture(repo.movimientosMuseoId(id));
+	public CompletableFuture<List<Movimiento>> movimientosMuseoId(@PathVariable("id") Long id,@PathVariable("first") int first,@PathVariable("rows") int rows) {
+		return CompletableFuture.completedFuture(repo.movimientosMuseoId(id,first,rows));
+
+	}
+	@GetMapping("/museo/count/{id}")
+	@ResponseBody
+	public CompletableFuture<Integer> countMovimientosMuseoId(@PathVariable("id") Long id) {
+		return CompletableFuture.completedFuture(repo.cantidadMovimientosMuseoId(id));
 
 	}
 	

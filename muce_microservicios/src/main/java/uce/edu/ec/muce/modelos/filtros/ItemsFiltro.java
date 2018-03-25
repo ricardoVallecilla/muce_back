@@ -7,6 +7,7 @@ public class ItemsFiltro {
 	private Long categoriaId;
 	private int pagina;
 	private int registros;
+	private String texto;
 	
 	public Long getMuseoId() {
 		return museoId;
@@ -37,6 +38,12 @@ public class ItemsFiltro {
 	}
 	public void setRegistros(int registros) {
 		this.registros = registros;
+	}
+	public String getTexto() {
+		return texto;
+	}
+	public void setTexto(String texto) {
+		this.texto = texto;
 	}
 	
 	

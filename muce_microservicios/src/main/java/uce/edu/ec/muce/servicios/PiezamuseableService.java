@@ -101,71 +101,41 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 		PiezaDetalle detalle = mapper.readValue(detalleStr, PiezaDetalle.class);
 		PiezaDetalle detalleGuardado = new PiezaDetalle();
 		Piezamuseable pm = null;
+		
+
+
+		
+		
 		switch (tipo) {
 
 		case 1:
-			if (file != null) {
-
-				detalle.getPiezaarqueologicadetalle().getPiezamuseableid().setFotografia(file.getBytes());
-			} else {
-				detalle.getPiezaarqueologicadetalle().getPiezamuseableid().setFotografia(
-						repo.findOne(detalle.getPiezaarqueologicadetalle().getPiezamuseableid().getPiezamuseableid())
-								.getFotografia());
-			}
+			
+			detalle.getPiezaarqueologicadetalle().setPiezamuseableid(setearFotos(file,detalle.getPiezaarqueologicadetalle().getPiezamuseableid()));		
 			Piezaarqueologicadetalle pa = arqueologica.save(detalle.getPiezaarqueologicadetalle());
 			pm = pa.getPiezamuseableid();
 			break;
 		case 2:
-			if (file != null) {
-
-				detalle.getPiezabotanicadetalle().getPiezamuseableid().setFotografia(file.getBytes());
-			} else {
-				detalle.getPiezabotanicadetalle().getPiezamuseableid()
-						.setFotografia(repo
-								.findOne(detalle.getPiezabotanicadetalle().getPiezamuseableid().getPiezamuseableid())
-								.getFotografia());
-			}
-
+			detalle.getPiezabotanicadetalle().setPiezamuseableid(setearFotos(file,detalle.getPiezabotanicadetalle().getPiezamuseableid()));
+			
 			Piezabotanicadetalle pb = botanica.save(detalle.getPiezabotanicadetalle());
 			pm = pb.getPiezamuseableid();
 			break;
 		// entomologia
 		case 3:
 
-			if (file != null) {
-
-				detalle.getPiezaentomologicadetalle().getPiezamuseableid().setFotografia(file.getBytes());
-			} else {
-				detalle.getPiezaentomologicadetalle().getPiezamuseableid().setFotografia(
-						repo.findOne(detalle.getPiezaentomologicadetalle().getPiezamuseableid().getPiezamuseableid())
-								.getFotografia());
-			}
-
+			detalle.getPiezaentomologicadetalle().setPiezamuseableid(setearFotos(file,detalle.getPiezaentomologicadetalle().getPiezamuseableid()));
 			Piezaentomologicadetalle pe = entomologica.save(detalle.getPiezaentomologicadetalle());
 			pm = pe.getPiezamuseableid();
 			break;
 
 		case 5:
-			if (file != null) {
-				detalle.getPiezafotograficadetalle().getPiezamuseableid().setFotografia(file.getBytes());
-			} else {
-				detalle.getPiezafotograficadetalle().getPiezamuseableid()
-						.setFotografia(repo
-								.findOne(detalle.getPiezafotograficadetalle().getPiezamuseableid().getPiezamuseableid())
-								.getFotografia());
-			}
+			detalle.getPiezafotograficadetalle().setPiezamuseableid(setearFotos(file,detalle.getPiezafotograficadetalle().getPiezamuseableid()));
+			
 			Piezafotograficadetalle pf = fotografica.save(detalle.getPiezafotograficadetalle());
 			pm = pf.getPiezamuseableid();
 
 		case 6:
-			if (file != null) {
-
-				detalle.getPiezainstrumentaldetalle().getPiezamuseableid().setFotografia(file.getBytes());
-			} else {
-				detalle.getPiezainstrumentaldetalle().getPiezamuseableid().setFotografia(
-						repo.findOne(detalle.getPiezainstrumentaldetalle().getPiezamuseableid().getPiezamuseableid())
-								.getFotografia());
-			}
+			detalle.getPiezainstrumentaldetalle().setPiezamuseableid(setearFotos(file,detalle.getPiezainstrumentaldetalle().getPiezamuseableid()));
 
 			Piezainstrumentaldetalle pi = instrumental.save(detalle.getPiezainstrumentaldetalle());
 			pm = pi.getPiezamuseableid();
@@ -173,40 +143,20 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 
 		case 7:
 			// geologia
-			if (file != null) {
-				detalle.getPiezageologicadetalle().getPiezamuseableid().setFotografia(file.getBytes());
-			} else {
-				detalle.getPiezageologicadetalle().getPiezamuseableid()
-						.setFotografia(repo
-								.findOne(detalle.getPiezageologicadetalle().getPiezamuseableid().getPiezamuseableid())
-								.getFotografia());
-			}
+			detalle.getPiezageologicadetalle().setPiezamuseableid(setearFotos(file,detalle.getPiezageologicadetalle().getPiezamuseableid()));
 			Piezageologicadetalle pg = geologica.save(detalle.getPiezageologicadetalle());
 			pm = pg.getPiezamuseableid();
 			break;
 
 		case 8:
 			// paleontologia
-			if (file != null) {
-				detalle.getPiezapaleontologicadetalle().getPiezamuseableid().setFotografia(file.getBytes());
-			} else {
-				detalle.getPiezapaleontologicadetalle().getPiezamuseableid().setFotografia(
-						repo.findOne(detalle.getPiezapaleontologicadetalle().getPiezamuseableid().getPiezamuseableid())
-								.getFotografia());
-			}
+			detalle.getPiezapaleontologicadetalle().setPiezamuseableid(setearFotos(file,detalle.getPiezapaleontologicadetalle().getPiezamuseableid()));
 			Piezapaleontologicadetalle pp = peleontologica.save(detalle.getPiezapaleontologicadetalle());
 			pm = pp.getPiezamuseableid();
 			break;
 		case 9:
 			// zoologia
-			if (file != null) {
-				detalle.getPiezazoologicadetalle().getPiezamuseableid().setFotografia(file.getBytes());
-			} else {
-				detalle.getPiezazoologicadetalle().getPiezamuseableid()
-						.setFotografia(repo
-								.findOne(detalle.getPiezazoologicadetalle().getPiezamuseableid().getPiezamuseableid())
-								.getFotografia());
-			}
+			detalle.getPiezazoologicadetalle().setPiezamuseableid(setearFotos(file,detalle.getPiezazoologicadetalle().getPiezamuseableid()));
 			Piezazoologicadetalle pz = zoologica.save(detalle.getPiezazoologicadetalle());
 			pm = pz.getPiezamuseableid();
 			break;
@@ -242,6 +192,35 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 		return detalleGuardado;
 	}
 
+	
+	private Piezamuseable setearFotos(MultipartFile file,Piezamuseable detalle) throws IOException {
+		
+		if (detalle.getPiezamuseableid()==null && file!=null) {
+			detalle.setFotografia(file.getBytes());
+			return detalle;
+		}else if(detalle.getPiezamuseableid()!=null && file!=null) {
+			Piezamuseable conFotos=repo.getOne(detalle.getPiezamuseableid());
+			detalle.setFotografia(file.getBytes());
+			detalle.setFotografiados(conFotos.getFotografiados());
+			detalle.setFotografiatres(conFotos.getFotografiatres());
+			detalle.setFotografiacuatro(conFotos.getFotografiacuatro());
+			
+			return detalle;
+		}else if(detalle.getPiezamuseableid()!=null && file==null) {
+			Piezamuseable conFotos=repo.getOne(detalle.getPiezamuseableid());
+			detalle.setFotografia(conFotos.getFotografia());
+			detalle.setFotografiados(conFotos.getFotografiados());
+			detalle.setFotografiatres(conFotos.getFotografiatres());
+			detalle.setFotografiacuatro(conFotos.getFotografiacuatro());
+			
+			return detalle;
+		}else {
+			return detalle;
+		}
+		
+		
+		
+	}
 	@RequestMapping(value = "/catalogacion", method = RequestMethod.POST)
 	@ResponseBody
 	@Transactional
@@ -255,10 +234,7 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 		switch (tipo) {
 
 		case 1:
-			detalle.getPiezaarqueologicadetalle().getPiezamuseableid()
-					.setFotografia(repo
-							.findOne(detalle.getPiezaarqueologicadetalle().getPiezamuseableid().getPiezamuseableid())
-							.getFotografia());
+			detalle.getPiezaarqueologicadetalle().setPiezamuseableid(setearFotos(null,detalle.getPiezaarqueologicadetalle().getPiezamuseableid()));				
 			Piezaarqueologicadetalle paTmp = arqueologica.getOne(detalle.getPiezaarqueologicadetalle().getDetalleid());
 			detalle.getPiezaarqueologicadetalle().setFotografiayacimiento(paTmp.getFotografiayacimiento());
 			detalle.getPiezaarqueologicadetalle().setFotoyacimientoplano(paTmp.getFotoyacimientoplano());
@@ -266,20 +242,14 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 			pm = pa.getPiezamuseableid();
 			break;
 		case 2:
-			detalle.getPiezabotanicadetalle().getPiezamuseableid().setFotografia(
-					repo.findOne(detalle.getPiezabotanicadetalle().getPiezamuseableid().getPiezamuseableid())
-							.getFotografia());
-
+			detalle.getPiezabotanicadetalle().setPiezamuseableid(setearFotos(null,detalle.getPiezabotanicadetalle().getPiezamuseableid()));
 			Piezabotanicadetalle pb = botanica.save(detalle.getPiezabotanicadetalle());
 			pm = pb.getPiezamuseableid();
 			break;
 
 		case 3:
 
-			detalle.getPiezaentomologicadetalle().getPiezamuseableid()
-					.setFotografia(repo
-							.findOne(detalle.getPiezaentomologicadetalle().getPiezamuseableid().getPiezamuseableid())
-							.getFotografia());
+			detalle.getPiezaentomologicadetalle().setPiezamuseableid(setearFotos(null,detalle.getPiezaentomologicadetalle().getPiezamuseableid()));
 			Piezaentomologicadetalle peTmp = entomologica.getOne(detalle.getPiezaentomologicadetalle().getDetalleid());
 			detalle.getPiezaentomologicadetalle().setFotoecosistema(peTmp.getFotoecosistema());
 			detalle.getPiezaentomologicadetalle().setFotocartografia(peTmp.getFotocartografia());
@@ -288,18 +258,12 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 			break;
 
 		case 5:
-			detalle.getPiezafotograficadetalle().getPiezamuseableid().setFotografia(
-					repo.findOne(detalle.getPiezafotograficadetalle().getPiezamuseableid().getPiezamuseableid())
-							.getFotografia());
+			detalle.getPiezafotograficadetalle().setPiezamuseableid(setearFotos(null,detalle.getPiezafotograficadetalle().getPiezamuseableid()));
 			Piezafotograficadetalle pf = fotografica.save(detalle.getPiezafotograficadetalle());
 			pm = pf.getPiezamuseableid();
 
 		case 6:
-			detalle.getPiezainstrumentaldetalle().getPiezamuseableid()
-					.setFotografia(repo
-							.findOne(detalle.getPiezainstrumentaldetalle().getPiezamuseableid().getPiezamuseableid())
-							.getFotografia());
-
+			detalle.getPiezainstrumentaldetalle().setPiezamuseableid(setearFotos(null,detalle.getPiezainstrumentaldetalle().getPiezamuseableid()));
 			Piezainstrumentaldetalle piTmp = instrumental.getOne(detalle.getPiezainstrumentaldetalle().getDetalleid());
 			detalle.getPiezainstrumentaldetalle().setFotografoplanos(piTmp.getFotografoplanos());
 			detalle.getPiezainstrumentaldetalle().setFotoregistros(piTmp.getFotoregistros());
@@ -310,27 +274,20 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 
 		case 7:
 			// geologia
-			detalle.getPiezageologicadetalle().getPiezamuseableid().setFotografia(
-					repo.findOne(detalle.getPiezageologicadetalle().getPiezamuseableid().getPiezamuseableid())
-							.getFotografia());
+			detalle.getPiezageologicadetalle().setPiezamuseableid(setearFotos(null,detalle.getPiezageologicadetalle().getPiezamuseableid()));
 			Piezageologicadetalle pg = geologica.save(detalle.getPiezageologicadetalle());
 			pm = pg.getPiezamuseableid();
 			break;
 
 		case 8:
 			// paleontologia
-			detalle.getPiezapaleontologicadetalle().getPiezamuseableid()
-					.setFotografia(repo
-							.findOne(detalle.getPiezapaleontologicadetalle().getPiezamuseableid().getPiezamuseableid())
-							.getFotografia());
+			detalle.getPiezapaleontologicadetalle().setPiezamuseableid(setearFotos(null,detalle.getPiezapaleontologicadetalle().getPiezamuseableid()));
 			Piezapaleontologicadetalle pp = peleontologica.save(detalle.getPiezapaleontologicadetalle());
 			pm = pp.getPiezamuseableid();
 			break;
 		case 9:
 			// zoologia
-			detalle.getPiezazoologicadetalle().getPiezamuseableid().setFotografia(
-					repo.findOne(detalle.getPiezazoologicadetalle().getPiezamuseableid().getPiezamuseableid())
-							.getFotografia());
+			detalle.getPiezazoologicadetalle().setPiezamuseableid(setearFotos(null,detalle.getPiezazoologicadetalle().getPiezamuseableid()));
 			Piezazoologicadetalle pz = zoologica.save(detalle.getPiezazoologicadetalle());
 			pm = pz.getPiezamuseableid();
 			break;
@@ -374,7 +331,8 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 		switch (tipo) {
 		// actualizar foto piezaMuseable
 		case 1:
-
+			foto = repo.getOne(id).getFotografia();
+			
 			break;
 		// get foto arqueologia yacimiento
 		case 2:
@@ -408,7 +366,18 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 		case 8:
 			foto = instrumental.getOne(id).getFotoinstructivo();
 			break;
-
+			// get pieza museable foto dos
+		case 9:
+			foto = repo.getOne(id).getFotografiados();
+			break;
+			// get pieza museable foto tres
+		case 10:
+			foto = repo.getOne(id).getFotografiatres();
+			break;
+			// get pieza museable foto cuatro
+		case 11:
+			foto = repo.getOne(id).getFotografiatres();
+			break;
 		default:
 			break;
 		}
@@ -479,6 +448,26 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 			i3.setFotoinstructivo(file.getBytes());
 			instrumental.save(i3);
 			break;
+		//fotografia dos pieza museable
+		case 9:
+			Piezamuseable dos = repo.getOne(id);
+			dos.setFotografiados(file.getBytes());
+			repo.save(dos);
+			
+			break;
+		//fotografia tres pieza museable
+		case 10:
+			Piezamuseable tres = repo.getOne(id);
+			tres.setFotografiatres(file.getBytes());
+			repo.save(tres);
+			break;
+		//fotografia cuatro pieza museable
+		case 11:
+			Piezamuseable cuatro = repo.getOne(id);
+			cuatro.setFotografiacuatro(file.getBytes());
+			repo.save(cuatro);
+			break;
+		
 
 		default:
 			break;
