@@ -35,8 +35,6 @@ import uce.edu.ec.muce.intefaces.PiezamuseablecatalogoRepositorio;
 import uce.edu.ec.muce.intefaces.PiezapaleontologicadetalleRepositorio;
 import uce.edu.ec.muce.intefaces.PiezazoologicadetalleRepositorio;
 import uce.edu.ec.muce.modelos.Estadogeneralbien;
-import uce.edu.ec.muce.modelos.Piezaarqueologicadetalle;
-import uce.edu.ec.muce.modelos.Piezabotanicadetalle;
 import uce.edu.ec.muce.modelos.Piezaentomologicadetalle;
 import uce.edu.ec.muce.modelos.Piezafotograficadetalle;
 import uce.edu.ec.muce.modelos.Piezageologicadetalle;
