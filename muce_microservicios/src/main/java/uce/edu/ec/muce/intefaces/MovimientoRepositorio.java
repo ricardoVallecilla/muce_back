@@ -2,9 +2,9 @@ package uce.edu.ec.muce.intefaces;
 
 import java.util.List;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-
 import uce.edu.ec.muce.modelos.Movimiento;
 
 
@@ -34,5 +34,9 @@ public interface MovimientoRepositorio extends JpaRepository<Movimiento, Long> {
 	
 	@Query("SELECT t FROM Movimiento t , MovimientoPieza mp  where t.movimientoid = mp.movimientopiezaPK.movimientoid and mp.movimientopiezaPK.itemid  = ?1  order by t.fechamovimiento desc ") 
 	List<Movimiento> movimientosItemId(Long itemid);
+	
+	@Cacheable("pendientesGeneral")
+	@Query("SELECT t FROM Movimiento t where (t.museoid = ?1  or t.museoreceptorid=?1) and t.tipomovimientoid.catalogoid in (?2) and t.movimientorelacionadoid is null  order by t.fechamovimiento desc ") 
+	List<Movimiento> pendientesGeneral(Long museoid,Long[] estaos);
 	
 }

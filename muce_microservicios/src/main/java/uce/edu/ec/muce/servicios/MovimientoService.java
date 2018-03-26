@@ -23,6 +23,7 @@ import uce.edu.ec.muce.intefaces.MovimientoRepositorio;
 import uce.edu.ec.muce.modelos.Item;
 import uce.edu.ec.muce.modelos.Movimiento;
 import uce.edu.ec.muce.modelos.MovimientoPieza;
+import uce.edu.ec.muce.modelos.filtros.MovimientoPendientesFiltro;
 import uce.edu.ec.muce.modelos.filtros.MovimientoPiezaIngreso;
 
 @Controller
@@ -71,6 +72,14 @@ public class MovimientoService extends AbstracService<MovimientoRepositorio, Mov
 
 		return CompletableFuture.completedFuture(m);
 
+	}
+	
+	@PostMapping("/pendientes/general")
+	@ResponseBody
+	public CompletableFuture<List<Movimiento>> pendientes(@Valid @RequestBody MovimientoPendientesFiltro body){
+		
+		return CompletableFuture.completedFuture(repo.pendientesGeneral(body.getMuseoid(), body.getEstados()));
+		
 	}
 
 	@PostMapping("/devolucion/piezas")
