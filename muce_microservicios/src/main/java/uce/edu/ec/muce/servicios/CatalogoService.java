@@ -24,17 +24,35 @@ import uce.edu.ec.muce.modelos.Catalogo;
 public class CatalogoService extends AbstracService<CatalogoRepositorio, Catalogo> {	
 	
 	
-	@GetMapping("/padres")
+	@GetMapping("/padres/{first}/{rows}")
 	@ResponseBody
-	public CompletableFuture<List<Catalogo>> filtro() {
-		return CompletableFuture.completedFuture(repo.catalogosPadres());
+	public CompletableFuture<List<Catalogo>> filtro(@PathVariable("first") int first,@PathVariable("rows") int rows) {
+		int min=first+1;
+		int max=first+rows;
+		return CompletableFuture.completedFuture(repo.catalogosPadres(min,max));
 	}
 	
-	@GetMapping("/hijos/{id}")
+	
+	@GetMapping("/padres/count")
 	@ResponseBody
-	public CompletableFuture<List<Catalogo>> findByPadreId(@PathVariable("id") Long id) {
+	public CompletableFuture<Integer> countPadres() {
 		
-		return CompletableFuture.completedFuture(repo.findByPadreId(id));
+		return CompletableFuture.completedFuture(repo.cantidadPadres());
+	}
+	
+	@GetMapping("/hijos/count/{padreid}")
+	@ResponseBody
+	public CompletableFuture<Integer> countHijos(@PathVariable("padreid") Long padreid) {
+		
+		return CompletableFuture.completedFuture(repo.cantidadHijos(padreid));
+	}
+	
+	@GetMapping("/hijos/{id}/{first}/{rows}")
+	@ResponseBody
+	public CompletableFuture<List<Catalogo>> findByPadreId(@PathVariable("id") Long id,@PathVariable("first") int first,@PathVariable("rows") int rows) {
+		int min=first+1;
+		int max=first+rows;
+		return CompletableFuture.completedFuture(repo.findByPadreId(id,min,max));
 	}
 	
 	

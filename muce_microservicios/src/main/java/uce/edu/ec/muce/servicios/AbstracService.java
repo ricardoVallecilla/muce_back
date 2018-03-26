@@ -55,6 +55,11 @@ public abstract class AbstracService<T extends JpaRepository<E, Long>, E> {
 
 	}
 
-	
+	@GetMapping("/count")
+	@ResponseBody
+	public Long cantidad() {
+		
+		return repo.count();
+	}
 
 }

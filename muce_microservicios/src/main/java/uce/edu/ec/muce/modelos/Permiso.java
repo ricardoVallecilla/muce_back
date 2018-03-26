@@ -36,18 +36,18 @@ public class Permiso implements Serializable {
     private Long permisoid;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "NOMBRE", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "NOMBRE", nullable = false, length = 600)
     private String nombre;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "DETALLE", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "DETALLE", nullable = false, length = 600)
     private String detalle;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "URL", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "URL", nullable = false, length = 600)
     private String url;
    
     public Permiso() {

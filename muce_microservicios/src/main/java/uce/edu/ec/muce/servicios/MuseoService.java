@@ -15,7 +15,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import uce.edu.ec.muce.intefaces.MuseoRepositorio;
 import uce.edu.ec.muce.modelos.Museo;
-import uce.edu.ec.muce.modelos.Piezainstrumentaldetalle;
 
 @Controller
 @RequestMapping("/museo")

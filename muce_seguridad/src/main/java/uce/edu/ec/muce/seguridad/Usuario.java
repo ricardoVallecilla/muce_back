@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "usuario", catalog = "", schema = "MUCE")
@@ -43,13 +43,14 @@ public class Usuario implements UserDetails {
 	@Column(name = "nombres", nullable = false)
 	private String  nombres;
 	
-	@JsonIgnore
+	
 	@JoinColumn(name = "ROLID", referencedColumnName = "ROLID")
     @OneToOne
     private Rol rolId;
 	
 	@JoinColumn(name = "MUSEOID", referencedColumnName = "MUSEOID")
     @OneToOne
+    @JsonManagedReference
     private Museo museoId;
 	
 

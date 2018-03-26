@@ -20,6 +20,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlTransient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  *
  * @author Usuario
@@ -43,6 +45,7 @@ public class Rol implements Serializable {
     @Size(max = 256)
     @Column(name = "DESCRIPCION", length = 256)
     private String descripcion;
+    @JsonIgnore
     @ManyToMany(mappedBy = "rolSet")
     private Set<Permiso> permisoSet;
    

@@ -24,6 +24,7 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  *
@@ -32,6 +33,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "PIEZAMUSEABLE", catalog = "", schema = "MUCE")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonInclude(JsonInclude.Include.NON_NULL )
 public class Piezamuseable implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -50,51 +52,51 @@ public class Piezamuseable implements Serializable {
     private String codigomuseo;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "CONTENEDOR", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "CONTENEDOR", length = 600)
     private String contenedor;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "DIRECCION", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "DIRECCION", length = 600)
     private String direccion;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "DIRECCIONELECTRONICA", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "DIRECCIONELECTRONICA", length = 600)
     private String direccionelectronica;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "NUMERO", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "NUMERO", length = 600)
     private String numero;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "TELEFONO", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "TELEFONO", length = 600)
     private String telefono;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "DISPOSICIONCONTENEDOR", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "DISPOSICIONCONTENEDOR", length = 600)
     private String disposicioncontenedor;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "RESPONSABLE", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "RESPONSABLE", length = 600)
     private String responsable;
     
     
     @Size(min = 1, max = 15)
     @Column(name = "RESPONSABLECI", length = 15)
     private String responsableci;
-    @Size(max = 256)
-    @Column(name = "ELEMENTOSEXTRANOS", length = 256)
+    @Size(max = 600)
+    @Column(name = "ELEMENTOSEXTRANOS", length = 600)
     private String elementosextranos;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "OBSERVACIONES", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "OBSERVACIONES", length = 600)
     private String observaciones;
     
     
@@ -109,23 +111,23 @@ public class Piezamuseable implements Serializable {
     private String historiaitinerancia;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "ENTIDADINVESTIGADORA", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "ENTIDADINVESTIGADORA", length = 600)
     private String entidadinvestigadora;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "INVENTARIADOPOR", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "INVENTARIADOPOR", length = 600)
     private String inventariadopor;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "REVISADOPOR", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "REVISADOPOR", length = 600)
     private String revisadopor;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "APROBADOPOR", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "APROBADOPOR", length = 600)
     private String aprobadopor;
     
     
@@ -144,11 +146,11 @@ public class Piezamuseable implements Serializable {
     private Date fechaaprobacion;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "REGISTROFOTOGRAFICOPOR", length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "REGISTROFOTOGRAFICOPOR", length = 600)
     private String registrofotograficopor;
-    @Size(max = 256)
-    @Column(name = "USUARIOREGISTROID", length = 256)
+    @Size(max = 600)
+    @Column(name = "USUARIOREGISTROID", length = 600)
     private String usuarioregistroid;
     @Column(name = "FECHAREGISTRO")
     @Temporal(TemporalType.TIMESTAMP)
@@ -228,8 +230,51 @@ public class Piezamuseable implements Serializable {
 
     @Column(name = "MONTAJE")    
     private Boolean montaje;
+    @Column(length = 600)
+    private String usocuando;
+    @Column(length = 600)
+    private String usodonde;
+    @Column(length = 600)
+    private String usocomo;
+    @Column(length = 600)
+    private String usofinalidad;
+    @Column(length = 600)
+    private String usoquien;
+    @Column(length = 600)
+    private String usomanejo;
+    @Column(length = 600)
+    private String materias;
+    @Column(length = 600)
+    private String laboratorios;
+    @Column(length = 600)
+    private String docentes;
+    @Column(length = 600)
+    private String aporte;
+    @Column(length = 600)
+    private String observacionesacademico;
+    @Column(length = 600)
+    private String bibliografias;
+    @Column(length = 600)
+    private String links;
+    @Column(length = 600)
+    private String fotografo;
+    @Column(length = 600)
+    private String fotografialugar;
     
-  
+    @Lob
+    @JsonIgnore
+    @Column(name = "FOTOGRAFIADOS")
+    private byte[] fotografiados;
+    
+    @Lob
+    @JsonIgnore
+    @Column(name = "FOTOGRAFIATRES")
+    private byte[] fotografiatres;
+    
+    @Lob
+    @JsonIgnore
+    @Column(name = "FOTOGRAFIACUATRO")
+    private byte[] fotografiacuatro;
 
     public Piezamuseable() {
     }
@@ -593,19 +638,162 @@ public class Piezamuseable implements Serializable {
 
     public void setProvinciaid(Catalogo provinciaid) {
         this.provinciaid = provinciaid;
-    }
+    }   
 
-  
-   
+    public String getUsocuando() {
+		return usocuando;
+	}
 
-   
+	public void setUsocuando(String usocuando) {
+		this.usocuando = usocuando;
+	}
 
-    public Item getItemid() {
+	public String getUsodonde() {
+		return usodonde;
+	}
+
+	public void setUsodonde(String usodonde) {
+		this.usodonde = usodonde;
+	}
+
+	public String getUsocomo() {
+		return usocomo;
+	}
+
+	public void setUsocomo(String usocomo) {
+		this.usocomo = usocomo;
+	}
+
+	public String getUsofinalidad() {
+		return usofinalidad;
+	}
+
+	public void setUsofinalidad(String usofinalidad) {
+		this.usofinalidad = usofinalidad;
+	}
+
+	public String getUsoquien() {
+		return usoquien;
+	}
+
+	public void setUsoquien(String usoquien) {
+		this.usoquien = usoquien;
+	}
+
+	public String getUsomanejo() {
+		return usomanejo;
+	}
+
+	public void setUsomanejo(String usomanejo) {
+		this.usomanejo = usomanejo;
+	}
+
+	public String getMaterias() {
+		return materias;
+	}
+
+	public void setMaterias(String materias) {
+		this.materias = materias;
+	}
+
+	public String getLaboratorios() {
+		return laboratorios;
+	}
+
+	public void setLaboratorios(String laboratorios) {
+		this.laboratorios = laboratorios;
+	}
+
+	public String getDocentes() {
+		return docentes;
+	}
+
+	public void setDocentes(String docentes) {
+		this.docentes = docentes;
+	}
+
+	public String getAporte() {
+		return aporte;
+	}
+
+	public void setAporte(String aporte) {
+		this.aporte = aporte;
+	}
+
+	public String getObservacionesacademico() {
+		return observacionesacademico;
+	}
+
+	public void setObservacionesacademico(String observacionesacademico) {
+		this.observacionesacademico = observacionesacademico;
+	}
+
+	public String getBibliografias() {
+		return bibliografias;
+	}
+
+	public void setBibliografias(String bibliografias) {
+		this.bibliografias = bibliografias;
+	}
+
+	public String getLinks() {
+		return links;
+	}
+
+	public void setLinks(String links) {
+		this.links = links;
+	}
+
+	public Item getItemid() {
 		return itemid;
 	}
 
 	public void setItemid(Item itemid) {
 		this.itemid = itemid;
+	}
+	
+	
+
+	public String getFotografo() {
+		return fotografo;
+	}
+
+	public void setFotografo(String fotografo) {
+		this.fotografo = fotografo;
+	}
+
+	public String getFotografialugar() {
+		return fotografialugar;
+	}
+
+	public void setFotografialugar(String fotografialugar) {
+		this.fotografialugar = fotografialugar;
+	}
+	
+	
+
+	public byte[] getFotografiados() {
+		return fotografiados;
+	}
+
+	public void setFotografiados(byte[] fotografiados) {
+		this.fotografiados = fotografiados;
+	}
+
+	public byte[] getFotografiatres() {
+		return fotografiatres;
+	}
+
+	public void setFotografiatres(byte[] fotografiatres) {
+		this.fotografiatres = fotografiatres;
+	}
+
+	public byte[] getFotografiacuatro() {
+		return fotografiacuatro;
+	}
+
+	public void setFotografiacuatro(byte[] fotografiacuatro) {
+		this.fotografiacuatro = fotografiacuatro;
 	}
 
 	@Override

@@ -22,8 +22,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  *
@@ -49,13 +49,13 @@ public class Museo implements Serializable {
     private String nombres;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "DESCRIPCION", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "DESCRIPCION", nullable = false, length = 600)
     private String descripcion;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "UBICACION", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "UBICACION", nullable = false, length = 600)
     private String ubicacion;
     @Basic(optional = false)
     @NotNull
@@ -64,11 +64,11 @@ public class Museo implements Serializable {
     private String telefono;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "DIRECTORA", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "DIRECTORA", nullable = false, length = 600)
     private String directora;
-    @Size(max = 256)
-    @Column(name = "USUARIOREGISTROID", length = 256)
+    @Size(max = 600)
+    @Column(name = "USUARIOREGISTROID", length = 600)
     private String usuarioregistroid;
     @Column(name = "FECHAREGISTRO")
     @Temporal(TemporalType.TIMESTAMP)
@@ -76,6 +76,7 @@ public class Museo implements Serializable {
    
     @JoinColumn(name = "CUSTODIOID", referencedColumnName = "user_id", nullable = false)
     @OneToOne(optional = false)
+    @JsonManagedReference
     private Usuario cutodioId;
     
     

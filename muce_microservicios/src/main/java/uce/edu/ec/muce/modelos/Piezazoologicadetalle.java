@@ -23,6 +23,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  *
@@ -31,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "PIEZAZOOLOGICADETALLE", catalog = "", schema = "MUCE")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonInclude(JsonInclude.Include.NON_NULL )
 public class Piezazoologicadetalle implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,18 +46,18 @@ public class Piezazoologicadetalle implements Serializable {
     private Long detalleid;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "NOMBRECIENTIFICO", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "NOMBRECIENTIFICO", nullable = false, length = 600)
     private String nombrecientifico;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "NOMBRECOMUN", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "NOMBRECOMUN", nullable = false, length = 600)
     private String nombrecomun;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "AUTOR", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "AUTOR", nullable = false, length = 600)
     private String autor;
     @Basic(optional = false)
     @NotNull
@@ -84,46 +86,46 @@ public class Piezazoologicadetalle implements Serializable {
     private String peso;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "INSCRIPCIONES", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "INSCRIPCIONES", nullable = false, length = 600)
     private String inscripciones;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "ELEMENTOSRELACIONADOS", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "ELEMENTOSRELACIONADOS", nullable = false, length = 600)
     private String elementosrelacionados;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "DESCRIPCION", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "DESCRIPCION", nullable = false, length = 600)
     private String descripcion;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "LATITUD", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "LATITUD", nullable = false, length = 600)
     private String latitud;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "LONGITUD", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "LONGITUD", nullable = false, length = 600)
     private String longitud;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "LOCALIZACIONPRECISA", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "LOCALIZACIONPRECISA", nullable = false, length = 600)
     private String localizacionprecisa;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "PERSONARECOLECTADORA", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "PERSONARECOLECTADORA", nullable = false, length = 600)
     private String personarecolectadora;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "CIUDADID", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "CIUDADID", nullable = false, length = 600)
     private String ciudadid;
-    @Size(max = 256)
-    @Column(name = "USUARIOREGISTROID", length = 256)
+    @Size(max = 600)
+    @Column(name = "USUARIOREGISTROID", length = 600)
     private String usuarioregistroid;
     @Column(name = "FECHAREGISTRO")
     @Temporal(TemporalType.TIMESTAMP)

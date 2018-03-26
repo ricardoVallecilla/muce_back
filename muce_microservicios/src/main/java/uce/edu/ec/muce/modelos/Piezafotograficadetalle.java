@@ -22,12 +22,17 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  *
  * @author Usuario
  */
 @Entity
 @Table(name = "PIEZAFOTOGRAFICADETALLE", catalog = "", schema = "MUCE")
+@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonInclude(JsonInclude.Include.NON_NULL )
 public class Piezafotograficadetalle implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -41,26 +46,26 @@ public class Piezafotograficadetalle implements Serializable {
     private Long detalleid;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "TITULO", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "TITULO", nullable = false, length = 600)
     private String titulo;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "TEMATICA", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "TEMATICA", nullable = false, length = 600)
     private String tematica;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "TIPOLOGIA", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "TIPOLOGIA", nullable = false, length = 600)
     private String tipologia;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "PROCEDIMIENTO", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "PROCEDIMIENTO", nullable = false, length = 600)
     private String procedimiento;
-    @Size(max = 256)
-    @Column(name = "AUTOR", length = 256)
+    @Size(max = 600)
+    @Column(name = "AUTOR", length = 600)
     private String autor;
     @Basic(optional = false)
     @NotNull
@@ -69,8 +74,8 @@ public class Piezafotograficadetalle implements Serializable {
     private String sigloano;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "FONDO", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "FONDO", nullable = false, length = 600)
     private String fondo;
     @Basic(optional = false)
     @NotNull
@@ -84,21 +89,21 @@ public class Piezafotograficadetalle implements Serializable {
     private String largo;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "INSCRIPCIONES", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "INSCRIPCIONES", nullable = false, length = 600)
     private String inscripciones;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "DESCRIPCION", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "DESCRIPCION", nullable = false, length = 600)
     private String descripcion;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "ELEMENTOSRELACIONADO", nullable = false, length = 256)
+    @Size(min = 1, max = 600)
+    @Column(name = "ELEMENTOSRELACIONADO", nullable = false, length = 600)
     private String elementosrelacionado;
-    @Size(max = 256)
-    @Column(name = "USUARIOREGISTROID", length = 256)
+    @Size(max = 600)
+    @Column(name = "USUARIOREGISTROID", length = 600)
     private String usuarioregistroid;
     @Column(name = "FECHAREGISTRO")
     @Temporal(TemporalType.TIMESTAMP)
