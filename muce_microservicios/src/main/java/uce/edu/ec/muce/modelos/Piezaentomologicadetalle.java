@@ -88,8 +88,8 @@ public class Piezaentomologicadetalle implements Serializable {
     private String etapavida;
     
     
-    @Size(min = 1, max = 600)
-    @Column(name = "DESCRIPCION", length = 600)
+    @Size(min = 1, max = 3000)
+    @Column(name = "DESCRIPCION", length = 3000)
     private String descripcion;
     
     

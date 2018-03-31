@@ -7,7 +7,6 @@ package uce.edu.ec.muce.modelos;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +19,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -39,23 +37,23 @@ public class Catalogo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CATALOGO_SEQ")
     @SequenceGenerator(sequenceName = "catalogo_seq", allocationSize = 1, name = "CATALOGO_SEQ")
-    @Basic(optional = false)
-    @Column(name = "CATALOGOID", nullable = false, precision = 0, scale = -127)
+    
+    @Column(name = "CATALOGOID", precision = 0, scale = -127)
     private Long catalogoid;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @OrderBy
     @Size(min = 1, max = 150)
-    @Column(name = "NOMBRE", nullable = false, length = 150)
+    @Column(name = "NOMBRE", length = 150)
     private String nombre;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "DESCRIPCION", nullable = false, length = 256)
+    @Column(name = "DESCRIPCION", length = 256)
     private String descripcion;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "ACTIVO", nullable = false)
+    
+    
+    @Column(name = "ACTIVO")
     private Boolean activo;
     @Size(max = 256)
     @Column(name = "USUARIOREGISTROID", length = 256)

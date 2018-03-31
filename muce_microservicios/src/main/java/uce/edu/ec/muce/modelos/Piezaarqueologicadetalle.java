@@ -101,8 +101,8 @@ public class Piezaarqueologicadetalle implements Serializable {
 	@Column(name = "INSCRIPCIONES", length = 150)
 	private String inscripciones;
 
-	@Size(min = 1, max = 600)
-	@Column(name = "DESCRIPCION", length = 600)
+	@Size(min = 1, max = 3000)
+	@Column(name = "DESCRIPCION", length = 3000)
 	private String descripcion;
 
 	@Size(min = 1, max = 600)
@@ -117,23 +117,23 @@ public class Piezaarqueologicadetalle implements Serializable {
 	@JoinColumn(name = "PIEZAMUSEABLEID", referencedColumnName = "PIEZAMUSEABLEID")
 	@ManyToOne(cascade = { CascadeType.ALL })
 	private Piezamuseable piezamuseableid;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String elaboracion;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String herramientas;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String decoracion;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String alteracion;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String simbolos;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String semiotico;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String coloresusados;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String coloresprocedencia;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String semioticocolores;
 	@Column(length = 600)
 	private Boolean empirica;
@@ -141,37 +141,37 @@ public class Piezaarqueologicadetalle implements Serializable {
 	private Boolean arqueologia;
 	@Column(length = 600)
 	private String extraccionobservacion;
-	@Column(length = 600)
+	@Column(length = 2000)
 	private String extraccionresponsable;
-	@Column(length = 600)
+	@Column(length = 2000)
 	private String extraccionarqueologo;
-	@Column(length = 600)
+	@Column(length = 2000)
 	private String biografiaarqueologo;
-	@Column(length = 600)
+	@Column(length = 2000)
 	private String publicacionarqueologo;
-	@Column(length = 600)
+	@Column(length = 2000)
 	private String arqueologouniversidad;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String usosocial;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String usoprimario;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String usoalternativo;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String usorestricciones;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String creencias;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String peculiaridades;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String pertenencia;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String usocuando;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String usodonde;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String usocolocacion;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String vida;
 	
 	@JoinColumn(name = "YACIMIENTOPROVINCIAID", referencedColumnName = "CATALOGOID")

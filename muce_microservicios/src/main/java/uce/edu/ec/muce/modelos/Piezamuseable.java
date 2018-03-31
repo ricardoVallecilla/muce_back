@@ -187,6 +187,10 @@ public class Piezamuseable implements Serializable {
     @ManyToOne(optional = false)
     private Catalogo provinciaid;
     
+    @JoinColumn(name = "PROVINCIABIENESID", referencedColumnName = "CATALOGOID")
+    @ManyToOne(optional = true)
+    private Catalogo provinciabienesid;
+    
     
     @JoinColumn(name = "ITEMID", referencedColumnName = "ITEMID")
     @OneToOne
@@ -230,36 +234,45 @@ public class Piezamuseable implements Serializable {
 
     @Column(name = "MONTAJE")    
     private Boolean montaje;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String usocuando;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String usodonde;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String usocomo;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String usofinalidad;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String usoquien;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String usomanejo;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String materias;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String laboratorios;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String docentes;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String aporte;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String observacionesacademico;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String bibliografias;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String links;
     @Column(length = 600)
     private String fotografo;
     @Column(length = 600)
     private String fotografialugar;
+    
+    @Column(length = 200)
+    private String oferente;
+    @Column(length = 200)
+    private String precioadquicicion;
+    @Column(length = 200)
+    private String tasacion;
+    @Column(length = 200)
+    private String seguro;
     
     @Lob
     @JsonIgnore
@@ -794,6 +807,49 @@ public class Piezamuseable implements Serializable {
 
 	public void setFotografiacuatro(byte[] fotografiacuatro) {
 		this.fotografiacuatro = fotografiacuatro;
+	}
+
+	
+	public Catalogo getProvinciabienesid() {
+		return provinciabienesid;
+	}
+
+	public void setProvinciabienesid(Catalogo provinciabienesid) {
+		this.provinciabienesid = provinciabienesid;
+	}
+	
+	
+
+	public String getOferente() {
+		return oferente;
+	}
+
+	public void setOferente(String oferente) {
+		this.oferente = oferente;
+	}
+
+	public String getPrecioadquicicion() {
+		return precioadquicicion;
+	}
+
+	public void setPrecioadquicicion(String precioadquicicion) {
+		this.precioadquicicion = precioadquicicion;
+	}
+
+	public String getTasacion() {
+		return tasacion;
+	}
+
+	public void setTasacion(String tasacion) {
+		this.tasacion = tasacion;
+	}
+
+	public String getSeguro() {
+		return seguro;
+	}
+
+	public void setSeguro(String seguro) {
+		this.seguro = seguro;
 	}
 
 	@Override
