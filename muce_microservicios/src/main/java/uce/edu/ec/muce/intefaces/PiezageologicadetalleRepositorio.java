@@ -14,5 +14,8 @@ public interface PiezageologicadetalleRepositorio extends JpaRepository<Piezageo
 	
 	@Query(value ="SELECT periodo_id,descripcion,estado FROM periodo ", nativeQuery = true)
     List<Object[]> catalogoPeriodos();
+    
+    @Query("SELECT t FROM Piezageologicadetalle t where t.piezamuseableid.piezamuseableid = ?1 ") 
+	List<Piezageologicadetalle> findBypiezaMuseableId(Long piezamuseableid);
 
 }

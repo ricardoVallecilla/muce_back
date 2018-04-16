@@ -35,6 +35,8 @@ import uce.edu.ec.muce.intefaces.PiezamuseablecatalogoRepositorio;
 import uce.edu.ec.muce.intefaces.PiezapaleontologicadetalleRepositorio;
 import uce.edu.ec.muce.intefaces.PiezazoologicadetalleRepositorio;
 import uce.edu.ec.muce.modelos.Estadogeneralbien;
+import uce.edu.ec.muce.modelos.Piezaarqueologicadetalle;
+import uce.edu.ec.muce.modelos.Piezabotanicadetalle;
 import uce.edu.ec.muce.modelos.Piezaentomologicadetalle;
 import uce.edu.ec.muce.modelos.Piezafotograficadetalle;
 import uce.edu.ec.muce.modelos.Piezageologicadetalle;
@@ -97,6 +99,7 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 
 		ObjectMapper mapper = new ObjectMapper();
 		PiezaDetalle detalle = mapper.readValue(detalleStr, PiezaDetalle.class);
+		System.out.println(detalleStr);
 		PiezaDetalle detalleGuardado = new PiezaDetalle();
 		Piezamuseable pm = null;
 		
@@ -128,13 +131,11 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 
 		case 5:
 			detalle.getPiezafotograficadetalle().setPiezamuseableid(setearFotos(file,detalle.getPiezafotograficadetalle().getPiezamuseableid()));
-			
 			Piezafotograficadetalle pf = fotografica.save(detalle.getPiezafotograficadetalle());
 			pm = pf.getPiezamuseableid();
-
+			break;
 		case 6:
 			detalle.getPiezainstrumentaldetalle().setPiezamuseableid(setearFotos(file,detalle.getPiezainstrumentaldetalle().getPiezamuseableid()));
-
 			Piezainstrumentaldetalle pi = instrumental.save(detalle.getPiezainstrumentaldetalle());
 			pm = pi.getPiezamuseableid();
 			break;
