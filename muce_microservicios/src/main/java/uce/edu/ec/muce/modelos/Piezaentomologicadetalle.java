@@ -88,8 +88,8 @@ public class Piezaentomologicadetalle implements Serializable {
     private String etapavida;
     
     
-    @Size(min = 1, max = 600)
-    @Column(name = "DESCRIPCION", length = 600)
+    @Size(min = 1, max = 3000)
+    @Column(name = "DESCRIPCION", length = 3000)
     private String descripcion;
     
     
@@ -133,19 +133,19 @@ public class Piezaentomologicadetalle implements Serializable {
     @JoinColumn(name = "PIEZAMUSEABLEID", referencedColumnName = "PIEZAMUSEABLEID")
     @ManyToOne(cascade = {CascadeType.ALL})
     private Piezamuseable piezamuseableid;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String metodologiarecoleccion;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String materialesutilizados;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String permisos;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String analisisgeografico;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String tipoecosistema;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String comportamiento;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String relacionclima;
     @Column(length = 600)
     private String fotografoecosistema;
@@ -153,19 +153,19 @@ public class Piezaentomologicadetalle implements Serializable {
     private String lugarecosistema;
     @Column(length = 600)
     private String fotografocartografia;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String fuentecartografia;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String escalacartografia;
     @Column(length = 600)
     private String lugarcartografia;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String creencias;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String rituales;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String semiotica;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String gastronomia;
     
     @Lob

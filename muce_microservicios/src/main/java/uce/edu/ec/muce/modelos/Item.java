@@ -7,7 +7,6 @@ package uce.edu.ec.muce.modelos;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +18,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -35,22 +33,22 @@ public class Item implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ITEM_SEQ")
     @SequenceGenerator(sequenceName = "item_seq", allocationSize = 1, name = "ITEM_SEQ")
-    @Basic(optional = false)
     
-    @Column(name = "ITEMID", nullable = false, precision = 0, scale = -127)
+    
+    @Column(name = "ITEMID", precision = 0, scale = -127)
     private Long itemid;
     @Size(max = 100)
     @Column(name = "CODIGOCONTROL", length = 100)
     private String codigocontrol;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "DESCRIPCION", nullable = false, length = 256)
+    @Column(name = "DESCRIPCION", length = 256)
     private String descripcion;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 256)
-    @Column(name = "NOMBRE", nullable = false, length = 256)
+    @Column(name = "NOMBRE", length = 256)
     private String nombre;
     @Size(max = 150)
     @Column(name = "MARCA", length = 150)
@@ -61,9 +59,9 @@ public class Item implements Serializable {
     @Size(max = 50)
     @Column(name = "NUMEROSERIE", length = 50)
     private String numeroserie;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "VALOR", nullable = false, precision = 10, scale = 2)
+    
+    
+    @Column(name = "VALOR", precision = 10, scale = 2)
     private Long valor;
     @Size(max = 50)
     @Column(name = "OTROINGRESO", length = 50)
@@ -75,10 +73,10 @@ public class Item implements Serializable {
     @Column(name = "FECHAADQUISICION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaadquisicion;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 150)
-    @Column(name = "PROCEDENCIA", nullable = false, length = 150)
+    @Column(name = "PROCEDENCIA", length = 150)
     private String procedencia;
     @JoinColumn(name = "TIPOINGRESOID", referencedColumnName = "CATALOGOID")
     @ManyToOne
@@ -89,17 +87,17 @@ public class Item implements Serializable {
     @Size(max = 150)
     @Column(name = "TIPODOCUMENTO", length = 150)
     private String tipodocumento;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "RESTAURADO", nullable = false)
+    
+    
+    @Column(name = "RESTAURADO")
     private Boolean restaurado;
     @Column(name = "FECHARESTAURADO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharestaurado;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 500)
-    @Column(name = "DETALLES", nullable = false, length = 500)
+    @Column(name = "DETALLES", length = 500)
     private String detalles;
     @Size(max = 256)
     @Column(name = "USUARIOREGISTROID", length = 256)

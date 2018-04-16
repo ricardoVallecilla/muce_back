@@ -108,7 +108,7 @@ public class Piezainstrumentaldetalle implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechafabricacion;
     
-    @Column(length = 600)
+    @Column(length = 3000)
     private String datosregistros;
     @Column(length = 600)
     private String fotografoplanos;
@@ -122,11 +122,11 @@ public class Piezainstrumentaldetalle implements Serializable {
     private String lugarinstructivo;
     @Column(length = 600)
     private String pdfinstructivo;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String social;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String inventor;
-    @Column(length = 600)
+    @Column(length = 3000)
     private String historiafabricante;
     @Lob
     @JsonIgnore
