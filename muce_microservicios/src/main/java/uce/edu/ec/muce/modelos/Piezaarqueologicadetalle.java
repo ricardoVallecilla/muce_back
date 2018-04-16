@@ -105,11 +105,11 @@ public class Piezaarqueologicadetalle implements Serializable {
 	@Column(name = "DESCRIPCION", length = 3000)
 	private String descripcion;
 
-	@Size(min = 1, max = 600)
-	@Column(name = "ELEMENTOSRELACIONADO", length = 600)
+	@Size(min = 1, max = 3000)
+	@Column(name = "ELEMENTOSRELACIONADO", length = 3000)
 	private String elementosrelacionado;
-	@Size(max = 600)
-	@Column(name = "USUARIOREGISTROID", length = 600)
+	@Size(max = 3000)
+	@Column(name = "USUARIOREGISTROID", length = 3000)
 	private String usuarioregistroid;
 	@Column(name = "FECHAREGISTRO")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -135,11 +135,11 @@ public class Piezaarqueologicadetalle implements Serializable {
 	private String coloresprocedencia;
 	@Column(length = 3000)
 	private String semioticocolores;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private Boolean empirica;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private Boolean arqueologia;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String extraccionobservacion;
 	@Column(length = 2000)
 	private String extraccionresponsable;
@@ -183,46 +183,46 @@ public class Piezaarqueologicadetalle implements Serializable {
 	@JoinColumn(name = "YACIMIENTOCIUDADID", referencedColumnName = "CATALOGOID")
     @ManyToOne(optional = true)
 	private Catalogo yacimientociudadid;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String yacimientodireccion;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String yacimientolatitud;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String yacimientolongitud;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String yacimientoaltura;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String yacimientocontenedor;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String yacimientomorfologia;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String yacimientoubicacion;
 	@Lob
     @JsonIgnore
     @Column(name = "FOTOGRAFIAYACIMIENTO")
     private byte[]  fotografiayacimiento;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String yacimientofotografo;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String yacimientolugar;
 	@Lob
 	@JsonIgnore
     @Column(name = "FOTOGRAFIAYACIMIENTOPLANO")
     private byte[] fotoyacimientoplano;
 	private String yacimientoarquitecto;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String yacimientoplanoslugar;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String variacionnombre;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String denominacionnativa;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String procedenciamaterial;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String terminonativomaterial;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String terminonativodecoracion;
-	@Column(length = 600)
+	@Column(length = 3000)
 	private String terminonativomanofactura;
 	
 

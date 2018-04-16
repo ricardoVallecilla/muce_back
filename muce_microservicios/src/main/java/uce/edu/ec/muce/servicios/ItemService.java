@@ -1,20 +1,27 @@
 package uce.edu.ec.muce.servicios;
 
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import uce.edu.ec.muce.intefaces.CatalogoRepositorio;
+import uce.edu.ec.muce.intefaces.ItemBajaRepositorio;
 import uce.edu.ec.muce.intefaces.ItemRepositorio;
+import uce.edu.ec.muce.intefaces.PiezamuseableRepositorio;
 import uce.edu.ec.muce.modelos.Item;
+import uce.edu.ec.muce.modelos.ItemBaja;
 import uce.edu.ec.muce.modelos.Piezamuseable;
 import uce.edu.ec.muce.modelos.filtros.ItemsFiltro;
 
@@ -25,6 +32,14 @@ import uce.edu.ec.muce.modelos.filtros.ItemsFiltro;
 @RequestMapping("/item")
 public class ItemService extends AbstracService<ItemRepositorio, Item> {	
 	
+	
+	@Autowired
+	private ItemBajaRepositorio itemBaja;
+	
+
+	
+	@Autowired
+	private CatalogoRepositorio catalogo;
 	
 	@PostMapping("/filtro")
 	@ResponseBody
@@ -94,4 +109,26 @@ public class ItemService extends AbstracService<ItemRepositorio, Item> {
 		else
 			return CompletableFuture.completedFuture(repo.cantidadSoloMuseo(body.getMuseoId(), body.getGrupoId()));	
 	}
+	
+	
+	
+	@GetMapping("/bajas/{id}")
+	@ResponseBody
+	public CompletableFuture<List<ItemBaja>> itemBaja(@PathVariable("id") Long id) {
+		
+		return CompletableFuture.completedFuture(itemBaja.filtro(id));
+	}
+	
+	@PostMapping("/bajas")
+	@ResponseBody
+	public CompletableFuture<ItemBaja> guardarBaja(@Valid @RequestBody ItemBaja body) {
+		
+			Item pm = repo.getOne(body.getItemid());
+			pm.setEstadoid(catalogo.getOne(748L));
+			repo.save(pm);
+			itemBaja.save(body);
+			return CompletableFuture.completedFuture(body);	
+	}
+	
+	
 }
