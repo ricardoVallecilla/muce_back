@@ -12,23 +12,23 @@ import uce.edu.ec.muce.modelos.Catalogo;
 public interface CatalogoRepositorio extends JpaRepository<Catalogo, Long> {
 	
 	@Cacheable("catalogosPadres")
-	@Query(value ="SELECT * FROM (SELECT it.*, row_number() over (ORDER BY it.nombre ASC) line_number  FROM catalogo it"
-	    		+ " where CATALOGOPADREID is null ) "
+	@Query(value ="SELECT * FROM (SELECT it.*, row_number() over (ORDER BY it.ctl_nombre ASC) line_number  FROM catalogo it"
+	    		+ " where ctl_padre_id is null ) "
 	    		+ "WHERE line_number BETWEEN  ?1 AND  ?2  ORDER BY line_number" , nativeQuery = true) 
     List<Catalogo> catalogosPadres(int min,int max);
 	
 	@Cacheable("cantidadPadres")
-	@Query(value ="SELECT count(catalogoid) FROM catalogo where CATALOGOPADREID is null " , nativeQuery = true) 
+	@Query(value ="SELECT count(ctl_id) FROM catalogo where ctl_padre_id is null " , nativeQuery = true) 
     Integer cantidadPadres();
 	
 	@Cacheable("findByPadreId")	
-	@Query(value ="SELECT * FROM (SELECT it.*, row_number() over (ORDER BY it.nombre ASC) line_number  FROM catalogo it"
-    		+ " where CATALOGOPADREID =?1 ) "
+	@Query(value ="SELECT * FROM (SELECT it.*, row_number() over (ORDER BY it.ctl_nombre ASC) line_number  FROM catalogo it"
+    		+ " where ctl_padre_id =?1 ) "
     		+ "WHERE line_number BETWEEN  ?2 AND  ?3  ORDER BY line_number" , nativeQuery = true) 
 	List<Catalogo> findByPadreId(Long padreid,int min,int max);
 	
 	@Cacheable("cantidadHijos")
-	@Query(value ="SELECT count(catalogoid) FROM catalogo where CATALOGOPADREID = ?1 " , nativeQuery = true) 
+	@Query(value ="SELECT count(ctl_id) FROM catalogo where ctl_padre_id = ?1 " , nativeQuery = true) 
     Integer cantidadHijos(Long padreid);
 	
 	@Cacheable("findByListaPadreId")

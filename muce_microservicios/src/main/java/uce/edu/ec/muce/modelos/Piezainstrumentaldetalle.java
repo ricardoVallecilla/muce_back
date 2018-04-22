@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * @author Usuario
  */
 @Entity
-@Table(name = "PIEZAINSTRUMENTALDETALLE", catalog = "", schema = "MUCE")
+@Table(name = "INSTRUMENTAL", catalog = "", schema = "MUCE")
 @JsonIgnoreProperties(ignoreUnknown=true)
 @JsonInclude(JsonInclude.Include.NON_NULL )
 public class Piezainstrumentaldetalle implements Serializable {
@@ -46,97 +46,127 @@ public class Piezainstrumentaldetalle implements Serializable {
     @SequenceGenerator(sequenceName = "Piezainstrumentaldetalle_seq", allocationSize = 1, name = "PIEZAINSTRUMENTALDETALLE_SEQ")
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DETALLEID", nullable = false, precision = 0, scale = -127)
+    @Column(name = "ins_id", nullable = false, precision = 0, scale = -127)
     private Long detalleid;
+    
     @Size(max = 600)
-    @Column(name = "TIPOBIEN", length = 600)
+    @Column(name = "ins_tipo_bien", length = 600)
     private String tipobien;
+    
     @Size(max = 600)
-    @Column(name = "OTRADENOMINACION", length = 600)
+    @Column(name = "ins_otra_denominacion", length = 600)
     private String otradenominacion;
+    
     @Size(max = 600)
-    @Column(name = "TECNICA", length = 600)
+    @Column(name = "ins_tecnica", length = 600)
     private String tecnica;
+    
     @Size(max = 600)
-    @Column(name = "FABRICANTE", length = 600)
+    @Column(name = "ins_fabricante", length = 600)
     private String fabricante;
+    
     @Size(max = 600)
-    @Column(name = "LUGARFABRICACION", length = 600)
+    @Column(name = "ins_lugar_fabricacion", length = 600)
     private String lugarfabricacion;
+    
     @Size(max = 10)
-    @Column(name = "ALTO", length = 10)
+    @Column(name = "ins_alto", length = 10)
     private String alto;
+    
     @Size(max = 10)
-    @Column(name = "LARGO", length = 10)
+    @Column(name = "ins_largo", length = 10)
     private String largo;
+    
     @Size(max = 10)
-    @Column(name = "ANCHO", length = 10)
+    @Column(name = "ins_ancho", length = 10)
     private String ancho;
+    
     @Size(max = 10)
-    @Column(name = "DIAMETRO", length = 10)
+    @Column(name = "ins_diametro", length = 10)
     private String diametro;
+    
     @Size(max = 10)
-    @Column(name = "ESPESOR", length = 10)
+    @Column(name = "ins_espesor", length = 10)
     private String espesor;
+    
     @Size(max = 10)
-    @Column(name = "PESO", length = 10)
+    @Column(name = "ins_peso", length = 10)
     private String peso;
+    
     @Size(max = 10)
-    @Column(name = "PROFUNDIDAD", length = 10)
+    @Column(name = "ins_profundidad", length = 10)
     private String profundidad;
+    
     @Size(max = 600)
-    @Column(name = "INSCRIPCIONES", length = 600)
+    @Column(name = "ins_inscripciones", length = 600)
     private String inscripciones;
+    
     @Size(max = 600)
-    @Column(name = "DESCRIPCION", length = 600)
+    @Column(name = "ins_descripcion", length = 600)
     private String descripcion;
+    
 
-    @Column(name = "ENUSO", nullable = false)    
+    @Column(name = "ins_enuso", nullable = false)    
     private Boolean enuso;
-    @JoinColumn(name = "MATERIALID", referencedColumnName = "CATALOGOID")
+    
+    @JoinColumn(name = "ins_materialid", referencedColumnName = "ctl_id")
     @ManyToOne
     private Catalogo materialid;
   
 
-    @Column(name = "FUNCIONA", nullable = false)    
+    @Column(name = "ins_funciona", nullable = false)    
     private Boolean funciona;
-    @JoinColumn(name = "PIEZAMUSEABLEID", referencedColumnName = "PIEZAMUSEABLEID")
+    
+    @JoinColumn(name = "msb_id", referencedColumnName = "msb_id")
     @ManyToOne(cascade = {CascadeType.ALL})
     private Piezamuseable piezamuseableid;
 
-    @Column(name = "FECHAFABRICACION")
+    @Column(name = "ins_fecha_fabricacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechafabricacion;
     
-    @Column(length = 3000)
+    @Column(name = "ins_datos_registros", length = 3000)
     private String datosregistros;
-    @Column(length = 600)
+    
+    @Column(name = "ins_fotografo_planos", length = 600)
     private String fotografoplanos;
-    @Column(length = 600)
+    
+    @Column(name = "ins_lugar_plano", length = 600)
     private String lugarplano;
-    @Column(length = 600)
+    
+    @Column(name = "ins_pdf_plano", length = 600)
     private String pdfplano;
-    @Column(length = 600)
+    
+    @Column(name = "ins_fotografo_instructivo", length = 600)
     private String fotografoinstructivo;
-    @Column(length = 600)
+    
+    @Column(name = "ins_lugar_instructivo", length = 600)
     private String lugarinstructivo;
-    @Column(length = 600)
+    
+    @Column(name = "ins_pdf_instructivo", length = 600)
     private String pdfinstructivo;
-    @Column(length = 3000)
+    
+    @Column(name = "ins_social", length = 3000)
     private String social;
-    @Column(length = 3000)
+    
+    @Column(name = "ins_inventor", length = 3000)
     private String inventor;
-    @Column(length = 3000)
+    
+    @Column(name = "ins_historia_fabricante", length = 3000)
     private String historiafabricante;
+    
     @Lob
     @JsonIgnore
-    private byte[]  fotoregistros;
+    @Column(name = "ins_foto_registros")
+    private String  fotoregistros;
     @Lob
     @JsonIgnore
-    private byte[]  fotoplano;
+    @Column(name = "ins_foto_plano")
+    private String  fotoplano;
     @Lob
     @JsonIgnore
-    private byte[]  fotoinstructivo;
+    @Column(name = "ins_foto_instructivo")
+    private String  fotoinstructivo;
 
     
     
@@ -393,27 +423,27 @@ public class Piezainstrumentaldetalle implements Serializable {
 		this.historiafabricante = historiafabricante;
 	}
 
-	public byte[] getFotoregistros() {
+	public String getFotoregistros() {
 		return fotoregistros;
 	}
 
-	public void setFotoregistros(byte[] fotoregistros) {
+	public void setFotoregistros(String fotoregistros) {
 		this.fotoregistros = fotoregistros;
 	}
 
-	public byte[] getFotoplano() {
+	public String getFotoplano() {
 		return fotoplano;
 	}
 
-	public void setFotoplano(byte[] fotoplano) {
+	public void setFotoplano(String fotoplano) {
 		this.fotoplano = fotoplano;
 	}
 
-	public byte[] getFotoinstructivo() {
+	public String getFotoinstructivo() {
 		return fotoinstructivo;
 	}
 
-	public void setFotoinstructivo(byte[] fotoinstructivo) {
+	public void setFotoinstructivo(String fotoinstructivo) {
 		this.fotoinstructivo = fotoinstructivo;
 	}
 

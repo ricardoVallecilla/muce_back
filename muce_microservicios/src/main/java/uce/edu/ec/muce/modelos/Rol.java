@@ -40,17 +40,17 @@ public class Rol implements Serializable {
     @SequenceGenerator(sequenceName = "rol_seq", allocationSize = 1, name = "ROL_SEQ")
     @Basic(optional = false)
     @NotNull
-    @Column(name = "ROLID", nullable = false, precision = 0, scale = -127)
+    @Column(name = "rol_id", nullable = false, precision = 0, scale = -127)
     private Long rolid;
     @Size(max = 256)
-    @Column(name = "NOMBRE", length = 256)
+    @Column(name = "rol_nombre", length = 256)
     private String nombre;
     @Size(max = 256)
-    @Column(name = "DESCRIPCION", length = 256)
+    @Column(name = "rol_descripcion", length = 256)
     private String descripcion;
-    @JoinTable(name = "ROL_PERMISOS", joinColumns = {@JoinColumn(name = "ROLID", referencedColumnName = "ROLID", nullable = false)
+    @JoinTable(name = "ROL_PERMISOS", joinColumns = {@JoinColumn(name = "rol_id", referencedColumnName = "rol_id", nullable = false)
             }, 
-    		inverseJoinColumns = {@JoinColumn(name = "PERMISOID", referencedColumnName = "PERMISOID", nullable = false)})
+    		inverseJoinColumns = {@JoinColumn(name = "prm_id", referencedColumnName = "prm_id", nullable = false)})
         @ManyToMany
     private Set<Permiso> permisoSet;
    

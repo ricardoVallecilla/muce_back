@@ -24,15 +24,15 @@ public class RestauracionMateriales implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "RESTAURACIONMAT_SEQ")
     @SequenceGenerator(sequenceName = "RESTAURACIONMAT_SEQ", allocationSize = 1, name = "RESTAURACIONMAT_SEQ")
     @Basic(optional = false)
-    @Column(name = "ID", nullable = false, precision = 0, scale = -127)
+    @Column(name = "rstmrt_id", nullable = false, precision = 0, scale = -127)
 	private Long id;
 	
-	@JoinColumn(name = "TIPOID", referencedColumnName = "CATALOGOID")
+	@JoinColumn(name = "rstmrt_tipo", referencedColumnName = "ctl_id")
     @ManyToOne(optional = false)
 	private Catalogo tipo;
 	
     @Size(min = 1, max = 150)
-    @Column(name = "NOMBRE", length = 150)
+    @Column(name = "rstmrt_nombre", length = 150)
 	private String nombre;
 	
 	public Long getId() {

@@ -36,32 +36,35 @@ public class Catalogo implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CATALOGO_SEQ")
-    @SequenceGenerator(sequenceName = "catalogo_seq", allocationSize = 1, name = "CATALOGO_SEQ")
-    
-    @Column(name = "CATALOGOID", precision = 0, scale = -127)
+    @SequenceGenerator(sequenceName = "catalogo_seq", allocationSize = 1, name = "CATALOGO_SEQ")    
+    @Column(name = "ctl_id", precision = 0, scale = -127)
     private Long catalogoid;
     
     
     @OrderBy
     @Size(min = 1, max = 150)
-    @Column(name = "NOMBRE", length = 150)
+    @Column(name = "ctl_nombre", length = 150)
     private String nombre;
     
     
     @Size(min = 1, max = 256)
-    @Column(name = "DESCRIPCION", length = 256)
+    @Column(name = "ctl_descripcion", length = 256)
     private String descripcion;
     
     
-    @Column(name = "ACTIVO")
+    @Column(name = "ctl_activo")
     private Boolean activo;
+    
     @Size(max = 256)
-    @Column(name = "USUARIOREGISTROID", length = 256)
+    @Column(name = "aud_usuario_registro_id", length = 256)
     private String usuarioregistroid;
-    @Column(name = "FECHAREGISTRO")
+    
+    
+    @Column(name = "aud_fecha_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharegistro;    
-    @JoinColumn(name = "CATALOGOPADREID", referencedColumnName = "CATALOGOID")
+    
+    @JoinColumn(name = "ctl_padre_id", referencedColumnName = "ctl_id")
     @ManyToOne
     private Catalogo catalogopadreid;
    

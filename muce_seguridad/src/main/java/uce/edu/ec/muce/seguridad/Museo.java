@@ -40,54 +40,53 @@ public class Museo implements Serializable {
     @SequenceGenerator(sequenceName = "museo_seq", allocationSize = 1, name = "MUSEO_SEQ")
     @Basic(optional = false)
     @NotNull
-    @Column(name = "MUSEOID", nullable = false, precision = 0, scale = -127)
+    @Column(name = "mus_id", nullable = false, precision = 0, scale = -127)
     private Long museoid;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 150)
-    @Column(name = "NOMBRES", nullable = false, length = 150)
+    @Column(name = "mus_nombre", nullable = false, length = 150)
     private String nombres;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 256)
-    @Column(name = "DESCRIPCION", nullable = false, length = 256)
+    @Column(name = "mus_descripcion", nullable = false, length = 256)
     private String descripcion;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 256)
-    @Column(name = "UBICACION", nullable = false, length = 256)
+    @Column(name = "mus_ubicacion", nullable = false, length = 256)
     private String ubicacion;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 15)
-    @Column(name = "TELEFONO", nullable = false, length = 15)
+    @Column(name = "mus_telefono", nullable = false, length = 15)
     private String telefono;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 256)
-    @Column(name = "DIRECTORA", nullable = false, length = 256)
+    @Column(name = "mus_directora", nullable = false, length = 256)
     private String directora;
+    
     @Size(max = 256)
-    @Column(name = "USUARIOREGISTROID", length = 256)
+    @Column(name = "aud_usuario_registro_id", length = 256)
     private String usuarioregistroid;
-    @Column(name = "FECHAREGISTRO")
+    
+    @Column(name = "aud_fecha_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharegistro;
    
-    @JoinColumn(name = "CUSTODIOID", referencedColumnName = "user_id", nullable = false)
+    @JoinColumn(name = "mus_custodio_id", referencedColumnName = "usr_id", nullable = false)
     @OneToOne(optional = false)
     @JsonBackReference
-
     private Usuario cutodioId;
     
-    
-    @Size(min = 1, max = 20)
-    @Column(name = "COLOR", nullable = false, length = 20)
-    private String color;
-    
-    @Lob
-    @Column(name = "LOGO", nullable = true)
-    private Serializable fotografia;
+   
 
     public Museo() {
     }
@@ -179,21 +178,6 @@ public class Museo implements Serializable {
 		this.cutodioId = cutodioId;
 	}
 
-	public String getColor() {
-		return color;
-	}
-
-	public void setColor(String color) {
-		this.color = color;
-	}
-
-	public Serializable getFotografia() {
-		return fotografia;
-	}
-
-	public void setFotografia(Serializable fotografia) {
-		this.fotografia = fotografia;
-	}
 
 	
 

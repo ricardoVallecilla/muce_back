@@ -1,7 +1,6 @@
 package uce.edu.ec.muce.servicios;
 
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 import javax.validation.Valid;
@@ -13,16 +12,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import uce.edu.ec.muce.intefaces.CatalogoRepositorio;
 import uce.edu.ec.muce.intefaces.ItemBajaRepositorio;
 import uce.edu.ec.muce.intefaces.ItemRepositorio;
-import uce.edu.ec.muce.intefaces.PiezamuseableRepositorio;
 import uce.edu.ec.muce.modelos.Item;
 import uce.edu.ec.muce.modelos.ItemBaja;
-import uce.edu.ec.muce.modelos.Piezamuseable;
 import uce.edu.ec.muce.modelos.filtros.ItemsFiltro;
 
 

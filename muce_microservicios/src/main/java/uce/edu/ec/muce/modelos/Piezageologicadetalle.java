@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * @author Usuario
  */
 @Entity
-@Table(name = "PIEZAGEOLOGICADETALLE", catalog = "", schema = "MUCE")
+@Table(name = "GEOLOGIA", catalog = "", schema = "MUCE")
 @JsonIgnoreProperties(ignoreUnknown=true)
 @JsonInclude(JsonInclude.Include.NON_NULL )
 public class Piezageologicadetalle implements Serializable {
@@ -42,59 +42,84 @@ public class Piezageologicadetalle implements Serializable {
     @SequenceGenerator(sequenceName = "Piezageologicadetalle_seq", allocationSize = 1, name = "PIEZAGEOLOGICADETALLE_SEQ")
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DETALLEID", nullable = false, precision = 0, scale = -127)
+    @Column(name = "glg_id", nullable = false, precision = 0, scale = -127)
     private Long detalleid;
+    
     @Size(max = 600)
-    @Column(name = "MATERIAL", length = 600)
+    @Column(name = "glg_material", length = 600)
     private String material;
+    
     @Size(max = 600)
-    @Column(name = "CLASIFICACION", length = 600)
+    @Column(name = "glg_clasificacion", length = 600)
     private String clasificacion;
+    
     @Size(max = 600)
-    @Column(name = "CLASIFICACIONCAMPO", length = 600)
+    @Column(name = "glg_clasificacion_campo", length = 600)
     private String clasificacioncampo;
+    
     @Size(max = 600)
-    @Column(name = "PERIODO", length = 600)
+    @Column(name = "glg_periodo", length = 600)
     private String periodo;
+    
     @Size(max = 50)
-    @Column(name = "EPOCA", length = 50)
+    @Column(name = "glg_epoca", length = 50)
     private String epoca;
+    
     @Size(max = 25)
-    @Column(name = "ERA", length = 25)
+    @Column(name = "glg_era", length = 25)
     private String era;
+    
     @Size(max = 25)
-    @Column(name = "EDAD", length = 25)
+    @Column(name = "glg_edad", length = 25)
     private String edad;
+    
     @Size(max = 10)
-    @Column(name = "ALTO", length = 10)
+    @Column(name = "glg_alto", length = 10)
     private String alto;
+    
     @Size(max = 10)
-    @Column(name = "LARGO", length = 10)
+    @Column(name = "glg_largo", length = 10)
     private String largo;
+    
     @Size(max = 10)
-    @Column(name = "ANCHO", length = 10)
+    @Column(name = "glg_ancho", length = 10)
     private String ancho;
+    
     @Size(max = 10)
-    @Column(name = "DIAMETRO", length = 10)
+    @Column(name = "glg_diametro", length = 10)
     private String diametro;
+    
     @Size(max = 10)
-    @Column(name = "PESO", length = 10)
+    @Column(name = "glg_peso", length = 10)
     private String peso;
+    
     @Size(max = 600)
-    @Column(name = "INSCRIPCIONES", length = 600)
+    @Column(name = "glg_inscripciones", length = 600)
     private String inscripciones;
+    
     @Size(max = 10)
-    @Column(name = "GRUPO", length = 10)
+    @Column(name = "glg_grupo", length = 10)
     private String grupo;
+    
     @Size(max = 600)
-    @Column(name = "ELEMENTOSRELACIONADOS", length = 600)
+    @Column(name = "glg_elementos_relacionados", length = 600)
     private String elementosrelacionados;
-    @Column(name = "DESCRIPCION")
+    
+    @Column(name = "glg_descripcion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date descripcion;
-    @JoinColumn(name = "PIEZAMUSEABLEID", referencedColumnName = "PIEZAMUSEABLEID")
+    
+    @JoinColumn(name = "msb_id", referencedColumnName = "msb_id")
     @ManyToOne
     private Piezamuseable piezamuseableid;
+    
+    @Size(max = 600)
+    @Column(name = "aud_usuario_registro_id", length = 600)
+    private String usuarioregistroid;
+    
+    @Column(name = "aud_fecha_registro")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fecharegistro;
 
     public Piezageologicadetalle() {
     }
@@ -247,7 +272,24 @@ public class Piezageologicadetalle implements Serializable {
         this.piezamuseableid = piezamuseableid;
     }
 
-    @Override
+    
+    public String getUsuarioregistroid() {
+		return usuarioregistroid;
+	}
+
+	public void setUsuarioregistroid(String usuarioregistroid) {
+		this.usuarioregistroid = usuarioregistroid;
+	}
+
+	public Date getFecharegistro() {
+		return fecharegistro;
+	}
+
+	public void setFecharegistro(Date fecharegistro) {
+		this.fecharegistro = fecharegistro;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (detalleid != null ? detalleid.hashCode() : 0);

@@ -25,39 +25,38 @@ public interface ItemRepositorio extends JpaRepository<Item, Long> {
 	Set<Item> listaItem(Long[] itemsId);
     
      
-    @Query(value ="SELECT * FROM (SELECT it.*, row_number() over (ORDER BY it.itemid ASC) line_number  FROM item it"
-    		+ " where it.museoid = ?1  and it.tipoingresoid <> ?2  and it.categoriaid = ?3 and it.estadoid is null  ) "
+    @Query(value ="SELECT * FROM (SELECT it.*, row_number() over (ORDER BY it.itm_id ASC) line_number  FROM item it"
+    		+ " where it.mus_id = ?1  and it.itm_tipo_ingreso <> ?2  and it.itm_categoria = ?3 and it.itm_estado is null  ) "
     		+ "WHERE line_number BETWEEN  ?4 AND  ?5  ORDER BY line_number" , nativeQuery = true)
 	List<Item> filtroMovimientos(Long museoId,Long idprestamo,Long categoriaid,int min,int max);
     
-    @Query(value ="SELECT count(itemid)  FROM item it where it.museoid = ?1  and it.tipoingresoid <> ?2  and it.categoriaid = ?3 and it.estadoid is null " , nativeQuery = true)
+    @Query(value ="SELECT count(itm_id)  FROM item it where it.mus_id = ?1  and it.itm_tipo_ingreso <> ?2  and it.itm_categoria = ?3 and it.itm_estado is null " , nativeQuery = true)
 	int cantidadfiltroMovimientos(Long museoId,Long idprestamo,Long categoriaid);
     
-    @Query(value ="SELECT * FROM (SELECT it.*, row_number() over (ORDER BY it.itemid ASC) line_number  FROM item it"
-    		+ " where it.museoid = ?1 and  it.grupoid = ?2 and  it.categoriaid = ?3) "
+    @Query(value ="SELECT * FROM (SELECT it.*, row_number() over (ORDER BY it.itm_id ASC) line_number  FROM item it"
+    		+ " where it.mus_id = ?1 and  it.itm_grupo = ?2 and  it.itm_categoria = ?3) "
     		+ "WHERE line_number BETWEEN  ?4 AND  ?5  ORDER BY line_number" , nativeQuery = true) 
 	List<Item> filtropaginado(Long museoId,Long grupoid,Long categoriaid,int min,int max);
     
-    @Query(value ="SELECT * FROM (SELECT it.*, row_number() over (ORDER BY it.itemid ASC) line_number  FROM item it"
-    		+ " where it.museoid = ?1 and  it.grupoid = ?2 ) "
+    @Query(value ="SELECT * FROM (SELECT it.*, row_number() over (ORDER BY it.itm_id ASC) line_number  FROM item it"
+    		+ " where it.mus_id = ?1 and  it.itm_grupo = ?2 ) "
     		+ "WHERE line_number BETWEEN  ?3 AND  ?4  ORDER BY line_number" , nativeQuery = true) 
 	List<Item> filtropaginadoSoloMuseo(Long museoId,Long grupoid,int min,int max);
     
-    @Query(value ="SELECT count(itemid) FROM item "
-    		+ " where museoid = ?1 and  grupoid = ?2 and  categoriaid = ?3 " , nativeQuery = true) 
+    @Query(value ="SELECT count(itm_id) FROM item "
+    		+ " where mus_id = ?1 and  itm_grupo = ?2 and  itm_categoria = ?3 " , nativeQuery = true) 
 	int cantidad(Long museoId,Long grupoid,Long categoriaid);
     
-    @Query(value ="SELECT count(itemid) FROM item "
-    		+ " where museoid = ?1 and  grupoid = ?2 " , nativeQuery = true) 
+    @Query(value ="SELECT count(itm_id) FROM item where mus_id = ?1 and  itm_grupo = ?2 " , nativeQuery = true) 
 	int cantidadSoloMuseo(Long museoId,Long grupoid);
     
     
-    @Query(value ="SELECT * FROM (SELECT it.*, row_number() over (ORDER BY it.itemid ASC) line_number  FROM item it"
-    		+ " where it.museoid = ?1 and  (it.nombre like ?2 or it.CODIGOCONTROL like ?2 or it.NUMEROSERIE like ?2 or it.descripcion like ?2) ) "
+    @Query(value ="SELECT * FROM (SELECT it.*, row_number() over (ORDER BY it.itm_id ASC) line_number  FROM item it"
+    		+ " where it.mus_id = ?1 and  (it.itm_nombre like ?2 or it.itm_codigo_control like ?2 or it.itm_numero_serie like ?2 or it.itm_descripcion like ?2) ) "
     		+ "WHERE line_number BETWEEN  ?3 AND  ?4  ORDER BY line_number" , nativeQuery = true) 
 	List<Item> filtroPalabra(Long museoId,String filtro,int min,int max);
     
-    @Query(value ="SELECT count(itemid)  FROM item it"
-    		+ " where it.museoid = ?1 and  (it.nombre like ?2 or it.CODIGOCONTROL like ?2 or it.NUMEROSERIE like ?2 or it.descripcion like ?2) " , nativeQuery = true) 
+    @Query(value ="SELECT count(itm_id)  FROM item it"
+    		+ " where it.mus_id = ?1 and  (it.itm_nombre like ?2 or it.itm_codigo_control like ?2 or it.itm_numero_serie like ?2 or it.itm_descripcion like ?2) " , nativeQuery = true) 
 	int cantidadfiltroPalabra(Long museoId,String filtro);
 }

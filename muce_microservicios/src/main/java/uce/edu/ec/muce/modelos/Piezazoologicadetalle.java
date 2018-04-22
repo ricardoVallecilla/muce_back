@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * @author Usuario
  */
 @Entity
-@Table(name = "PIEZAZOOLOGICADETALLE", catalog = "", schema = "MUCE")
+@Table(name = "ZOOLOGIA", catalog = "", schema = "MUCE")
 @JsonIgnoreProperties(ignoreUnknown=true)
 @JsonInclude(JsonInclude.Include.NON_NULL )
 public class Piezazoologicadetalle implements Serializable {
@@ -42,110 +42,112 @@ public class Piezazoologicadetalle implements Serializable {
     @SequenceGenerator(sequenceName = "Piezazoologicadetalle_seq", allocationSize = 1, name = "PIEZAZOOLOGICADETALLE_SEQ")
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DETALLEID", nullable = false, precision = 0, scale = -127)
+    @Column(name = "zlg_id", nullable = false, precision = 0, scale = -127)
     private Long detalleid;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 600)
-    @Column(name = "NOMBRECIENTIFICO", nullable = false, length = 600)
+    @Column(name = "zlg_nombre_cientifico", nullable = false, length = 600)
     private String nombrecientifico;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 600)
-    @Column(name = "NOMBRECOMUN", nullable = false, length = 600)
+    @Column(name = "zlg_nombre_comun", nullable = false, length = 600)
     private String nombrecomun;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 600)
-    @Column(name = "AUTOR", nullable = false, length = 600)
+    @Column(name = "zlg_autor", nullable = false, length = 600)
     private String autor;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
-    @Column(name = "ALTO", nullable = false, length = 10)
+    @Column(name = "zlg_alto", nullable = false, length = 10)
     private String alto;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
-    @Column(name = "LARGO", nullable = false, length = 10)
+    @Column(name = "zlg_largo", nullable = false, length = 10)
     private String largo;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
-    @Column(name = "ANCHO", nullable = false, length = 10)
+    @Column(name = "zlg_ancho", nullable = false, length = 10)
     private String ancho;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
-    @Column(name = "DIAMETRO", nullable = false, length = 10)
+    @Column(name = "zlg_diametro", nullable = false, length = 10)
     private String diametro;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
-    @Column(name = "PESO", nullable = false, length = 10)
+    @Column(name = "zlg_peso", nullable = false, length = 10)
     private String peso;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 600)
-    @Column(name = "INSCRIPCIONES", nullable = false, length = 600)
+    @Column(name = "zlg_inscripciones", nullable = false, length = 600)
     private String inscripciones;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 600)
-    @Column(name = "ELEMENTOSRELACIONADOS", nullable = false, length = 600)
+    @Column(name = "zlg_elementos_relacionados", nullable = false, length = 600)
     private String elementosrelacionados;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 600)
-    @Column(name = "DESCRIPCION", nullable = false, length = 600)
+    @Column(name = "zlg_descripcion", nullable = false, length = 600)
     private String descripcion;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 600)
-    @Column(name = "LATITUD", nullable = false, length = 600)
+    @Column(name = "zlg_latitud", nullable = false, length = 600)
     private String latitud;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 600)
-    @Column(name = "LONGITUD", nullable = false, length = 600)
+    @Column(name = "zlg_longitud", nullable = false, length = 600)
     private String longitud;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 600)
-    @Column(name = "LOCALIZACIONPRECISA", nullable = false, length = 600)
+    @Column(name = "zlg_localizacion_precisa", nullable = false, length = 600)
     private String localizacionprecisa;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 600)
-    @Column(name = "PERSONARECOLECTADORA", nullable = false, length = 600)
+    @Column(name = "zlg_persona_recolectora", nullable = false, length = 600)
     private String personarecolectadora;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 600)
-    @Column(name = "CIUDADID", nullable = false, length = 600)
+    @Column(name = "zlg_ciudad", nullable = false, length = 600)
     private String ciudadid;
     @Size(max = 600)
-    @Column(name = "USUARIOREGISTROID", length = 600)
+    @Column(name = "aud_usuario_registro_id", length = 600)
     private String usuarioregistroid;
-    @Column(name = "FECHAREGISTRO")
+    @Column(name = "aud_fecha_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharegistro;
-    @JoinColumn(name = "PROVINCIAID", referencedColumnName = "CATALOGOID", nullable = false)
+    
+    @JoinColumn(name = "zlg_provincia", referencedColumnName = "ctl_id", nullable = false)
     @ManyToOne(optional = false)
     private Catalogo provinciaid;
-    @JoinColumn(name = "CANTONID", referencedColumnName = "CATALOGOID", nullable = false)
+    @JoinColumn(name = "zlg_canton", referencedColumnName = "ctl_id", nullable = false)
     @ManyToOne(optional = false)
     private Catalogo cantonid;
-    @JoinColumn(name = "SEXOID", referencedColumnName = "CATALOGOID", nullable = false)
+    
+    @JoinColumn(name = "zlg_sexo", referencedColumnName = "ctl_id", nullable = false)
     @ManyToOne(optional = false)
     private Catalogo sexoid;
-    @JoinColumn(name = "PAISID", referencedColumnName = "CATALOGOID", nullable = false)
+    @JoinColumn(name = "zlg_pais", referencedColumnName = "ctl_id", nullable = false)
     @ManyToOne(optional = false)
     private Catalogo paisid;
-    @JoinColumn(name = "TECNICACONSERVACIONID", referencedColumnName = "CATALOGOID", nullable = false)
+    @JoinColumn(name = "zlg_tecnica_conservacion", referencedColumnName = "ctl_id", nullable = false)
     @ManyToOne(optional = false)
     private Catalogo tecnicaconservacionid;
-    @JoinColumn(name = "PIEZAMUSEABLEID", referencedColumnName = "PIEZAMUSEABLEID", nullable = false)
+    @JoinColumn(name = "msb_id", referencedColumnName = "msb_id", nullable = false)
     @ManyToOne(optional = false)
     private Piezamuseable piezamuseableid;
 

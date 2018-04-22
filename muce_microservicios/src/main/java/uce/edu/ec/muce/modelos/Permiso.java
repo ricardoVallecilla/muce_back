@@ -32,22 +32,22 @@ public class Permiso implements Serializable {
     @SequenceGenerator(sequenceName = "permiso_seq", allocationSize = 1, name = "PERMISO_SEQ")
     @Basic(optional = false)
     @NotNull
-    @Column(name = "PERMISOID", nullable = false, precision = 0, scale = -127)
+    @Column(name = "prm_id", nullable = false, precision = 0, scale = -127)
     private Long permisoid;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 600)
-    @Column(name = "NOMBRE", nullable = false, length = 600)
+    @Column(name = "prm_nombre", nullable = false, length = 600)
     private String nombre;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 600)
-    @Column(name = "DETALLE", nullable = false, length = 600)
+    @Column(name = "prm_detalle", nullable = false, length = 600)
     private String detalle;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 600)
-    @Column(name = "URL", nullable = false, length = 600)
+    @Column(name = "prm_url", nullable = false, length = 600)
     private String url;
    
     public Permiso() {

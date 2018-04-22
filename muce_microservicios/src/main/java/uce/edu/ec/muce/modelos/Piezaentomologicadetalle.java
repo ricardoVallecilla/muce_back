@@ -14,7 +14,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -22,7 +21,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -31,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * @author Usuario
  */
 @Entity
-@Table(name = "PIEZAENTOMOLOGICADETALLE", catalog = "", schema = "MUCE")
+@Table(name = "ENTOMOLOGIA", catalog = "", schema = "MUCE")
 @JsonIgnoreProperties(ignoreUnknown=true)
 @JsonInclude(JsonInclude.Include.NON_NULL )
 public class Piezaentomologicadetalle implements Serializable {
@@ -43,139 +41,163 @@ public class Piezaentomologicadetalle implements Serializable {
     @SequenceGenerator(sequenceName = "Piezaentomologicadetalle_seq", allocationSize = 1, name = "PIEZAENTOMOLOGICADETALLE_SEQ")
     
     
-    @Column(name = "DETALLEID", precision = 0, scale = -127)
+    @Column(name = "ent_id", precision = 0, scale = -127)
     private Long detalleid;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "NOMBRECIENTIFICO", length = 600)
+    @Column(name = "ent_nombre_cientifico", length = 600)
     private String nombrecientifico;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "NOMBRECOMUN", length = 600)
+    @Column(name = "ent_nombre_comun", length = 600)
     private String nombrecomun;
+    
     @Size(max = 600)
-    @Column(name = "AUTOR", length = 600)
+    @Column(name = "ent_autor", length = 600)
     private String autor;
+    
     @Size(max = 600)
-    @Column(name = "PUBLICADO", length = 600)
+    @Column(name = "ent_publicado", length = 600)
     private String publicado;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "CLASE", length = 600)
+    @Column(name = "ent_clase", length = 600)
     private String clase;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "ORDEN", length = 600)
+    @Column(name = "ent_orden", length = 600)
     private String orden;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "FAMILIA", length = 600)
+    @Column(name = "ent_familia", length = 600)
     private String familia;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "SEXO", length = 600)
+    @Column(name = "ent_sexo", length = 600)
     private String sexo;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "ETAPAVIDA", length = 600)
+    @Column(name = "ent_etapa_vida", length = 600)
     private String etapavida;
     
     
     @Size(min = 1, max = 3000)
-    @Column(name = "DESCRIPCION", length = 3000)
+    @Column(name = "ent_descripcion", length = 3000)
     private String descripcion;
     
     
     @Size(min = 1, max = 10)
-    @Column(name = "LATITUD", length = 10)
+    @Column(name = "ent_latitud", length = 10)
     private String latitud;
     
     
     @Size(min = 1, max = 10)
-    @Column(name = "LONGITUD", length = 10)
+    @Column(name = "ent_longitud", length = 10)
     private String longitud;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "LOCALIZACIONPRECISA", length = 600)
+    @Column(name = "ent_localizacion_precisa", length = 600)
     private String localizacionprecisa;
     
     
     @Size(min = 1, max = 10)
-    @Column(name = "ELEVACION", length = 10)
+    @Column(name = "ent_elevacion", length = 10)
     private String elevacion;
-    @Column(name = "CIUDAD")
+    
+    @Column(name = "ent_ciudad")
     private String ciudad;    
         
     @Size(min = 1, max = 600)
-    @Column(name = "PERSONARECOLECTORA", length = 600)
+    @Column(name = "ent_persona_recolectora", length = 600)
     private String personarecolectora;
+    
     @Size(max = 600)
-    @Column(name = "USUARIOREGISTROID", length = 600)
+    @Column(name = "aud_usuario_registro_id", length = 600)
     private String usuarioregistroid;
-    @Column(name = "FECHAREGISTRO")
+    
+    @Column(name = "aud_fecha_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharegistro;
-    @Column(name = "PROVINCIA")
+    
+    @Column(name = "ent_provincia")
     private String provincia;
-    @Column(name = "CANTON")
-    private String canton;  
-    @JoinColumn(name = "PAISID", referencedColumnName = "CATALOGOID")
-    @ManyToOne(optional = false)
+    
+    @Column(name = "ent_canton")
+    private String canton; 
+    
+    @JoinColumn(name = "ent_pais", referencedColumnName = "ctl_id")
+    @ManyToOne()
     private Catalogo paisid;
-    @JoinColumn(name = "PIEZAMUSEABLEID", referencedColumnName = "PIEZAMUSEABLEID")
+    
+    @JoinColumn(name = "msb_id", referencedColumnName = "msb_id")
     @ManyToOne(cascade = {CascadeType.ALL})
     private Piezamuseable piezamuseableid;
-    @Column(length = 3000)
+    
+    @Column(name = "ent_metodologia_recoleccion", length = 3000)
     private String metodologiarecoleccion;
-    @Column(length = 3000)
+    
+    @Column(name = "ent_materiales_utilizados", length = 3000)
     private String materialesutilizados;
-    @Column(length = 3000)
+    
+    @Column(name = "ent_permisos", length = 3000)
     private String permisos;
-    @Column(length = 3000)
+    
+    @Column(name = "ent_analisis_geografico", length = 3000)
     private String analisisgeografico;
-    @Column(length = 3000)
+    
+    @Column(name = "ent_tipo_ecosistema", length = 3000)
     private String tipoecosistema;
-    @Column(length = 3000)
+    
+    @Column(name = "ent_comportamiento", length = 3000)
     private String comportamiento;
-    @Column(length = 3000)
+    
+    @Column(name = "ent_relacion_clima", length = 3000)
     private String relacionclima;
-    @Column(length = 600)
+    
+    @Column(name = "ent_fotografo_ecosistema", length = 600)
     private String fotografoecosistema;
-    @Column(length = 600)
+    
+    @Column(name = "ent_lugar_ecosistema", length = 600)
     private String lugarecosistema;
-    @Column(length = 600)
+    
+    @Column(name = "ent_fotografo_cartografia", length = 600)
     private String fotografocartografia;
-    @Column(length = 3000)
+    
+    @Column(name = "ent_fuente_cartografia", length = 3000)
     private String fuentecartografia;
-    @Column(length = 3000)
+    
+    @Column(name = "ent_escala_cartografia", length = 3000)
     private String escalacartografia;
-    @Column(length = 600)
+    
+    @Column(name = "ent_lugar_cartografia", length = 600)
     private String lugarcartografia;
-    @Column(length = 3000)
+    
+    @Column(name = "ent_creencias", length = 3000)
     private String creencias;
-    @Column(length = 3000)
+    
+    @Column(name = "ent_rituales", length = 3000)
     private String rituales;
-    @Column(length = 3000)
+    
+    @Column(name = "ent_semiotica", length = 3000)
     private String semiotica;
-    @Column(length = 3000)
+    
+    @Column(name = "ent_gastronomia", length = 3000)
     private String gastronomia;
     
-    @Lob
-	@JsonIgnore
-    @Column(name = "FOTOECOSISTEMA")
-    private byte[] fotoecosistema;
-    @Lob
-	@JsonIgnore
-    @Column(name = "FOTOCARTOGRAFIA")
-    private byte[] fotocartografia;
+    
+    @Column(name = "ent_foto_ecosistema")
+    private String fotoecosistema;
+    
+    @Column(name = "ent_foto_cartografia")
+    private String fotocartografia;
 
     public Piezaentomologicadetalle() {
     }
@@ -529,20 +551,21 @@ public class Piezaentomologicadetalle implements Serializable {
 	public void setGastronomia(String gastronomia) {
 		this.gastronomia = gastronomia;
 	}
+	
 
-	public byte[] getFotoecosistema() {
+	public String getFotoecosistema() {
 		return fotoecosistema;
 	}
 
-	public void setFotoecosistema(byte[] fotoecosistema) {
+	public void setFotoecosistema(String fotoecosistema) {
 		this.fotoecosistema = fotoecosistema;
 	}
 
-	public byte[] getFotocartografia() {
+	public String getFotocartografia() {
 		return fotocartografia;
 	}
 
-	public void setFotocartografia(byte[] fotocartografia) {
+	public void setFotocartografia(String fotocartografia) {
 		this.fotocartografia = fotocartografia;
 	}
 

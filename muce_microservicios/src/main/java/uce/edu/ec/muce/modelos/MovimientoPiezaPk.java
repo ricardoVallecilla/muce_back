@@ -19,10 +19,10 @@ public class MovimientoPiezaPk implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
   
-    @Column(name = "MOVIMIENTOID")    
+    @Column(name = "mvm_id")    
     private Long movimientoid;
     
-    @Column(name = "ITEMID")
+    @Column(name = "itm_id")
     private Long itemid;
     
 
