@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * @author Usuario
  */
 @Entity
-@Table(name = "PIEZABOTANICADETALLE", catalog = "", schema = "MUCE")
+@Table(name = "BOTANICA", catalog = "", schema = "MUCE")
 @JsonIgnoreProperties(ignoreUnknown=true)
 @JsonInclude(JsonInclude.Include.NON_NULL )
 public class Piezabotanicadetalle implements Serializable {
@@ -42,101 +42,107 @@ public class Piezabotanicadetalle implements Serializable {
     @SequenceGenerator(sequenceName = "Piezabotanicadetalle_seq", allocationSize = 1, name = "PIEZABOTANICADETALLE_SEQ")
     
     
-    @Column(name = "DETALLEID", precision = 0, scale = -127)
+    @Column(name = "btn_id", precision = 0, scale = -127)
     private Long detalleid;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "ESPECIE", length = 600)
+    @Column(name = "btn_especie", length = 600)
     private String especie;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "NOMBRECOMUN", length = 600)
+    @Column(name = "btn_nombre_comun", length = 600)
     private String nombrecomun;
+    
     @Size(max = 600)
-    @Column(name = "AUTOR", length = 600)
+    @Column(name = "btn_autor", length = 600)
     private String autor;
+    
     @Size(max = 600)
-    @Column(name = "PUBLICADO", length = 600)
+    @Column(name = "btn_publicado", length = 600)
     private String publicado;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "CLASE", length = 600)
+    @Column(name = "btn_clase", length = 600)
     private String clase;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "SUBCLASE", length = 600)
+    @Column(name = "btn_subclase", length = 600)
     private String subclase;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "ORDEN", length = 600)
+    @Column(name = "btn_orden", length = 600)
     private String orden;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "FAMILIA", length = 600)
+    @Column(name = "btn_familia", length = 600)
     private String familia;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "GENERO", length = 600)
+    @Column(name = "btn_genero", length = 600)
     private String genero;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "DESCRIPCION", length = 600)
+    @Column(name = "btn_descripcion", length = 600)
     private String descripcion;
     
     
     @Size(min = 1, max = 10)
-    @Column(name = "LATITUD", length = 10)
+    @Column(name = "btn_latitud", length = 10)
     private String latitud;
     
     
     @Size(min = 1, max = 10)
-    @Column(name = "LONGITUD", length = 10)
+    @Column(name = "btn_longitud", length = 10)
     private String longitud;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "LOCALIZACIONPRECISA", length = 600)
+    @Column(name = "btn_localizacion_precisa", length = 600)
     private String localizacionprecisa;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "ELEVACION", length = 600)
+    @Column(name = "btn_elevacion", length = 600)
     private String elevacion;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "CIUDAD", length = 600)
+    @Column(name = "btn_ciudad", length = 600)
     private String ciudad;
-    @Column(name = "PROVINCIA")
+    
+    @Column(name = "btn_provincia")
     private String provincia;
-    @Column(name = "CANTON")
+    
+    @Column(name = "btn_canton")
     private String canton;  
-    @JoinColumn(name = "PAISID", referencedColumnName = "CATALOGOID")
+    
+    @JoinColumn(name = "btn_pais", referencedColumnName = "ctl_id")
     @ManyToOne(optional = false)
     private Catalogo paisid;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "PERSONARECOLECTORA", length = 600)
+    @Column(name = "btn_persona_recolectora", length = 600)
     private String personarecolectora;
+    
     @Size(max = 600)
-    @Column(name = "USUARIOREGISTROID", length = 600)
+    @Column(name = "aud_usuario_registro_id", length = 600)
     private String usuarioregistroid;
-    @Column(name = "FECHAREGISTRO")
+    
+    @Column(name = "aud_fecha_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharegistro;
     
     
-    @JoinColumn(name = "PIEZAMUSEABLEID", referencedColumnName = "PIEZAMUSEABLEID")
-    
+    @JoinColumn(name = "msb_id", referencedColumnName = "msb_id")    
     @ManyToOne(cascade = {CascadeType.ALL})
     private Piezamuseable piezamuseableid;
 

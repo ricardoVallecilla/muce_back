@@ -7,20 +7,17 @@ package uce.edu.ec.muce.modelos;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -38,55 +35,51 @@ public class Museo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MUSEO_SEQ")
     @SequenceGenerator(sequenceName = "museo_seq", allocationSize = 1, name = "MUSEO_SEQ")
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "MUSEOID", nullable = false, precision = 0, scale = -127)
+    
+    
+    @Column(name = "mus_id", nullable = false, precision = 0, scale = -127)
     private Long museoid;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 150)
-    @Column(name = "NOMBRES", nullable = false, length = 150)
+    @Column(name = "mus_nombre", nullable = false, length = 150)
     private String nombres;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 600)
-    @Column(name = "DESCRIPCION", nullable = false, length = 600)
+    @Column(name = "mus_descripcion", nullable = false, length = 600)
     private String descripcion;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 600)
-    @Column(name = "UBICACION", nullable = false, length = 600)
+    @Column(name = "mus_ubicacion", nullable = false, length = 600)
     private String ubicacion;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 15)
-    @Column(name = "TELEFONO", nullable = false, length = 15)
+    @Column(name = "mus_telefono", nullable = false, length = 15)
     private String telefono;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 600)
-    @Column(name = "DIRECTORA", nullable = false, length = 600)
+    @Column(name = "mus_directora", nullable = false, length = 600)
     private String directora;
+    
     @Size(max = 600)
-    @Column(name = "USUARIOREGISTROID", length = 600)
+    @Column(name = "aud_usuario_registro_id", length = 600)
     private String usuarioregistroid;
-    @Column(name = "FECHAREGISTRO")
+    
+    @Column(name = "aud_fecha_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharegistro;
    
-    @JoinColumn(name = "CUSTODIOID", referencedColumnName = "user_id", nullable = false)
+    @JoinColumn(name = "mus_custodio_id", referencedColumnName = "usr_id", nullable = false)
     @OneToOne(optional = false)
     @JsonManagedReference
     private Usuario cutodioId;
     
     
-    @Size(min = 1, max = 20)
-    @Column(name = "COLOR", nullable = false, length = 20)
-    private String color;
     
-    @Lob
-    @Column(name = "LOGO")
-    private byte[] logo;
 
     public Museo() {
     }
@@ -178,21 +171,7 @@ public class Museo implements Serializable {
 		this.cutodioId = cutodioId;
 	}
 
-	public String getColor() {
-		return color;
-	}
 
-	public void setColor(String color) {
-		this.color = color;
-	}
-
-    public byte[] getLogo() {
-		return logo;
-	}
-
-	public void setLogo(byte[] logo) {
-		this.logo = logo;
-	}
 
 	@Override
     public int hashCode() {

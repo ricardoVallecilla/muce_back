@@ -35,87 +35,103 @@ public class Item implements Serializable {
     @SequenceGenerator(sequenceName = "item_seq", allocationSize = 1, name = "ITEM_SEQ")
     
     
-    @Column(name = "ITEMID", precision = 0, scale = -127)
+    @Column(name = "itm_id", precision = 0, scale = -127)
     private Long itemid;
+    
+    
     @Size(max = 100)
-    @Column(name = "CODIGOCONTROL", length = 100)
+    @Column(name = "itm_codigo_control", length = 100)
     private String codigocontrol;
     
     
     @Size(min = 1, max = 256)
-    @Column(name = "DESCRIPCION", length = 256)
+    @Column(name = "itm_descripcion", length = 256)
     private String descripcion;
     
     
     @Size(min = 1, max = 256)
-    @Column(name = "NOMBRE", length = 256)
+    @Column(name = "itm_nombre", length = 256)
     private String nombre;
+    
     @Size(max = 150)
-    @Column(name = "MARCA", length = 150)
+    @Column(name = "itm_marca", length = 150)
     private String marca;
+    
     @Size(max = 150)
-    @Column(name = "MODELO", length = 150)
+    @Column(name = "itm_modelo", length = 150)
     private String modelo;
+    
     @Size(max = 50)
-    @Column(name = "NUMEROSERIE", length = 50)
+    @Column(name = "itm_numero_serie", length = 50)
     private String numeroserie;
     
     
-    @Column(name = "VALOR", precision = 10, scale = 2)
+    @Column(name = "itm_valor", precision = 10, scale = 2)
     private Long valor;
+    
     @Size(max = 50)
-    @Column(name = "OTROINGRESO", length = 50)
+    @Column(name = "itm_otro_ingreso", length = 50)
     private String otroingreso;
    
     @Size(max = 256)
-    @Column(name = "CUSTODIODOS", length = 256)
+    @Column(name = "itm_custodio_dos", length = 256)
     private String custodiodos;
-    @Column(name = "FECHAADQUISICION")
+    
+    @Column(name = "itm_fecha_adquisicion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaadquisicion;
     
     
     @Size(min = 1, max = 150)
-    @Column(name = "PROCEDENCIA", length = 150)
+    @Column(name = "itm_procedencia", length = 150)
     private String procedencia;
-    @JoinColumn(name = "TIPOINGRESOID", referencedColumnName = "CATALOGOID")
+    
+    @JoinColumn(name = "itm_tipo_ingreso", referencedColumnName = "ctl_id")
     @ManyToOne
     private Catalogo tipoingreso;
-    @Column(name = "FECHAINGRESO")
+    
+    @Column(name = "itm_fecha_ingreso")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaingreso;
+    
     @Size(max = 150)
-    @Column(name = "TIPODOCUMENTO", length = 150)
+    @Column(name = "itm_tipo_documento", length = 150)
     private String tipodocumento;
     
     
-    @Column(name = "RESTAURADO")
+    @Column(name = "itm_restaurado")
     private Boolean restaurado;
-    @Column(name = "FECHARESTAURADO")
+    
+    @Column(name = "itm_fecha_restaurado")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharestaurado;
     
     
     @Size(min = 1, max = 500)
-    @Column(name = "DETALLES", length = 500)
+    @Column(name = "itm_detalles", length = 500)
     private String detalles;
+    
     @Size(max = 256)
-    @Column(name = "USUARIOREGISTROID", length = 256)
+    @Column(name = "aud_usuario_registro_id", length = 256)
     private String usuarioregistroid;
-    @Column(name = "FECHAREGISTRO")
+    
+    @Column(name = "aud_fecha_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharegistro;
     
-    @JoinColumn(name = "ESTADOID", referencedColumnName = "CATALOGOID")
+    @JoinColumn(name = "itm_estado", referencedColumnName = "ctl_id")
     @ManyToOne
     private Catalogo estadoid;
-    @JoinColumn(name = "GRUPOID", referencedColumnName = "CATALOGOID")
+    
+    @JoinColumn(name = "itm_grupo", referencedColumnName = "ctl_id")
     @ManyToOne
     private Catalogo grupoid;
-    @JoinColumn(name = "CATEGORIAID", referencedColumnName = "CATALOGOID")
+    
+    @JoinColumn(name = "itm_categoria", referencedColumnName = "ctl_id")
     @ManyToOne
     private Catalogo categoriaid;
-    @JoinColumn(name = "MUSEOID", referencedColumnName = "MUSEOID")
+    
+    @JoinColumn(name = "mus_id", referencedColumnName = "mus_id")
     @ManyToOne
     private Museo museoid;
 

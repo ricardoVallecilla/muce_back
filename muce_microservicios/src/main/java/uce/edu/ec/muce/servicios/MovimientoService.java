@@ -20,9 +20,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import uce.edu.ec.muce.intefaces.ItemRepositorio;
 import uce.edu.ec.muce.intefaces.MovimientoPiezaRepositorio;
 import uce.edu.ec.muce.intefaces.MovimientoRepositorio;
+import uce.edu.ec.muce.intefaces.MuseoRepositorio;
 import uce.edu.ec.muce.modelos.Item;
 import uce.edu.ec.muce.modelos.Movimiento;
 import uce.edu.ec.muce.modelos.MovimientoPieza;
+import uce.edu.ec.muce.modelos.Museo;
 import uce.edu.ec.muce.modelos.filtros.MovimientoPendientesFiltro;
 import uce.edu.ec.muce.modelos.filtros.MovimientoPiezaIngreso;
 
@@ -30,6 +32,9 @@ import uce.edu.ec.muce.modelos.filtros.MovimientoPiezaIngreso;
 @RequestMapping("/movimiento")
 public class MovimientoService extends AbstracService<MovimientoRepositorio, Movimiento> {
 
+	@Autowired
+	private MuseoRepositorio museo;
+	
 	@Autowired
 	private MovimientoPiezaRepositorio movimientopieza;
 
@@ -160,8 +165,15 @@ public class MovimientoService extends AbstracService<MovimientoRepositorio, Mov
 	public CompletableFuture<Movimiento> confirmar(@PathVariable("id") Long id) {
 
 		Movimiento m = repo.findOne(id);
+		Museo museoReceptor = museo.getOne(m.getMuseoreceptorid()); 
 		m.setConfirmacion(true);
 		m.setFechaconfirmacion(new Date());
+		List<MovimientoPieza> piezas = movimientopieza.filtro(id);
+		for (MovimientoPieza movimientoPieza : piezas) {
+			Item i = item.getOne(movimientoPieza.getmovimientopiezaPK().getItemid());
+			i.setMuseoid(museoReceptor);
+			item.save(i);
+		}
 		return CompletableFuture.completedFuture(repo.save(m));
 
 	}

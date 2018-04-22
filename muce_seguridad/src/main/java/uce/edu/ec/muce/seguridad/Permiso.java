@@ -39,26 +39,26 @@ public class Permiso implements Serializable {
     @SequenceGenerator(sequenceName = "permiso_seq", allocationSize = 1, name = "PERMISO_SEQ")
     @Basic(optional = false)
     @NotNull
-    @Column(name = "PERMISOID", nullable = false, precision = 0, scale = -127)
+    @Column(name = "prm_id", nullable = false, precision = 0, scale = -127)
     private Long permisoid;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 256)
-    @Column(name = "NOMBRE", nullable = false, length = 256)
+    @Column(name = "prm_nombre", nullable = false, length = 256)
     private String nombre;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 256)
-    @Column(name = "DETALLE", nullable = false, length = 256)
+    @Column(name = "prm_detalle", nullable = false, length = 256)
     private String detalle;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 256)
-    @Column(name = "URL", nullable = false, length = 256)
+    @Column(name = "prm_url", nullable = false, length = 256)
     private String url;
     @JoinTable(name = "ROL_PERMISOS", joinColumns = {
-        @JoinColumn(name = "PERMISOID", referencedColumnName = "PERMISOID", nullable = false)}, inverseJoinColumns = {
-        @JoinColumn(name = "ROLID", referencedColumnName = "ROLID", nullable = false)})
+        @JoinColumn(name = "prm_id", referencedColumnName = "prm_id", nullable = false)}, inverseJoinColumns = {
+        @JoinColumn(name = "rol_id", referencedColumnName = "rol_id", nullable = false)})
     @ManyToMany
     @JsonIgnore
     private Set<Rol> rolSet;

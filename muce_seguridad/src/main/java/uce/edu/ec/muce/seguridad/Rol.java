@@ -37,13 +37,13 @@ public class Rol implements Serializable {
     @SequenceGenerator(sequenceName = "rol_seq", allocationSize = 1, name = "ROL_SEQ")
     @Basic(optional = false)
     @NotNull
-    @Column(name = "ROLID", nullable = false, precision = 0, scale = -127)
+    @Column(name = "rol_id", nullable = false, precision = 0, scale = -127)
     private Long rolid;
     @Size(max = 256)
-    @Column(name = "NOMBRE", length = 256)
+    @Column(name = "rol_nombre", length = 256)
     private String nombre;
     @Size(max = 256)
-    @Column(name = "DESCRIPCION", length = 256)
+    @Column(name = "rol_descripcion", length = 256)
     private String descripcion;
     @JsonIgnore
     @ManyToMany(mappedBy = "rolSet")

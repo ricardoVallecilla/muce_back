@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * @author Usuario
  */
 @Entity
-@Table(name = "PIEZAMUSEABLE", catalog = "", schema = "MUCE")
+@Table(name = "MUSEABLE", catalog = "", schema = "MUCE")
 @JsonIgnoreProperties(ignoreUnknown=true)
 @JsonInclude(JsonInclude.Include.NON_NULL )
 public class Piezamuseable implements Serializable {
@@ -43,251 +43,263 @@ public class Piezamuseable implements Serializable {
     @SequenceGenerator(sequenceName = "museo_seq", allocationSize = 1, name = "PIEZAMUSEABLE_SEQ")
     
     
-    @Column(name = "PIEZAMUSEABLEID", precision = 0, scale = -127)
+    @Column(name = "msb_id", precision = 0, scale = -127)
     private Long piezamuseableid;
     
     
     @Size(min = 1, max = 100)
-    @Column(name = "CODIGOMUSEO", length = 100)
+    @Column(name = "msb_codigo", length = 100)
     private String codigomuseo;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "CONTENEDOR", length = 600)
+    @Column(name = "msb_contenedor", length = 600)
     private String contenedor;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "DIRECCION", length = 600)
+    @Column(name = "msb_direccion", length = 600)
     private String direccion;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "DIRECCIONELECTRONICA", length = 600)
+    @Column(name = "msb_email", length = 600)
     private String direccionelectronica;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "NUMERO", length = 600)
+    @Column(name = "msb_numero", length = 600)
     private String numero;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "TELEFONO", length = 600)
+    @Column(name = "msb_telefono", length = 600)
     private String telefono;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "DISPOSICIONCONTENEDOR", length = 600)
+    @Column(name = "msb_disposicion_contenedor", length = 600)
     private String disposicioncontenedor;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "RESPONSABLE", length = 600)
+    @Column(name = "msb_responsable", length = 600)
     private String responsable;
     
     
     @Size(min = 1, max = 15)
-    @Column(name = "RESPONSABLECI", length = 15)
+    @Column(name = "msb_responsable_ci", length = 15)
     private String responsableci;
     @Size(max = 600)
-    @Column(name = "ELEMENTOSEXTRANOS", length = 600)
+    @Column(name = "msb_elementos_extranos", length = 600)
     private String elementosextranos;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "OBSERVACIONES", length = 600)
+    @Column(name = "msb_observaciones", length = 600)
     private String observaciones;
     
-    
-    @Lob
-    @JsonIgnore
-    @Column(name = "FOTOGRAFIA")
-    private byte[] fotografia;
-    
-    
     @Size(min = 1, max = 350)
-    @Column(name = "HISTORIAITINERANCIA", length = 350)
+    @Column(name = "msb_historia_itinerancia", length = 350)
     private String historiaitinerancia;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "ENTIDADINVESTIGADORA", length = 600)
+    @Column(name = "msb_entidad_investigadora", length = 600)
     private String entidadinvestigadora;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "INVENTARIADOPOR", length = 600)
+    @Column(name = "msb_inventariado_por", length = 600)
     private String inventariadopor;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "REVISADOPOR", length = 600)
+    @Column(name = "msb_revisado_por", length = 600)
     private String revisadopor;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "APROBADOPOR", length = 600)
+    @Column(name = "msb_aprobado_por", length = 600)
     private String aprobadopor;
     
     
-    @Column(name = "FECHAINVENTARIO")
+    @Column(name = "msb_fecha_inventario")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechainventario;
     
     
-    @Column(name = "FECHAREVISION")
+    @Column(name = "msb_fecha_revision")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharevision;
     
     
-    @Column(name = "FECHAAPROBACION")
+    @Column(name = "msb_fecha_aprobacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaaprobacion;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "REGISTROFOTOGRAFICOPOR", length = 600)
+    @Column(name = "msb_fotografiado_por", length = 600)
     private String registrofotograficopor;
-    @Size(max = 600)
-    @Column(name = "USUARIOREGISTROID", length = 600)
-    private String usuarioregistroid;
-    @Column(name = "FECHAREGISTRO")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fecharegistro;
-   
     
-    @Column(name = "PROCESOJURIDICO")    
+    @Size(max = 600)
+    @Column(name = "aud_usuario_registro_id", length = 600)
+    private String usuarioregistroid;
+    
+    @Column(name = "aud_fecha_registro")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fecharegistro;   
+    
+    @Column(name = "msb_proceso_juridico")    
     private Boolean procesojuridico;
     
-    @JoinColumn(name = "ESTADOINTEGRIDAD", referencedColumnName = "CATALOGOID")
+    @JoinColumn(name = "msb_estado_integridad", referencedColumnName = "ctl_id")
     @ManyToOne(optional = false)
-    private Catalogo estadointegridad;
+    private Catalogo estadointegridad;    
     
+    @Column(name = "msb_humedad")    
+    private Boolean humedad;  
     
-    
-    @Column(name = "HUMEDAD")    
-    private Boolean humedad;
-    
-  
-    
-    @Column(name = "CAMARAS")    
+    @Column(name = "msb_camaras")    
     private Boolean camaras;
     
-    @JoinColumn(name = "ESTADOCONSERVACIONID", referencedColumnName = "CATALOGOID")
-    @ManyToOne(optional = false)
+    @JoinColumn(name = "msb_estado_conservacion_id", referencedColumnName = "ctl_id")
+    @ManyToOne(optional = false)    
     private Catalogo estadoconservacionid;
-    @JoinColumn(name = "CIUDADID", referencedColumnName = "CATALOGOID")
+    
+    @JoinColumn(name = "msb_ciudad", referencedColumnName = "ctl_id")
     @ManyToOne(optional = false)
     private Catalogo ciudadid;
-    @JoinColumn(name = "CANTONID", referencedColumnName = "CATALOGOID")
+    
+    @JoinColumn(name = "msb_canton", referencedColumnName = "ctl_id")
     @ManyToOne(optional = false)
     private Catalogo cantonid;
-    @JoinColumn(name = "PROVINCIAID", referencedColumnName = "CATALOGOID")
+    
+    @JoinColumn(name = "msb_provincia", referencedColumnName = "ctl_id")
     @ManyToOne(optional = false)
     private Catalogo provinciaid;
     
-    @JoinColumn(name = "PROVINCIABIENESID", referencedColumnName = "CATALOGOID")
+    @JoinColumn(name = "msb_provincia_bienes", referencedColumnName = "ctl_id")
     @ManyToOne(optional = true)
     private Catalogo provinciabienesid;
     
     
-    @JoinColumn(name = "ITEMID", referencedColumnName = "ITEMID")
+    @JoinColumn(name = "itm_id", referencedColumnName = "itm_id")
     @OneToOne
     private Item itemid;
     
     
-    @Column(name = "INTERVENCIONESINADECUADAS")    
+    @Column(name = "msb_intervenciones_inadecuadas")    
     private Boolean intervencionesinadecuadas;
     
     
     
-    @Column(name = "TEMPERATURA")    
+    @Column(name = "msb_temperatura")    
     private Boolean temperatura;
     
     
     
-    @Column(name = "GUARDIAS")    
+    @Column(name = "msb_guardias")    
     private Boolean guardias;
 
     
-    @Column(name = "LUZ")    
+    @Column(name = "msb_luz")    
     private Boolean luz;
     
    
     
-    @Column(name = "SENSORES")    
+    @Column(name = "msb_sensores")    
     private Boolean sensores;
     
    
     
-    @Column(name = "ALARMAS")    
+    @Column(name = "msb_alarmas")    
     private Boolean alarmas;
     
       
-    @Column(name = "SISTEMAELECTRICODEFECTUOSO")    
+    @Column(name = "msb_electrico_defectuoso")    
     private Boolean sistemaelectricodefectuoso;
 
-    @Column(name = "EXTINTORES")    
+    @Column(name = "msb_extintores")    
     private Boolean extintores;
     
 
-    @Column(name = "MONTAJE")    
+    @Column(name = "msb_montaje")    
     private Boolean montaje;
-    @Column(length = 3000)
+    
+    @Column(name = "msb_uso_cuando" ,length = 3000)
     private String usocuando;
-    @Column(length = 3000)
+    
+    @Column(name = "msb_uso_donde" ,length = 3000)
     private String usodonde;
-    @Column(length = 3000)
+    
+    @Column(name = "msb_uso_como" ,length = 3000)
     private String usocomo;
-    @Column(length = 3000)
+    
+    @Column(name = "msb_uso_finalidad" ,length = 3000)
     private String usofinalidad;
-    @Column(length = 3000)
+    
+    @Column(name = "msb_uso_quien" ,length = 3000)
     private String usoquien;
-    @Column(length = 3000)
+    
+    @Column(name = "msb_uso_manejo" ,length = 3000)
     private String usomanejo;
-    @Column(length = 3000)
+    
+    @Column(name = "msb_materias" ,length = 3000)
     private String materias;
-    @Column(length = 3000)
+    
+    @Column(name = "msb_laboratorios" ,length = 3000)
     private String laboratorios;
-    @Column(length = 3000)
+    
+    @Column(name = "msb_docentes" ,length = 3000)
     private String docentes;
-    @Column(length = 3000)
+    
+    @Column(name = "msb_aporte" ,length = 3000)
     private String aporte;
-    @Column(length = 3000)
+    
+    @Column(name = "msb_observaciones_academico" ,length = 3000)
     private String observacionesacademico;
-    @Column(length = 3000)
+    
+    @Column(name = "msb_bibliografias" ,length = 3000)
     private String bibliografias;
-    @Column(length = 3000)
+    
+    @Column(name = "msb_links" ,length = 3000)
     private String links;
-    @Column(length = 600)
+    
+    @Column(name = "msb_fotografo" ,length = 600)
     private String fotografo;
-    @Column(length = 600)
+    
+    @Column(name = "msb_fotografia_lugar" ,length = 600)
     private String fotografialugar;
     
-    @Column(length = 200)
+    @Column(name = "msb_oferente" ,length = 200)
     private String oferente;
-    @Column(length = 200)
+    
+    @Column(name = "msb_precio_adquicicion" ,length = 200)
     private String precioadquicicion;
-    @Column(length = 200)
+    
+    @Column(name = "msb_tasacion" ,length = 200)
     private String tasacion;
-    @Column(length = 200)
+    
+    @Column(name = "msb_seguro" ,length = 200)
     private String seguro;
     
-    @Lob
-    @JsonIgnore
-    @Column(name = "FOTOGRAFIADOS")
-    private byte[] fotografiados;
+   
+    @Column(name = "msb_ruta_fotografia")
+    private String fotografia;
     
-    @Lob
-    @JsonIgnore
-    @Column(name = "FOTOGRAFIATRES")
-    private byte[] fotografiatres;
     
-    @Lob
-    @JsonIgnore
-    @Column(name = "FOTOGRAFIACUATRO")
-    private byte[] fotografiacuatro;
+    @Column(name = "msb_fotografia_dos")
+    private String fotografiados;
+    
+   
+    @Column(name = "msb_fotografia_tres")
+    private String fotografiatres;
+    
+   
+    @Column(name = "msb_fotografia_cuatro")
+    private String fotografiacuatro;
 
     public Piezamuseable() {
     }
@@ -414,16 +426,7 @@ public class Piezamuseable implements Serializable {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
-    
-
-
-    public byte[] getFotografia() {
-		return fotografia;
-	}
-
-	public void setFotografia(byte[] fotografia) {
-		this.fotografia = fotografia;
-	}
+      
 
 	public String getHistoriaitinerancia() {
         return historiaitinerancia;
@@ -784,32 +787,44 @@ public class Piezamuseable implements Serializable {
 	}
 	
 	
+	
 
-	public byte[] getFotografiados() {
+	
+
+	
+
+	public String getFotografia() {
+		return fotografia;
+	}
+
+	public void setFotografia(String fotografia) {
+		this.fotografia = fotografia;
+	}
+
+	public String getFotografiados() {
 		return fotografiados;
 	}
 
-	public void setFotografiados(byte[] fotografiados) {
+	public void setFotografiados(String fotografiados) {
 		this.fotografiados = fotografiados;
 	}
 
-	public byte[] getFotografiatres() {
+	public String getFotografiatres() {
 		return fotografiatres;
 	}
 
-	public void setFotografiatres(byte[] fotografiatres) {
+	public void setFotografiatres(String fotografiatres) {
 		this.fotografiatres = fotografiatres;
 	}
 
-	public byte[] getFotografiacuatro() {
+	public String getFotografiacuatro() {
 		return fotografiacuatro;
 	}
 
-	public void setFotografiacuatro(byte[] fotografiacuatro) {
+	public void setFotografiacuatro(String fotografiacuatro) {
 		this.fotografiacuatro = fotografiacuatro;
 	}
 
-	
 	public Catalogo getProvinciabienesid() {
 		return provinciabienesid;
 	}

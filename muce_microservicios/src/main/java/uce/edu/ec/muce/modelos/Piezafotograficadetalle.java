@@ -7,7 +7,7 @@ package uce.edu.ec.muce.modelos;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +20,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -31,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * @author Usuario
  */
 @Entity
-@Table(name = "PIEZAFOTOGRAFICADETALLE", catalog = "", schema = "MUCE")
+@Table(name = "FOTOGRAFIA", catalog = "", schema = "MUCE")
 @JsonIgnoreProperties(ignoreUnknown=true)
 @JsonInclude(JsonInclude.Include.NON_NULL )
 public class Piezafotograficadetalle implements Serializable {
@@ -43,78 +42,82 @@ public class Piezafotograficadetalle implements Serializable {
     @SequenceGenerator(sequenceName = "Piezafotograficadetalle_seq", allocationSize = 1, name = "PIEZAFOTOGRAFICADETALLE_SEQ")
     
     
-    @Column(name = "DETALLEID", precision = 0, scale = -127)
+
+    @Column(name = "ftg_id", nullable = false, precision = 0, scale = -127)
     private Long detalleid;
-    
-    
-    @Basic(optional = false)
-    @NotNull
+
     @Size(min = 1, max = 600)
-    @Column(name = "TITULO", nullable = false, length = 600)
+    @Column(name = "ftg_titulo", nullable = false, length = 600)
     private String titulo;
-    @Basic(optional = false)
-    @NotNull
+    
+    
+    
     @Size(min = 1, max = 600)
-    @Column(name = "TEMATICA", nullable = false, length = 600)
+    @Column(name = "ftg_tematica", nullable = false, length = 600)
     private String tematica;
-    @Basic(optional = false)
-    @NotNull
+    
+    
+    
     @Size(min = 1, max = 600)
-    @Column(name = "TIPOLOGIA", nullable = false, length = 600)
+    @Column(name = "ftg_tipologia", nullable = false, length = 600)
     private String tipologia;
-    @Basic(optional = false)
-    @NotNull
+    
+    
+    
     @Size(min = 1, max = 600)
-    @Column(name = "PROCEDIMIENTO", nullable = false, length = 600)
+    @Column(name = "ftg_procedimiento", nullable = false, length = 600)
     private String procedimiento;
+    
     @Size(max = 600)
-    @Column(name = "AUTOR", length = 600)
+    @Column(name = "ftg_autor", length = 600)
     private String autor;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 10)
-    @Column(name = "SIGLOANO", nullable = false, length = 10)
+    @Column(name = "ftg_siglo_ano", nullable = false, length = 10)
     private String sigloano;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 600)
-    @Column(name = "FONDO", nullable = false, length = 600)
+    @Column(name = "ftg_fondo", nullable = false, length = 600)
     private String fondo;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 10)
-    @Column(name = "ALTO", nullable = false, length = 10)
+    @Column(name = "ftg_alto", nullable = false, length = 10)
     private String alto;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 10)
-    @Column(name = "LARGO", nullable = false, length = 10)
+    @Column(name = "ftg_largo", nullable = false, length = 10)
     private String largo;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 600)
-    @Column(name = "INSCRIPCIONES", nullable = false, length = 600)
+    @Column(name = "ftg_inscripciones", nullable = false, length = 600)
     private String inscripciones;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 600)
-    @Column(name = "DESCRIPCION", nullable = false, length = 600)
+    @Column(name = "ftg_descripcion", nullable = false, length = 600)
     private String descripcion;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 600)
-    @Column(name = "ELEMENTOSRELACIONADO", nullable = false, length = 600)
+    @Column(name = "ftg_elementos_relacionado", nullable = false, length = 600)
     private String elementosrelacionado;
+    
     @Size(max = 600)
-    @Column(name = "USUARIOREGISTROID", length = 600)
+    @Column(name = "aud_usuario_registro_id", length = 600)
     private String usuarioregistroid;
-    @Column(name = "FECHAREGISTRO")
+    
+    @Column(name = "aud_fecha_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharegistro;
-    
-    @JoinColumn(name = "PIEZAMUSEABLEID", referencedColumnName = "PIEZAMUSEABLEID")
-    
+
+    @JoinColumn(name = "msb_id", referencedColumnName = "msb_id", nullable = false)
     @ManyToOne(cascade = {CascadeType.ALL})
+
     private Piezamuseable piezamuseableid;
 
 

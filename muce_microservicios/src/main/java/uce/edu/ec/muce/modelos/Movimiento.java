@@ -36,131 +36,165 @@ public class Movimiento implements Serializable {
     @SequenceGenerator(sequenceName = "movimiento_seq", allocationSize = 1, name = "MOVIMIENTO_SEQ")
     @Basic(optional = false)
     @NotNull
-    @Column(name = "MOVIMIENTOID", nullable = false)
+    @Column(name = "mvm_id", nullable = false)
     private Long movimientoid;
-    @JoinColumn(name = "TIPOMOVIMIENTOID", referencedColumnName = "CATALOGOID")
+    @JoinColumn(name = "mvm_tipo", referencedColumnName = "ctl_id")
     @ManyToOne(optional = false)
     private Catalogo tipomovimientoid;
-    @Column(name = "FECHAMOVIMIENTO")
+    
+    @Column(name = "mvm_fecha_movimiento")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechamovimiento;
-    @Column(name = "FECHAINGRESO")
+    
+    @Column(name = "mvm_fecha_ingreso")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaingreso;
+    
     @Size(max = 600)
-    @Column(name = "INSTITUCION", length = 600)
+    @Column(name = "mvm_institucion", length = 600)
     private String institucion;
+    
     @Size(max = 600)
-    @Column(name = "DIRECCION", length = 600)
+    @Column(name = "mvm_direccion", length = 600)
     private String direccion;
+    
     @Size(max = 600)
-    @Column(name = "PAIS", length = 600)
+    @Column(name = "mvm_pais", length = 600)
     private String pais;
+    
     @Size(max = 600)
-    @Column(name = "PROVINCIA", length = 600)
+    @Column(name = "mvm_provincia", length = 600)
     private String provincia;
+    
     @Size(max = 600)
-    @Column(name = "CIUDAD", length = 600)
+    @Column(name = "mvm_ciudad", length = 600)
     private String ciudad;
+    
     @Size(max = 600)
-    @Column(name = "TELEFONO", length = 600)
+    @Column(name = "mvm_telefono", length = 600)
     private String telefono;
+    
     @Size(max = 600)
-    @Column(name = "EMAIL", length = 600)
+    @Column(name = "mvm_email", length = 600)
     private String email;
+    
     @Size(max = 600)
-    @Column(name = "CONTACTO", length = 600)
+    @Column(name = "mvm_contacto", length = 600)
     private String contacto;
-    @Column(name = "FECHAINICIOPRESTAMO")
+    
+    @Column(name = "mvm_inicio_prestamo")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechainicioprestamo;
-    @Column(name = "FECHAFINPRESTAMO")
+    
+    @Column(name = "mvm_fin_prestamo")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechafinprestamo;
-    @Column(name = "FECHAENTREGA")
+    
+    @Column(name = "mvm_fecha_entega")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaentega;
-    @Column(name = "FECHATRASPASO")
+    
+    @Column(name = "mvm_fecha_traspaso")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechatraspaso;
+    
     @Size(max = 600)
-    @Column(name = "OBSERVACIONES", length = 600)
+    @Column(name = "mvm_observaciones", length = 600)
     private String observaciones;
+    
     @Size(max = 50)
-    @Column(name = "numeroacta", length = 50)
+    @Column(name = "mvm_numero_acta", length = 50)
     private String numeroacta;
+    
     @Size(max = 500)
-    @Column(name = "NUMEROSEGURO", length = 500)
+    @Column(name = "mvm_numero_seguro", length = 500)
     private String numeroseguro;
-    @Column(name = "SEGURO")
+    
+    @Column(name = "mvm_seguro")
     private Long seguro;
+    
     @Size(max = 600)
-    @Column(name = "QUIENDONO", length = 600)
+    @Column(name = "mvm_quien_dono", length = 600)
     private String quiendono;
+    
     @Size(max = 600)
-    @Column(name = "AQUIENDONO", length = 600)
+    @Column(name = "mvm_aquien_dono", length = 600)
     private String aquiendono;
+    
     @Size(max = 50)
-    @Column(name = "NUMERODOCBAJA", length = 50)
+    @Column(name = "mvm_numero_doc_baja", length = 50)
     private String numerodocbaja;
+    
     @Size(max = 600)
-    @Column(name = "USUARIOREGISTROID", length = 600)
+    @Column(name = "aud_usuario_registro_id", length = 600)
     private String usuarioregistroid;
-    @Column(name = "FECHAREGISTRO")
+    
+    @Column(name = "aud_fecha_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharegistro;
    
     @Size(max = 600)
-    @Column(name = "ENTREGANOMBRE", length = 600)
+    @Column(name = "mvm_entrega_nombre", length = 600)
     private String entreganombre;
+    
     @Size(max = 600)
-    @Column(name = "ENTREGACARGO", length = 600)
+    @Column(name = "mvm_entrega_cargo", length = 600)
     private String entregacargo;
+    
     @Size(max = 600)
-    @Column(name = "ENTREGARESERVA", length = 600)
+    @Column(name = "mvm_entrega_reserva", length = 600)
     private String entregareserva;
+    
     @Size(max = 600)
-    @Column(name = "ENTREGACI", length = 600)
+    @Column(name = "mvm_entrega_ci", length = 600)
     private String entregaci;
+    
     @Size(max = 600)
-    @Column(name = "RECEPTORNOMBRE", length = 600)
+    @Column(name = "mvm_receptor_nombre", length = 600)
     private String receptornombre;
+    
     @Size(max = 600)
-    @Column(name = "RECEPTORCARGO", length = 600)
+    @Column(name = "mvm_receptor_cargo", length = 600)
     private String receptorcargo;
+    
     @Size(max = 600)
-    @Column(name = "RECEPTORRESERVA", length = 600)
+    @Column(name = "mvm_receptor_reserva", length = 600)
     private String receptorreserva;
+    
     @Size(max = 600)
-    @Column(name = "RECEPTORCI", length = 600)
+    @Column(name = "mvm_receptor_ci", length = 600)
     private String 	receptorci;
+    
     @Size(max = 600)
-    @Column(name = "ASEGURADORA", length = 600)
+    @Column(name = "mvm_aseguradora", length = 600)
     private String 	aseguradora;
+    
     @Size(max = 10)
-    @Column(name = "VALORSEGURO", length = 10)
+    @Column(name = "mvm_valor_seguro", length = 10)
     private String 	valorseguro;
     
-    @Column(name = "FORMAENVIO")
+    
+    @Column(name = "mvm_forma_envio")
     private Boolean 	formaenvio;
-    @Column(name = "CONFIRMACION")
+    
+    @Column(name = "mvm_confirmacion")
     private Boolean 	confirmacion;
     
-    @Column(name = "FECHACONFIRMCION")
+    @Column(name = "mvm_fecha_confirmacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaconfirmacion;
     
     @Size(max = 600)
-    @Column(name = "DOCUMENTORESPALDO", length = 600)
+    @Column(name = "mvm_documento_respaldo", length = 600)
     private String 	documentorespaldo;
     
-    @Column(name = "MUSEOID")
+    @Column(name = "mvm_museo_id")
     private Long 	museoid;
     
-    @Column(name = "MUSEORECEPTORID")
+    @Column(name = "mvm_museo_receptor_id")
     private Long 	museoreceptorid;
     
-    @Column(name = "MOVIMIENTORELACIONADOID")
+    @Column(name = "mvm_movimiento_relacionado_id")
     private Long 	movimientorelacionadoid;
     
 

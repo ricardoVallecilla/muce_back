@@ -8,7 +8,7 @@ package uce.edu.ec.muce.modelos;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,6 +20,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -30,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * @author Usuario
  */
 @Entity
-@Table(name = "PIEZAPALEONTOLOGICADETALLE", catalog = "", schema = "MUCE")
+@Table(name = "PALEONTOLOGIA", catalog = "", schema = "MUCE")
 @JsonIgnoreProperties(ignoreUnknown=true)
 @JsonInclude(JsonInclude.Include.NON_NULL )
 public class Piezapaleontologicadetalle implements Serializable {
@@ -40,116 +41,124 @@ public class Piezapaleontologicadetalle implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PIEZAPALEONTOLOGICADETALLE_SEQ")
     @SequenceGenerator(sequenceName = "Piezapaleontologicadetalle_seq", allocationSize = 1, name = "PIEZAPALEONTOLOGICADETALLE_SEQ")
-    
-    
-    @Column(name = "DETALLEID", precision = 0, scale = -127)
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "pln_id", nullable = false, precision = 0, scale = -127)
     private Long detalleid;
     
     @Size(max = 600)
-    @Column(name = "NOMBRECIENTIFICO", length = 600)
+    @Column(name = "pln_nombre_cientifico", length = 600)
     private String nombrecientifico;
+    
     @Size(max = 600)
-    @Column(name = "NOMBRECOMUN", length = 600)
+    @Column(name = "pln_nombre_comun", length = 600)
     private String nombrecomun;
+    
     @Size(max = 600)
-    @Column(name = "REINO", length = 600)
+    @Column(name = "pln_reino", length = 600)
     private String reino;
+    
     @Size(max = 600)
-    @Column(name = "FILO", length = 600)
+    @Column(name = "pln_filo", length = 600)
     private String filo;
+    
     @Size(max = 600)
-    @Column(name = "CLASE", length = 600)
+    @Column(name = "pln_clase", length = 600)
     private String clase;
     @Size(max = 600)
-    @Column(name = "ORDEN", length = 600)
+    @Column(name = "pln_orden", length = 600)
     private String orden;
     @Size(max = 600)
-    @Column(name = "FAMILIA", length = 600)
+    @Column(name = "pln_familia", length = 600)
     private String familia;
     @Size(max = 600)
-    @Column(name = "ERA", length = 600)
+    @Column(name = "pln_era", length = 600)
     private String era;
     @Size(max = 600)
-    @Column(name = "SISTEMA", length = 600)
+    @Column(name = "pln_sistema", length = 600)
     private String sistema;
     @Size(max = 600)
-    @Column(name = "SERIE", length = 600)
+    @Column(name = "pln_serie", length = 600)
     private String serie;
     @Size(max = 600)
-    @Column(name = "PISO", length = 600)
+    @Column(name = "pln_piso", length = 600)
     private String piso;
     @Size(max = 600)
-    @Column(name = "MIEMBRO", length = 600)
+    @Column(name = "pln_miembro", length = 600)
     private String miembro;
     @Size(max = 600)
-    @Column(name = "FORMACION", length = 600)
+    @Column(name = "pln_formacion", length = 600)
     private String formacion;
     @Size(max = 600)
-    @Column(name = "GRUPO", length = 600)
+    @Column(name = "pln_grupo", length = 600)
     private String grupo;
     @Size(max = 600)
-    @Column(name = "ALTO", length = 600)
+    @Column(name = "pln_alto", length = 600)
     private String alto;
     @Size(max = 600)
-    @Column(name = "LARGO", length = 600)
+    @Column(name = "pln_largo", length = 600)
     private String largo;
     @Size(max = 600)
-    @Column(name = "ANCHO", length = 600)
+    @Column(name = "pln_ancho", length = 600)
     private String ancho;
     @Size(max = 600)
-    @Column(name = "PESO", length = 600)
+    @Column(name = "pln_peso", length = 600)
     private String peso;
     @Size(max = 600)
-    @Column(name = "INSCRIPCIONES", length = 600)
+    @Column(name = "pln_inscripciones", length = 600)
     private String inscripciones;
     @Size(max = 600)
-    @Column(name = "ELEMENTOSRELACIONADOS", length = 600)
+    @Column(name = "pln_elementos_relacionados", length = 600)
     private String elementosrelacionados;
     @Size(max = 600)
-    @Column(name = "MORFOLOGIA", length = 600)
+    @Column(name = "pln_morfologia", length = 600)
     private String morfologia;
     @Size(max = 600)
-    @Column(name = "RECOLECTORES", length = 600)
+    @Column(name = "pln_recolectores", length = 600)
     private String recolectores;
     @Size(max = 600)
-    @Column(name = "FECHARECOLECCION", length = 600)
+    @Column(name = "pln_fecha_recoleccion", length = 600)
     private String fecharecoleccion;
     @Size(max = 600)
-    @Column(name = "DIAMETRO", length = 600)
+    @Column(name = "pln_diametro", length = 600)
     private String diametro;
     @Size(max = 600)
-    @Column(name = "LATITUD", length = 600)
+    @Column(name = "pln_latitud", length = 600)
     private String latitud;
     @Size(max = 600)
-    @Column(name = "LONGITUD", length = 600)
+    @Column(name = "pln_longitud", length = 600)
     private String longitud;
     @Size(max = 600)
-    @Column(name = "LOCALIZACIONPRECISA", length = 600)
+    @Column(name = "pln_localizacion_precisa", length = 600)
     private String localizacionprecisa;
     @Size(max = 600)
-    @Column(name = "PERSONARECOLECTADORA", length = 600)
+    @Column(name = "pln_persona_recolectadora", length = 600)
     private String personarecolectadora;
     @Size(max = 600)
-    @Column(name = "CIUDADID", length = 600)
+    @Column(name = "pln_ciudad", length = 600)
     private String ciudadid;
+    
     @Size(max = 600)
-    @Column(name = "USUARIOREGISTROID", length = 600)
+    @Column(name = "aud_usuario_registro_id", length = 600)
     private String usuarioregistroid;
-    @Column(name = "FECHAREGISTRO")
+    
+    @Column(name = "aud_fecha_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharegistro;
-    @JoinColumn(name = "CANTONID", referencedColumnName = "CATALOGOID")
+    
+    @JoinColumn(name = "pln_canton", referencedColumnName = "ctl_id")
     @ManyToOne
     private Catalogo cantonid;
-    @JoinColumn(name = "PAISID", referencedColumnName = "CATALOGOID")
+    @JoinColumn(name = "pln_pais", referencedColumnName = "ctl_id")
     @ManyToOne
     private Catalogo paisid;
-    @JoinColumn(name = "PROVINCIAID", referencedColumnName = "CATALOGOID")
+    
+    @JoinColumn(name = "pln_provincia", referencedColumnName = "ctl_id")
     @ManyToOne
     private Catalogo provinciaid;
     
-    @JoinColumn(name = "PIEZAMUSEABLEID", referencedColumnName = "PIEZAMUSEABLEID")
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "msb_id", referencedColumnName = "msb_id")
+    @ManyToOne
     private Piezamuseable piezamuseableid;
 
     public Piezapaleontologicadetalle() {

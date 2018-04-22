@@ -16,7 +16,7 @@ import javax.persistence.Table;
  * @author Usuario
  */
 @Entity 
-@Table(name = "PIEZAMUSEABLECATALOGO", catalog = "", schema = "MUCE")
+@Table(name = "MUSEABLECATALOGO", catalog = "", schema = "MUCE")
 public class Piezamuseablecatalogo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -25,7 +25,7 @@ public class Piezamuseablecatalogo implements Serializable {
     @EmbeddedId
     protected PiezaCatalogoPk piezacatalogoPk;
     
-    @Column(name = "IDENTIFICADORCAMPO")
+    @Column(name = "msbctl_indetificador_campo")
     private String indetificadorcampo;
     
     

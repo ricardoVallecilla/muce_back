@@ -28,66 +28,66 @@ public class Restauracion implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "RESTAURACION_SEQ")
     @SequenceGenerator(sequenceName = "RESTAURACION_SEQ", allocationSize = 1, name = "RESTAURACION_SEQ")
     @Basic(optional = false)
-    @Column(name = "ID", nullable = false, precision = 0, scale = -127)
+    @Column(name = "rst_id", nullable = false, precision = 0, scale = -127)
 	private Long id;
 	
     @Size(min = 1, max = 256)
-    @Column(name = "ORIGENHISTORICO", length = 256)
+    @Column(name = "rst_origen_historico", length = 256)
 	private String origenHistorico;
 
     @Size(min = 1, max = 256)
-    @Column(name = "CAMBIOUBICACION", length = 256)
+    @Column(name = "rst_cambio_ubicacion", length = 256)
 	private String cambioUbicacion;
     
     @Size(min = 1, max = 256)
-    @Column(name = "RESTAURACIONMODIFICACION", length = 256)
+    @Column(name = "rst_restauracion_modificacion", length = 256)
 	private String restauracionModificacion;
     
     @Size(min = 1, max = 256)
-    @Column(name = "ESTUDIOSPREVIOS", length = 256)
+    @Column(name = "rst_estudios_previos", length = 256)
 	private String estudiosPrevios;
     
     @Size(min = 1, max = 256)
-    @Column(name = "ESTUDIOSANALITICOS", length = 256)
+    @Column(name = "rst_estudios_analiticos", length = 256)
 	private String estudiosAnaliticos;
     
     @Size(min = 1, max = 256)
-    @Column(name = "ESTUDIOSHISTORICOS", length = 256)
+    @Column(name = "rst_estudios_historico", length = 256)
 	private String estudiosHistorico;
     
     @Size(min = 1, max = 256)
-    @Column(name = "TRATAMIENTO", length = 256)
+    @Column(name = "rst_tratamiento", length = 256)
 	private String tratamiento;
 	
     @Lob
-    @Column(name = "FOTOGRAFIA")
+    @Column(name = "rst_fotografia")
 	private byte[] fotografia;
     
     @Size(min = 1, max = 256)
-    @Column(name = "ENTIDADCONTROL", length = 256)
+    @Column(name = "rst_entidad_control", length = 256)
 	private String entidadControl;
     
     @Size(min = 1, max = 256)
-    @Column(name = "REVISADOPOR", length = 256)
+    @Column(name = "rst_revisado_por", length = 256)
 	private String revisadoPor;
 	
-	@Column(name = "FECHAREVISION")
+	@Column(name = "rst_fecha_revision")
     @Temporal(TemporalType.TIMESTAMP)
 	private Date fechaRevision;
 	
     @Size(min = 1, max = 256)
-    @Column(name = "REGISTROFOTOGRAFICO", length = 256)
+    @Column(name = "rst_registro_fotografico", length = 256)
 	private String registroFotografico;
 	
-	@Column(name = "FECHAAPROBACION")
+	@Column(name = "rst_fecha_aprobacion")
     @Temporal(TemporalType.TIMESTAMP)
 	private Date fechaAprobacion;
 	
 	@Size(min = 1, max = 256)
-    @Column(name = "APROBADOPOR", length = 256)
+    @Column(name = "rst_aprobado_por", length = 256)
 	private String aprobadoPor;
 	
-	@JoinColumn(name = "ITEMID", referencedColumnName = "ITEMID")
+	@JoinColumn(name = "itm_id", referencedColumnName = "itm_id")
     @OneToOne
     private Item itemid;
 	

@@ -14,7 +14,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -22,7 +21,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -31,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * @author Usuario
  */
 @Entity
-@Table(name = "PIEZAARQUEOLOGICADETALLE", catalog = "", schema = "MUCE")
+@Table(name = "ARQUEOLOGIA", catalog = "", schema = "MUCE")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL )
 public class Piezaarqueologicadetalle implements Serializable {
@@ -43,186 +41,237 @@ public class Piezaarqueologicadetalle implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PIEZAARQUEOLOGICADETALLE_SEQ")
 	@SequenceGenerator(sequenceName = "Piezaarqueologicadetalle_seq", allocationSize = 1, name = "PIEZAARQUEOLOGICADETALLE_SEQ")
 
-	@Column(name = "DETALLEID", precision = 0, scale = -127)
+	@Column(name = "arq_id", precision = 0, scale = -127)
 	private Long detalleid;
 
-	@Column(name = "CATEGORIAMORFOFUNCIONAL")
+	@Column(name = "arq_categoria_morfofuncional")
 	private String categoriamorfofuncional;
 
-	@Column(name = "TIPOMATERIAL")
+	@Column(name = "arq_tipo_material")
 	private String tipomaterial;
 
-	@Column(name = "TECNICAMANOFACTURA")
+	@Column(name = "arq_tecnica_manofactura")
 	private String tecnicamanofactura;
 
-	@Column(name = "TECNICADECORATIVA")
+	@Column(name = "arq_tecnica_decorativa")
 	private String tecnicadecorativa;
 
-	@Column(name = "PERIODOHISTORICO")
+	@Column(name = "arq_periodo_historico")
 	private String periodohistorico;
 
 	@Size(min = 1, max = 150)
-	@Column(name = "CULTURA", length = 150)
+	@Column(name = "arq_cultura", length = 150)
 	private String cultura;
 
 	@Size(min = 1, max = 150)
-	@Column(name = "CRONOLOGIA", length = 150)
+	@Column(name = "arq_cronologia", length = 150)
 	private String cronologia;
 
 	@Size(min = 1, max = 150)
-	@Column(name = "FASE", length = 150)
+	@Column(name = "arq_fase", length = 150)
 	private String fase;
 
 	@Size(min = 1, max = 10)
-	@Column(name = "ALTO", length = 10)
+	@Column(name = "arq_alto", length = 10)
 	private String alto;
 
 	@Size(min = 1, max = 10)
-	@Column(name = "LARGO", length = 10)
+	@Column(name = "arq_largo", length = 10)
 	private String largo;
 
 	@Size(min = 1, max = 10)
-	@Column(name = "ANCHO", length = 10)
+	@Column(name = "arq_ancho", length = 10)
 	private String ancho;
 
 	@Size(min = 1, max = 10)
-	@Column(name = "DIAMETRO", length = 10)
+	@Column(name = "arq_diametro", length = 10)
 	private String diametro;
 
 	@Size(min = 1, max = 10)
-	@Column(name = "ESPESOR", length = 10)
+	@Column(name = "arq_espesor", length = 10)
 	private String espesor;
 
 	@Size(min = 1, max = 10)
-	@Column(name = "PESO", length = 10)
+	@Column(name = "arq_peso", length = 10)
 	private String peso;
 
 	@Size(min = 1, max = 150)
-	@Column(name = "INSCRIPCIONES", length = 150)
+	@Column(name = "arq_inscripciones", length = 150)
 	private String inscripciones;
 
 	@Size(min = 1, max = 3000)
-	@Column(name = "DESCRIPCION", length = 3000)
+	@Column(name = "arq_descripcion", length = 3000)
 	private String descripcion;
 
 	@Size(min = 1, max = 3000)
-	@Column(name = "ELEMENTOSRELACIONADO", length = 3000)
+	@Column(name = "arq_elementos_relacionado", length = 3000)
 	private String elementosrelacionado;
 	@Size(max = 3000)
-	@Column(name = "USUARIOREGISTROID", length = 3000)
+	@Column(name = "aud_usuario_registro_id", length = 3000)
 	private String usuarioregistroid;
-	@Column(name = "FECHAREGISTRO")
+	
+	@Column(name = "aud_fecha_registro")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fecharegistro;
-	@JoinColumn(name = "PIEZAMUSEABLEID", referencedColumnName = "PIEZAMUSEABLEID")
+	
+	@JoinColumn(name = "msb_id", referencedColumnName = "msb_id")
 	@ManyToOne(cascade = { CascadeType.ALL })
 	private Piezamuseable piezamuseableid;
-	@Column(length = 3000)
+	
+	
+	@Column(name = "arq_elaboracion",length = 3000)	
 	private String elaboracion;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_herramientas",length = 3000)
 	private String herramientas;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_decoracion",length = 3000)
 	private String decoracion;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_alteracion",length = 3000)
 	private String alteracion;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_simbolos",length = 3000)
 	private String simbolos;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_semiotico",length = 3000)
 	private String semiotico;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_colores_usados",length = 3000)
 	private String coloresusados;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_colores_procedencia",length = 3000)
 	private String coloresprocedencia;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_semiotico_colores",length = 3000)
 	private String semioticocolores;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_empirica",length = 3000)
 	private Boolean empirica;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_arqueologia",length = 3000)
 	private Boolean arqueologia;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_extraccion_observacion",length = 3000)
 	private String extraccionobservacion;
-	@Column(length = 2000)
+	
+	@Column(name = "arq_extraccion_responsable",length = 2000)
 	private String extraccionresponsable;
-	@Column(length = 2000)
+	
+	@Column(name = "arq_extraccion_arqueologo",length = 2000)
 	private String extraccionarqueologo;
-	@Column(length = 2000)
+	
+	@Column(name = "arq_biografia_arqueologo",length = 2000)
 	private String biografiaarqueologo;
-	@Column(length = 2000)
+	
+	@Column(name = "arq_publicacion_arqueologo",length = 2000)
 	private String publicacionarqueologo;
-	@Column(length = 2000)
+	
+	@Column(name = "arq_arqueologo_universidad",length = 2000)
 	private String arqueologouniversidad;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_uso_social",length = 3000)
 	private String usosocial;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_uso_primario",length = 3000)
 	private String usoprimario;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_uso_alternativo",length = 3000)
 	private String usoalternativo;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_uso_restricciones",length = 3000)
 	private String usorestricciones;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_creencias",length = 3000)
 	private String creencias;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_peculiaridades",length = 3000)
 	private String peculiaridades;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_pertenencia",length = 3000)
 	private String pertenencia;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_uso_cuando",length = 3000)
 	private String usocuando;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_uso_donde",length = 3000)
 	private String usodonde;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_uso_colocacion",length = 3000)
 	private String usocolocacion;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_vida",length = 3000)
 	private String vida;
 	
-	@JoinColumn(name = "YACIMIENTOPROVINCIAID", referencedColumnName = "CATALOGOID")
+	@JoinColumn(name = "arq_yacimiento_provincia", referencedColumnName = "ctl_id")
     @ManyToOne(optional = true)
 	private Catalogo yacimientoprovinciaid;
-	@JoinColumn(name = "YACIMIENTOCANTONID", referencedColumnName = "CATALOGOID")
+	
+	@JoinColumn(name = "arq_yacimiento_canton", referencedColumnName = "ctl_id")
     @ManyToOne(optional = true)
 	private Catalogo yacimientocantonid;
-	@JoinColumn(name = "YACIMIENTOCIUDADID", referencedColumnName = "CATALOGOID")
+	
+	@JoinColumn(name = "arq_yacimiento_ciudad", referencedColumnName = "ctl_id")
     @ManyToOne(optional = true)
 	private Catalogo yacimientociudadid;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_yacimiento_direccion",length = 3000)
 	private String yacimientodireccion;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_yacimiento_latitud",length = 3000)
 	private String yacimientolatitud;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_yacimiento_longitud",length = 3000)
 	private String yacimientolongitud;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_yacimiento_altura",length = 3000)
 	private String yacimientoaltura;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_yacimiento_contenedor",length = 3000)
 	private String yacimientocontenedor;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_yacimiento_morfologia",length = 3000)
 	private String yacimientomorfologia;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_yacimiento_ubicacion",length = 3000)
 	private String yacimientoubicacion;
-	@Lob
-    @JsonIgnore
-    @Column(name = "FOTOGRAFIAYACIMIENTO")
-    private byte[]  fotografiayacimiento;
-	@Column(length = 3000)
+	
+	
+    @Column(name = "arq_fotografia_yacimiento")
+    private String  fotografiayacimiento;
+	
+	@Column(name = "arq_yacimiento_fotografo",length = 3000)
 	private String yacimientofotografo;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_yacimiento_lugar",length = 3000)
 	private String yacimientolugar;
-	@Lob
-	@JsonIgnore
-    @Column(name = "FOTOGRAFIAYACIMIENTOPLANO")
-    private byte[] fotoyacimientoplano;
+	
+	
+    @Column(name = "arq_foto_yacimiento_plano")
+    private String fotoyacimientoplano;
+	
+	@Column(name = "arq_yacimiento_arquitecto",length = 3000)
 	private String yacimientoarquitecto;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_yacimiento_planos_lugar",length = 3000)
 	private String yacimientoplanoslugar;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_variacion_nombre",length = 3000)
 	private String variacionnombre;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_denominacion_nativa",length = 3000)
 	private String denominacionnativa;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_procedencia_material",length = 3000)
 	private String procedenciamaterial;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_termino_nativo_material",length = 3000)
 	private String terminonativomaterial;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_termino_nativo_decoracion",length = 3000)
 	private String terminonativodecoracion;
-	@Column(length = 3000)
+	
+	@Column(name = "arq_termino_nativo_manofactura",length = 3000)
 	private String terminonativomanofactura;
 	
 
@@ -730,11 +779,13 @@ public class Piezaarqueologicadetalle implements Serializable {
 		this.yacimientoubicacion = yacimientoubicacion;
 	}
 
-	public byte[] getFotografiayacimiento() {
+
+
+	public String getFotografiayacimiento() {
 		return fotografiayacimiento;
 	}
 
-	public void setFotografiayacimiento(byte[] fotografiayacimiento) {
+	public void setFotografiayacimiento(String fotografiayacimiento) {
 		this.fotografiayacimiento = fotografiayacimiento;
 	}
 
@@ -754,11 +805,13 @@ public class Piezaarqueologicadetalle implements Serializable {
 		this.yacimientolugar = yacimientolugar;
 	}
 
-	public byte[] getFotoyacimientoplano() {
+	
+
+	public String getFotoyacimientoplano() {
 		return fotoyacimientoplano;
 	}
 
-	public void setFotoyacimientoplano(byte[] fotoyacimientoplano) {
+	public void setFotoyacimientoplano(String fotoyacimientoplano) {
 		this.fotoyacimientoplano = fotoyacimientoplano;
 	}
 

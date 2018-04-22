@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "MOVIMIENTOPIEZA", catalog = "", schema = "MUCE")
+@Table(name = "MOVIMIENTO_PIEZA", catalog = "", schema = "MUCE")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MovimientoPieza {
 

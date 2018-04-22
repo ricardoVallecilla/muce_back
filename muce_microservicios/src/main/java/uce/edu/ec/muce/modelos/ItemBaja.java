@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "ITEMBAJA", catalog = "", schema = "MUCE")
+@Table(name = "ITEM_BAJA", catalog = "", schema = "MUCE")
 public class ItemBaja implements Serializable {
 
 	/**
@@ -25,45 +25,57 @@ public class ItemBaja implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ITEMBAJA_SEQ")
     @SequenceGenerator(sequenceName = "itembaja_seq", allocationSize = 1, name = "ITEMBAJA_SEQ")
-	@Column(name = "ITEMBAJAID", precision = 0, scale = -127)
+	@Column(name = "itmbaj_id", precision = 0, scale = -127)
     private Long itembajaid;
 	
 	@Size(min = 1, max = 150)
+	@Column(name="itmbaj_denominacion")
     private String denominacion;
 	
 	@Size(min = 1, max = 150)
+	@Column(name="itmbaj_subtipo")
     private String subtipo;
 	
 	@Size(min = 1, max = 600)
+	@Column(name="itmbaj_procedencia")
     private String procedencia;
 	
 	
 	@Size(min = 1, max = 600)
+	@Column(name="itmbaj_motivos")
     private String motivos;
 	
 	@Size(min = 1, max = 3000)
+	@Column(name="itmbaj_justificacion")
     private String justificacion;
 	
 	@Size(min = 1, max = 150)
+	@Column(name="itmbaj_entidad_investigadora")
     private String entidadinvestigadora;
 	
 	@Size(min = 1, max = 150)
+	@Column(name="itmbaj_ejecutado_por")
     private String ejecutadopor;
 	
+	@Column(name="itmbaj_fecha")
 	private Date fecha;
 	
 	@Size(min = 1, max = 150)
+	@Column(name="itmbaj_custodio")
     private String custodio;
 	
 	@Size(min = 1, max = 600)
+	@Column(name="itmbaj_aprobado_por")
     private String aprobadopor;
 	
 	@Size(min = 1, max = 600)
+	@Column(name="itmbaj_observaciones")
     private String observaciones;
 	
+	@Column(name="itmbaj_fecha_aprobacion")
 	private Date  fechaaprobacion;
 	
-	
+	@Column(name="itm_id")
 	private Long itemid;
 
 	

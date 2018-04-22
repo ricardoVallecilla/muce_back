@@ -30,28 +30,28 @@ public class Usuario implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USUARIO_SEQ")
     @SequenceGenerator(sequenceName = "usuario_seq", allocationSize = 1, name = "USUARIO_SEQ")
-	@Column(name = "user_id", nullable = false, updatable = false)
+	@Column(name = "usr_id", nullable = false, updatable = false)
 	private Long id;
 	
-	@Column(name = "username", nullable = false, unique = true)
+	@Column(name = "usr_username", nullable = false, unique = true)
 	private String username;
 	
 	
-	@Column(name = "password", nullable = false)
+	@Column(name = "usr_password", nullable = false)
 	private String password;
 	
-	@Column(name = "enabled", nullable = false)
+	@Column(name = "usr_enabled", nullable = false)
 	private boolean enabled;
 	
-	@Column(name = "nombres", nullable = false)
+	@Column(name = "usr_nombres", nullable = false)
 	private String  nombres;
 	
 	
-	@JoinColumn(name = "ROLID", referencedColumnName = "ROLID")
+	@JoinColumn(name = "rol_id", referencedColumnName = "rol_id")
     @OneToOne
     private Rol rolId;
 	
-	@JoinColumn(name = "MUSEOID", referencedColumnName = "MUSEOID")
+	@JoinColumn(name = "mus_id", referencedColumnName = "mus_id")
     @OneToOne
     @JsonBackReference
     private Museo museoId;

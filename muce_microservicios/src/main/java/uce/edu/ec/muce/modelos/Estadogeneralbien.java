@@ -16,7 +16,7 @@ import javax.persistence.Table;
  * @author Usuario
  */
 @Entity
-@Table(name = "ESTADOGENERALBIEN", catalog = "", schema = "MUCE")
+@Table(name = "ESTADO_GENERAL_BIEN", catalog = "", schema = "MUCE")
 public class Estadogeneralbien implements Serializable {
 
     private static final long serialVersionUID = 1L;
