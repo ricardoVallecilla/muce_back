@@ -7,7 +7,8 @@ package uce.edu.ec.muce.modelos;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +20,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -37,13 +37,16 @@ public class Piezageologicadetalle implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+ 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PIEZAGEOLOGICADETALLE_SEQ")
     @SequenceGenerator(sequenceName = "Piezageologicadetalle_seq", allocationSize = 1, name = "PIEZAGEOLOGICADETALLE_SEQ")
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "DETALLEID", nullable = false, precision = 0, scale = -127)
+    
+    
+    @Column(name = "DETALLEID", precision = 0, scale = -127)
     private Long detalleid;
+    
+    
     @Size(max = 600)
     @Column(name = "MATERIAL", length = 600)
     private String material;
@@ -92,8 +95,9 @@ public class Piezageologicadetalle implements Serializable {
     @Column(name = "DESCRIPCION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date descripcion;
+    
     @JoinColumn(name = "PIEZAMUSEABLEID", referencedColumnName = "PIEZAMUSEABLEID")
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Piezamuseable piezamuseableid;
 
     public Piezageologicadetalle() {

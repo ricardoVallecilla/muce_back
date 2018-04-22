@@ -7,7 +7,9 @@ package uce.edu.ec.muce.modelos;
 
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,13 +39,15 @@ public class Piezazoologicadetalle implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+   
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PIEZAZOOLOGICADETALLE_SEQ")
     @SequenceGenerator(sequenceName = "Piezazoologicadetalle_seq", allocationSize = 1, name = "PIEZAZOOLOGICADETALLE_SEQ")
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "DETALLEID", nullable = false, precision = 0, scale = -127)
+    
+    
+    @Column(name = "DETALLEID", precision = 0, scale = -127)
     private Long detalleid;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 600)
@@ -145,8 +149,9 @@ public class Piezazoologicadetalle implements Serializable {
     @JoinColumn(name = "TECNICACONSERVACIONID", referencedColumnName = "CATALOGOID", nullable = false)
     @ManyToOne(optional = false)
     private Catalogo tecnicaconservacionid;
-    @JoinColumn(name = "PIEZAMUSEABLEID", referencedColumnName = "PIEZAMUSEABLEID", nullable = false)
-    @ManyToOne(optional = false)
+    
+    @JoinColumn(name = "PIEZAMUSEABLEID", referencedColumnName = "PIEZAMUSEABLEID")
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Piezamuseable piezamuseableid;
 
     public Piezazoologicadetalle() {
