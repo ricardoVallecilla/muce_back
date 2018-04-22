@@ -122,6 +122,7 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 
 		ObjectMapper mapper = new ObjectMapper();
 		PiezaDetalle detalle = mapper.readValue(detalleStr, PiezaDetalle.class);
+		System.out.println(detalleStr);
 		PiezaDetalle detalleGuardado = new PiezaDetalle();
 		Piezamuseable pm = null;
 
@@ -151,13 +152,16 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 			break;
 
 		case 5:
+
 			detalle.getPiezafotograficadetalle()
 					.setPiezamuseableid(setearFotos(file, detalle.getPiezafotograficadetalle().getPiezamuseableid()));
 
+
 			Piezafotograficadetalle pf = fotografica.save(detalle.getPiezafotograficadetalle());
 			pm = pf.getPiezamuseableid();
-
+			break;
 		case 6:
+
 			detalle.getPiezainstrumentaldetalle()
 					.setPiezamuseableid(setearFotos(file, detalle.getPiezainstrumentaldetalle().getPiezamuseableid()));
 
