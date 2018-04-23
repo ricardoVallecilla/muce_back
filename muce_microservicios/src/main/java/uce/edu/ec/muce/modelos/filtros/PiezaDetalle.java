@@ -1,6 +1,7 @@
 package uce.edu.ec.muce.modelos.filtros;
 
 import uce.edu.ec.muce.modelos.Piezaarqueologicadetalle;
+import uce.edu.ec.muce.modelos.Piezaartedetalle;
 import uce.edu.ec.muce.modelos.Piezabotanicadetalle;
 import uce.edu.ec.muce.modelos.Piezaentomologicadetalle;
 import uce.edu.ec.muce.modelos.Piezafotograficadetalle;
@@ -21,6 +22,7 @@ public class PiezaDetalle {
 	private Piezainstrumentaldetalle piezainstrumentaldetalle;
 	private Piezapaleontologicadetalle piezapaleontologicadetalle;
 	private Piezazoologicadetalle piezazoologicadetalle;
+	private Piezaartedetalle piezaartedetalle;
 	public Piezamuseable getPiezamuseable() {
 		return piezamuseable;
 	}
@@ -74,6 +76,12 @@ public class PiezaDetalle {
 	}
 	public void setPiezazoologicadetalle(Piezazoologicadetalle piezazoologicadetalle) {
 		this.piezazoologicadetalle = piezazoologicadetalle;
+	}
+	public Piezaartedetalle getPiezaartedetalle() {
+		return piezaartedetalle;
+	}
+	public void setPiezaartedetalle(Piezaartedetalle piezaartedetalle) {
+		this.piezaartedetalle = piezaartedetalle;
 	}
 
 	
