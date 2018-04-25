@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,13 +39,10 @@ public class Piezageologicadetalle implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
- 
+    
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PIEZAGEOLOGICADETALLE_SEQ")
-    @SequenceGenerator(sequenceName = "Piezageologicadetalle_seq", allocationSize = 1, name = "PIEZAGEOLOGICADETALLE_SEQ")
-
-    @Basic(optional = false)
-    @NotNull
+    @SequenceGenerator(sequenceName = "PIEZAGEOLOGICADETALLE_SEQ", allocationSize = 1, name = "PIEZAGEOLOGICADETALLE_SEQ")
     @Column(name = "glg_id", nullable = false, precision = 0, scale = -127)
     private Long detalleid;
 
@@ -112,8 +110,9 @@ public class Piezageologicadetalle implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date descripcion;
     
-    @JoinColumn(name = "msb_id", referencedColumnName = "msb_id")
-    @ManyToOne
+    @JoinColumn(name = "msb_id", referencedColumnName = "msb_id", nullable = false)
+    @ManyToOne(cascade = {CascadeType.ALL})
+
     private Piezamuseable piezamuseableid;
     
     @Size(max = 600)

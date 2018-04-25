@@ -35,7 +35,7 @@ public class RestauracionMateriales implements Serializable {
     @Column(name = "rstmrt_nombre", length = 150)
 	private String nombre;
     
-    @JoinColumn(name = "RESTAURACIONID", referencedColumnName = "ID")
+    @JoinColumn(name = "RESTAURACIONID", referencedColumnName = "rst_id")
     @ManyToOne(optional = false)
 	private Restauracion restauracion;
 	

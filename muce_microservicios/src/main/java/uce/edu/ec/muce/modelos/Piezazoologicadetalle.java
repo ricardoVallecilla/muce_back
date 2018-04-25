@@ -39,12 +39,9 @@ public class Piezazoologicadetalle implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-   
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PIEZAZOOLOGICADETALLE_SEQ")
     @SequenceGenerator(sequenceName = "Piezazoologicadetalle_seq", allocationSize = 1, name = "PIEZAZOOLOGICADETALLE_SEQ")
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "zlg_id", nullable = false, precision = 0, scale = -127)
     private Long detalleid;
     
@@ -122,38 +119,39 @@ public class Piezazoologicadetalle implements Serializable {
     @NotNull
     @Size(min = 1, max = 600)
     @Column(name = "zlg_persona_recolectora", nullable = false, length = 600)
-    private String personarecolectadora;
-    @Basic(optional = false)
-    @NotNull
+    private String personarecolectora;
+    
     @Size(min = 1, max = 600)
-    @Column(name = "zlg_ciudad", nullable = false, length = 600)
-    private String ciudadid;
+    @Column(name = "zlg_ciudad", length = 600)
+    private String ciudad;
+    
     @Size(max = 600)
     @Column(name = "aud_usuario_registro_id", length = 600)
     private String usuarioregistroid;
     @Column(name = "aud_fecha_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharegistro;
+   
     
-    @JoinColumn(name = "zlg_provincia", referencedColumnName = "ctl_id", nullable = false)
-    @ManyToOne(optional = false)
-    private Catalogo provinciaid;
-    @JoinColumn(name = "zlg_canton", referencedColumnName = "ctl_id", nullable = false)
-    @ManyToOne(optional = false)
-    private Catalogo cantonid;
+    @Size(min = 1, max = 600)
+    @Column(name = "zlg_provincia", length = 600)
+    private String provincia;
     
-    @JoinColumn(name = "zlg_sexo", referencedColumnName = "ctl_id", nullable = false)
-    @ManyToOne(optional = false)
-    private Catalogo sexoid;
+    @Size(min = 1, max = 600)
+    @Column(name = "zlg_canton", length = 600)
+    private String canton;
+    
+    @Size(min = 1, max = 600)
+    @Column(name = "zlg_sexo", length = 600)
+    private String sexo;
+    
     @JoinColumn(name = "zlg_pais", referencedColumnName = "ctl_id", nullable = false)
     @ManyToOne(optional = false)
     private Catalogo paisid;
-    @JoinColumn(name = "zlg_tecnica_conservacion", referencedColumnName = "ctl_id", nullable = false)
-    @ManyToOne(optional = false)
-    private Catalogo tecnicaconservacionid;
 
     @JoinColumn(name = "msb_id", referencedColumnName = "msb_id", nullable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne(cascade = {CascadeType.ALL})
+
     private Piezamuseable piezamuseableid;
 
     public Piezazoologicadetalle() {
@@ -163,7 +161,7 @@ public class Piezazoologicadetalle implements Serializable {
         this.detalleid = detalleid;
     }
 
-    public Piezazoologicadetalle(Long detalleid, String nombrecientifico, String nombrecomun, String autor, String alto, String largo, String ancho, String diametro, String peso, String inscripciones, String elementosrelacionados, String descripcion, String latitud, String longitud, String localizacionprecisa, String personarecolectadora, String ciudadid) {
+    public Piezazoologicadetalle(Long detalleid, String nombrecientifico, String nombrecomun, String autor, String alto, String largo, String ancho, String diametro, String peso, String inscripciones, String elementosrelacionados, String descripcion, String latitud, String longitud, String localizacionprecisa, String personarecolectora, String ciudad) {
         this.detalleid = detalleid;
         this.nombrecientifico = nombrecientifico;
         this.nombrecomun = nombrecomun;
@@ -179,8 +177,8 @@ public class Piezazoologicadetalle implements Serializable {
         this.latitud = latitud;
         this.longitud = longitud;
         this.localizacionprecisa = localizacionprecisa;
-        this.personarecolectadora = personarecolectadora;
-        this.ciudadid = ciudadid;
+        this.personarecolectora = personarecolectora;
+        this.ciudad = ciudad;
     }
 
     public Long getDetalleid() {
@@ -279,7 +277,15 @@ public class Piezazoologicadetalle implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public String getLatitud() {
+    public String getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
+	}
+
+	public String getLatitud() {
         return latitud;
     }
 
@@ -303,21 +309,18 @@ public class Piezazoologicadetalle implements Serializable {
         this.localizacionprecisa = localizacionprecisa;
     }
 
-    public String getPersonarecolectadora() {
-        return personarecolectadora;
-    }
+  
 
-    public void setPersonarecolectadora(String personarecolectadora) {
-        this.personarecolectadora = personarecolectadora;
-    }
 
-    public String getCiudadid() {
-        return ciudadid;
-    }
+	public String getPersonarecolectora() {
+		return personarecolectora;
+	}
 
-    public void setCiudadid(String ciudadid) {
-        this.ciudadid = ciudadid;
-    }
+	public void setPersonarecolectora(String personarecolectora) {
+		this.personarecolectora = personarecolectora;
+	}
+
+	
 
     public String getUsuarioregistroid() {
         return usuarioregistroid;
@@ -334,52 +337,47 @@ public class Piezazoologicadetalle implements Serializable {
     public void setFecharegistro(Date fecharegistro) {
         this.fecharegistro = fecharegistro;
     }
+    
+    
+    public String getCanton() {
+		return canton;
+	}
 
-    public Catalogo getProvinciaid() {
-        return provinciaid;
-    }
+	public void setCanton(String canton) {
+		this.canton = canton;
+	}
 
-    public void setProvinciaid(Catalogo provinciaid) {
-        this.provinciaid = provinciaid;
-    }
+	
 
-    public Catalogo getCantonid() {
-        return cantonid;
-    }
+    public String getSexo() {
+		return sexo;
+	}
 
-    public void setCantonid(Catalogo cantonid) {
-        this.cantonid = cantonid;
-    }
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
 
-    public Catalogo getSexoid() {
-        return sexoid;
-    }
-
-    public void setSexoid(Catalogo sexoid) {
-        this.sexoid = sexoid;
-    }
-
-    public Catalogo getPaisid() {
+	public Catalogo getPaisid() {
         return paisid;
     }
 
     public void setPaisid(Catalogo paisid) {
         this.paisid = paisid;
     }
-
-    public Catalogo getTecnicaconservacionid() {
-        return tecnicaconservacionid;
-    }
-
-    public void setTecnicaconservacionid(Catalogo tecnicaconservacionid) {
-        this.tecnicaconservacionid = tecnicaconservacionid;
-    }
-
+    
     public Piezamuseable getPiezamuseableid() {
         return piezamuseableid;
     }
 
-    public void setPiezamuseableid(Piezamuseable piezamuseableid) {
+    public String getCiudad() {
+		return ciudad;
+	}
+
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
+	}
+
+	public void setPiezamuseableid(Piezamuseable piezamuseableid) {
         this.piezamuseableid = piezamuseableid;
     }
 
