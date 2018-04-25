@@ -34,6 +34,10 @@ public class RestauracionMateriales implements Serializable {
     @Size(min = 1, max = 150)
     @Column(name = "rstmrt_nombre", length = 150)
 	private String nombre;
+    
+    @JoinColumn(name = "RESTAURACIONID", referencedColumnName = "ID")
+    @ManyToOne(optional = false)
+	private Restauracion restauracion;
 	
 	public Long getId() {
 		return id;
@@ -52,5 +56,11 @@ public class RestauracionMateriales implements Serializable {
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	public Restauracion getRestauracion() {
+		return restauracion;
+	}
+	public void setRestauracion(Restauracion restauracion) {
+		this.restauracion = restauracion;
 	}
 }

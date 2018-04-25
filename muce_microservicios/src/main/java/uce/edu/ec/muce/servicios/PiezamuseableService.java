@@ -29,6 +29,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import uce.edu.ec.muce.intefaces.EstadogeneralbienRepositorio;
 import uce.edu.ec.muce.intefaces.PiezaarqueologicadetalleRepositorio;
+import uce.edu.ec.muce.intefaces.PiezaartedetalleRepositorio;
 import uce.edu.ec.muce.intefaces.PiezabotanicadetalleRepositorio;
 import uce.edu.ec.muce.intefaces.PiezaentomologicadetalleRepositorio;
 import uce.edu.ec.muce.intefaces.PiezafotograficadetalleRepositorio;
@@ -40,6 +41,7 @@ import uce.edu.ec.muce.intefaces.PiezapaleontologicadetalleRepositorio;
 import uce.edu.ec.muce.intefaces.PiezazoologicadetalleRepositorio;
 import uce.edu.ec.muce.modelos.Estadogeneralbien;
 import uce.edu.ec.muce.modelos.Piezaarqueologicadetalle;
+import uce.edu.ec.muce.modelos.Piezaartedetalle;
 import uce.edu.ec.muce.modelos.Piezabotanicadetalle;
 import uce.edu.ec.muce.modelos.Piezaentomologicadetalle;
 import uce.edu.ec.muce.modelos.Piezafotograficadetalle;
@@ -103,6 +105,8 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 
 	@Autowired
 	private PiezazoologicadetalleRepositorio zoologica;
+	
+	private PiezaartedetalleRepositorio arte;
 
 	@GetMapping("/item/{id}")
 	@ResponseBody
@@ -122,7 +126,6 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 
 		ObjectMapper mapper = new ObjectMapper();
 		PiezaDetalle detalle = mapper.readValue(detalleStr, PiezaDetalle.class);
-		System.out.println(detalleStr);
 		PiezaDetalle detalleGuardado = new PiezaDetalle();
 		Piezamuseable pm = null;
 
@@ -190,6 +193,14 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 					.setPiezamuseableid(setearFotos(file, detalle.getPiezazoologicadetalle().getPiezamuseableid()));
 			Piezazoologicadetalle pz = zoologica.save(detalle.getPiezazoologicadetalle());
 			pm = pz.getPiezamuseableid();
+			break;
+			
+		case 10:
+			// arte
+			detalle.getPiezaartedetalle()
+					.setPiezamuseableid(setearFotos(file, detalle.getPiezaartedetalle().getPiezamuseableid()));
+			Piezaartedetalle par = arte.save(detalle.getPiezaartedetalle());
+			pm = par.getPiezamuseableid();
 			break;
 
 		default:

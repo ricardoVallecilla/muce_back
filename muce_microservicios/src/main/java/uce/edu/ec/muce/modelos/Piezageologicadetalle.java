@@ -7,6 +7,7 @@ package uce.edu.ec.muce.modelos;
 
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,14 +38,16 @@ public class Piezageologicadetalle implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+ 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PIEZAGEOLOGICADETALLE_SEQ")
     @SequenceGenerator(sequenceName = "Piezageologicadetalle_seq", allocationSize = 1, name = "PIEZAGEOLOGICADETALLE_SEQ")
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "glg_id", nullable = false, precision = 0, scale = -127)
     private Long detalleid;
-    
+
     @Size(max = 600)
     @Column(name = "glg_material", length = 600)
     private String material;
