@@ -59,4 +59,42 @@ public interface ItemRepositorio extends JpaRepository<Item, Long> {
     @Query(value ="SELECT count(itm_id)  FROM item it"
     		+ " where it.mus_id = ?1 and  (it.itm_nombre like ?2 or it.itm_codigo_control like ?2 or it.itm_numero_serie like ?2 or it.itm_descripcion like ?2) " , nativeQuery = true) 
 	int cantidadfiltroPalabra(Long museoId,String filtro);
+    
+    
+    @Query(value ="select I.ITM_NOMBRE,M.MSB_RUTA_FOTOGRAFIA,A.ARQ_CATEGORIA_MORFOFUNCIONAL,A.ARQ_PERIODO_HISTORICO,A.ARQ_CRONOLOGIA, \n" + 
+    		"A.ARQ_CULTURA,A.ARQ_FASE,A.ARQ_ALTO,A.ARQ_LARGO,A.ARQ_ANCHO,A.ARQ_DIAMETRO,A.ARQ_ESPESOR,A.ARQ_PESO \n" + 
+    		"from ITEM I LEFT join MUSEABLE M ON M.ITM_ID =I.ITM_ID LEFT JOIN ARQUEOLOGIA A ON A.MSB_ID=M.MSB_ID WHERE I.ITM_ID IN ?1 " , nativeQuery = true)
+    List<Object[]> expocisionArqueologia(Long[] items);
+    
+    
+    @Query(value ="select I.ITM_NOMBRE,M.MSB_RUTA_FOTOGRAFIA,A.ENT_NOMBRE_CIENTIFICO,A.ENT_NOMBRE_COMUN,A.ENT_AUTOR,\n" + 
+    		"A.ENT_CLASE,A.ENT_PUBLICADO \n" + 
+    		"from ITEM I LEFT join MUSEABLE M ON M.ITM_ID =I.ITM_ID LEFT JOIN ENTOMOLOGIA A ON A.MSB_ID=M.MSB_ID WHERE I.ITM_ID IN ?1 " , nativeQuery = true)
+    List<Object[]> expocisionEntomologia(Long[] items);
+    
+    @Query(value ="select I.ITM_NOMBRE,M.MSB_RUTA_FOTOGRAFIA,A.INS_INVENTOR,A.INS_FABRICANTE,A.INS_LUGAR_FABRICACION, \n" + 
+    		"A.INS_FECHA_FABRICACION,A.INS_ALTO,A.INS_LARGO,A.INS_PROFUNDIDAD,A.INS_DIAMETRO,A.INS_ESPESOR,A.INS_PESO \n" + 
+    		"from ITEM I LEFT join MUSEABLE M ON M.ITM_ID =I.ITM_ID LEFT JOIN INSTRUMENTAL A ON A.MSB_ID=M.MSB_ID WHERE I.ITM_ID IN  ?1 " , nativeQuery = true)
+    List<Object[]> expocisionInstrumental(Long[] items);
+    
+    @Query(value ="select I.ITM_NOMBRE,M.MSB_RUTA_FOTOGRAFIA,A.FTG_TITULO,A.FTG_TEMATICA,A.FTG_PROCEDIMIENTO, \n" + 
+    		"A.FTG_AUTOR,A.FTG_SIGLO_ANO,A.FTG_ALTO,A.FTG_LARGO from ITEM I LEFT  \n" + 
+    		"join MUSEABLE M ON M.ITM_ID =I.ITM_ID LEFT JOIN FOTOGRAFIA A ON A.MSB_ID=M.MSB_ID WHERE I.ITM_ID  IN  ?1 " , nativeQuery = true)
+    List<Object[]> expocisionFotografia(Long[] items);
+    
+    @Query(value ="select I.ITM_NOMBRE,M.MSB_RUTA_FOTOGRAFIA from ITEM I LEFT \r\n" + 
+    		"join MUSEABLE M ON M.ITM_ID =I.ITM_ID LEFT JOIN GEOLOGIA A ON A.MSB_ID=M.MSB_ID WHERE I.ITM_ID IN  ?1 " , nativeQuery = true)
+    List<Object[]> expocisionGeologia(Long[] items);
+    
+    @Query(value ="select I.ITM_NOMBRE,M.MSB_RUTA_FOTOGRAFIA ,A.PLN_NOMBRE_CIENTIFICO,A.PLN_NOMBRE_COMUN,A.PLN_CLASE,A.PLN_ERA\r\n" + 
+    		"from ITEM I LEFT join MUSEABLE M ON M.ITM_ID =I.ITM_ID \r\n" + 
+    		"LEFT JOIN PALEONTOLOGIA A ON A.MSB_ID=M.MSB_ID WHERE I.ITM_ID IN   ?1 " , nativeQuery = true)
+    List<Object[]> expocisionPaleontologia(Long[] items);
+    
+    
+    @Query(value ="select I.ITM_NOMBRE,M.MSB_RUTA_FOTOGRAFIA ,A.ZLG_NOMBRE_CIENTIFICO,A.ZLG_NOMBRE_COMUN,A.ZLG_AUTOR \r\n" + 
+    		"from ITEM I LEFT join MUSEABLE M ON M.ITM_ID =I.ITM_ID \r\n" + 
+    		"LEFT JOIN ZOOLOGIA A ON A.MSB_ID=M.MSB_ID WHERE I.ITM_ID IN  ?1 " , nativeQuery = true)
+    List<Object[]> expocisionZoologia(Long[] items);
+    
 }

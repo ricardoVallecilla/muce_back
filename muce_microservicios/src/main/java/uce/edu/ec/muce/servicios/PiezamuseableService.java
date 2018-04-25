@@ -435,6 +435,8 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 		else
 			return new ResponseEntity(foto, httpHeaders, HttpStatus.OK).ok(foto);
 	}
+	
+	
 
 	@SuppressWarnings({ "unchecked", "rawtypes", "static-access" })
 	@RequestMapping(value = "/foto/tipo", method = RequestMethod.POST)
