@@ -36,6 +36,7 @@ import uce.edu.ec.muce.modelos.ItemBaja;
 import uce.edu.ec.muce.modelos.filtros.ExposicionResult;
 import uce.edu.ec.muce.modelos.filtros.ItemsFiltro;
 import uce.edu.ec.muce.modelos.filtros.ReporteExposicion;
+import uce.edu.ec.muce.modelos.filtros.ReporteGeneral;
 
 @Controller
 @RequestMapping("/item")
@@ -63,6 +64,20 @@ public class ItemService extends AbstracService<ItemRepositorio, Item> {
 			return CompletableFuture
 					.completedFuture(repo.filtropaginadoSoloMuseo(body.getMuseoId(), body.getGrupoId(), min, max));
 		}
+
+	}
+	
+	@PostMapping("/reportegeneral")
+	@ResponseBody
+	public ReporteGeneral reportegeneral(@Valid @RequestBody ItemsFiltro body) {
+		//
+		ReporteGeneral rp = new ReporteGeneral();
+		rp.setCantidadPiezas(repo.cantidadPiezas(body.getMuseoId(), body.getGrupoId()));
+		rp.setCantidadPiezasInventario(repo.cantidadPiezasInventario(body.getMuseoId()));
+		rp.setCantidadPiezasCatalogacion(repo.cantidadPiezasCatalogacion(body.getMuseoId()));
+		rp.setCantidadPiezasRestauracion(repo.cantidadPiezasRestaurada(body.getMuseoId()));
+		
+		return rp;
 
 	}
 
