@@ -86,15 +86,36 @@ public interface ItemRepositorio extends JpaRepository<Item, Long> {
     		"join MUSEABLE M ON M.ITM_ID =I.ITM_ID LEFT JOIN GEOLOGIA A ON A.MSB_ID=M.MSB_ID WHERE I.ITM_ID IN  ?1 " , nativeQuery = true)
     List<Object[]> expocisionGeologia(Long[] items);
     
-    @Query(value ="select I.ITM_NOMBRE,M.MSB_RUTA_FOTOGRAFIA ,A.PLN_NOMBRE_CIENTIFICO,A.PLN_NOMBRE_COMUN,A.PLN_CLASE,A.PLN_ERA\r\n" + 
+    @Query(value ="select I.ITM_NOMBRE,M.MSB_RUTA_FOTOGRAFIA ,A.PLN_NOMBRE_CIENTIFICO,A.PLN_NOMBRE_COMUN,A.PLN_CLASE,A.PLN_ERA \n" + 
     		"from ITEM I LEFT join MUSEABLE M ON M.ITM_ID =I.ITM_ID \r\n" + 
     		"LEFT JOIN PALEONTOLOGIA A ON A.MSB_ID=M.MSB_ID WHERE I.ITM_ID IN   ?1 " , nativeQuery = true)
     List<Object[]> expocisionPaleontologia(Long[] items);
     
     
-    @Query(value ="select I.ITM_NOMBRE,M.MSB_RUTA_FOTOGRAFIA ,A.ZLG_NOMBRE_CIENTIFICO,A.ZLG_NOMBRE_COMUN,A.ZLG_AUTOR \r\n" + 
-    		"from ITEM I LEFT join MUSEABLE M ON M.ITM_ID =I.ITM_ID \r\n" + 
+    @Query(value ="select I.ITM_NOMBRE,M.MSB_RUTA_FOTOGRAFIA ,A.ZLG_NOMBRE_CIENTIFICO,A.ZLG_NOMBRE_COMUN,A.ZLG_AUTOR  \n" + 
+    		"from ITEM I LEFT join MUSEABLE M ON M.ITM_ID =I.ITM_ID  \n" + 
     		"LEFT JOIN ZOOLOGIA A ON A.MSB_ID=M.MSB_ID WHERE I.ITM_ID IN  ?1 " , nativeQuery = true)
     List<Object[]> expocisionZoologia(Long[] items);
+    
+    @Query(value ="select C.CTL_NOMBRE,count(I.ITM_ID) from ITEM I JOIN CATALOGO C ON I.ITM_CATEGORIA=C.CTL_ID  where MUS_ID= ?1 and ITM_GRUPO= ?2 \n" + 
+    		"GROUP BY CTL_NOMBRE" , nativeQuery = true)
+    List<Object[]> cantidadPiezas(Long museoid,Long grupoid);
+    
+    @Query(value ="select EXTRACT(YEAR FROM M.MSB_FECHA_REGISTRO_INVENTARIO) ANIO,count (M.MSB_FECHA_REGISTRO_INVENTARIO) CANTIDAD \n" + 
+    		"from ITEM I JOIN MUSEABLE M ON I.ITM_ID=M.ITM_ID \n" + 
+    		"WHERE I.MUS_ID= ?1 AND MSB_FECHA_REGISTRO_INVENTARIO IS NOT NULL \n" + 
+    		"group by EXTRACT(YEAR FROM M.MSB_FECHA_REGISTRO_INVENTARIO) " , nativeQuery = true)
+    List<Object[]> cantidadPiezasInventario(Long museoid);
+    
+    @Query(value ="select EXTRACT(YEAR FROM M.MSB_FECHA_REGISTRO_CATALOGADO) ANIO,count (M.MSB_FECHA_REGISTRO_CATALOGADO) CANTIDAD \n" + 
+    		"from ITEM I JOIN MUSEABLE M ON I.ITM_ID=M.ITM_ID  \n" + 
+    		"WHERE I.MUS_ID=?1 AND MSB_FECHA_REGISTRO_CATALOGADO IS NOT NULL  \n" + 
+    		"group by EXTRACT(YEAR FROM M.MSB_FECHA_REGISTRO_CATALOGADO) " , nativeQuery = true)
+    List<Object[]> cantidadPiezasCatalogacion(Long museoid);
+    
+    @Query(value ="select count(*) from( SELECT DISTINCT I.ITM_ID FROM ITEM I JOIN RESTAURACION R ON I.ITM_ID=R.ITM_ID WHERE I.MUS_ID= ?1)" , nativeQuery = true)
+    Long cantidadPiezasRestaurada(Long museoid);
+    
+    
     
 }
