@@ -37,6 +37,18 @@ public class Usuario implements UserDetails {
 	@Column(name = "usr_password", nullable = false)
 	private String password;
 	
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
 	@Column(name = "usr_enabled", nullable = false)
 	private boolean enabled;
 	

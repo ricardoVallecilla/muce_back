@@ -55,6 +55,8 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 		.secret("uce.edu.ec.muce.seguridad")
 		.authorizedGrantTypes( "password", "refresh_token","authorization_code")
 		.scopes("openid");
+		
+		
 	}
 	
 	//private String allowOrigin= "http://localhost:4200";
@@ -76,6 +78,7 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 	   // configAutenticacao.addAllowedMethod("OPTIONS");
 	    configAutenticacao.setMaxAge(3600L);
 	    source.registerCorsConfiguration("/oauth/token", configAutenticacao);
+	    //source.registerCorsConfiguration("/active", configAutenticacao);
 	    // source.registerCorsConfiguration("/**", configAutenticacao); // Global for all paths
 	    
 	    FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
