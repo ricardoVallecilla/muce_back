@@ -106,6 +106,7 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 	@Autowired
 	private PiezazoologicadetalleRepositorio zoologica;
 	
+	@Autowired
 	private PiezaartedetalleRepositorio arte;
 
 	@GetMapping("/item/{id}")
@@ -125,6 +126,7 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 			@RequestParam(value = "catalogosDetalle", required = false) String catalogosDetalle) throws IOException {
 
 		ObjectMapper mapper = new ObjectMapper();
+		System.out.println(detalleStr);
 		PiezaDetalle detalle = mapper.readValue(detalleStr, PiezaDetalle.class);
 		PiezaDetalle detalleGuardado = new PiezaDetalle();
 		Piezamuseable pm = null;
@@ -307,6 +309,7 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 					.setPiezamuseableid(setearFotos(null, detalle.getPiezafotograficadetalle().getPiezamuseableid()));
 			Piezafotograficadetalle pf = fotografica.save(detalle.getPiezafotograficadetalle());
 			pm = pf.getPiezamuseableid();
+			break;	
 
 		case 6:
 			detalle.getPiezainstrumentaldetalle()
@@ -323,6 +326,9 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 			// geologia
 			detalle.getPiezageologicadetalle()
 					.setPiezamuseableid(setearFotos(null, detalle.getPiezageologicadetalle().getPiezamuseableid()));
+			Piezageologicadetalle pgTmp = geologica.getOne(detalle.getPiezageologicadetalle().getDetalleid());
+			detalle.getPiezageologicadetalle().setFotografiayacimiento(pgTmp.getFotografiayacimiento());
+			detalle.getPiezageologicadetalle().setFotoyacimientoplano(pgTmp.getFotoyacimientoplano());
 			Piezageologicadetalle pg = geologica.save(detalle.getPiezageologicadetalle());
 			pm = pg.getPiezamuseableid();
 			break;
@@ -342,6 +348,14 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 			pm = pz.getPiezamuseableid();
 			break;
 
+		case 10:
+			// artes
+			detalle.getPiezaartedetalle()
+					.setPiezamuseableid(setearFotos(null, detalle.getPiezaartedetalle().getPiezamuseableid()));
+			Piezaartedetalle par = arte.save(detalle.getPiezaartedetalle());
+			pm = par.getPiezamuseableid();
+			break;	
+			
 		default:
 			break;
 		}
@@ -432,6 +446,14 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 		// get pieza museable foto cuatro
 		case 11:
 			ruta = repo.getOne(id).getFotografiatres();
+			break;
+		// getFotografiayacimiento
+		case 12:
+			ruta = geologica.getOne(id).getFotografiayacimiento();
+			break;
+		// getFotoyacimientoplano
+		case 13:
+			ruta = geologica.getOne(id).getFotoyacimientoplano();
 			break;
 		default:
 			break;
