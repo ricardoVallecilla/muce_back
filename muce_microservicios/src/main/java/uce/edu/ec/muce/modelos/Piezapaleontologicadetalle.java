@@ -161,7 +161,123 @@ public class Piezapaleontologicadetalle implements Serializable {
     @ManyToOne(cascade = {CascadeType.ALL})
 
     private Piezamuseable piezamuseableid;
+    
+    @JoinColumn(name = "pln_yacimiento_provincia", referencedColumnName = "ctl_id")
+    @ManyToOne(optional = true)
+	private Catalogo yacimientoprovinciaid;
+	
+	@JoinColumn(name = "pln_yacimiento_canton", referencedColumnName = "ctl_id")
+    @ManyToOne(optional = true)
+	private Catalogo yacimientocantonid;
+	
+	@JoinColumn(name = "pln_yacimiento_ciudad", referencedColumnName = "ctl_id")
+    @ManyToOne(optional = true)
+	private Catalogo yacimientociudadid;
+	
+	@Column(name = "pln_yacimiento_direccion",length = 3000)
+	private String yacimientodireccion;
+	
+	@Column(name = "pln_yacimiento_latitud",length = 3000)
+	private String yacimientolatitud;
+	
+	@Column(name = "pln_yacimiento_longitud",length = 3000)
+	private String yacimientolongitud;
+	
+	@Column(name = "pln_yacimiento_altura",length = 3000)
+	private String yacimientoaltura;
+	
+	@Column(name = "pln_yacimiento_contenedor",length = 3000)
+	private String yacimientocontenedor;
+	
+	@Column(name = "pln_yacimiento_morfologia",length = 3000)
+	private String yacimientomorfologia;
+	
+	@Column(name = "pln_yacimiento_ubicacion",length = 3000)
+	private String yacimientoubicacion;
+	
+	
+    @Column(name = "pln_fotografia_yacimiento")
+    private String  fotografiayacimiento;
+	
+	@Column(name = "pln_yacimiento_fotografo",length = 3000)
+	private String yacimientofotografo;
+	
+	@Column(name = "pln_yacimiento_lugar",length = 3000)
+	private String yacimientolugar;
+	
+	
+    @Column(name = "pln_foto_yacimiento_plano")
+    private String fotoyacimientoplano;
+	
+	@Column(name = "pln_yacimiento_glguitecto",length = 3000)
+	private String yacimientoglguitecto;
+	
+	@Column(name = "pln_yacimiento_planos_lugar",length = 3000)
+	private String yacimientoplanoslugar;
+	
+	@Column(name = "pln_observaciones",length = 600)
+	private String observaciones;
+	
+	@Column(name = "pln_responsable",length = 3000)
+	private String responsable;
+	
+	@Column(name = "pln_paleontologo",length = 3000)
+	private String paleontologo;
+	
+	@Column(name = "pln_biografia",length = 3000)
+	private String biografia;
+	
+	@Column(name = "pln_publicaciones",length = 2000)
+	private String publicaciones;
+	
+	@Column(name = "pln_uce",length = 3000)
+	private String uce;
+	
+    @Column(name = "pln_prospeccion_empirica")
+	private Boolean prospeccionEmpirica;
+    
+    @Column(name = "pln_prospeccion_paleontologo")
+	private Boolean prospeccionPaleontogo;
+    
+    @Column(name = "pln_uso_social",length = 3000)
+	private String usoSocial;
 
+    @Column(name = "pln_uso_primario",length = 3000)
+	private String usoPrimario;
+
+    @Column(name = "pln_alternativo",length = 3000)
+	private String alternativo;
+
+    @Column(name = "pln_uso_restriccion",length = 3000)
+	private String usoRestriccion;
+
+    @Column(name = "pln_creencia",length = 3000)
+	private String creencia;
+
+    @Column(name = "pln_uso_bien",length = 3000)
+	private String usoBien;
+
+    @Column(name = "pln_pertenencia",length = 3000)
+	private String pertenencia;
+
+    @Column(name = "pln_utiliza_bien",length = 3000)
+	private String utilizaBien;
+
+    @Column(name = "pln_donde_utiliza",length = 3000)
+	private String dondeUtiliza;
+
+    @Column(name = "pln_donde_coloca",length = 3000)
+	private String dondeColoca;
+
+    @Column(name = "pln_vida_aproximada",length = 3000)
+	private String vidaAproximada;
+    
+    @Column(name = "pln_tesauro",length = 3000)
+	private String tesauro;
+    
+    @Column(name = "pln_palabras_claves",length = 3000)
+	private String palabrasClaves;
+    
     public Piezapaleontologicadetalle() {
     }
 
@@ -457,7 +573,303 @@ public class Piezapaleontologicadetalle implements Serializable {
         this.piezamuseableid = piezamuseableid;
     }
 
-    @Override
+    public Catalogo getYacimientoprovinciaid() {
+		return yacimientoprovinciaid;
+	}
+
+	public void setYacimientoprovinciaid(Catalogo yacimientoprovinciaid) {
+		this.yacimientoprovinciaid = yacimientoprovinciaid;
+	}
+
+	public Catalogo getYacimientocantonid() {
+		return yacimientocantonid;
+	}
+
+	public void setYacimientocantonid(Catalogo yacimientocantonid) {
+		this.yacimientocantonid = yacimientocantonid;
+	}
+
+	public Catalogo getYacimientociudadid() {
+		return yacimientociudadid;
+	}
+
+	public void setYacimientociudadid(Catalogo yacimientociudadid) {
+		this.yacimientociudadid = yacimientociudadid;
+	}
+
+	public String getYacimientodireccion() {
+		return yacimientodireccion;
+	}
+
+	public void setYacimientodireccion(String yacimientodireccion) {
+		this.yacimientodireccion = yacimientodireccion;
+	}
+
+	public String getYacimientolatitud() {
+		return yacimientolatitud;
+	}
+
+	public void setYacimientolatitud(String yacimientolatitud) {
+		this.yacimientolatitud = yacimientolatitud;
+	}
+
+	public String getYacimientolongitud() {
+		return yacimientolongitud;
+	}
+
+	public void setYacimientolongitud(String yacimientolongitud) {
+		this.yacimientolongitud = yacimientolongitud;
+	}
+
+	public String getYacimientoaltura() {
+		return yacimientoaltura;
+	}
+
+	public void setYacimientoaltura(String yacimientoaltura) {
+		this.yacimientoaltura = yacimientoaltura;
+	}
+
+	public String getYacimientocontenedor() {
+		return yacimientocontenedor;
+	}
+
+	public void setYacimientocontenedor(String yacimientocontenedor) {
+		this.yacimientocontenedor = yacimientocontenedor;
+	}
+
+	public String getYacimientomorfologia() {
+		return yacimientomorfologia;
+	}
+
+	public void setYacimientomorfologia(String yacimientomorfologia) {
+		this.yacimientomorfologia = yacimientomorfologia;
+	}
+
+	public String getYacimientoubicacion() {
+		return yacimientoubicacion;
+	}
+
+	public void setYacimientoubicacion(String yacimientoubicacion) {
+		this.yacimientoubicacion = yacimientoubicacion;
+	}
+
+	public String getFotografiayacimiento() {
+		return fotografiayacimiento;
+	}
+
+	public void setFotografiayacimiento(String fotografiayacimiento) {
+		this.fotografiayacimiento = fotografiayacimiento;
+	}
+
+	public String getYacimientofotografo() {
+		return yacimientofotografo;
+	}
+
+	public void setYacimientofotografo(String yacimientofotografo) {
+		this.yacimientofotografo = yacimientofotografo;
+	}
+
+	public String getYacimientolugar() {
+		return yacimientolugar;
+	}
+
+	public void setYacimientolugar(String yacimientolugar) {
+		this.yacimientolugar = yacimientolugar;
+	}
+
+	public String getFotoyacimientoplano() {
+		return fotoyacimientoplano;
+	}
+
+	public void setFotoyacimientoplano(String fotoyacimientoplano) {
+		this.fotoyacimientoplano = fotoyacimientoplano;
+	}
+
+	public String getYacimientoglguitecto() {
+		return yacimientoglguitecto;
+	}
+
+	public void setYacimientoglguitecto(String yacimientoglguitecto) {
+		this.yacimientoglguitecto = yacimientoglguitecto;
+	}
+
+	public String getYacimientoplanoslugar() {
+		return yacimientoplanoslugar;
+	}
+
+	public void setYacimientoplanoslugar(String yacimientoplanoslugar) {
+		this.yacimientoplanoslugar = yacimientoplanoslugar;
+	}
+
+	public String getObservaciones() {
+		return observaciones;
+	}
+
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
+	}
+
+	public String getResponsable() {
+		return responsable;
+	}
+
+	public void setResponsable(String responsable) {
+		this.responsable = responsable;
+	}
+
+	public String getPaleontologo() {
+		return paleontologo;
+	}
+
+	public void setPaleontologo(String paleontologo) {
+		this.paleontologo = paleontologo;
+	}
+
+	public String getBiografia() {
+		return biografia;
+	}
+
+	public void setBiografia(String biografia) {
+		this.biografia = biografia;
+	}
+
+	public String getPublicaciones() {
+		return publicaciones;
+	}
+
+	public void setPublicaciones(String publicaciones) {
+		this.publicaciones = publicaciones;
+	}
+
+	public String getUce() {
+		return uce;
+	}
+
+	public void setUce(String uce) {
+		this.uce = uce;
+	}
+
+	public Boolean getProspeccionEmpirica() {
+		return prospeccionEmpirica;
+	}
+
+	public void setProspeccionEmpirica(Boolean prospeccionEmpirica) {
+		this.prospeccionEmpirica = prospeccionEmpirica;
+	}
+
+	public Boolean getProspeccionPaleontogo() {
+		return prospeccionPaleontogo;
+	}
+
+	public void setProspeccionPaleontogo(Boolean prospeccionPaleontogo) {
+		this.prospeccionPaleontogo = prospeccionPaleontogo;
+	}
+
+	public String getUsoSocial() {
+		return usoSocial;
+	}
+
+	public void setUsoSocial(String usoSocial) {
+		this.usoSocial = usoSocial;
+	}
+
+	public String getUsoPrimario() {
+		return usoPrimario;
+	}
+
+	public void setUsoPrimario(String usoPrimario) {
+		this.usoPrimario = usoPrimario;
+	}
+
+	public String getAlternativo() {
+		return alternativo;
+	}
+
+	public void setAlternativo(String alternativo) {
+		this.alternativo = alternativo;
+	}
+
+	public String getUsoRestriccion() {
+		return usoRestriccion;
+	}
+
+	public void setUsoRestriccion(String usoRestriccion) {
+		this.usoRestriccion = usoRestriccion;
+	}
+
+	public String getCreencia() {
+		return creencia;
+	}
+
+	public void setCreencia(String creencia) {
+		this.creencia = creencia;
+	}
+
+	public String getUsoBien() {
+		return usoBien;
+	}
+
+	public void setUsoBien(String usoBien) {
+		this.usoBien = usoBien;
+	}
+
+	public String getPertenencia() {
+		return pertenencia;
+	}
+
+	public void setPertenencia(String pertenencia) {
+		this.pertenencia = pertenencia;
+	}
+
+	public String getUtilizaBien() {
+		return utilizaBien;
+	}
+
+	public void setUtilizaBien(String utilizaBien) {
+		this.utilizaBien = utilizaBien;
+	}
+
+	public String getDondeUtiliza() {
+		return dondeUtiliza;
+	}
+
+	public void setDondeUtiliza(String dondeUtiliza) {
+		this.dondeUtiliza = dondeUtiliza;
+	}
+
+	public String getDondeColoca() {
+		return dondeColoca;
+	}
+
+	public void setDondeColoca(String dondeColoca) {
+		this.dondeColoca = dondeColoca;
+	}
+
+	public String getVidaAproximada() {
+		return vidaAproximada;
+	}
+
+	public void setVidaAproximada(String vidaAproximada) {
+		this.vidaAproximada = vidaAproximada;
+	}
+
+	public String getTesauro() {
+		return tesauro;
+	}
+
+	public void setTesauro(String tesauro) {
+		this.tesauro = tesauro;
+	}
+
+	public String getPalabrasClaves() {
+		return palabrasClaves;
+	}
+
+	public void setPalabrasClaves(String palabrasClaves) {
+		this.palabrasClaves = palabrasClaves;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (detalleid != null ? detalleid.hashCode() : 0);

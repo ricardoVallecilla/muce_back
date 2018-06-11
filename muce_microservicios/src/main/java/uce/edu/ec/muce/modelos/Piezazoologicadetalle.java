@@ -151,8 +151,13 @@ public class Piezazoologicadetalle implements Serializable {
 
     @JoinColumn(name = "msb_id", referencedColumnName = "msb_id", nullable = false)
     @ManyToOne(cascade = {CascadeType.ALL})
-
     private Piezamuseable piezamuseableid;
+    
+    @Column(name = "zlg_fotografia_yacimiento")
+    private String  fotografiayacimiento;
+    
+    @Column(name = "zlg_foto_yacimiento_plano")
+    private String fotoyacimientoplano;
 
     public Piezazoologicadetalle() {
     }
@@ -381,7 +386,23 @@ public class Piezazoologicadetalle implements Serializable {
         this.piezamuseableid = piezamuseableid;
     }
 
-    @Override
+    public String getFotografiayacimiento() {
+		return fotografiayacimiento;
+	}
+
+	public void setFotografiayacimiento(String fotografiayacimiento) {
+		this.fotografiayacimiento = fotografiayacimiento;
+	}
+
+	public String getFotoyacimientoplano() {
+		return fotoyacimientoplano;
+	}
+
+	public void setFotoyacimientoplano(String fotoyacimientoplano) {
+		this.fotoyacimientoplano = fotoyacimientoplano;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (detalleid != null ? detalleid.hashCode() : 0);

@@ -305,7 +305,37 @@ public class Piezageologicadetalle implements Serializable {
 	
 	@Column(name = "glg_yacimiento_planos_lugar",length = 3000)
 	private String yacimientoplanoslugar;
+	
+	@Column(name = "glg_observaciones",length = 600)
+	private String observaciones;
+	
+	@Column(name = "glg_responsable",length = 2000)
+	private String responsable;
+	
+	@Column(name = "glg_geologo",length = 2000)
+	private String geologo;
+	
+	@Column(name = "glg_biografia",length = 2000)
+	private String biografia;
+	
+	@Column(name = "glg_publicaciones",length = 2000)
+	private String publicaciones;
+	
+	@Column(name = "glg_uce",length = 2000)
+	private String uce;
+	
+    @Column(name = "glg_prospeccion_empirica")
+	private Boolean prospeccionEmpirica;
     
+    @Column(name = "glg_prospeccion_geologica")
+	private Boolean prospeccionGeologica;
+	
+    @Column(name = "glg_tesauro",length = 3000)
+	private String tesauro;
+	
+	@Column(name = "glg_palabras_claves",length = 600)
+	private String palabrasClaves;
+	
     @Column(name = "aud_fecha_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharegistro;
@@ -884,6 +914,86 @@ public class Piezageologicadetalle implements Serializable {
 
 	public void setYacimientoplanoslugar(String yacimientoplanoslugar) {
 		this.yacimientoplanoslugar = yacimientoplanoslugar;
+	}
+
+	public String getObservaciones() {
+		return observaciones;
+	}
+
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
+	}
+
+	public String getResponsable() {
+		return responsable;
+	}
+
+	public void setResponsable(String responsable) {
+		this.responsable = responsable;
+	}
+
+	public String getGeologo() {
+		return geologo;
+	}
+
+	public void setGeologo(String geologo) {
+		this.geologo = geologo;
+	}
+
+	public String getBiografia() {
+		return biografia;
+	}
+
+	public void setBiografia(String biografia) {
+		this.biografia = biografia;
+	}
+
+	public String getPublicaciones() {
+		return publicaciones;
+	}
+
+	public void setPublicaciones(String publicaciones) {
+		this.publicaciones = publicaciones;
+	}
+
+	public String getUce() {
+		return uce;
+	}
+
+	public void setUce(String uce) {
+		this.uce = uce;
+	}
+
+	public Boolean getProspeccionEmpirica() {
+		return prospeccionEmpirica;
+	}
+
+	public void setProspeccionEmpirica(Boolean prospeccionEmpirica) {
+		this.prospeccionEmpirica = prospeccionEmpirica;
+	}
+
+	public Boolean getProspeccionGeologica() {
+		return prospeccionGeologica;
+	}
+
+	public void setProspeccionGeologica(Boolean prospeccionGeologica) {
+		this.prospeccionGeologica = prospeccionGeologica;
+	}
+
+	public String getTesauro() {
+		return tesauro;
+	}
+
+	public void setTesauro(String tesauro) {
+		this.tesauro = tesauro;
+	}
+
+	public String getPalabrasClaves() {
+		return palabrasClaves;
+	}
+
+	public void setPalabrasClaves(String palabrasClaves) {
+		this.palabrasClaves = palabrasClaves;
 	}
 
 	@Override

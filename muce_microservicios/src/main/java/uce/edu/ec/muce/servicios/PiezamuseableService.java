@@ -70,6 +70,9 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 	private static String ECOSISTEMA="_ECOSISTEMA_";
 	private static String CARTOGRAFIA="_CARTOGRAFIA_";
 	private static String UPLOADED_FOLDER_INSTRUMENTAL = UPLOADED_FOLDER+"instrumental//";
+	private static String UPLOADED_FOLDER_GEOLOGICA = UPLOADED_FOLDER+"geologica//";
+	private static String UPLOADED_FOLDER_PALEONTOLOGIA = UPLOADED_FOLDER+"paleontologia//";
+	private static String UPLOADED_FOLDER_ZOOLOGIA = UPLOADED_FOLDER+"zoologia//";
 	private static String REGISTROS="_REGISTRO_";
 	private static String PLANOS="_PLANOS_";
 	private static String INSTRUCTIVOS="_INSTRUCTIVOS_";
@@ -337,6 +340,9 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 			// paleontologia
 			detalle.getPiezapaleontologicadetalle().setPiezamuseableid(
 					setearFotos(null, detalle.getPiezapaleontologicadetalle().getPiezamuseableid()));
+			Piezapaleontologicadetalle ppTmp = peleontologica.getOne(detalle.getPiezapaleontologicadetalle().getDetalleid());
+			detalle.getPiezapaleontologicadetalle().setFotografiayacimiento(ppTmp.getFotografiayacimiento());
+			detalle.getPiezapaleontologicadetalle().setFotoyacimientoplano(ppTmp.getFotoyacimientoplano());
 			Piezapaleontologicadetalle pp = peleontologica.save(detalle.getPiezapaleontologicadetalle());
 			pm = pp.getPiezamuseableid();
 			break;
@@ -344,6 +350,9 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 			// zoologia
 			detalle.getPiezazoologicadetalle()
 					.setPiezamuseableid(setearFotos(null, detalle.getPiezazoologicadetalle().getPiezamuseableid()));
+			Piezazoologicadetalle pzTmp = zoologica.getOne(detalle.getPiezazoologicadetalle().getDetalleid());
+			detalle.getPiezazoologicadetalle().setFotografiayacimiento(pzTmp.getFotografiayacimiento());
+			detalle.getPiezazoologicadetalle().setFotoyacimientoplano(pzTmp.getFotoyacimientoplano());
 			Piezazoologicadetalle pz = zoologica.save(detalle.getPiezazoologicadetalle());
 			pm = pz.getPiezamuseableid();
 			break;
@@ -447,13 +456,29 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 		case 11:
 			ruta = repo.getOne(id).getFotografiatres();
 			break;
-		// getFotografiayacimiento
+		// getFotografiayacimiento geologia
 		case 12:
 			ruta = geologica.getOne(id).getFotografiayacimiento();
 			break;
-		// getFotoyacimientoplano
+		// getFotoyacimientoplano geologia
 		case 13:
 			ruta = geologica.getOne(id).getFotoyacimientoplano();
+			break;
+		// getFotografiayacimiento paleontologia
+		case 14:
+			ruta = peleontologica.getOne(id).getFotografiayacimiento();
+			break;
+		// getFotoyacimientoplano paleontologia
+		case 15:
+			ruta = peleontologica.getOne(id).getFotoyacimientoplano();
+			break;
+		// getFotografiayacimiento zoologia
+		case 16:
+			ruta = zoologica.getOne(id).getFotografiayacimiento();
+			break;
+		// getFotoyacimientoplano zoologia
+		case 17:
+			ruta = zoologica.getOne(id).getFotoyacimientoplano();
 			break;
 		default:
 			break;
@@ -581,7 +606,56 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 			repo.save(cuatro);
 		
 			break;
-
+			
+		// getFotografiayacimiento
+		case 12:
+			Piezageologicadetalle f12 = geologica.getOne(id);
+			rutaAntiguo = f12.getFotografiayacimiento();
+			rutaNuevo = UPLOADED_FOLDER_GEOLOGICA + String.valueOf(f12.getPiezamuseableid().getItemid().getItemid())+ YACIMIENTO+file.getOriginalFilename();			
+			f12.setFotografiayacimiento(rutaNuevo);				
+			geologica.save(f12);
+			break;
+		// get foto yacimiento plano
+		case 13:
+			Piezageologicadetalle f13 = geologica.getOne(id);
+			rutaAntiguo = f13.getFotoyacimientoplano();
+			rutaNuevo = UPLOADED_FOLDER_GEOLOGICA + String.valueOf(f13.getPiezamuseableid().getItemid().getItemid())+ PLANOS+file.getOriginalFilename();			
+			f13.setFotoyacimientoplano(rutaNuevo);	
+			geologica.save(f13);
+			break;
+		// getFotografiayacimiento
+		case 14:
+			Piezapaleontologicadetalle f14 = peleontologica.getOne(id);
+			rutaAntiguo = f14.getFotografiayacimiento();
+			rutaNuevo = UPLOADED_FOLDER_PALEONTOLOGIA + String.valueOf(f14.getPiezamuseableid().getItemid().getItemid())+ YACIMIENTO+file.getOriginalFilename();			
+			f14.setFotografiayacimiento(rutaNuevo);				
+			peleontologica.save(f14);
+			break;
+		// get foto yacimiento plano
+		case 15:
+			Piezapaleontologicadetalle f15 = peleontologica.getOne(id);
+			rutaAntiguo = f15.getFotoyacimientoplano();
+			rutaNuevo = UPLOADED_FOLDER_PALEONTOLOGIA + String.valueOf(f15.getPiezamuseableid().getItemid().getItemid())+ PLANOS+file.getOriginalFilename();			
+			f15.setFotoyacimientoplano(rutaNuevo);	
+			peleontologica.save(f15);
+			break;
+			
+			// getFotografiayacimiento
+		case 16:
+			Piezazoologicadetalle f16 = zoologica.getOne(id);
+			rutaAntiguo = f16.getFotografiayacimiento();
+			rutaNuevo = UPLOADED_FOLDER_ZOOLOGIA + String.valueOf(f16.getPiezamuseableid().getItemid().getItemid())+ YACIMIENTO+file.getOriginalFilename();			
+			f16.setFotografiayacimiento(rutaNuevo);				
+			zoologica.save(f16);
+			break;
+		// get foto yacimiento plano
+		case 17:
+			Piezazoologicadetalle f17 = zoologica.getOne(id);
+			rutaAntiguo = f17.getFotoyacimientoplano();
+			rutaNuevo = UPLOADED_FOLDER_ZOOLOGIA + String.valueOf(f17.getPiezamuseableid().getItemid().getItemid())+ PLANOS+file.getOriginalFilename();			
+			f17.setFotoyacimientoplano(rutaNuevo);	
+			zoologica.save(f17);
+			break;
 		default:
 			break;
 		}
