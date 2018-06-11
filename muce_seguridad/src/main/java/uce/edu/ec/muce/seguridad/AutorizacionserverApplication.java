@@ -2,17 +2,26 @@ package uce.edu.ec.muce.seguridad;
 
 import java.security.Principal;
 
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.Ordered;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+
 
 @SpringBootApplication
 @RestController
@@ -25,7 +34,38 @@ public class AutorizacionserverApplication extends WebMvcConfigurerAdapter {
 	  }
 
 
+	@Autowired
+	private UsuarioRepositorio userRepository;
+	
+	
+	private PasswordEncoder passwordEncoder =new BCryptPasswordEncoder();
 
+	@RequestMapping(value = "/active", method = RequestMethod.POST )
+	  public String validarActiveDirectori(@Valid @RequestBody Credenciales body) {
+		
+		if(true) {
+			Usuario u =userRepository.findOneByUsername(body.getUsuario());	
+			if(u==null) {
+				Rol rol = new Rol(5L);
+				Usuario nuevo= new Usuario();
+				nuevo.setNombres(body.getUsuario());
+				nuevo.setUsername(body.getUsuario());
+				nuevo.setEnabled(true);
+				nuevo.setPassword(passwordEncoder.encode(body.getPassword()));
+				nuevo.setRolId(rol);
+				userRepository.save(nuevo);
+				return "0000003";
+				
+			}else {
+				return "0000002";
+			}
+			//return body.getUsuario()+" "+body.getPassword();
+		}else {
+			return "0000001";
+		}
+			    	
+	  }
+	
 	public static void main(String[] args) {
 		SpringApplication.run(AutorizacionserverApplication.class, args);
 	}
