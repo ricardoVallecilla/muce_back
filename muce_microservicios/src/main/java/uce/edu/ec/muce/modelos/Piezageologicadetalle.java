@@ -119,6 +119,193 @@ public class Piezageologicadetalle implements Serializable {
     @Column(name = "aud_usuario_registro_id", length = 600)
     private String usuarioregistroid;
     
+    //catalogacion
+    @Size(max = 200)
+    @Column(name = "glg_formula", length = 200)
+    private String formula;
+    
+    @Size(max = 1000)
+    @Column(name = "glg_composicion", length = 1000)
+    private String composicion;
+    
+    @Size(max = 200)
+    @Column(name = "glg_empirica", length = 200)
+    private String empirica;
+    
+    @Size(max = 1000)
+    @Column(name = "glg_relacion", length = 1000)
+    private String relacion;
+    
+    @Size(max = 600)
+    @Column(name = "glg_ima", length = 600)
+    private String ima;
+    
+    @Size(max = 1500)
+    @Column(name = "glg_origen", length = 1500)
+    private String origen;
+    
+    @Size(max = 600)
+    @Column(name = "glg_sinonimo", length = 600)
+    private String sinonimo;
+    
+    @Size(max = 300)
+    @Column(name = "glg_dimension", length = 300)
+    private String dimension;
+    
+    @Size(max = 300)
+    @Column(name = "glg_rayos", length = 300)
+    private String rayos;
+    
+    @Size(max = 300)
+    @Column(name = "glg_formas", length = 300)
+    private String formas;
+    
+    @Size(max = 300)
+    @Column(name = "glg_estructura", length = 300)
+    private String estructura;
+    
+    @Column(name = "glg_triclinico")
+	private Boolean triclinico;
+    
+    @Column(name = "glg_monoclinico")
+	private Boolean monoclinico;
+    
+    @Column(name = "glg_ortorrombico")
+	private Boolean ortorrombico;
+    
+    @Column(name = "glg_tetragonal")
+	private Boolean tetragonal;
+    
+    @Column(name = "glg_hexagonal")
+	private Boolean hexagonal;
+    
+    @Column(name = "glg_trigonal")
+	private Boolean trigonal;
+    
+    @Column(name = "glg_cubico")
+	private Boolean cubico;
+    
+    @Size(max = 600)
+    @Column(name = "glg_escision", length = 600)
+    private String escision;
+    
+    @Size(max = 600)
+    @Column(name = "glg_color", length = 600)
+    private String color;
+    
+    @Size(max = 600)
+    @Column(name = "glg_densidad", length = 600)
+    private String densidad;
+    
+    @Size(max = 600)
+    @Column(name = "glg_transparencia", length = 600)
+    private String transparencia;
+    
+    @Size(max = 600)
+    @Column(name = "glg_fuerza", length = 600)
+    private String fuerza;
+    
+    @Size(max = 600)
+    @Column(name = "glg_dureza", length = 600)
+    private String dureza;
+    
+    @Size(max = 600)
+    @Column(name = "glg_luminicencia", length = 600)
+    private String luminicencia;
+    
+    @Size(max = 600)
+    @Column(name = "glg_brillo", length = 600)
+    private String brillo;
+    
+    @Size(max = 600)
+    @Column(name = "glg_veta", length = 600)
+    private String veta;
+    
+    @Size(max = 600)
+    @Column(name = "glg_gladstone", length = 600)
+    private String gladstone;
+    
+    @Size(max = 600)
+    @Column(name = "glg_opticos", length = 600)
+    private String opticos;
+    
+    @Size(max = 200)
+    @Column(name = "glg_electrones", length = 200)
+    private String electrones;
+    
+    @Size(max = 200)
+    @Column(name = "glg_fermion", length = 200)
+    private String fermion;
+    
+    @Size(max = 200)
+    @Column(name = "glg_fotoelectricidad", length = 200)
+    private String fotoelectricidad;
+    
+    @Size(max = 200)
+    @Column(name = "glg_radioactividad", length = 200)
+    private String radioactividad;
+    
+    @Size(max = 600)
+    @Column(name = "glg_dana", length = 600)
+    private String dana;
+    
+    @Size(max = 600)
+    @Column(name = "glg_strunz", length = 600)
+    private String strunz;
+    
+    @JoinColumn(name = "glg_yacimiento_provincia", referencedColumnName = "ctl_id")
+    @ManyToOne(optional = true)
+	private Catalogo yacimientoprovinciaid;
+	
+	@JoinColumn(name = "glg_yacimiento_canton", referencedColumnName = "ctl_id")
+    @ManyToOne(optional = true)
+	private Catalogo yacimientocantonid;
+	
+	@JoinColumn(name = "glg_yacimiento_ciudad", referencedColumnName = "ctl_id")
+    @ManyToOne(optional = true)
+	private Catalogo yacimientociudadid;
+	
+	@Column(name = "glg_yacimiento_direccion",length = 3000)
+	private String yacimientodireccion;
+	
+	@Column(name = "glg_yacimiento_latitud",length = 3000)
+	private String yacimientolatitud;
+	
+	@Column(name = "glg_yacimiento_longitud",length = 3000)
+	private String yacimientolongitud;
+	
+	@Column(name = "glg_yacimiento_altura",length = 3000)
+	private String yacimientoaltura;
+	
+	@Column(name = "glg_yacimiento_contenedor",length = 3000)
+	private String yacimientocontenedor;
+	
+	@Column(name = "glg_yacimiento_morfologia",length = 3000)
+	private String yacimientomorfologia;
+	
+	@Column(name = "glg_yacimiento_ubicacion",length = 3000)
+	private String yacimientoubicacion;
+	
+	
+    @Column(name = "glg_fotografia_yacimiento")
+    private String  fotografiayacimiento;
+	
+	@Column(name = "glg_yacimiento_fotografo",length = 3000)
+	private String yacimientofotografo;
+	
+	@Column(name = "glg_yacimiento_lugar",length = 3000)
+	private String yacimientolugar;
+	
+	
+    @Column(name = "glg_foto_yacimiento_plano")
+    private String fotoyacimientoplano;
+	
+	@Column(name = "glg_yacimiento_glguitecto",length = 3000)
+	private String yacimientoglguitecto;
+	
+	@Column(name = "glg_yacimiento_planos_lugar",length = 3000)
+	private String yacimientoplanoslugar;
+    
     @Column(name = "aud_fecha_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharegistro;
@@ -289,6 +476,414 @@ public class Piezageologicadetalle implements Serializable {
 
 	public void setFecharegistro(Date fecharegistro) {
 		this.fecharegistro = fecharegistro;
+	}
+
+	public String getFormula() {
+		return formula;
+	}
+
+	public void setFormula(String formula) {
+		this.formula = formula;
+	}
+
+	public String getComposicion() {
+		return composicion;
+	}
+
+	public void setComposicion(String composicion) {
+		this.composicion = composicion;
+	}
+
+	public String getEmpirica() {
+		return empirica;
+	}
+
+	public void setEmpirica(String empirica) {
+		this.empirica = empirica;
+	}
+
+	public String getRelacion() {
+		return relacion;
+	}
+
+	public void setRelacion(String relacion) {
+		this.relacion = relacion;
+	}
+
+	public String getIma() {
+		return ima;
+	}
+
+	public void setIma(String ima) {
+		this.ima = ima;
+	}
+
+	public String getOrigen() {
+		return origen;
+	}
+
+	public void setOrigen(String origen) {
+		this.origen = origen;
+	}
+
+	public String getSinonimo() {
+		return sinonimo;
+	}
+
+	public void setSinonimo(String sinonimo) {
+		this.sinonimo = sinonimo;
+	}
+
+	public String getDimension() {
+		return dimension;
+	}
+
+	public void setDimension(String dimension) {
+		this.dimension = dimension;
+	}
+
+	public String getRayos() {
+		return rayos;
+	}
+
+	public void setRayos(String rayos) {
+		this.rayos = rayos;
+	}
+
+	public String getFormas() {
+		return formas;
+	}
+
+	public void setFormas(String formas) {
+		this.formas = formas;
+	}
+
+	public String getEstructura() {
+		return estructura;
+	}
+
+	public void setEstructura(String estructura) {
+		this.estructura = estructura;
+	}
+
+	public Boolean getTriclinico() {
+		return triclinico;
+	}
+
+	public void setTriclinico(Boolean triclinico) {
+		this.triclinico = triclinico;
+	}
+
+	public Boolean getMonoclinico() {
+		return monoclinico;
+	}
+
+	public void setMonoclinico(Boolean monoclinico) {
+		this.monoclinico = monoclinico;
+	}
+
+	public Boolean getOrtorrombico() {
+		return ortorrombico;
+	}
+
+	public void setOrtorrombico(Boolean ortorrombico) {
+		this.ortorrombico = ortorrombico;
+	}
+
+	public Boolean getTetragonal() {
+		return tetragonal;
+	}
+
+	public void setTetragonal(Boolean tetragonal) {
+		this.tetragonal = tetragonal;
+	}
+
+	public Boolean getHexagonal() {
+		return hexagonal;
+	}
+
+	public void setHexagonal(Boolean hexagonal) {
+		this.hexagonal = hexagonal;
+	}
+
+	public Boolean getTrigonal() {
+		return trigonal;
+	}
+
+	public void setTrigonal(Boolean trigonal) {
+		this.trigonal = trigonal;
+	}
+
+	public Boolean getCubico() {
+		return cubico;
+	}
+
+	public void setCubico(Boolean cubico) {
+		this.cubico = cubico;
+	}
+
+	public String getEscision() {
+		return escision;
+	}
+
+	public void setEscision(String escision) {
+		this.escision = escision;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public String getDensidad() {
+		return densidad;
+	}
+
+	public void setDensidad(String densidad) {
+		this.densidad = densidad;
+	}
+
+	public String getTransparencia() {
+		return transparencia;
+	}
+
+	public void setTransparencia(String transparencia) {
+		this.transparencia = transparencia;
+	}
+
+	public String getFuerza() {
+		return fuerza;
+	}
+
+	public void setFuerza(String fuerza) {
+		this.fuerza = fuerza;
+	}
+
+	public String getDureza() {
+		return dureza;
+	}
+
+	public void setDureza(String dureza) {
+		this.dureza = dureza;
+	}
+
+	public String getLuminicencia() {
+		return luminicencia;
+	}
+
+	public void setLuminicencia(String luminicencia) {
+		this.luminicencia = luminicencia;
+	}
+
+	public String getBrillo() {
+		return brillo;
+	}
+
+	public void setBrillo(String brillo) {
+		this.brillo = brillo;
+	}
+
+	public String getVeta() {
+		return veta;
+	}
+
+	public void setVeta(String veta) {
+		this.veta = veta;
+	}
+
+	public String getGladstone() {
+		return gladstone;
+	}
+
+	public void setGladstone(String gladstone) {
+		this.gladstone = gladstone;
+	}
+
+	public String getOpticos() {
+		return opticos;
+	}
+
+	public void setOpticos(String opticos) {
+		this.opticos = opticos;
+	}
+
+	public String getElectrones() {
+		return electrones;
+	}
+
+	public void setElectrones(String electrones) {
+		this.electrones = electrones;
+	}
+
+	public String getFermion() {
+		return fermion;
+	}
+
+	public void setFermion(String fermion) {
+		this.fermion = fermion;
+	}
+
+	public String getFotoelectricidad() {
+		return fotoelectricidad;
+	}
+
+	public void setFotoelectricidad(String fotoelectricidad) {
+		this.fotoelectricidad = fotoelectricidad;
+	}
+
+	public String getRadioactividad() {
+		return radioactividad;
+	}
+
+	public void setRadioactividad(String radioactividad) {
+		this.radioactividad = radioactividad;
+	}
+
+	public String getDana() {
+		return dana;
+	}
+
+	public void setDana(String dana) {
+		this.dana = dana;
+	}
+
+	public String getStrunz() {
+		return strunz;
+	}
+
+	public void setStrunz(String strunz) {
+		this.strunz = strunz;
+	}
+
+	public String getFotografiayacimiento() {
+		return fotografiayacimiento;
+	}
+
+	public void setFotografiayacimiento(String fotografiayacimiento) {
+		this.fotografiayacimiento = fotografiayacimiento;
+	}
+
+	public String getFotoyacimientoplano() {
+		return fotoyacimientoplano;
+	}
+
+	public void setFotoyacimientoplano(String fotoyacimientoplano) {
+		this.fotoyacimientoplano = fotoyacimientoplano;
+	}
+
+	public Catalogo getYacimientoprovinciaid() {
+		return yacimientoprovinciaid;
+	}
+
+	public void setYacimientoprovinciaid(Catalogo yacimientoprovinciaid) {
+		this.yacimientoprovinciaid = yacimientoprovinciaid;
+	}
+
+	public Catalogo getYacimientocantonid() {
+		return yacimientocantonid;
+	}
+
+	public void setYacimientocantonid(Catalogo yacimientocantonid) {
+		this.yacimientocantonid = yacimientocantonid;
+	}
+
+	public Catalogo getYacimientociudadid() {
+		return yacimientociudadid;
+	}
+
+	public void setYacimientociudadid(Catalogo yacimientociudadid) {
+		this.yacimientociudadid = yacimientociudadid;
+	}
+
+	public String getYacimientodireccion() {
+		return yacimientodireccion;
+	}
+
+	public void setYacimientodireccion(String yacimientodireccion) {
+		this.yacimientodireccion = yacimientodireccion;
+	}
+
+	public String getYacimientolatitud() {
+		return yacimientolatitud;
+	}
+
+	public void setYacimientolatitud(String yacimientolatitud) {
+		this.yacimientolatitud = yacimientolatitud;
+	}
+
+	public String getYacimientolongitud() {
+		return yacimientolongitud;
+	}
+
+	public void setYacimientolongitud(String yacimientolongitud) {
+		this.yacimientolongitud = yacimientolongitud;
+	}
+
+	public String getYacimientoaltura() {
+		return yacimientoaltura;
+	}
+
+	public void setYacimientoaltura(String yacimientoaltura) {
+		this.yacimientoaltura = yacimientoaltura;
+	}
+
+	public String getYacimientocontenedor() {
+		return yacimientocontenedor;
+	}
+
+	public void setYacimientocontenedor(String yacimientocontenedor) {
+		this.yacimientocontenedor = yacimientocontenedor;
+	}
+
+	public String getYacimientomorfologia() {
+		return yacimientomorfologia;
+	}
+
+	public void setYacimientomorfologia(String yacimientomorfologia) {
+		this.yacimientomorfologia = yacimientomorfologia;
+	}
+
+	public String getYacimientoubicacion() {
+		return yacimientoubicacion;
+	}
+
+	public void setYacimientoubicacion(String yacimientoubicacion) {
+		this.yacimientoubicacion = yacimientoubicacion;
+	}
+
+	public String getYacimientofotografo() {
+		return yacimientofotografo;
+	}
+
+	public void setYacimientofotografo(String yacimientofotografo) {
+		this.yacimientofotografo = yacimientofotografo;
+	}
+
+	public String getYacimientolugar() {
+		return yacimientolugar;
+	}
+
+	public void setYacimientolugar(String yacimientolugar) {
+		this.yacimientolugar = yacimientolugar;
+	}
+
+	public String getYacimientoglguitecto() {
+		return yacimientoglguitecto;
+	}
+
+	public void setYacimientoglguitecto(String yacimientoglguitecto) {
+		this.yacimientoglguitecto = yacimientoglguitecto;
+	}
+
+	public String getYacimientoplanoslugar() {
+		return yacimientoplanoslugar;
+	}
+
+	public void setYacimientoplanoslugar(String yacimientoplanoslugar) {
+		this.yacimientoplanoslugar = yacimientoplanoslugar;
 	}
 
 	@Override

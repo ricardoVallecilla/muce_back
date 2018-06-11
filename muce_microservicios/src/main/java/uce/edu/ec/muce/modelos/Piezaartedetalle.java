@@ -3,6 +3,7 @@ package uce.edu.ec.muce.modelos;
 import java.io.Serializable;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,104 +30,211 @@ public class Piezaartedetalle implements Serializable{
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PIEZARTEDETALLE_SEQ")
     @SequenceGenerator(sequenceName = "Piezaartedetalle_seq", allocationSize = 1, name = "PIEZARTEDETALLE_SEQ")
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "art_id", nullable = false, precision = 0, scale = -127)
+    @Column(name = "art_id", precision = 0, scale = -127)
     private Long detalleid;
+	
 	
 	@Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 600)
-    @Column(name = "zlg_tipoBien", nullable = false, length = 600)
+    @Column(name = "art_tipoBien", nullable = false, length = 600)
 	private String tipoBien;
 	
 	@Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 600)
-    @Column(name = "zlg_titulo", nullable = false, length = 600)
+    @Column(name = "art_titulo", nullable = false, length = 600)
 	private String titulo;
 	
 	@Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 600)
-    @Column(name = "zlg_tecnica", nullable = false, length = 600)
+    @Column(name = "art_tecnica", nullable = false, length = 600)
 	private String tecnica;
 	
 	@Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 600)
+    @Column(name = "art_autor", nullable = false, length = 600)
+	private String autor;
+	
+	@Basic(optional = false)
+    @NotNull
     @Size(min = 1, max = 10)
-    @Column(name = "zlg_alto", nullable = false, length = 10)
+    @Column(name = "art_alto", nullable = false, length = 10)
 	private String alto;
 	
 	@Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
-    @Column(name = "zlg_largo", nullable = false, length = 10)
+    @Column(name = "art_largo", nullable = false, length = 10)
 	private String largo;
 	
 	@Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
-    @Column(name = "zlg_ancho", nullable = false, length = 10)
+    @Column(name = "art_ancho", nullable = false, length = 10)
 	private String ancho;
 	
 	@Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
-    @Column(name = "zlg_diametro", nullable = false, length = 10)
+    @Column(name = "art_diametro", nullable = false, length = 10)
 	private String diametro;
 	
 	@Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
-    @Column(name = "zlg_espesor", nullable = false, length = 10)
-	private String espesor;
-	
-	@Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "zlg_peso", nullable = false, length = 10)
+    @Column(name = "art_peso", nullable = false, length = 10)
 	private String peso;
 	
 	@Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
-    @Column(name = "zlg_sigloanio", nullable = false, length = 10)
+    @Column(name = "art_sigloanio", nullable = false, length = 10)
 	private String sigloanio;
 	
 	@Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 600)
-    @Column(name = "zlg_autor", nullable = false, length = 600)
-	private String autor;
-	
-	@Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 600)
-    @Column(name = "zlg_inscripciones", nullable = false, length = 600)
+    @Column(name = "art_inscripciones", nullable = false, length = 600)
 	private String inscripciones;
 	
 	@Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 600)
-    @Column(name = "zlg_elementoRelacionados", nullable = false, length = 600)
+    @Column(name = "art_elementoRelacionados", nullable = false, length = 600)
 	private String elementoRelacionados;
 	
 	@Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 600)
-    @Column(name = "zlg_descripcion", nullable = false, length = 600)
+    @Column(name = "art_descripcion", nullable = false, length = 600)
 	private String descripcion;
 	
-	@JoinColumn(name = "zlg_tecnica_conservacion", referencedColumnName = "ctl_id", nullable = false)
-    @ManyToOne(optional = false)
-    private Catalogo tecnicaconservacionid;
-	
-	@JoinColumn(name = "msb_id", referencedColumnName = "msb_id", nullable = false)
-    @ManyToOne(optional = false)
+	@JoinColumn(name = "msb_id", referencedColumnName = "msb_id")    
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Piezamuseable piezamuseableid;
+	
+	//catalogación
+	
+    @Size(max = 3000)
+    @Column(name = "art_rasgo_estetico", length = 3000)
+	private String rasgoEstetico;
+	
+    @Size(max = 3000)
+    @Column(name = "art_calidad_estetica", length = 3000)
+	private String calidadEstetica;
+	
+    @Size(max = 3000)
+    @Column(name = "art_originalidad", length = 3000)
+	private String originalidad;
+	
+    @Size(max = 3000)
+    @Column(name = "art_historica_artistica", length = 3000)
+	private String historicaArtistica;
+	
+    @Size(max = 3000)
+    @Column(name = "art_comercial", length = 3000)
+	private String comercial;
+	
+    @Size(max = 3000)
+    @Column(name = "art_comparacion", length = 3000)
+	private String comparacion;
+	
+    @Size(max = 3000)
+    @Column(name = "art_biografia", length = 3000)
+	private String biografia;
 
-	public Long getDetalleid() {
+    @Size(max = 3000)
+    @Column(name = "art_formacion", length = 3000)
+	private String formacion;
+	
+    @Size(max = 1500)
+    @Column(name = "art_movimiento_artistico", length = 1500)
+	private String movimientoArtistico;
+	
+    @Size(max = 3000)
+    @Column(name = "art_exposicion", length = 3000)
+	private String exposicion;
+	
+    @Size(max = 2000)
+    @Column(name = "art_premios", length = 2000)
+	private String premios;
+	
+    @Size(max = 2000)
+    @Column(name = "art_colleccionista", length = 2000)
+	private String colleccionista;
+	
+    @Size(max = 3000)
+    @Column(name = "art_contexto_socio", length = 3000)
+	private String contextoSocio;
+	
+    @Size(max = 3000)
+    @Column(name = "art_contexto_historico", length = 3000)
+	private String contextoHistorico;
+	
+    @Size(max = 3000)
+    @Column(name = "art_contexto_situacion", length = 3000)
+	private String contextoSituacion;
+	
+    @Size(max = 3000)
+    @Column(name = "art_contexto_espacial", length = 3000)
+	private String contextoEspacial;
+	
+    @Size(max = 3000)
+    @Column(name = "art_contexto_temporal", length = 3000)
+	private String contextoTemporal;
+	
+    @Size(max = 3000)
+    @Column(name = "art_simbolo_disenio", length = 3000)
+	private String simboloDisenio;
+	
+    @Size(max = 3000)
+    @Column(name = "art_semiotico", length = 3000)
+	private String semiotico;
+	
+    @Size(max = 3000)
+    @Column(name = "art_color_usado", length = 3000)
+	private String colorUsado;
+	
+    @Size(max = 3000)
+    @Column(name = "art_color_procedencia", length = 3000)
+	private String colorProcedencia;
+	
+    @Size(max = 3000)
+    @Column(name = "art_analisis_semiotico", length = 3000)
+	private String analisisSemiotico;
+	
+    @Size(max = 3000)
+    @Column(name = "art_materia_usada", length = 3000)
+	private String materiaUsada;
+	
+    @Size(max = 3000)
+    @Column(name = "art_labo_usada", length = 3000)
+	private String laboUsada;
+	
+    @Size(max = 3000)
+    @Column(name = "art_docente_usada", length = 3000)
+	private String docenteUsada;
+	
+    @Size(max = 3000)
+    @Column(name = "art_aporte_obra", length = 3000)
+	private String aporteObra;
+	
+    @Size(max = 3000)
+    @Column(name = "art_observacion_usada", length = 3000)
+	private String observacionUsada;
+    
+    @Size(max = 3000)
+    @Column(name = "art_tesauro", length = 3000)
+	private String tesauro;
+    
+    @Size(max = 600)
+    @Column(name = "art_palabras_claves", length = 600)
+	private String palabrasClaves;
+    
+    public Long getDetalleid() {
 		return detalleid;
 	}
 
@@ -190,14 +298,6 @@ public class Piezaartedetalle implements Serializable{
 		this.diametro = diametro;
 	}
 
-	public String getEspesor() {
-		return espesor;
-	}
-
-	public void setEspesor(String espesor) {
-		this.espesor = espesor;
-	}
-
 	public String getPeso() {
 		return peso;
 	}
@@ -212,14 +312,6 @@ public class Piezaartedetalle implements Serializable{
 
 	public void setSigloanio(String sigloanio) {
 		this.sigloanio = sigloanio;
-	}
-
-	public String getAutor() {
-		return autor;
-	}
-
-	public void setAutor(String autor) {
-		this.autor = autor;
 	}
 
 	public String getInscripciones() {
@@ -246,19 +338,251 @@ public class Piezaartedetalle implements Serializable{
 		this.descripcion = descripcion;
 	}
 
-	public Catalogo getTecnicaconservacionid() {
-		return tecnicaconservacionid;
-	}
-
-	public void setTecnicaconservacionid(Catalogo tecnicaconservacionid) {
-		this.tecnicaconservacionid = tecnicaconservacionid;
-	}
-
 	public Piezamuseable getPiezamuseableid() {
 		return piezamuseableid;
 	}
 
 	public void setPiezamuseableid(Piezamuseable piezamuseableid) {
 		this.piezamuseableid = piezamuseableid;
+	}
+
+	public String getAutor() {
+		return autor;
+	}
+
+	public void setAutor(String autor) {
+		this.autor = autor;
+	}
+
+	public String getRasgoEstetico() {
+		return rasgoEstetico;
+	}
+
+	public void setRasgoEstetico(String rasgoEstetico) {
+		this.rasgoEstetico = rasgoEstetico;
+	}
+
+	public String getCalidadEstetica() {
+		return calidadEstetica;
+	}
+
+	public void setCalidadEstetica(String calidadEstetica) {
+		this.calidadEstetica = calidadEstetica;
+	}
+
+	public String getOriginalidad() {
+		return originalidad;
+	}
+
+	public void setOriginalidad(String originalidad) {
+		this.originalidad = originalidad;
+	}
+
+	public String getHistoricaArtistica() {
+		return historicaArtistica;
+	}
+
+	public void setHistoricaArtistica(String historicaArtistica) {
+		this.historicaArtistica = historicaArtistica;
+	}
+
+	public String getComercial() {
+		return comercial;
+	}
+
+	public void setComercial(String comercial) {
+		this.comercial = comercial;
+	}
+
+	public String getComparacion() {
+		return comparacion;
+	}
+
+	public void setComparacion(String comparacion) {
+		this.comparacion = comparacion;
+	}
+
+	public String getBiografia() {
+		return biografia;
+	}
+
+	public void setBiografia(String biografia) {
+		this.biografia = biografia;
+	}
+
+	public String getFormacion() {
+		return formacion;
+	}
+
+	public void setFormacion(String formacion) {
+		this.formacion = formacion;
+	}
+
+	public String getMovimientoArtistico() {
+		return movimientoArtistico;
+	}
+
+	public void setMovimientoArtistico(String movimientoArtistico) {
+		this.movimientoArtistico = movimientoArtistico;
+	}
+
+	public String getExposicion() {
+		return exposicion;
+	}
+
+	public void setExposicion(String exposicion) {
+		this.exposicion = exposicion;
+	}
+
+	public String getPremios() {
+		return premios;
+	}
+
+	public void setPremios(String premios) {
+		this.premios = premios;
+	}
+
+	public String getColleccionista() {
+		return colleccionista;
+	}
+
+	public void setColleccionista(String colleccionista) {
+		this.colleccionista = colleccionista;
+	}
+
+	public String getContextoSocio() {
+		return contextoSocio;
+	}
+
+	public void setContextoSocio(String contextoSocio) {
+		this.contextoSocio = contextoSocio;
+	}
+
+	public String getContextoHistorico() {
+		return contextoHistorico;
+	}
+
+	public void setContextoHistorico(String contextoHistorico) {
+		this.contextoHistorico = contextoHistorico;
+	}
+
+	public String getContextoSituacion() {
+		return contextoSituacion;
+	}
+
+	public void setContextoSituacion(String contextoSituacion) {
+		this.contextoSituacion = contextoSituacion;
+	}
+
+	public String getContextoEspacial() {
+		return contextoEspacial;
+	}
+
+	public void setContextoEspacial(String contextoEspacial) {
+		this.contextoEspacial = contextoEspacial;
+	}
+
+	public String getContextoTemporal() {
+		return contextoTemporal;
+	}
+
+	public void setContextoTemporal(String contextoTemporal) {
+		this.contextoTemporal = contextoTemporal;
+	}
+
+	public String getSimboloDisenio() {
+		return simboloDisenio;
+	}
+
+	public void setSimboloDisenio(String simboloDisenio) {
+		this.simboloDisenio = simboloDisenio;
+	}
+
+	public String getSemiotico() {
+		return semiotico;
+	}
+
+	public void setSemiotico(String semiotico) {
+		this.semiotico = semiotico;
+	}
+
+	public String getColorUsado() {
+		return colorUsado;
+	}
+
+	public void setColorUsado(String colorUsado) {
+		this.colorUsado = colorUsado;
+	}
+
+	public String getColorProcedencia() {
+		return colorProcedencia;
+	}
+
+	public void setColorProcedencia(String colorProcedencia) {
+		this.colorProcedencia = colorProcedencia;
+	}
+
+	public String getAnalisisSemiotico() {
+		return analisisSemiotico;
+	}
+
+	public void setAnalisisSemiotico(String analisisSemiotico) {
+		this.analisisSemiotico = analisisSemiotico;
+	}
+
+	public String getMateriaUsada() {
+		return materiaUsada;
+	}
+
+	public void setMateriaUsada(String materiaUsada) {
+		this.materiaUsada = materiaUsada;
+	}
+
+	public String getLaboUsada() {
+		return laboUsada;
+	}
+
+	public void setLaboUsada(String laboUsada) {
+		this.laboUsada = laboUsada;
+	}
+
+	public String getDocenteUsada() {
+		return docenteUsada;
+	}
+
+	public void setDocenteUsada(String docenteUsada) {
+		this.docenteUsada = docenteUsada;
+	}
+
+	public String getAporteObra() {
+		return aporteObra;
+	}
+
+	public void setAporteObra(String aporteObra) {
+		this.aporteObra = aporteObra;
+	}
+
+	public String getObservacionUsada() {
+		return observacionUsada;
+	}
+
+	public void setObservacionUsada(String observacionUsada) {
+		this.observacionUsada = observacionUsada;
+	}
+
+	public String getTesauro() {
+		return tesauro;
+	}
+
+	public void setTesauro(String tesauro) {
+		this.tesauro = tesauro;
+	}
+
+	public String getPalabrasClaves() {
+		return palabrasClaves;
+	}
+
+	public void setPalabrasClaves(String palabrasClaves) {
+		this.palabrasClaves = palabrasClaves;
 	}
 }
