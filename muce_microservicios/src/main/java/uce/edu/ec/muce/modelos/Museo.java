@@ -13,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -73,9 +75,8 @@ public class Museo implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharegistro;
    
-    @JoinColumn(name = "mus_custodio_id", referencedColumnName = "usr_id", nullable = false)
-    @OneToOne(optional = false)
-    @JsonManagedReference
+    @JoinColumn(name = "mus_custodio_id", referencedColumnName = "usr_id")
+    @ManyToOne(optional = true)
     private Usuario cutodioId;
     
     

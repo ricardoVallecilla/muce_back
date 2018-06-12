@@ -81,7 +81,6 @@ public class Museo implements Serializable {
     private Date fecharegistro;
    
     @JoinColumn(name = "mus_custodio_id", referencedColumnName = "usr_id", nullable = false)
-    @OneToOne(optional = false)
     @JsonBackReference
     private Usuario cutodioId;
     

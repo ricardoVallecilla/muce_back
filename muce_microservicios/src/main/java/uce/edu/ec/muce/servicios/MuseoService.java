@@ -34,7 +34,7 @@ public class MuseoService extends AbstracService<MuseoRepositorio, Museo> {
 		
 		if(museo.getMuseoid()!=null) {
 			Museo museoUsuario=repo.getOne(museo.getMuseoid());
-			Usuario custodio=museoUsuario.getCutodioId();
+			Usuario custodio=usuario.getOne(museoUsuario.getCutodioId().getId());
 			if (custodio!=null) {
 				custodio.setMuseoId(null);
 				usuario.save(custodio);
@@ -46,10 +46,11 @@ public class MuseoService extends AbstracService<MuseoRepositorio, Museo> {
 		
 		Museo museoGuardado = new Museo();	
 		museoGuardado = repo.save(museo);
-		Usuario custodioNuevo=museoGuardado.getCutodioId();
+		
+		Usuario custodioNuevo=usuario.getOne(museoGuardado.getCutodioId().getId()) ;
 		custodioNuevo.setMuseoId(museoGuardado);
 		usuario.save(custodioNuevo);
-
+		
 		return museoGuardado;
 	}
 }
