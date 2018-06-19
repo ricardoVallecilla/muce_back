@@ -276,6 +276,18 @@ public class Piezamuseable implements Serializable {
 
 	@Column(name = "msb_fotografia_cuatro")
 	private String fotografiacuatro;
+	
+	@Column(name = "msb_restauracion_uno")
+	private String restauracionuno;
+	
+	@Column(name = "msb_restauracion_dos")
+	private String restauraciondos;
+	
+	@Column(name = "msb_restauracion_tres")
+	private String restauraciontres;
+	
+	@Column(name = "msb_restauracion_cuatro")
+	private String restauracioncuatro;
 
 	public Piezamuseable() {
 	}
@@ -854,6 +866,38 @@ public class Piezamuseable implements Serializable {
 
 	public void setSeguro(String seguro) {
 		this.seguro = seguro;
+	}
+
+	public String getRestauracionuno() {
+		return restauracionuno;
+	}
+
+	public void setRestauracionuno(String restauracionuno) {
+		this.restauracionuno = restauracionuno;
+	}
+
+	public String getRestauraciondos() {
+		return restauraciondos;
+	}
+
+	public void setRestauraciondos(String restauraciondos) {
+		this.restauraciondos = restauraciondos;
+	}
+
+	public String getRestauraciontres() {
+		return restauraciontres;
+	}
+
+	public void setRestauraciontres(String restauraciontres) {
+		this.restauraciontres = restauraciontres;
+	}
+
+	public String getRestauracioncuatro() {
+		return restauracioncuatro;
+	}
+
+	public void setRestauracioncuatro(String restauracioncuatro) {
+		this.restauracioncuatro = restauracioncuatro;
 	}
 
 	@Override

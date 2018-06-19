@@ -10,13 +10,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "RESTAURACION", catalog = "", schema = "MUCE")
@@ -31,62 +29,98 @@ public class Restauracion implements Serializable {
     @Column(name = "rst_id", nullable = false, precision = 0, scale = -127)
 	private Long id;
 	
-    @Size(min = 1, max = 256)
-    @Column(name = "rst_origen_historico", length = 256)
+    
+    @Column(name = "rst_origen_historico", length = 300)
 	private String origenHistorico;
 
-    @Size(min = 1, max = 256)
-    @Column(name = "rst_cambio_ubicacion", length = 256)
+    
+    @Column(name = "rst_cambio_ubicacion", length = 300)
 	private String cambioUbicacion;
     
-    @Size(min = 1, max = 256)
-    @Column(name = "rst_restauracion_modificacion", length = 256)
+    
+    @Column(name = "rst_restauracion_modificacion", length = 300)
 	private String restauracionModificacion;
     
-    @Size(min = 1, max = 256)
-    @Column(name = "rst_estudios_previos", length = 256)
+    
+    @Column(name = "rst_exposiciones", length = 300)
+	private String exposiciones;
+    
+    
+    @Column(name = "rst_estudios_previos", length = 600)
 	private String estudiosPrevios;
     
-    @Size(min = 1, max = 256)
-    @Column(name = "rst_estudios_analiticos", length = 256)
+    
+    @Column(name = "rst_estudios_analiticos", length = 600)
 	private String estudiosAnaliticos;
     
-    @Size(min = 1, max = 256)
-    @Column(name = "rst_estudios_historico", length = 256)
+    
+    @Column(name = "rst_estudios_historico", length = 600)
 	private String estudiosHistorico;
     
-    @Size(min = 1, max = 256)
-    @Column(name = "rst_tratamiento", length = 256)
+    
+    @Column(name = "rst_tratamiento", length = 3000)
 	private String tratamiento;
 	
-    @Lob
-    @Column(name = "rst_fotografia")
-	private byte[] fotografia;
     
-    @Size(min = 1, max = 256)
-    @Column(name = "rst_entidad_control", length = 256)
-	private String entidadControl;
+    @Column(name = "rst_restaurador", length = 150)
+	private String restaurador;
     
-    @Size(min = 1, max = 256)
-    @Column(name = "rst_revisado_por", length = 256)
-	private String revisadoPor;
-	
-	@Column(name = "rst_fecha_revision")
+    
+    @Column(name = "rst_biologo", length = 150)
+	private String biologo;
+    
+    
+    @Column(name = "rst_quimico", length = 150)
+	private String quimico;
+    
+    
+    @Column(name = "rst_historiador", length = 150)
+	private String historiador;
+    
+    
+    @Column(name = "rst_arquitecto", length = 150)
+	private String arquitecto;
+    
+    
+    @Column(name = "rst_fotografo", length = 150)
+	private String fotografo;
+    
+    
+    @Column(name = "rst_auxiliar", length = 150)
+	private String auxiliar;
+    
+    
+    @Column(name = "rst_observacion", length = 600)
+	private String observacion;
+    
+    
+    @Column(name = "rst_tec_instrumental", length = 600)
+	private String tecInstrumental;
+    
+    
+    @Column(name = "rst_tec_quimico", length = 600)
+	private String tecQuimico;
+    
+    
+    @Column(name = "rst_tec_observacion", length = 600)
+	private String tecObservacion;
+    
+    @Column(name = "rst_foto_uno")
+    private String fotoUno;
+    
+    @Column(name = "rst_foto_dos")
+    private String fotoDos;
+    
+    @Column(name = "rst_foto_tres")
+    private String fotoTres;
+    
+    @Column(name = "rst_foto_cuatro")
+    private String fotoCuatro;
+    
+    @Column(name = "rst_fecha")
     @Temporal(TemporalType.TIMESTAMP)
-	private Date fechaRevision;
-	
-    @Size(min = 1, max = 256)
-    @Column(name = "rst_registro_fotografico", length = 256)
-	private String registroFotografico;
-	
-	@Column(name = "rst_fecha_aprobacion")
-    @Temporal(TemporalType.TIMESTAMP)
-	private Date fechaAprobacion;
-	
-	@Size(min = 1, max = 256)
-    @Column(name = "rst_aprobado_por", length = 256)
-	private String aprobadoPor;
-	
+    private Date fecha;
+    
 	@JoinColumn(name = "itm_id", referencedColumnName = "itm_id")
     @OneToOne
     private Item itemid;
@@ -140,46 +174,106 @@ public class Restauracion implements Serializable {
 		this.tratamiento = tratamiento;
 	}
 	
-	public byte[] getFotografia() {
-		return fotografia;
+	public String getExposiciones() {
+		return exposiciones;
 	}
-	public void setFotografia(byte[] fotografia) {
-		this.fotografia = fotografia;
+	public void setExposiciones(String exposiciones) {
+		this.exposiciones = exposiciones;
 	}
-	public String getEntidadControl() {
-		return entidadControl;
+	public Item getItemid() {
+		return itemid;
 	}
-	public void setEntidadControl(String entidadControl) {
-		this.entidadControl = entidadControl;
+	public void setItemid(Item itemid) {
+		this.itemid = itemid;
 	}
-	public String getRevisadoPor() {
-		return revisadoPor;
+	public String getRestaurador() {
+		return restaurador;
 	}
-	public void setRevisadoPor(String revisadoPor) {
-		this.revisadoPor = revisadoPor;
+	public void setRestaurador(String restaurador) {
+		this.restaurador = restaurador;
 	}
-	public Date getFechaRevision() {
-		return fechaRevision;
+	public String getBiologo() {
+		return biologo;
 	}
-	public void setFechaRevision(Date fechaRevision) {
-		this.fechaRevision = fechaRevision;
+	public void setBiologo(String biologo) {
+		this.biologo = biologo;
 	}
-	public String getRegistroFotografico() {
-		return registroFotografico;
+	public String getQuimico() {
+		return quimico;
 	}
-	public void setRegistroFotografico(String registroFotografico) {
-		this.registroFotografico = registroFotografico;
+	public void setQuimico(String quimico) {
+		this.quimico = quimico;
 	}
-	public Date getFechaAprobacion() {
-		return fechaAprobacion;
+	public String getHistoriador() {
+		return historiador;
 	}
-	public void setFechaAprobacion(Date fechaAprobacion) {
-		this.fechaAprobacion = fechaAprobacion;
+	public void setHistoriador(String historiador) {
+		this.historiador = historiador;
 	}
-	public String getAprobadoPor() {
-		return aprobadoPor;
+	public String getArquitecto() {
+		return arquitecto;
 	}
-	public void setAprobadoPor(String aprobadoPor) {
-		this.aprobadoPor = aprobadoPor;
+	public void setArquitecto(String arquitecto) {
+		this.arquitecto = arquitecto;
+	}
+	public String getFotografo() {
+		return fotografo;
+	}
+	public void setFotografo(String fotografo) {
+		this.fotografo = fotografo;
+	}
+	public String getAuxiliar() {
+		return auxiliar;
+	}
+	public void setAuxiliar(String auxiliar) {
+		this.auxiliar = auxiliar;
+	}
+	public String getObservacion() {
+		return observacion;
+	}
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
+	}
+	public String getTecInstrumental() {
+		return tecInstrumental;
+	}
+	public void setTecInstrumental(String tecInstrumental) {
+		this.tecInstrumental = tecInstrumental;
+	}
+	public String getTecQuimico() {
+		return tecQuimico;
+	}
+	public void setTecQuimico(String tecQuimico) {
+		this.tecQuimico = tecQuimico;
+	}
+	public String getTecObservacion() {
+		return tecObservacion;
+	}
+	public void setTecObservacion(String tecObservacion) {
+		this.tecObservacion = tecObservacion;
+	}
+	public String getFotoUno() {
+		return fotoUno;
+	}
+	public void setFotoUno(String fotoUno) {
+		this.fotoUno = fotoUno;
+	}
+	public String getFotoDos() {
+		return fotoDos;
+	}
+	public void setFotoDos(String fotoDos) {
+		this.fotoDos = fotoDos;
+	}
+	public String getFotoTres() {
+		return fotoTres;
+	}
+	public void setFotoTres(String fotoTres) {
+		this.fotoTres = fotoTres;
+	}
+	public String getFotoCuatro() {
+		return fotoCuatro;
+	}
+	public void setFotoCuatro(String fotoCuatro) {
+		this.fotoCuatro = fotoCuatro;
 	}
 }

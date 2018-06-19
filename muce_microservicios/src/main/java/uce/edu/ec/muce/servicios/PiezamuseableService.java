@@ -76,8 +76,7 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 	private static String REGISTROS="_REGISTRO_";
 	private static String PLANOS="_PLANOS_";
 	private static String INSTRUCTIVOS="_INSTRUCTIVOS_";
-	
-
+	private static String UPLOADED_FOLDER_RESTAURACION = UPLOADED_FOLDER + "restauracion//";
 
 	@Autowired
 	private EstadogeneralbienRepositorio estadogeneral;
@@ -480,6 +479,18 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 		case 17:
 			ruta = zoologica.getOne(id).getFotoyacimientoplano();
 			break;
+		case 18:
+			ruta = repo.getOne(id).getRestauracionuno();
+			break;
+		case 19:
+			ruta = repo.getOne(id).getRestauraciondos();
+			break;
+		case 20:
+			ruta = repo.getOne(id).getRestauraciontres();
+			break;
+		case 21:
+			ruta = repo.getOne(id).getRestauracioncuatro();
+			break;
 		default:
 			break;
 		}
@@ -655,6 +666,38 @@ public class PiezamuseableService extends AbstracService<PiezamuseableRepositori
 			rutaNuevo = UPLOADED_FOLDER_ZOOLOGIA + String.valueOf(f17.getPiezamuseableid().getItemid().getItemid())+ PLANOS+file.getOriginalFilename();			
 			f17.setFotoyacimientoplano(rutaNuevo);	
 			zoologica.save(f17);
+			break;
+		// restauracion uno
+		case 18:
+			Piezamuseable restauracionUno = repo.getOne(id);
+			rutaAntiguo = restauracionUno.getRestauracionuno();
+			rutaNuevo = UPLOADED_FOLDER_RESTAURACION +String.valueOf(restauracionUno.getItemid().getItemid())+ FOTO_UNO+file.getOriginalFilename();
+			restauracionUno.setFotografiados(rutaNuevo);
+			repo.save(restauracionUno);
+			break;
+		// restauracion dos
+		case 19:
+			Piezamuseable restauracionDos = repo.getOne(id);
+			rutaAntiguo = restauracionDos.getRestauraciondos();
+			rutaNuevo = UPLOADED_FOLDER_RESTAURACION +String.valueOf(restauracionDos.getItemid().getItemid())+ FOTO_DOS+file.getOriginalFilename();
+			restauracionDos.setFotografiados(rutaNuevo);
+			repo.save(restauracionDos);
+			break;
+		// restauracion tres
+		case 20:
+			Piezamuseable restauracionTres = repo.getOne(id);
+			rutaAntiguo = restauracionTres.getRestauraciontres();
+			rutaNuevo = UPLOADED_FOLDER_RESTAURACION +String.valueOf(restauracionTres.getItemid().getItemid())+ FOTO_TRES+file.getOriginalFilename();
+			restauracionTres.setFotografiados(rutaNuevo);
+			repo.save(restauracionTres);
+			break;
+		// restauracion cuatro
+		case 21:
+			Piezamuseable restauracionCuatro = repo.getOne(id);
+			rutaAntiguo = restauracionCuatro.getRestauracioncuatro();
+			rutaNuevo = UPLOADED_FOLDER_RESTAURACION +String.valueOf(restauracionCuatro.getItemid().getItemid())+ FOTO_CUATRO+file.getOriginalFilename();
+			restauracionCuatro.setFotografiados(rutaNuevo);
+			repo.save(restauracionCuatro);
 			break;
 		default:
 			break;
