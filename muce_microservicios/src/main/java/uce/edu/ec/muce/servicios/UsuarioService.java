@@ -21,6 +21,7 @@ public class UsuarioService extends AbstracService<UsuarioRepositorio, Usuario> 
 	@GetMapping("/rol/{id}")
 	@ResponseBody
 	public CompletableFuture<List<Usuario>> findByRolId(@PathVariable("id") Long id) {
+		
 		return CompletableFuture.completedFuture(repo.byRolId(id));
 	}
 }
