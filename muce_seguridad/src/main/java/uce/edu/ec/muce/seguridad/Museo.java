@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -72,8 +73,7 @@ public class Museo implements Serializable {
     @Column(name = "mus_directora", nullable = false, length = 256)
     private String directora;
     
-    @Size(max = 256)
-    @Column(name = "aud_usuario_registro_id", length = 256)
+    @Column(name = "aud_usuario_registro_id",length = 600)
     private String usuarioregistroid;
     
     @Column(name = "aud_fecha_registro")
@@ -82,6 +82,7 @@ public class Museo implements Serializable {
    
     @JoinColumn(name = "mus_custodio_id", referencedColumnName = "usr_id", nullable = false)
     @JsonBackReference
+    @ManyToOne(optional=false)
     private Usuario cutodioId;
     
    

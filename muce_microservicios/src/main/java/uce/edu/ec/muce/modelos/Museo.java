@@ -7,6 +7,7 @@ package uce.edu.ec.muce.modelos;
 
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,14 +15,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
 /**
@@ -67,16 +67,16 @@ public class Museo implements Serializable {
     @Column(name = "mus_directora", nullable = false, length = 600)
     private String directora;
     
-    @Size(max = 600)
-    @Column(name = "aud_usuario_registro_id", length = 600)
+    @Column(name = "aud_usuario_registro_id",length = 600)
     private String usuarioregistroid;
     
     @Column(name = "aud_fecha_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharegistro;
    
-    @JoinColumn(name = "mus_custodio_id", referencedColumnName = "usr_id")
-    @ManyToOne(optional = true)
+    @JoinColumn(name = "mus_custodio_id", referencedColumnName = "usr_id", nullable = false)
+    @JsonBackReference
+    @ManyToOne(optional=false)
     private Usuario cutodioId;
     
     
@@ -162,17 +162,14 @@ public class Museo implements Serializable {
         this.fecharegistro = fecharegistro;
     }
 
-    
-    
-    public Usuario getCutodioId() {
+
+	public Usuario getCutodioId() {
 		return cutodioId;
 	}
 
 	public void setCutodioId(Usuario cutodioId) {
 		this.cutodioId = cutodioId;
 	}
-
-
 
 	@Override
     public int hashCode() {
