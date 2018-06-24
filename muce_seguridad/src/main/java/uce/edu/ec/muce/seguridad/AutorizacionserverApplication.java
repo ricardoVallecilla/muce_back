@@ -56,7 +56,9 @@ public class AutorizacionserverApplication extends WebMvcConfigurerAdapter {
 				userRepository.save(nuevo);
 				return "0000003";
 				
-			}else {
+			}else {				
+				u.setPassword(passwordEncoder.encode(body.getPassword()));				
+				userRepository.save(u);
 				return "0000002";
 			}
 			//return body.getUsuario()+" "+body.getPassword();
