@@ -23,6 +23,8 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import uce.edu.ec.muce.seguridad.Usuario;
+
 
 /**
  *
@@ -79,7 +81,20 @@ public class Museo implements Serializable {
     @ManyToOne(optional=false)
     private Usuario cutodioId;
     
+    @JoinColumn(name = "mus_coordinador_id", referencedColumnName = "usr_id", nullable = false)
+    @JsonBackReference
+    @ManyToOne(optional=false)
+    private Usuario coordinadorId;
     
+    @JoinColumn(name = "mus_administrativo_id", referencedColumnName = "usr_id", nullable = false)
+    @JsonBackReference
+    @ManyToOne(optional=false)
+    private Usuario administrativoId;
+    
+    @JoinColumn(name = "mus_tecnologia_id", referencedColumnName = "usr_id", nullable = false)
+    @JsonBackReference
+    @ManyToOne(optional=false)
+    private Usuario tecnologiaId;
     
 
     public Museo() {
@@ -169,6 +184,30 @@ public class Museo implements Serializable {
 
 	public void setCutodioId(Usuario cutodioId) {
 		this.cutodioId = cutodioId;
+	}
+
+	public Usuario getCoordinadorId() {
+		return coordinadorId;
+	}
+
+	public void setCoordinadorId(Usuario coordinadorId) {
+		this.coordinadorId = coordinadorId;
+	}
+
+	public Usuario getAdministrativoId() {
+		return administrativoId;
+	}
+
+	public void setAdministrativoId(Usuario administrativoId) {
+		this.administrativoId = administrativoId;
+	}
+
+	public Usuario getTecnologiaId() {
+		return tecnologiaId;
+	}
+
+	public void setTecnologiaId(Usuario tecnologiaId) {
+		this.tecnologiaId = tecnologiaId;
 	}
 
 	@Override

@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,6 +45,12 @@ public abstract class AbstracService<T extends JpaRepository<E, Long>, E> {
 
 		return null;
 
+	}
+	
+	@DeleteMapping("/{id}")
+	@ResponseBody
+	public void deleteById(@PathVariable("id") Long id) {
+		repo.delete(id);
 	}
 
 	// crea actualiza
