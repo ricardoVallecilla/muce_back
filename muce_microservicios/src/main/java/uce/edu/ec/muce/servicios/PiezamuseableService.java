@@ -58,7 +58,7 @@ import uce.edu.ec.muce.modelos.filtros.PiezaDetalle;
 public class PiezamuseableService extends AbstracService<PiezamuseableRepositorio, Piezamuseable> {
 	
 	//Save the uploaded file to this folder
-	private static String UPLOADED_FOLDER = "F://fotos_museo//";
+	private static String UPLOADED_FOLDER = "//home//eduardo//Pictures//tesis//";
 	private static String FOTO_UNO = "_FOTO_UNO_";
 	private static String FOTO_DOS = "_FOTO_DOS_";
 	private static String FOTO_TRES = "_FOTO_TRES_";

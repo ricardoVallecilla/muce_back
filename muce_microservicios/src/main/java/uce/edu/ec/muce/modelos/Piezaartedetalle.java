@@ -34,82 +34,72 @@ public class Piezaartedetalle implements Serializable{
     private Long detalleid;
 	
 	
-	@Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 600)
-    @Column(name = "art_tipoBien", nullable = false, length = 600)
+	@Size(max = 150)
+    @Column(name = "art_tipoBien", length = 150)
 	private String tipoBien;
 	
-	@Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 600)
-    @Column(name = "art_titulo", nullable = false, length = 600)
+	@Size(max = 150)
+    @Column(name = "art_titulo", length = 150)
 	private String titulo;
 	
-	@Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 600)
-    @Column(name = "art_tecnica", nullable = false, length = 600)
+	@Size(max = 150)
+    @Column(name = "art_tecnica", length = 150)
 	private String tecnica;
 	
-	@Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 600)
-    @Column(name = "art_autor", nullable = false, length = 600)
+	@Size(max = 150)
+    @Column(name = "art_autor", length = 150)
 	private String autor;
 	
-	@Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "art_alto", nullable = false, length = 10)
+	@Size(max = 150)
+    @Column(name = "art_epoca", length = 150)
+	private String epoca;
+	
+	@Size(max = 150)
+    @Column(name = "art_etapa", length = 150)
+	private String etapa;
+	
+	@Size(max = 150)
+    @Column(name = "art_collecion", length = 150)
+	private String collecion;
+	
+	@Size(max = 150)
+    @Column(name = "art_fondo", length = 150)
+	private String fondo;
+	
+	@Size(max = 150)
+    @Column(name = "art_alto", length = 150)
 	private String alto;
 	
-	@Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "art_largo", nullable = false, length = 10)
+	@Size(max = 150)
+    @Column(name = "art_largo", length = 150)
 	private String largo;
 	
-	@Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "art_ancho", nullable = false, length = 10)
+	@Size(max = 150)
+    @Column(name = "art_ancho", length = 150)
 	private String ancho;
 	
-	@Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "art_diametro", nullable = false, length = 10)
+	@Size(max = 150)
+    @Column(name = "art_diametro", length = 150)
 	private String diametro;
 	
-	@Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "art_peso", nullable = false, length = 10)
+	@Size(max = 150)
+    @Column(name = "art_peso", length = 150)
 	private String peso;
 	
-	@Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "art_sigloanio", nullable = false, length = 10)
+	@Size(max = 150)
+    @Column(name = "art_sigloanio", length = 150)
 	private String sigloanio;
 	
-	@Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 600)
-    @Column(name = "art_inscripciones", nullable = false, length = 600)
+	@Size(max = 150)
+    @Column(name = "art_inscripciones", length = 150)
 	private String inscripciones;
 	
-	@Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 600)
-    @Column(name = "art_elementoRelacionados", nullable = false, length = 600)
+	@Size(max = 150)
+    @Column(name = "art_elementoRelacionados", length = 150)
 	private String elementoRelacionados;
 	
-	@Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 600)
-    @Column(name = "art_descripcion", nullable = false, length = 600)
+	@Size(max = 600)
+    @Column(name = "art_descripcion", length = 600)alto
 	private String descripcion;
 	
 	@JoinColumn(name = "msb_id", referencedColumnName = "msb_id")    
@@ -584,5 +574,37 @@ public class Piezaartedetalle implements Serializable{
 
 	public void setPalabrasClaves(String palabrasClaves) {
 		this.palabrasClaves = palabrasClaves;
+	}
+
+	public String getEpoca() {
+		return epoca;
+	}
+
+	public void setEpoca(String epoca) {
+		this.epoca = epoca;
+	}
+
+	public String getEtapa() {
+		return etapa;
+	}
+
+	public void setEtapa(String etapa) {
+		this.etapa = etapa;
+	}
+
+	public String getCollecion() {
+		return collecion;
+	}
+
+	public void setCollecion(String collecion) {
+		this.collecion = collecion;
+	}
+
+	public String getFondo() {
+		return fondo;
+	}
+
+	public void setFondo(String fondo) {
+		this.fondo = fondo;
 	}
 }
