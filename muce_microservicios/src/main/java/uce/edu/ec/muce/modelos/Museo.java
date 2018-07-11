@@ -14,16 +14,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-import uce.edu.ec.muce.seguridad.Usuario;
 
 
 /**
@@ -75,25 +71,21 @@ public class Museo implements Serializable {
     @Column(name = "aud_fecha_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharegistro;
-   
-    @JoinColumn(name = "mus_custodio_id", referencedColumnName = "usr_id", nullable = false)
-    @JsonBackReference
-    @ManyToOne(optional=false)
+    
+    @JoinColumn(name = "mus_custodio_id", referencedColumnName = "usr_id", nullable = true)
+    @OneToOne
     private Usuario cutodioId;
     
-    @JoinColumn(name = "mus_coordinador_id", referencedColumnName = "usr_id", nullable = false)
-    @JsonBackReference
-    @ManyToOne(optional=false)
+    @JoinColumn(name = "mus_coordinador_id", referencedColumnName = "usr_id", nullable = true)
+    @OneToOne
     private Usuario coordinadorId;
     
-    @JoinColumn(name = "mus_administrativo_id", referencedColumnName = "usr_id", nullable = false)
-    @JsonBackReference
-    @ManyToOne(optional=false)
+    @JoinColumn(name = "mus_administrativo_id", referencedColumnName = "usr_id", nullable = true)
+    @OneToOne
     private Usuario administrativoId;
     
-    @JoinColumn(name = "mus_tecnologia_id", referencedColumnName = "usr_id", nullable = false)
-    @JsonBackReference
-    @ManyToOne(optional=false)
+    @JoinColumn(name = "mus_tecnologia_id", referencedColumnName = "usr_id", nullable = true)
+    @OneToOne
     private Usuario tecnologiaId;
     
 

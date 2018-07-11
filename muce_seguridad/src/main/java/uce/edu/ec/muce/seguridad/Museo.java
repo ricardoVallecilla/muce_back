@@ -7,23 +7,20 @@ package uce.edu.ec.muce.seguridad;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 /**
  *
@@ -38,39 +35,34 @@ public class Museo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MUSEO_SEQ")
     @SequenceGenerator(sequenceName = "museo_seq", allocationSize = 1, name = "MUSEO_SEQ")
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Column(name = "mus_id", nullable = false, precision = 0, scale = -127)
     private Long museoid;
     
-    @Basic(optional = false)
-    @NotNull
+    
     @Size(min = 1, max = 150)
     @Column(name = "mus_nombre", nullable = false, length = 150)
     private String nombres;
     
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "mus_descripcion", nullable = false, length = 256)
+    
+    @Size(min = 1, max = 600)
+    @Column(name = "mus_descripcion", nullable = false, length = 600)
     private String descripcion;
     
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "mus_ubicacion", nullable = false, length = 256)
+    
+    @Size(min = 1, max = 600)
+    @Column(name = "mus_ubicacion", nullable = false, length = 600)
     private String ubicacion;
     
-    @Basic(optional = false)
-    @NotNull
+    
     @Size(min = 1, max = 15)
     @Column(name = "mus_telefono", nullable = false, length = 15)
     private String telefono;
     
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 256)
-    @Column(name = "mus_directora", nullable = false, length = 256)
+    
+    @Size(min = 1, max = 600)
+    @Column(name = "mus_directora", nullable = false, length = 600)
     private String directora;
     
     @Column(name = "aud_usuario_registro_id",length = 600)
@@ -79,27 +71,24 @@ public class Museo implements Serializable {
     @Column(name = "aud_fecha_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharegistro;
-   
-    @JoinColumn(name = "mus_custodio_id", referencedColumnName = "usr_id", nullable = false)
-    @JsonBackReference
-    @ManyToOne(optional=false)
+    
+    @JoinColumn(name = "mus_custodio_id", referencedColumnName = "usr_id", nullable = true)
+    @OneToOne
     private Usuario cutodioId;
     
-    @JoinColumn(name = "mus_coordinador_id", referencedColumnName = "usr_id", nullable = false)
-    @JsonBackReference
-    @ManyToOne(optional=false)
+    @JoinColumn(name = "mus_coordinador_id", referencedColumnName = "usr_id", nullable = true)
+    @OneToOne
     private Usuario coordinadorId;
     
-    @JoinColumn(name = "mus_administrativo_id", referencedColumnName = "usr_id", nullable = false)
-    @JsonBackReference
-    @ManyToOne(optional=false)
+    @JoinColumn(name = "mus_administrativo_id", referencedColumnName = "usr_id", nullable = true)
+    @OneToOne
     private Usuario administrativoId;
     
-    @JoinColumn(name = "mus_tecnologia_id", referencedColumnName = "usr_id", nullable = false)
-    @JsonBackReference
-    @ManyToOne(optional=false)
+    @JoinColumn(name = "mus_tecnologia_id", referencedColumnName = "usr_id", nullable = true)
+    @OneToOne
     private Usuario tecnologiaId;
     
+
     public Museo() {
     }
 
@@ -180,9 +169,8 @@ public class Museo implements Serializable {
         this.fecharegistro = fecharegistro;
     }
 
-    
-    
-    public Usuario getCutodioId() {
+
+	public Usuario getCutodioId() {
 		return cutodioId;
 	}
 
@@ -190,10 +178,7 @@ public class Museo implements Serializable {
 		this.cutodioId = cutodioId;
 	}
 
-
-	
-
-    public Usuario getCoordinadorId() {
+	public Usuario getCoordinadorId() {
 		return coordinadorId;
 	}
 

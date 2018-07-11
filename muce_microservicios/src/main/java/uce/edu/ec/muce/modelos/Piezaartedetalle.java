@@ -99,7 +99,7 @@ public class Piezaartedetalle implements Serializable{
 	private String elementoRelacionados;
 	
 	@Size(max = 600)
-    @Column(name = "art_descripcion", length = 600)alto
+    @Column(name = "art_descripcion", length = 600)
 	private String descripcion;
 	
 	@JoinColumn(name = "msb_id", referencedColumnName = "msb_id")    
