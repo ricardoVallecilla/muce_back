@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import uce.edu.ec.muce.intefaces.UsuarioRepositorio;
 import uce.edu.ec.muce.modelos.Usuario;
 
-
-
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioService extends AbstracService<UsuarioRepositorio, Usuario> {
