@@ -47,81 +47,81 @@ public class Piezazoologicadetalle implements Serializable {
     
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 600)
-    @Column(name = "zlg_nombre_cientifico", nullable = false, length = 600)
+    @Size(max = 600)
+    @Column(name = "zlg_nombre_cientifico",  length = 600)
     private String nombrecientifico;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 600)
-    @Column(name = "zlg_nombre_comun", nullable = false, length = 600)
+    @Size(max = 600)
+    @Column(name = "zlg_nombre_comun",  length = 600)
     private String nombrecomun;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 600)
-    @Column(name = "zlg_autor", nullable = false, length = 600)
+    @Size(max = 600)
+    @Column(name = "zlg_autor",  length = 600)
     private String autor;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "zlg_alto", nullable = false, length = 10)
+    @Size(max = 10)
+    @Column(name = "zlg_alto",  length = 10)
     private String alto;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "zlg_largo", nullable = false, length = 10)
+    @Size(max = 10)
+    @Column(name = "zlg_largo",  length = 10)
     private String largo;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "zlg_ancho", nullable = false, length = 10)
+    @Size(max = 10)
+    @Column(name = "zlg_ancho",  length = 10)
     private String ancho;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "zlg_diametro", nullable = false, length = 10)
+    @Size(max = 10)
+    @Column(name = "zlg_diametro",  length = 10)
     private String diametro;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "zlg_peso", nullable = false, length = 10)
+    @Size(max = 10)
+    @Column(name = "zlg_peso",  length = 10)
     private String peso;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 600)
-    @Column(name = "zlg_inscripciones", nullable = false, length = 600)
+    @Size(max = 600)
+    @Column(name = "zlg_inscripciones",  length = 600)
     private String inscripciones;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 600)
-    @Column(name = "zlg_elementos_relacionados", nullable = false, length = 600)
+    @Size(max = 600)
+    @Column(name = "zlg_elementos_relacionados",  length = 600)
     private String elementosrelacionados;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 600)
-    @Column(name = "zlg_descripcion", nullable = false, length = 600)
+    @Size(max = 600)
+    @Column(name = "zlg_descripcion",  length = 600)
     private String descripcion;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 600)
-    @Column(name = "zlg_latitud", nullable = false, length = 600)
+    @Size(max = 600)
+    @Column(name = "zlg_latitud",  length = 600)
     private String latitud;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 600)
-    @Column(name = "zlg_longitud", nullable = false, length = 600)
+    @Size(max = 600)
+    @Column(name = "zlg_longitud",  length = 600)
     private String longitud;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 600)
-    @Column(name = "zlg_localizacion_precisa", nullable = false, length = 600)
+    @Size(max = 600)
+    @Column(name = "zlg_localizacion_precisa",  length = 600)
     private String localizacionprecisa;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 600)
-    @Column(name = "zlg_persona_recolectora", nullable = false, length = 600)
+    @Size(max = 600)
+    @Column(name = "zlg_persona_recolectora",  length = 600)
     private String personarecolectora;
     
-    @Size(min = 1, max = 600)
+    @Size(max = 600)
     @Column(name = "zlg_ciudad", length = 600)
     private String ciudad;
     
@@ -133,15 +133,15 @@ public class Piezazoologicadetalle implements Serializable {
     private Date fecharegistro;
    
     
-    @Size(min = 1, max = 600)
+    @Size(max = 600)
     @Column(name = "zlg_provincia", length = 600)
     private String provincia;
     
-    @Size(min = 1, max = 600)
+    @Size(max = 600)
     @Column(name = "zlg_canton", length = 600)
     private String canton;
     
-    @Size(min = 1, max = 600)
+    @Size(max = 600)
     @Column(name = "zlg_sexo", length = 600)
     private String sexo;
     

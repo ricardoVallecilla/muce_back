@@ -37,6 +37,8 @@ public class AutorizacionserverApplication extends WebMvcConfigurerAdapter {
 	@Autowired
 	private UsuarioRepositorio userRepository;
 	
+	@Autowired
+	private RolUsuarioRepositorio rolUsuarioRepositorio;
 	
 	private PasswordEncoder passwordEncoder =new BCryptPasswordEncoder();
 
@@ -46,14 +48,18 @@ public class AutorizacionserverApplication extends WebMvcConfigurerAdapter {
 		if(true) {
 			Usuario u =userRepository.findOneByUsername(body.getUsuario());	
 			if(u==null) {
-				Rol rol = new Rol(5L);
 				Usuario nuevo= new Usuario();
 				nuevo.setNombres(body.getUsuario());
 				nuevo.setUsername(body.getUsuario());
 				nuevo.setEnabled(true);
 				nuevo.setPassword(passwordEncoder.encode(body.getPassword()));
-				nuevo.setRolId(rol);
 				userRepository.save(nuevo);
+				
+				RolUsuario rolUsuario = new RolUsuario();
+				rolUsuario.setRolId(new Rol(5L));
+				rolUsuario.setUsrId(nuevo);
+				rolUsuarioRepositorio.save(rolUsuario);
+				
 				return "0000003";
 				
 			}else {				

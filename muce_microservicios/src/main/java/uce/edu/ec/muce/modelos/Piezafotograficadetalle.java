@@ -41,71 +41,73 @@ public class Piezafotograficadetalle implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PIEZAFOTOGRAFICADETALLE_SEQ")
     @SequenceGenerator(sequenceName = "Piezafotograficadetalle_seq", allocationSize = 1, name = "PIEZAFOTOGRAFICADETALLE_SEQ")
     
-    
-
     @Column(name = "ftg_id", nullable = false, precision = 0, scale = -127)
     private Long detalleid;
-
-    @Size(min = 1, max = 600)
-    @Column(name = "ftg_titulo", nullable = false, length = 600)
+    
+    @Size(max = 600)
+    @Column(name = "ftg_titulo",  length = 600)
     private String titulo;
     
+    @Size(max = 600)
+    @Column(name = "ftg_coleccion",  length = 600)
+    private String coleccion;
     
-    
-    @Size(min = 1, max = 600)
-    @Column(name = "ftg_tematica", nullable = false, length = 600)
+    @Size(max = 600)
+    @Column(name = "ftg_tematica",  length = 600)
     private String tematica;
     
-    
-    
-    @Size(min = 1, max = 600)
-    @Column(name = "ftg_tipologia", nullable = false, length = 600)
+    @Size(max = 600)
+    @Column(name = "ftg_tipologia",  length = 600)
     private String tipologia;
     
-    
-    
-    @Size(min = 1, max = 600)
-    @Column(name = "ftg_procedimiento", nullable = false, length = 600)
+    @Size(max = 600)
+    @Column(name = "ftg_procedimiento",  length = 600)
     private String procedimiento;
+    
+    @Size(max = 600)
+    @Column(name = "ftg_plano",  length = 600)
+    private String plano;
+    
+    @Size(max = 600)
+    @Column(name = "ftg_encuadre",  length = 600)
+    private String encuadre;
+    
+    @Size(max = 600)
+    @Column(name = "ftg_angulo",  length = 600)
+    private String angulo;
+    
+    @Size(max = 600)
+    @Column(name = "ftg_formato",  length = 600)
+    private String formato;
     
     @Size(max = 600)
     @Column(name = "ftg_autor", length = 600)
     private String autor;
     
-    
-    @Size(min = 1, max = 10)
-    @Column(name = "ftg_siglo_ano", nullable = false, length = 10)
+    @Size(max = 10)
+    @Column(name = "ftg_siglo_ano",  length = 10)
     private String sigloano;
     
-    
-    @Size(min = 1, max = 600)
-    @Column(name = "ftg_fondo", nullable = false, length = 600)
+    @Size(max = 600)
+    @Column(name = "ftg_fondo",  length = 600)
     private String fondo;
     
+    @Size(max = 10)
+    @Column(name = "ftg_alto",  length = 10)
+    private String alto;    
     
-    @Size(min = 1, max = 10)
-    @Column(name = "ftg_alto", nullable = false, length = 10)
-    private String alto;
-    
-    
-    @Size(min = 1, max = 10)
-    @Column(name = "ftg_largo", nullable = false, length = 10)
+    @Size(max = 10)
+    @Column(name = "ftg_largo",  length = 10)
     private String largo;
-    
-    
-    @Size(min = 1, max = 600)
-    @Column(name = "ftg_inscripciones", nullable = false, length = 600)
+
+    @Size(max = 600)
+    @Column(name = "ftg_inscripciones",  length = 600)
     private String inscripciones;
     
-    
-    @Size(min = 1, max = 600)
-    @Column(name = "ftg_descripcion", nullable = false, length = 600)
+    @Size(max = 600)
+    @Column(name = "ftg_descripcion",  length = 600)
     private String descripcion;
-    
-    
-    @Size(min = 1, max = 600)
-    @Column(name = "ftg_elementos_relacionado", nullable = false, length = 600)
-    private String elementosrelacionado;
+
     
     @Size(max = 600)
     @Column(name = "aud_usuario_registro_id", length = 600)
@@ -250,7 +252,6 @@ public class Piezafotograficadetalle implements Serializable {
         this.largo = largo;
         this.inscripciones = inscripciones;
         this.descripcion = descripcion;
-        this.elementosrelacionado = elementosrelacionado;
     }
 
     public Long getDetalleid() {
@@ -347,14 +348,6 @@ public class Piezafotograficadetalle implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public String getElementosrelacionado() {
-        return elementosrelacionado;
-    }
-
-    public void setElementosrelacionado(String elementosrelacionado) {
-        this.elementosrelacionado = elementosrelacionado;
     }
 
     public String getUsuarioregistroid() {
@@ -595,6 +588,46 @@ public class Piezafotograficadetalle implements Serializable {
 
 	public void setPalabrasClaves(String palabrasClaves) {
 		this.palabrasClaves = palabrasClaves;
+	}
+
+	public String getColeccion() {
+		return coleccion;
+	}
+
+	public void setColeccion(String coleccion) {
+		this.coleccion = coleccion;
+	}
+
+	public String getPlano() {
+		return plano;
+	}
+
+	public void setPlano(String plano) {
+		this.plano = plano;
+	}
+
+	public String getEncuadre() {
+		return encuadre;
+	}
+
+	public void setEncuadre(String encuadre) {
+		this.encuadre = encuadre;
+	}
+
+	public String getAngulo() {
+		return angulo;
+	}
+
+	public void setAngulo(String angulo) {
+		this.angulo = angulo;
+	}
+
+	public String getFormato() {
+		return formato;
+	}
+
+	public void setFormato(String formato) {
+		this.formato = formato;
 	}
 
 	@Override

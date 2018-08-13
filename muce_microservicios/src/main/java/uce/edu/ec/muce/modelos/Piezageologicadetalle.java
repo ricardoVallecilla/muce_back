@@ -45,6 +45,15 @@ public class Piezageologicadetalle implements Serializable {
     private Long detalleid;
 
     @Size(max = 600)
+    @Column(name = "glg_cientifico", length = 600)
+    private String cientifico;
+    
+    @Size(max = 600)
+    @Column(name = "glg_comun", length = 600)
+    private String comun;
+    
+    
+    @Size(max = 600)
     @Column(name = "glg_material", length = 600)
     private String material;
     
@@ -409,7 +418,23 @@ public class Piezageologicadetalle implements Serializable {
         this.edad = edad;
     }
 
-    public String getAlto() {
+    public String getCientifico() {
+		return cientifico;
+	}
+
+	public void setCientifico(String cientifico) {
+		this.cientifico = cientifico;
+	}
+
+	public String getComun() {
+		return comun;
+	}
+
+	public void setComun(String comun) {
+		this.comun = comun;
+	}
+
+	public String getAlto() {
         return alto;
     }
 
