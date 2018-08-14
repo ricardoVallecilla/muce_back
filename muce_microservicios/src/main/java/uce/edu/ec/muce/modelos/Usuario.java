@@ -47,9 +47,9 @@ public class Usuario implements UserDetails {
 	private String  nombres;
 	
 	
-	@JoinColumn(name = "rol_id", referencedColumnName = "rol_id")
-    @OneToOne
-    private Rol rolId;
+//	@JoinColumn(name = "rol_id", referencedColumnName = "rol_id")
+//    @OneToOne
+//    private Rol rolId;
 	
 	@JoinColumn(name = "mus_id", referencedColumnName = "mus_id")
     @OneToOne
@@ -106,13 +106,13 @@ public class Usuario implements UserDetails {
 		this.nombres = nombres;
 	}
 
-	public Rol getRolId() {
-		return rolId;
-	}
-
-	public void setRolId(Rol rolId) {
-		this.rolId = rolId;
-	}
+//	public Rol getRolId() {
+//		return rolId;
+//	}
+//
+//	public void setRolId(Rol rolId) {
+//		this.rolId = rolId;
+//	}
 
 	public Long getId() {
 		return id;

@@ -1,15 +1,25 @@
 package uce.edu.ec.muce.servicios;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import uce.edu.ec.muce.intefaces.RolUsuarioRepositorio;
+import uce.edu.ec.muce.intefaces.UsuarioRepositorio;
 import uce.edu.ec.muce.modelos.Rol;
 import uce.edu.ec.muce.modelos.RolUsuario;
 import uce.edu.ec.muce.modelos.Usuario;
@@ -28,5 +38,24 @@ public class RolUsuarioService extends AbstracService<RolUsuarioRepositorio, Rol
 	@ResponseBody
 	public CompletableFuture<List<Usuario>> findByPadreId(@PathVariable("rolId") Long rolId) {
 		return CompletableFuture.completedFuture(repo.findUsuarioByRolId(rolId));
+	}
+	
+	@RequestMapping(value = "/asignar", method = RequestMethod.POST)
+	@ResponseBody
+	@Transactional
+	public void asignarRolUsuario(@RequestParam("roles") String rolesStr) throws IOException {
+		
+		ObjectMapper mapper = new ObjectMapper();
+		List<RolUsuario> roles = mapper.readValue(rolesStr, new TypeReference<List<RolUsuario>>(){});
+		
+		//elimino todos los roles del usuario
+		List<RolUsuario> rolesEliminar = repo.findRolUsuarioByUsuarioId(roles.iterator().next().getUsrId().getId());
+		for (RolUsuario eliminar : rolesEliminar) {
+			repo.delete(eliminar.getId());
+		}
+		//creo los nuevos registros
+		for (RolUsuario asignar : roles) {
+			repo.save(asignar);
+		}
 	}
 }

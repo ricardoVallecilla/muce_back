@@ -16,4 +16,7 @@ public interface RolUsuarioRepositorio extends JpaRepository<RolUsuario, Long> {
 	
 	@Query("SELECT ru.usrId FROM RolUsuario ru where ru.rolId.rolid = ?1")
 	List<Usuario> findUsuarioByRolId(Long rolId);
+	
+	@Query("SELECT ru FROM RolUsuario ru where ru.usrId.id = ?1")
+	List<RolUsuario> findRolUsuarioByUsuarioId(Long usrId);
 }
