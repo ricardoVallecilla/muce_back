@@ -2,7 +2,9 @@ package uce.edu.ec.muce.modelos;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -51,6 +54,18 @@ public class Usuario implements UserDetails {
 //    @OneToOne
 //    private Rol rolId;
 	
+	@OneToMany
+	@JoinColumn(name = "usr_id")
+	private Set<RolUsuario> roles = new HashSet<RolUsuario>();
+	
+	public Set<RolUsuario> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<RolUsuario> roles) {
+		this.roles = roles;
+	}
+
 	@JoinColumn(name = "mus_id", referencedColumnName = "mus_id")
     @OneToOne
     @JsonBackReference

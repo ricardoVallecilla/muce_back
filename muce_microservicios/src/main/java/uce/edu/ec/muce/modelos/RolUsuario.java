@@ -8,9 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "ROLUSUARIO", catalog = "", schema = "MUCE")
@@ -29,7 +32,8 @@ public class RolUsuario implements Serializable {
 	private Rol rolId;
 
 	@JoinColumn(name = "usr_id", referencedColumnName = "usr_id")
-	@OneToOne
+	@ManyToOne
+	@JsonIgnore
 	private Usuario usrId;
 
 	public Long getId() {
