@@ -58,13 +58,12 @@ public class RolUsuarioService extends AbstracService<RolUsuarioRepositorio, Rol
 			repo.delete(eliminar.getId());
 		}
 		
-		Usuario usuario = new Usuario();
-		usuario = usuarioService.findId(idUser);
-		
+//		Usuario usuario = new Usuario();
+//		usuario = usuarioService.findId(idUser);
+//		
 		//creo los nuevos registros
 		for (RolUsuario asignar : roles) {
-			usuario.setRoles(null);
-			asignar.setUsrId(usuario);
+			asignar.setUsuarioId(idUser);
 			repo.save(asignar);
 		}
 		

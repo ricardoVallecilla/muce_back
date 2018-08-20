@@ -31,10 +31,13 @@ public class RolUsuario implements Serializable {
 	@OneToOne
 	private Rol rolId;
 
-	@JoinColumn(name = "usr_id", referencedColumnName = "usr_id")
+	@JoinColumn(name = "usr_id", referencedColumnName = "usr_id", insertable=false, updatable=false)
 	@OneToOne
 	@JsonIgnore
 	private Usuario usrId;
+	
+	@Column(name = "usr_id")
+	private Long usuarioId;
 
 	public Long getId() {
 		return id;
@@ -58,5 +61,13 @@ public class RolUsuario implements Serializable {
 
 	public void setUsrId(Usuario usrId) {
 		this.usrId = usrId;
+	}
+
+	public Long getUsuarioId() {
+		return usuarioId;
+	}
+
+	public void setUsuarioId(Long usuarioId) {
+		this.usuarioId = usuarioId;
 	}
 }
