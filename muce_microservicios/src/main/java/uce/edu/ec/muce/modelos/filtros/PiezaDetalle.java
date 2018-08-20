@@ -1,5 +1,7 @@
 package uce.edu.ec.muce.modelos.filtros;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import uce.edu.ec.muce.modelos.Piezaarqueologicadetalle;
 import uce.edu.ec.muce.modelos.Piezaartedetalle;
 import uce.edu.ec.muce.modelos.Piezabotanicadetalle;
@@ -11,6 +13,7 @@ import uce.edu.ec.muce.modelos.Piezamuseable;
 import uce.edu.ec.muce.modelos.Piezapaleontologicadetalle;
 import uce.edu.ec.muce.modelos.Piezazoologicadetalle;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PiezaDetalle {
 	
 	private Piezamuseable piezamuseable;

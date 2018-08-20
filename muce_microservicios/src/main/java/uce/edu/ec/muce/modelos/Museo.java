@@ -21,6 +21,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 /**
  *
@@ -28,6 +30,7 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "MUSEO", catalog = "", schema = "MUCE")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Museo implements Serializable {
 
     private static final long serialVersionUID = 1L;

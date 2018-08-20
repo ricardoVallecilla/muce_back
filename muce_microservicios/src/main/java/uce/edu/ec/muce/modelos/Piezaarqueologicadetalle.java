@@ -32,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @Table(name = "ARQUEOLOGIA", catalog = "", schema = "MUCE")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL )
+
 public class Piezaarqueologicadetalle implements Serializable {
 
 	private static final long serialVersionUID = 1L;

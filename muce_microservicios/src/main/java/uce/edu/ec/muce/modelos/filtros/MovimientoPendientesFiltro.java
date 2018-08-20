@@ -1,5 +1,8 @@
 package uce.edu.ec.muce.modelos.filtros;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class MovimientoPendientesFiltro {
 	
 	private Long museoid;

@@ -21,6 +21,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  *
@@ -74,18 +76,22 @@ public class Museo implements Serializable {
     
     @JoinColumn(name = "mus_custodio_id", referencedColumnName = "usr_id", nullable = true)
     @OneToOne
+    @JsonIgnore
     private Usuario cutodioId;
     
     @JoinColumn(name = "mus_coordinador_id", referencedColumnName = "usr_id", nullable = true)
     @OneToOne
+    @JsonIgnore
     private Usuario coordinadorId;
     
     @JoinColumn(name = "mus_administrativo_id", referencedColumnName = "usr_id", nullable = true)
     @OneToOne
+    @JsonIgnore
     private Usuario administrativoId;
     
     @JoinColumn(name = "mus_tecnologia_id", referencedColumnName = "usr_id", nullable = true)
     @OneToOne
+    @JsonIgnore
     private Usuario tecnologiaId;
     
 

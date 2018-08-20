@@ -11,12 +11,15 @@ import javax.persistence.Entity;
 
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  *
  * @author Usuario
  */
 @Entity
 @Table(name = "ESTADO_GENERAL_BIEN", catalog = "", schema = "MUCE")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Estadogeneralbien implements Serializable {
 
     private static final long serialVersionUID = 1L;

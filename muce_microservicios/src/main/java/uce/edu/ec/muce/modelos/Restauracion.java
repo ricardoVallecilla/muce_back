@@ -16,8 +16,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "RESTAURACION", catalog = "", schema = "MUCE")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Restauracion implements Serializable {
 
 	private static final long serialVersionUID = -2397285430427127945L;

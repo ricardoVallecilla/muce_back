@@ -14,8 +14,11 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "RESTAURACIONMATERIAL", catalog = "", schema = "MUCE")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class RestauracionMateriales implements Serializable {
 
 	private static final long serialVersionUID = 1L;

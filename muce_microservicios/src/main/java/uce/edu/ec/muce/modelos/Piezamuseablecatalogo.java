@@ -11,12 +11,15 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  *
  * @author Usuario
  */
 @Entity 
 @Table(name = "MUSEABLECATALOGO", catalog = "", schema = "MUCE")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Piezamuseablecatalogo implements Serializable {
 
     private static final long serialVersionUID = 1L;
