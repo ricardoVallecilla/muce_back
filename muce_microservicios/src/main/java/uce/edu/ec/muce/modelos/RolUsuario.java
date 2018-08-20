@@ -32,7 +32,7 @@ public class RolUsuario implements Serializable {
 	private Rol rolId;
 
 	@JoinColumn(name = "usr_id", referencedColumnName = "usr_id")
-	@ManyToOne
+	@OneToOne
 	@JsonIgnore
 	private Usuario usrId;
 

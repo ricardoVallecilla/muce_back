@@ -163,6 +163,15 @@ public class ItemService extends AbstracService<ItemRepositorio, Item> {
 		itemBaja.save(body);
 		return CompletableFuture.completedFuture(body);
 	}
+	
+	@PostMapping("/delete")
+	@ResponseBody
+	public CompletableFuture<ItemBaja> deleteItem(@Valid @RequestBody ItemBaja body) {
+		Item pm = repo.getOne(body.getItemid());
+		pm.setEliminado(true);
+		repo.save(pm);
+		return CompletableFuture.completedFuture(body);
+	}
 
 	@PostMapping("/reporteExposicion")
 	@ResponseBody

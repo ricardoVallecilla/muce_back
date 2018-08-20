@@ -102,6 +102,9 @@ public class Item implements Serializable {
     @Column(name = "itm_restaurado")
     private Boolean restaurado;
     
+    @Column(name = "itm_eliminado")
+    private Boolean eliminado;
+    
     @Column(name = "itm_fecha_restaurado")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharestaurado;
@@ -347,7 +350,15 @@ public class Item implements Serializable {
         this.museoid = museoid;
     }
 
-    @Override
+    public Boolean getEliminado() {
+		return eliminado;
+	}
+
+	public void setEliminado(Boolean eliminado) {
+		this.eliminado = eliminado;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (itemid != null ? itemid.hashCode() : 0);
