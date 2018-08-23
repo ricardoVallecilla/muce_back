@@ -207,10 +207,63 @@ public class Movimiento implements Serializable {
     public Movimiento(Long movimientoid) {
         this.movimientoid = movimientoid;
     }
+    
+    @Size(max = 700)
+    @Column(name = "mvm_motivo_devolucion", length = 700)
+    private String 	motivoDevolucion;
+    
+    
+    @Column(name = "mvm_devuelto")
+    private Boolean devuelto;
+    
+    @Size(max = 1000)
+    @Column(name = "mvm_motivo_aplazamiento", length = 700)
+    private String 	motivoAplazamiento;
+    
+    @Column(name = "mvm_fecha_devolucion")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaDevolucion;
+    
 
     
 
-    public Movimiento(Long movimientoid, Date fechamovimiento, Date fechaingreso, String institucion, String direccion,
+    public Date getFechaDevolucion() {
+		return fechaDevolucion;
+	}
+
+	public void setFechaDevolucion(Date fechaDevolucion) {
+		this.fechaDevolucion = fechaDevolucion;
+	}
+
+	public Boolean getDevuelto() {
+		return devuelto;
+	}
+
+	public String getMotivoDevolucion() {
+		return motivoDevolucion;
+	}
+
+	public void setMotivoDevolucion(String motivoDevolucion) {
+		this.motivoDevolucion = motivoDevolucion;
+	}
+
+	public Boolean isDevuelto() {
+		return devuelto;
+	}
+
+	public void setDevuelto(Boolean devuelto) {
+		this.devuelto = devuelto;
+	}
+
+	public String getMotivoAplazamiento() {
+		return motivoAplazamiento;
+	}
+
+	public void setMotivoAplazamiento(String motivoAplazamiento) {
+		this.motivoAplazamiento = motivoAplazamiento;
+	}
+
+	public Movimiento(Long movimientoid, Date fechamovimiento, Date fechaingreso, String institucion, String direccion,
 			String pais, String provincia, String ciudad, String telefono, String email, String contacto,
 			Date fechainicioprestamo, Date fechafinprestamo, Date fechatraspaso, String observaciones,
 			String numeroacta, String numerosuguro, Long seguro, String quiendono, String aquiendono,

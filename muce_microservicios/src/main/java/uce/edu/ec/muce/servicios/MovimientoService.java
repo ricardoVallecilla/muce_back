@@ -215,5 +215,25 @@ public class MovimientoService extends AbstracService<MovimientoRepositorio, Mov
 		return CompletableFuture.completedFuture(item.listaItem(itemsids.toArray(new Long[itemsids.size()])));
 
 	}
+	
+	@PostMapping("/devolucion/movimiento")
+	@ResponseBody
+	public CompletableFuture<Movimiento> crearDevolucion(@Valid @RequestBody Movimiento body) {
+		Movimiento m = repo.findOne(body.getMovimientoid());
+		m.setDevuelto(true);
+		m.setConfirmacion(true);
+		m.setFechaDevolucion(new Date());
+		m.setMovimientorelacionadoid(body.getMovimientoid());
+		m.setMotivoDevolucion(body.getMotivoDevolucion());
+		List<MovimientoPieza> piezas = movimientopieza.filtro(body.getMovimientoid());
+		for (MovimientoPieza movimientoPieza : piezas) {
+			Item i = item.getOne(movimientoPieza.getmovimientopiezaPK().getItemid());
+			i.setEstadoid(null);
+			item.save(i);
+		}
+		return CompletableFuture.completedFuture(repo.save(m));
+		
+		
+	}
 
 }

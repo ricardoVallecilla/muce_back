@@ -69,7 +69,17 @@ public class Piezainstrumentaldetalle implements Serializable {
     @Column(name = "ins_lugar_fabricacion", length = 600)
     private String lugarfabricacion;
     
-    @Size(max = 10)
+    @Size(max = 600)
+    @Column(name = "ins_clasificacion", length = 600)
+    private String clasificacion;
+    
+    @Size(max = 600)
+    @Column(name = "ins_otro_material", length = 600)
+    private String otroMaterial;
+    
+    
+
+	@Size(max = 10)
     @Column(name = "ins_alto", length = 10)
     private String alto;
     
@@ -122,8 +132,7 @@ public class Piezainstrumentaldetalle implements Serializable {
     private Piezamuseable piezamuseableid;
 
     @Column(name = "ins_fecha_fabricacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechafabricacion;
+    private String fechafabricacion;
     
     @Column(name = "ins_datos_registros", length = 3000)
     private String datosregistros;
@@ -326,15 +335,7 @@ public class Piezainstrumentaldetalle implements Serializable {
 	}
 	
 
-	public Date getFechafabricacion() {
-		return fechafabricacion;
-	}
-
-	public void setFechafabricacion(Date fechafabricacion) {
-		this.fechafabricacion = fechafabricacion;
-	}
-
-	
+		
 	public String getProfundidad() {
 		return profundidad;
 	}
@@ -446,6 +447,14 @@ public class Piezainstrumentaldetalle implements Serializable {
 	public void setFotoinstructivo(String fotoinstructivo) {
 		this.fotoinstructivo = fotoinstructivo;
 	}
+	
+	public String getClasificacion() {
+		return clasificacion;
+	}
+
+	public void setClasificacion(String clasificacion) {
+		this.clasificacion = clasificacion;
+	}
 
 	@Override
     public int hashCode() {
@@ -471,5 +480,21 @@ public class Piezainstrumentaldetalle implements Serializable {
     public String toString() {
         return "uce.edu.ec.muce.modelos.Piezainstrumentaldetalle[ detalleid=" + detalleid + " ]";
     }
+
+	public String getOtroMaterial() {
+		return otroMaterial;
+	}
+
+	public void setOtroMaterial(String otroMaterial) {
+		this.otroMaterial = otroMaterial;
+	}
+
+	public String getFechafabricacion() {
+		return fechafabricacion;
+	}
+
+	public void setFechafabricacion(String fechafabricacion) {
+		this.fechafabricacion = fechafabricacion;
+	}
     
 }
