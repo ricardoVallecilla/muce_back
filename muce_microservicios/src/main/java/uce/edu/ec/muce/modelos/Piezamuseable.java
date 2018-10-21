@@ -87,7 +87,7 @@ public class Piezamuseable implements Serializable {
 	@Column(name = "msb_observaciones", length = 600)
 	private String observaciones;
 
-	@Size(min = 1, max = 350)
+	@Size(min = 1, max = 1000)
 	@Column(name = "msb_historia_itinerancia", length = 350)
 	private String historiaitinerancia;
 
@@ -145,7 +145,7 @@ public class Piezamuseable implements Serializable {
 	@Column(name = "msb_proceso_juridico")
 	private Boolean procesojuridico;
 
-	@JoinColumn(name = "msb_estado_integridad", referencedColumnName = "ctl_id")
+	@JoinColumn(name = "msb_estado_integridad", referencedColumnName = "ctl_id",nullable=true)
 	@ManyToOne(optional = false)
 	private Catalogo estadointegridad;
 
