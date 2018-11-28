@@ -47,8 +47,8 @@ public class Item implements Serializable {
     private String codigocontrol;
     
     
-    @Size(min = 1, max = 256)
-    @Column(name = "itm_descripcion", length = 256)
+    @Size(min = 1, max = 700)
+    @Column(name = "itm_descripcion", length = 700)
     private String descripcion;
     
     
@@ -113,8 +113,8 @@ public class Item implements Serializable {
     private Date fecharestaurado;
     
     
-    @Size(min = 1, max = 500)
-    @Column(name = "itm_detalles", length = 500)
+    @Size(min = 1, max = 700)
+    @Column(name = "itm_detalles", length = 700)
     private String detalles;
     
     @Size(max = 256)
