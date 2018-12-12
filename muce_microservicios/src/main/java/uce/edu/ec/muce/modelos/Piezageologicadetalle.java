@@ -41,7 +41,7 @@ public class Piezageologicadetalle implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PIEZAGEOLOGICADETALLE_SEQ")
     @SequenceGenerator(sequenceName = "PIEZAGEOLOGICADETALLE_SEQ", allocationSize = 1, name = "PIEZAGEOLOGICADETALLE_SEQ")
-    @Column(name = "glg_id", nullable = false, precision = 0, scale = -127)
+    @Column(name = "glg_id", nullable = true, precision = 0, scale = -127)
     private Long detalleid;
 
     @Size(max = 600)
@@ -117,7 +117,7 @@ public class Piezageologicadetalle implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date descripcion;
     
-    @JoinColumn(name = "msb_id", referencedColumnName = "msb_id", nullable = false)
+    @JoinColumn(name = "msb_id", referencedColumnName = "msb_id", nullable = true)
     @ManyToOne(cascade = {CascadeType.ALL})
 
     private Piezamuseable piezamuseableid;

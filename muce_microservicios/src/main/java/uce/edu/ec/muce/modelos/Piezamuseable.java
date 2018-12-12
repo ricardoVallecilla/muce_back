@@ -146,7 +146,7 @@ public class Piezamuseable implements Serializable {
 	private Boolean procesojuridico;
 
 	@JoinColumn(name = "msb_estado_integridad", referencedColumnName = "ctl_id",nullable=true)
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	private Catalogo estadointegridad;
 
 	@Column(name = "msb_humedad")
@@ -156,19 +156,19 @@ public class Piezamuseable implements Serializable {
 	private Boolean camaras;
 
 	@JoinColumn(name = "msb_estado_conservacion_id", referencedColumnName = "ctl_id")
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	private Catalogo estadoconservacionid;
 
 	@JoinColumn(name = "msb_ciudad", referencedColumnName = "ctl_id")
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	private Catalogo ciudadid;
 
 	@JoinColumn(name = "msb_canton", referencedColumnName = "ctl_id")
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	private Catalogo cantonid;
 
 	@JoinColumn(name = "msb_provincia", referencedColumnName = "ctl_id")
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	private Catalogo provinciaid;
 
 	@JoinColumn(name = "msb_provincia_bienes", referencedColumnName = "ctl_id")

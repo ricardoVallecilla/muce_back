@@ -45,6 +45,12 @@ public class MuseoService extends AbstracService<MuseoRepositorio, Museo> {
 				usuario.save(custodio);
 			} 
 			
+			if (museoUsuario.getCutodioDosId() != null) {
+				Usuario custodio=usuario.getOne(museoUsuario.getCutodioDosId().getId());
+				custodio.setMuseoDosId(null);
+				usuario.save(custodio);
+			} 
+			
 			if (museoUsuario.getCoordinadorId() != null) {
 				Usuario coordinador = usuario.getOne(museoUsuario.getCoordinadorId().getId());
 				coordinador.setMuseoId(null);
@@ -74,6 +80,11 @@ public class MuseoService extends AbstracService<MuseoRepositorio, Museo> {
 			usuario.save(custodioNuevo);
 		}
 		
+		if (museoGuardado.getCutodioDosId() != null) {
+			Usuario custodioNuevo = usuario.getOne(museoGuardado.getCutodioDosId().getId()) ;
+			custodioNuevo.setMuseoDosId(museoGuardado);
+			usuario.save(custodioNuevo);
+		}
 		if (museoGuardado.getCoordinadorId() != null) {
 			Usuario coordinadorNuevo = usuario.getOne(museoGuardado.getCoordinadorId().getId()) ;
 			coordinadorNuevo.setMuseoId(museoGuardado);

@@ -28,13 +28,13 @@ public class Usuario implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USUARIO_SEQ")
     @SequenceGenerator(sequenceName = "usuario_seq", allocationSize = 1, name = "USUARIO_SEQ")
-	@Column(name = "usr_id", nullable = false, updatable = false)
+	@Column(name = "usr_id", nullable = true, updatable = false)
 	private Long id;
 	
-	@Column(name = "usr_username", nullable = false, unique = true)
+	@Column(name = "usr_username", nullable = true, unique = true)
 	private String username;
 	
-	@Column(name = "usr_password", nullable = false)
+	@Column(name = "usr_password", nullable = true)
 	private String password;
 	
 	public void setUsername(String username) {
@@ -49,10 +49,10 @@ public class Usuario implements UserDetails {
 		this.enabled = enabled;
 	}
 
-	@Column(name = "usr_enabled", nullable = false)
+	@Column(name = "usr_enabled", nullable = true)
 	private boolean enabled;
 	
-	@Column(name = "usr_nombres", nullable = false)
+	@Column(name = "usr_nombres", nullable = true)
 	private String  nombres;
 	
 	
@@ -64,6 +64,11 @@ public class Usuario implements UserDetails {
     @OneToOne
     @JsonManagedReference
     private Museo museoId;
+	
+	@JoinColumn(name = "mus_dos_id", referencedColumnName = "mus_id")
+    @OneToOne
+    @JsonManagedReference
+    private Museo museoDosId;
 	
 
 	@Override
@@ -137,6 +142,14 @@ public class Usuario implements UserDetails {
 
 	public void setMuseoId(Museo museoId) {
 		this.museoId = museoId;
+	}
+
+	public Museo getMuseoDosId() {
+		return museoDosId;
+	}
+
+	public void setMuseoDosId(Museo museoDosId) {
+		this.museoDosId = museoDosId;
 	}
 	
 	

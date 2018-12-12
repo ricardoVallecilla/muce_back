@@ -44,7 +44,6 @@ public class Piezaentomologicadetalle implements Serializable {
     @Column(name = "ent_id", precision = 0, scale = -127)
     private Long detalleid;
     
-    
     @Size(min = 1, max = 600)
     @Column(name = "ent_nombre_cientifico", length = 600)
     private String nombrecientifico;

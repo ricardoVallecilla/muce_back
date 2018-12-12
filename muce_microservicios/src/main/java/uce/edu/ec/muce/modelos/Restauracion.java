@@ -28,8 +28,8 @@ public class Restauracion implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "RESTAURACION_SEQ")
     @SequenceGenerator(sequenceName = "RESTAURACION_SEQ", allocationSize = 1, name = "RESTAURACION_SEQ")
-    @Basic(optional = false)
-    @Column(name = "rst_id", nullable = false, precision = 0, scale = -127)
+    @Basic(optional = true)
+    @Column(name = "rst_id", nullable = true, precision = 0, scale = -127)
 	private Long id;
 	
     

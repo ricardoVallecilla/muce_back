@@ -45,7 +45,7 @@ public interface ItemRepositorio extends JpaRepository<Item, Long> {
 	int cantidadSoloMuseo(Long museoId,Long grupoid);
     
     
-    @Query(value ="SELECT it.* FROM item it here it.mus_id = ?1 and  (it.itm_nombre like ?2 or it.itm_codigo_control like ?2 or it.itm_numero_serie like ?2 or it.itm_descripcion like ?2) OFFSET ?3 LIMIT ?4"
+    @Query(value ="SELECT it.* FROM item it where it.mus_id = ?1 and  (it.itm_nombre like ?2 or it.itm_codigo_control like ?2 or it.itm_numero_serie like ?2 or it.itm_descripcion like ?2) OFFSET ?3 LIMIT ?4"
     		 , nativeQuery = true) 
 	List<Item> filtroPalabra(Long museoId,String filtro,int min,int max);
     
@@ -106,7 +106,7 @@ public interface ItemRepositorio extends JpaRepository<Item, Long> {
     		"group by EXTRACT(YEAR FROM M.MSB_FECHA_REGISTRO_CATALOGADO) " , nativeQuery = true)
     List<Object[]> cantidadPiezasCatalogacion(Long museoid);
     
-    @Query(value ="select count(*) from( SELECT DISTINCT I.ITM_ID FROM ITEM I JOIN RESTAURACION R ON I.ITM_ID=R.ITM_ID WHERE I.MUS_ID= ?1)" , nativeQuery = true)
+    @Query(value ="select count(*) from ( SELECT DISTINCT I.ITM_ID FROM ITEM I JOIN RESTAURACION R ON I.ITM_ID=R.ITM_ID WHERE I.MUS_ID= ?1) as cantidadPiezasRestaurada" , nativeQuery = true)
     Long cantidadPiezasRestaurada(Long museoid);
     
     

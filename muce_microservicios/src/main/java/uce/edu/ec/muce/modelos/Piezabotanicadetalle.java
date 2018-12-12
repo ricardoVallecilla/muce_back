@@ -52,7 +52,7 @@ public class Piezabotanicadetalle implements Serializable {
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "btn_nombre_comun", length = 600)
+    @Column(name = "btn_nombre_comun", length = 600,nullable=true)
     private String nombrecomun;
     
     @Size(max = 600)
@@ -125,16 +125,16 @@ public class Piezabotanicadetalle implements Serializable {
     private String canton;  
     
     @JoinColumn(name = "btn_pais", referencedColumnName = "ctl_id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     private Catalogo paisid;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "btn_persona_recolectora", length = 600)
+    @Column(name = "btn_persona_recolectora", length = 600,nullable=true)
     private String personarecolectora;
     
     @Size(max = 600)
-    @Column(name = "aud_usuario_registro_id", length = 600)
+    @Column(name = "aud_usuario_registro_id", length = 600,nullable=true)
     private String usuarioregistroid;
     
     @Column(name = "aud_fecha_registro")

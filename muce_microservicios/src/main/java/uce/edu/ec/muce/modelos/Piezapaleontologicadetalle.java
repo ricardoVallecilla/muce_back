@@ -41,7 +41,7 @@ public class Piezapaleontologicadetalle implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PIEZAPALEONTOLOGICADETALLE_SEQ")
     @SequenceGenerator(sequenceName = "Piezapaleontologicadetalle_seq", allocationSize = 1, name = "PIEZAPALEONTOLOGICADETALLE_SEQ")
-    @Column(name = "pln_id", nullable = false, precision = 0, scale = -127)
+    @Column(name = "pln_id", nullable = true, precision = 0, scale = -127)
     private Long detalleid;
     
     @Size(max = 600)
@@ -155,7 +155,7 @@ public class Piezapaleontologicadetalle implements Serializable {
     @ManyToOne
     private Catalogo provinciaid;
     
-    @JoinColumn(name = "msb_id", referencedColumnName = "msb_id", nullable = false)
+    @JoinColumn(name = "msb_id", referencedColumnName = "msb_id", nullable = true)
     @ManyToOne(cascade = {CascadeType.ALL})
 
     private Piezamuseable piezamuseableid;

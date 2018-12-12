@@ -26,12 +26,12 @@ public class RestauracionMateriales implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "RESTAURACIONMAT_SEQ")
     @SequenceGenerator(sequenceName = "RESTAURACIONMAT_SEQ", allocationSize = 1, name = "RESTAURACIONMAT_SEQ")
-    @Basic(optional = false)
-    @Column(name = "rstmrt_id", nullable = false, precision = 0, scale = -127)
+    @Basic(optional = true)
+    @Column(name = "rstmrt_id", nullable = true, precision = 0, scale = -127)
 	private Long id;
 	
 	@JoinColumn(name = "rstmrt_tipo", referencedColumnName = "ctl_id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
 	private Catalogo tipo;
 	
     @Size(min = 1, max = 150)
@@ -39,7 +39,7 @@ public class RestauracionMateriales implements Serializable {
 	private String nombre;
     
     @JoinColumn(name = "RESTAURACIONID", referencedColumnName = "rst_id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
 	private Restauracion restauracion;
 	
 	public Long getId() {

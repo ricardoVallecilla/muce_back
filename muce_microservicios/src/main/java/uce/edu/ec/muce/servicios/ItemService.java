@@ -50,8 +50,8 @@ public class ItemService extends AbstracService<ItemRepositorio, Item> {
 	@ResponseBody
 	public CompletableFuture<List<Item>> createSimple(@Valid @RequestBody ItemsFiltro body) {
 		//
-		int min = body.getPagina() + 1;
-		int max = body.getPagina() + 1 + body.getRegistros();
+		int min = body.getPagina();
+		int max = body.getRegistros();
 		if (body.getGrupoId() != null && body.getCategoriaId() != null) {
 			// return CompletableFuture.completedFuture(repo.filtro(body.getMuseoId(),
 			// body.getGrupoId(), body.getCategoriaId()));
@@ -83,8 +83,8 @@ public class ItemService extends AbstracService<ItemRepositorio, Item> {
 	@ResponseBody
 	public CompletableFuture<List<Item>> filtrar(@Valid @RequestBody ItemsFiltro body) {
 		//
-		int min = body.getPagina() + 1;
-		int max = body.getPagina() + 1 + body.getRegistros();
+		int min = body.getPagina() ;
+		int max = body.getRegistros();
 		String filtro = "%" + body.getTexto() + "%";
 		return CompletableFuture.completedFuture(repo.filtroPalabra(body.getMuseoId(), filtro, min, max));
 
@@ -101,8 +101,8 @@ public class ItemService extends AbstracService<ItemRepositorio, Item> {
 	@PostMapping("/filtro/movimiento")
 	@ResponseBody
 	public CompletableFuture<List<Item>> filtrarSinMovimientos(@Valid @RequestBody ItemsFiltro body) {
-		int min = body.getPagina() + 1;
-		int max = body.getPagina() + 1 + body.getRegistros();
+		int min = body.getPagina();
+		int max = body.getRegistros();
 		return CompletableFuture.completedFuture(
 				repo.filtroMovimientos(body.getMuseoId(), body.getGrupoId(), body.getCategoriaId(), min, max));
 

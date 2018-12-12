@@ -40,32 +40,32 @@ public class Museo implements Serializable {
     @SequenceGenerator(sequenceName = "museo_seq", allocationSize = 1, name = "MUSEO_SEQ")
     
     
-    @Column(name = "mus_id", nullable = false, precision = 0, scale = -127)
+    @Column(name = "mus_id", nullable = true, precision = 0, scale = -127)
     private Long museoid;
     
     
     @Size(min = 1, max = 150)
-    @Column(name = "mus_nombre", nullable = false, length = 150)
+    @Column(name = "mus_nombre", nullable = true, length = 150)
     private String nombres;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "mus_descripcion", nullable = false, length = 600)
+    @Column(name = "mus_descripcion", nullable = true, length = 600)
     private String descripcion;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "mus_ubicacion", nullable = false, length = 600)
+    @Column(name = "mus_ubicacion", nullable = true, length = 600)
     private String ubicacion;
     
     
     @Size(min = 1, max = 15)
-    @Column(name = "mus_telefono", nullable = false, length = 15)
+    @Column(name = "mus_telefono", nullable = true, length = 15)
     private String telefono;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "mus_directora", nullable = false, length = 600)
+    @Column(name = "mus_directora", nullable = true, length = 600)
     private String directora;
     
     @Column(name = "aud_usuario_registro_id",length = 600)
@@ -78,6 +78,10 @@ public class Museo implements Serializable {
     @JoinColumn(name = "mus_custodio_id", referencedColumnName = "usr_id", nullable = true)
     @OneToOne
     private Usuario cutodioId;
+    
+    @JoinColumn(name = "mus_custodio_dos_id", referencedColumnName = "usr_id", nullable = true)
+    @OneToOne
+    private Usuario cutodioDosId;
     
     @JoinColumn(name = "mus_coordinador_id", referencedColumnName = "usr_id", nullable = true)
     @OneToOne
@@ -231,5 +235,13 @@ public class Museo implements Serializable {
     public String toString() {
         return "uce.edu.ec.muce.modelos.Museo[ museoid=" + museoid + " ]";
     }
+
+	public Usuario getCutodioDosId() {
+		return cutodioDosId;
+	}
+
+	public void setCutodioDosId(Usuario cutodioDosId) {
+		this.cutodioDosId = cutodioDosId;
+	}
     
 }

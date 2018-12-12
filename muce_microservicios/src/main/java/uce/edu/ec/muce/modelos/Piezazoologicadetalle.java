@@ -8,7 +8,6 @@ package uce.edu.ec.muce.modelos;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +20,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -42,81 +40,72 @@ public class Piezazoologicadetalle implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PIEZAZOOLOGICADETALLE_SEQ")
     @SequenceGenerator(sequenceName = "Piezazoologicadetalle_seq", allocationSize = 1, name = "PIEZAZOOLOGICADETALLE_SEQ")
-    @Column(name = "zlg_id", nullable = false, precision = 0, scale = -127)
+    @Column(name = "zlg_id", nullable = true, precision = 0, scale = -127)
     private Long detalleid;
     
-    @Basic(optional = false)
-    @NotNull
+   
     @Size(max = 600)
     @Column(name = "zlg_nombre_cientifico",  length = 600)
     private String nombrecientifico;
-    @Basic(optional = false)
-    @NotNull
+    
     @Size(max = 600)
     @Column(name = "zlg_nombre_comun",  length = 600)
     private String nombrecomun;
-    @Basic(optional = false)
-    @NotNull
+   
     @Size(max = 600)
     @Column(name = "zlg_autor",  length = 600)
     private String autor;
-    @Basic(optional = false)
-    @NotNull
+  
     @Size(max = 10)
     @Column(name = "zlg_alto",  length = 10)
     private String alto;
-    @Basic(optional = false)
-    @NotNull
+  
     @Size(max = 10)
     @Column(name = "zlg_largo",  length = 10)
     private String largo;
-    @Basic(optional = false)
-    @NotNull
+   
     @Size(max = 10)
     @Column(name = "zlg_ancho",  length = 10)
     private String ancho;
-    @Basic(optional = false)
-    @NotNull
+  
     @Size(max = 10)
     @Column(name = "zlg_diametro",  length = 10)
     private String diametro;
-    @Basic(optional = false)
-    @NotNull
+    
     @Size(max = 10)
     @Column(name = "zlg_peso",  length = 10)
     private String peso;
-    @Basic(optional = false)
-    @NotNull
+   
     @Size(max = 600)
     @Column(name = "zlg_inscripciones",  length = 600)
     private String inscripciones;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(max = 600)
     @Column(name = "zlg_elementos_relacionados",  length = 600)
     private String elementosrelacionados;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(max = 600)
     @Column(name = "zlg_descripcion",  length = 600)
     private String descripcion;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(max = 600)
     @Column(name = "zlg_latitud",  length = 600)
     private String latitud;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(max = 600)
     @Column(name = "zlg_longitud",  length = 600)
     private String longitud;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(max = 600)
     @Column(name = "zlg_localizacion_precisa",  length = 600)
     private String localizacionprecisa;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(max = 600)
     @Column(name = "zlg_persona_recolectora",  length = 600)
     private String personarecolectora;
@@ -145,11 +134,11 @@ public class Piezazoologicadetalle implements Serializable {
     @Column(name = "zlg_sexo", length = 600)
     private String sexo;
     
-    @JoinColumn(name = "zlg_pais", referencedColumnName = "ctl_id", nullable = false)
-    @ManyToOne(optional = false)
+    @JoinColumn(name = "zlg_pais", referencedColumnName = "ctl_id", nullable = true)
+    @ManyToOne(optional = true)
     private Catalogo paisid;
 
-    @JoinColumn(name = "msb_id", referencedColumnName = "msb_id", nullable = false)
+    @JoinColumn(name = "msb_id", referencedColumnName = "msb_id", nullable = true)
     @ManyToOne(cascade = {CascadeType.ALL})
     private Piezamuseable piezamuseableid;
     

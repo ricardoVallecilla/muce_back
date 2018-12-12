@@ -13,10 +13,10 @@ public interface MovimientoRepositorio extends JpaRepository<Movimiento, Long> {
 	
 	
 	 
-	@Query(value ="SELECT it.* FROM Movimiento it where it.mvm_museo_id = ?1 or it.mvm_museo_receptor_id=?1 OFFSET ?2 LIMIT ?3" , nativeQuery = true) 
+	@Query(value ="SELECT it.* FROM Movimiento it where it.mvm_museo_id = ?1 or it.mvm_museo_receptor_id=?1 order by mvm_fecha_movimiento desc OFFSET ?2 LIMIT ?3" , nativeQuery = true) 
 	List<Movimiento> movimientosMuseoId(Long museoid,int min,int max);
 	
-	@Query(value ="SELECT count(mvm_id) FROM Movimiento where mvm_id = ?1 or mvm_museo_receptor_id=?1  ", nativeQuery = true) 
+	@Query(value ="SELECT count(mvm_id) FROM Movimiento where mvm_museo_id = ?1 or mvm_museo_receptor_id=?1  ", nativeQuery = true) 
 	int cantidadMovimientosMuseoId(Long museoid);
 
 	@Query("SELECT t FROM Movimiento t where t.museoreceptorid = ?1 and t.confirmacion is null order by t.fechamovimiento desc ") 

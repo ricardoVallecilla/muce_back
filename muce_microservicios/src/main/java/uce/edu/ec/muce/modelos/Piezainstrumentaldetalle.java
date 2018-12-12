@@ -44,9 +44,9 @@ public class Piezainstrumentaldetalle implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PIEZAINSTRUMENTALDETALLE_SEQ")
     @SequenceGenerator(sequenceName = "Piezainstrumentaldetalle_seq", allocationSize = 1, name = "PIEZAINSTRUMENTALDETALLE_SEQ")
-    @Basic(optional = false)
+    @Basic(optional = true)
     @NotNull
-    @Column(name = "ins_id", nullable = false, precision = 0, scale = -127)
+    @Column(name = "ins_id", nullable = true, precision = 0, scale = -127)
     private Long detalleid;
     
     @Size(max = 600)
@@ -116,7 +116,7 @@ public class Piezainstrumentaldetalle implements Serializable {
     private String descripcion;
     
 
-    @Column(name = "ins_enuso", nullable = false)    
+    @Column(name = "ins_enuso", nullable = true)    
     private Boolean enuso;
     
     @JoinColumn(name = "ins_materialid", referencedColumnName = "ctl_id")
@@ -124,7 +124,7 @@ public class Piezainstrumentaldetalle implements Serializable {
     private Catalogo materialid;
   
 
-    @Column(name = "ins_funciona", nullable = false)    
+    @Column(name = "ins_funciona", nullable = true)    
     private Boolean funciona;
     
     @JoinColumn(name = "msb_id", referencedColumnName = "msb_id")

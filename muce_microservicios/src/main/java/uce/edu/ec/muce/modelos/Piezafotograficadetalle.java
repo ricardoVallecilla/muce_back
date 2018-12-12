@@ -41,7 +41,7 @@ public class Piezafotograficadetalle implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PIEZAFOTOGRAFICADETALLE_SEQ")
     @SequenceGenerator(sequenceName = "Piezafotograficadetalle_seq", allocationSize = 1, name = "PIEZAFOTOGRAFICADETALLE_SEQ")
     
-    @Column(name = "ftg_id", nullable = false, precision = 0, scale = -127)
+    @Column(name = "ftg_id", nullable = true, precision = 0, scale = -127)
     private Long detalleid;
     
     @Size(max = 600)
@@ -227,7 +227,7 @@ public class Piezafotograficadetalle implements Serializable {
     private String palabrasClaves;
     
 
-    @JoinColumn(name = "msb_id", referencedColumnName = "msb_id", nullable = false)
+    @JoinColumn(name = "msb_id", referencedColumnName = "msb_id", nullable = true)
     @ManyToOne(cascade = {CascadeType.ALL})
 
     private Piezamuseable piezamuseableid;

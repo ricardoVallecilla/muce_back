@@ -26,16 +26,16 @@ public class RestauracionTecnicos implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "RESTAURACIONTEC_SEQ")
     @SequenceGenerator(sequenceName = "RESTAURACIONTEC_SEQ", allocationSize = 1, name = "RESTAURACIONTEC_SEQ")
-    @Basic(optional = false)
-    @Column(name = "rsttcn_id", nullable = false, precision = 0, scale = -127)
+    @Basic(optional = true)
+    @Column(name = "rsttcn_id", nullable = true, precision = 0, scale = -127)
 	private Long id;
 	
 	@JoinColumn(name = "rst_id", referencedColumnName = "rst_id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
 	private Restauracion restauracion;
 	
 	@JoinColumn(name = "rsttcn_tipo", referencedColumnName = "ctl_id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
 	private Catalogo tipo;
 	
     @Size(min = 1, max = 150)

@@ -24,7 +24,7 @@ public class RolUsuario implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ROLUSUARIO_SEQ")
 	@SequenceGenerator(sequenceName = "rolusuario_seq", allocationSize = 1, name = "ROLUSUARIO_SEQ")
-	@Column(name = "rolusu_id", nullable = false, updatable = false)
+	@Column(name = "rolusu_id", nullable = true, updatable = false)
 	private Long id;
 
 	@JoinColumn(name = "rol_id", referencedColumnName = "rol_id")

@@ -37,12 +37,12 @@ public class Movimiento implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MOVIMIENTO_SEQ")
     @SequenceGenerator(sequenceName = "movimiento_seq", allocationSize = 1, name = "MOVIMIENTO_SEQ")
-    @Basic(optional = false)
+    @Basic(optional = true)
     @NotNull
-    @Column(name = "mvm_id", nullable = false)
+    @Column(name = "mvm_id", nullable = true)
     private Long movimientoid;
     @JoinColumn(name = "mvm_tipo", referencedColumnName = "ctl_id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     private Catalogo tipomovimientoid;
     
     @Column(name = "mvm_fecha_movimiento")

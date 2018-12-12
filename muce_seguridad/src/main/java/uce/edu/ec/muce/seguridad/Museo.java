@@ -39,32 +39,32 @@ public class Museo implements Serializable {
     @SequenceGenerator(sequenceName = "museo_seq", allocationSize = 1, name = "MUSEO_SEQ")
     
     
-    @Column(name = "mus_id", nullable = false, precision = 0, scale = -127)
+    @Column(name = "mus_id", nullable = true, precision = 0, scale = -127)
     private Long museoid;
     
     
     @Size(min = 1, max = 150)
-    @Column(name = "mus_nombre", nullable = false, length = 150)
+    @Column(name = "mus_nombre", nullable = true, length = 150)
     private String nombres;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "mus_descripcion", nullable = false, length = 600)
+    @Column(name = "mus_descripcion", nullable = true, length = 600)
     private String descripcion;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "mus_ubicacion", nullable = false, length = 600)
+    @Column(name = "mus_ubicacion", nullable = true, length = 600)
     private String ubicacion;
     
     
     @Size(min = 1, max = 15)
-    @Column(name = "mus_telefono", nullable = false, length = 15)
+    @Column(name = "mus_telefono", nullable = true, length = 15)
     private String telefono;
     
     
     @Size(min = 1, max = 600)
-    @Column(name = "mus_directora", nullable = false, length = 600)
+    @Column(name = "mus_directora", nullable = true, length = 600)
     private String directora;
     
     @Column(name = "aud_usuario_registro_id",length = 600)
