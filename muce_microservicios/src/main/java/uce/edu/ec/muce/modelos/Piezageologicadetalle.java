@@ -113,9 +113,9 @@ public class Piezageologicadetalle implements Serializable {
     @Column(name = "glg_elementos_relacionados", length = 600)
     private String elementosrelacionados;
     
-    @Column(name = "glg_descripcion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date descripcion;
+    @Size(max = 600)
+    @Column(name = "glg_descripcion", length = 600)
+    private String descripcion;
     
     @JoinColumn(name = "msb_id", referencedColumnName = "msb_id", nullable = false)
     @ManyToOne(cascade = {CascadeType.ALL})
@@ -498,11 +498,11 @@ public class Piezageologicadetalle implements Serializable {
         this.elementosrelacionados = elementosrelacionados;
     }
 
-    public Date getDescripcion() {
+    public String getDescripcion() {
         return descripcion;
     }
 
-    public void setDescripcion(Date descripcion) {
+    public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 

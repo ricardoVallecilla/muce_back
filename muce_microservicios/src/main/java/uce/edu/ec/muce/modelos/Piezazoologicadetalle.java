@@ -158,6 +158,15 @@ public class Piezazoologicadetalle implements Serializable {
     
     @Column(name = "zlg_foto_yacimiento_plano")
     private String fotoyacimientoplano;
+    
+    @Column(name = "zlg_categoria_conservacion")
+    private String categoriaConservacion;
+    
+    @Column(name = "zlg_puntaje_emergencia")
+    private String puntajeEmergencia;
+    
+    @Column(name = "zlg_determinado_por")
+    private String determinadoPor;
 
     public Piezazoologicadetalle() {
     }
@@ -426,5 +435,29 @@ public class Piezazoologicadetalle implements Serializable {
     public String toString() {
         return "uce.edu.ec.muce.modelos.Piezazoologicadetalle[ detalleid=" + detalleid + " ]";
     }
+
+	public String getCategoriaConservacion() {
+		return categoriaConservacion;
+	}
+
+	public void setCategoriaConservacion(String categoriaConservacion) {
+		this.categoriaConservacion = categoriaConservacion;
+	}
+
+	public String getPuntajeEmergencia() {
+		return puntajeEmergencia;
+	}
+
+	public void setPuntajeEmergencia(String puntajeEmergencia) {
+		this.puntajeEmergencia = puntajeEmergencia;
+	}
+
+	public String getDeterminadoPor() {
+		return determinadoPor;
+	}
+
+	public void setDeterminadoPor(String determinadoPor) {
+		this.determinadoPor = determinadoPor;
+	}
     
 }
