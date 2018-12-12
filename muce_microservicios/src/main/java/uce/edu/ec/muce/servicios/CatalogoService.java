@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import uce.edu.ec.muce.intefaces.CatalogoRepositorio;
 import uce.edu.ec.muce.modelos.Catalogo;
+import uce.edu.ec.muce.modelos.Movimiento;
 
 
 
@@ -50,9 +51,7 @@ public class CatalogoService extends AbstracService<CatalogoRepositorio, Catalog
 	@GetMapping("/hijos/{id}/{first}/{rows}")
 	@ResponseBody
 	public CompletableFuture<List<Catalogo>> findByPadreId(@PathVariable("id") Long id,@PathVariable("first") int first,@PathVariable("rows") int rows) {
-		int min=first+1;
-		int max=first+rows;
-		return CompletableFuture.completedFuture(repo.findByPadreId(id,min,max));
+		return CompletableFuture.completedFuture(repo.findByPadreId(id,first,rows));
 	}
 	
 	
