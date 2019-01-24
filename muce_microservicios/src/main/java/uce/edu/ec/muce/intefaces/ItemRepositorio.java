@@ -25,16 +25,22 @@ public interface ItemRepositorio extends JpaRepository<Item, Long> {
 	Set<Item> listaItem(Long[] itemsId);
     
      
-    @Query(value ="SELECT it.*  FROM item it where it.mus_id = ?1  and it.itm_tipo_ingreso <> ?2  and it.itm_categoria = ?3 and it.itm_estado is null  OFFSET ?4 LIMIT ?5" , nativeQuery = true)
+    @Query(value ="SELECT * FROM (SELECT it.*, row_number() over (ORDER BY it.itm_id ASC) line_number  FROM item it"
+    		+ " where it.mus_id = ?1  and it.itm_tipo_ingreso <> ?2  and it.itm_categoria = ?3 and it.itm_estado is null  ) "
+    		+ "WHERE line_number BETWEEN  ?4 AND  ?5  ORDER BY line_number" , nativeQuery = true)
 	List<Item> filtroMovimientos(Long museoId,Long idprestamo,Long categoriaid,int min,int max);
     
     @Query(value ="SELECT count(itm_id)  FROM item it where it.mus_id = ?1  and it.itm_tipo_ingreso <> ?2  and it.itm_categoria = ?3 and it.itm_estado is null " , nativeQuery = true)
 	int cantidadfiltroMovimientos(Long museoId,Long idprestamo,Long categoriaid);
     
-    @Query(value ="SELECT it.* FROM item it where it.mus_id = ?1 and  it.itm_grupo = ?2 and  it.itm_categoria = ?3 AND it.itm_eliminado IS NULL OFFSET ?4 LIMIT ?5" , nativeQuery = true) 
+    @Query(value ="SELECT * FROM (SELECT it.*, row_number() over (ORDER BY it.itm_id ASC) line_number  FROM item it"
+    		+ " where it.mus_id = ?1 and  it.itm_grupo = ?2 and  it.itm_categoria = ?3 AND it.itm_eliminado IS NULL) "
+    		+ "WHERE line_number BETWEEN  ?4 AND  ?5  ORDER BY line_number" , nativeQuery = true) 
 	List<Item> filtropaginado(Long museoId,Long grupoid,Long categoriaid,int min,int max);
     
-    @Query(value ="SELECT it.* FROM item it where it.mus_id = ?1 and  it.itm_grupo = ?2 AND it.itm_eliminado IS NULL OFFSET ?3 LIMIT ?4" , nativeQuery = true) 
+    @Query(value ="SELECT * FROM (SELECT it.*, row_number() over (ORDER BY it.itm_id ASC) line_number  FROM item it"
+    		+ " where it.mus_id = ?1 and  it.itm_grupo = ?2 AND it.itm_eliminado IS NULL) "
+    		+ "WHERE line_number BETWEEN  ?3 AND  ?4 ORDER BY line_number" , nativeQuery = true) 
 	List<Item> filtropaginadoSoloMuseo(Long museoId,Long grupoid,int min,int max);
     
     @Query(value ="SELECT count(itm_id) FROM item "
@@ -45,8 +51,9 @@ public interface ItemRepositorio extends JpaRepository<Item, Long> {
 	int cantidadSoloMuseo(Long museoId,Long grupoid);
     
     
-    @Query(value ="SELECT it.* FROM item it where it.mus_id = ?1 and  (it.itm_nombre like ?2 or it.itm_codigo_control like ?2 or it.itm_numero_serie like ?2 or it.itm_descripcion like ?2) OFFSET ?3 LIMIT ?4"
-    		 , nativeQuery = true) 
+    @Query(value ="SELECT * FROM (SELECT it.*, row_number() over (ORDER BY it.itm_id ASC) line_number  FROM item it"
+    		+ " where it.mus_id = ?1 and  (it.itm_nombre like ?2 or it.itm_codigo_control like ?2 or it.itm_numero_serie like ?2 or it.itm_descripcion like ?2) ) "
+    		+ "WHERE line_number BETWEEN  ?3 AND  ?4  ORDER BY line_number" , nativeQuery = true) 
 	List<Item> filtroPalabra(Long museoId,String filtro,int min,int max);
     
     @Query(value ="SELECT count(itm_id)  FROM item it"
@@ -106,7 +113,7 @@ public interface ItemRepositorio extends JpaRepository<Item, Long> {
     		"group by EXTRACT(YEAR FROM M.MSB_FECHA_REGISTRO_CATALOGADO) " , nativeQuery = true)
     List<Object[]> cantidadPiezasCatalogacion(Long museoid);
     
-    @Query(value ="select count(*) from ( SELECT DISTINCT I.ITM_ID FROM ITEM I JOIN RESTAURACION R ON I.ITM_ID=R.ITM_ID WHERE I.MUS_ID= ?1) as cantidadPiezasRestaurada" , nativeQuery = true)
+    @Query(value ="select count(*) from( SELECT DISTINCT I.ITM_ID FROM ITEM I JOIN RESTAURACION R ON I.ITM_ID=R.ITM_ID WHERE I.MUS_ID= ?1)" , nativeQuery = true)
     Long cantidadPiezasRestaurada(Long museoid);
     
     
